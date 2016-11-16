@@ -10,14 +10,8 @@ package unisystemsmodel;
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
-public class Person {
-    private String title;
-    
-    public Person() {
+public class Car {
+    public Car() {
         
-    }
-    
-    public String getTitle() {
-        return title;
     }
 }

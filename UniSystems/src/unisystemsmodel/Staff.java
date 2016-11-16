@@ -10,14 +10,9 @@ package unisystemsmodel;
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
-public class Person {
-    private String title;
-    
-    public Person() {
+public class Staff extends Person {
+    public Staff() {
         
     }
     
-    public String getTitle() {
-        return title;
-    }
 }
