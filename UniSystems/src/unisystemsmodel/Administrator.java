@@ -12,6 +12,9 @@ package unisystemsmodel;
  */
 public class Administrator extends Staff{
     private String lastName;
+    
+    private String name;
+    
     public Administrator() {
         
     }
