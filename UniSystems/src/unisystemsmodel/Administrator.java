@@ -11,6 +11,7 @@ package unisystemsmodel;
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
 public class Administrator extends Staff{
+    private String lastName;
     public Administrator() {
         
     }
