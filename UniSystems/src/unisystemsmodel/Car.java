@@ -5,12 +5,16 @@
  *  Daniel Scott and Najim Mazidi.
  */
 package unisystemsmodel;
+import java.awt.Image;
 
 /**
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
 public class Car {
+    private int id;
+    private Transmission transmission;
+    private String regNo;
     public Car() {
         
     }
