@@ -11,11 +11,20 @@ package unisystemsmodel;
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
 public class Administrator extends Staff{
-    private String lastName;
-    
-    private String name;
     
     public Administrator() {
+        
+    }
+    
+    public void assignLongLoan(Car car, Staff staff) {
+        
+    }
+    
+    public void assignDayLoan() {
+        
+    }
+    
+    public void sendForService(Car car){
         
     }
 }

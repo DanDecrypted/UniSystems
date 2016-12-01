@@ -12,7 +12,7 @@ package unisystemsmodel;
  */
 public class Person {
     private String title;
-    private String first_name;
+    private String firstName;
     
     public Person() {
         

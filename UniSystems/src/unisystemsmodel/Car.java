@@ -15,7 +15,4 @@ public class Car {
     private int id;
     private Transmission transmission;
     private String regNo;
-    public Car() {
-        
-    }
 }
