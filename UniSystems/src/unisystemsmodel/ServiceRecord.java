@@ -13,6 +13,36 @@ import java.util.Date;
  */
 public class ServiceRecord {
     private Date dateOfService;
-    private String[] repairs;
+    private List<String> repairs;
     private String mechanic;
+    
+    public ServiceRecord(List<String> repairs, String mechanic) {
+        
+    }
+
+    public ServiceRecord(Date dateOfService, List<String> repairs, String mechanic) {
+        this.dateOfService = dateOfService;
+        this.repairs = repairs;
+        this.mechanic = mechanic;
+    }
+
+    public Date getDateOfService() {
+        return this.dateOfService;
+    }
+
+    public List<String> getRepairs() {
+        List<String> repairsList;
+        for (String repair : repairs) {
+            repairsList.add(repair);
+        }
+        return repairsList;
+    }
+
+    public void setMechanic(String mechanic){
+        this.mechanic = mechanic;
+    }
+
+    public void addRepair(String repair) {
+        this.repairs.add(repair);
+    }
 }
