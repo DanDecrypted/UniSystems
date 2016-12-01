@@ -4,14 +4,21 @@
  *  a member of staff. This project was created and developed by Craig Banyard,
  *  Daniel Scott and Najim Mazidi.
  */
-package unisystemsmodel;
+package unisystems.people;
 
 /**
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
-public class Staff extends Person {
-    public Staff() {
+public class Person {
+    private String title;
+    private String firstName;
+    
+    public Person() {
         
+    }
+    
+    public String getTitle() {
+        return title;
     }
 }

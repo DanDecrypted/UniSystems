@@ -4,16 +4,19 @@
  *  a member of staff. This project was created and developed by Craig Banyard,
  *  Daniel Scott and Najim Mazidi.
  */
-package unisystemsmodel;
+package unisystems.car;
 
 /**
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
-public enum CarClassification {
-    COMPACT, 
-    COUPE,
-    ESTATE, 
-    LORRY,
-    VAN
+public enum Status {
+    AVAILABLE, 
+    AWAITING_PREP,
+    AWAITING_REPAIR, 
+    AWAITING_SALE,
+    DAMAGED,
+    IN_FOR_SERVICE,
+    RENTED,
+    SOLD
 }

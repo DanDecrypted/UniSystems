@@ -4,27 +4,14 @@
  *  a member of staff. This project was created and developed by Craig Banyard,
  *  Daniel Scott and Najim Mazidi.
  */
-package unisystemsmodel;
+package unisystems.people;
 
 /**
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
-public class Administrator extends Staff{
-    
-    public Administrator() {
-        
-    }
-    
-    public void assignLongLoan(Car car, Staff staff) {
-        
-    }
-    
-    public void assignDayLoan() {
-        
-    }
-    
-    public void sendForService(Car car){
+public class Staff extends Person {
+    public Staff() {
         
     }
 }

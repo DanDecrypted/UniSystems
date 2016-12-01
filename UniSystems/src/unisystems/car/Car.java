@@ -4,7 +4,7 @@
  *  a member of staff. This project was created and developed by Craig Banyard,
  *  Daniel Scott and Najim Mazidi.
  */
-package unisystemsmodel;
+package unisystems.car;
 import java.awt.Image;
 
 /**
@@ -15,4 +15,8 @@ public class Car {
     private int id;
     private Transmission transmission;
     private String regNo;
+    private Status satus;
+    private ServiceRecord serviceRecord;
+    private Classification classification;
+    
 }

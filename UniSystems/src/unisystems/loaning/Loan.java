@@ -4,7 +4,10 @@
  *  a member of staff. This project was created and developed by Craig Banyard,
  *  Daniel Scott and Najim Mazidi.
  */
-package unisystemsmodel;
+package unisystems.loaning;
+
+import unisystems.car.Car;
+import unisystems.people.Staff;
 
 /**
  *

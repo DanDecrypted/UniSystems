@@ -4,13 +4,12 @@
  *  a member of staff. This project was created and developed by Craig Banyard,
  *  Daniel Scott and Najim Mazidi.
  */
-package unisystemsmodel;
+package unisystems.car;
 
 /**
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
-public enum Transmission {
-    AUTOMATIC,
-    MANUAL
+public class CarFactory {
+    
 }

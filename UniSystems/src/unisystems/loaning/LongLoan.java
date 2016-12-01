@@ -4,9 +4,11 @@
  *  a member of staff. This project was created and developed by Craig Banyard,
  *  Daniel Scott and Najim Mazidi.
  */
-package unisystemsmodel;
+package unisystems.loaning;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import unisystems.car.Car;
+import unisystems.people.Staff;
 
 /**
  * Long Loan class which holds the Long Term Loan information.
