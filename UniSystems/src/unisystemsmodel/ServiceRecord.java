@@ -6,6 +6,7 @@
  */
 package unisystemsmodel;
 import java.util.Date;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,14 +14,14 @@ import java.util.Date;
  */
 public class ServiceRecord {
     private Date dateOfService;
-    private List<String> repairs;
+    private ArrayList<String> repairs;
     private String mechanic;
     
-    public ServiceRecord(List<String> repairs, String mechanic) {
+    public ServiceRecord(ArrayList<String> repairs, String mechanic) {
         
     }
 
-    public ServiceRecord(Date dateOfService, List<String> repairs, String mechanic) {
+    public ServiceRecord(Date dateOfService, ArrayList<String> repairs, String mechanic) {
         this.dateOfService = dateOfService;
         this.repairs = repairs;
         this.mechanic = mechanic;
@@ -30,8 +31,8 @@ public class ServiceRecord {
         return this.dateOfService;
     }
 
-    public List<String> getRepairs() {
-        List<String> repairsList;
+    public ArrayList<String> getRepairs() {
+        ArrayList<String> repairsList = new ArrayList<String>();
         for (String repair : repairs) {
             repairsList.add(repair);
         }
