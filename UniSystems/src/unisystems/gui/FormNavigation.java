@@ -6,6 +6,8 @@
  */
 package unisystems.gui;
 
+import java.awt.Color;
+
 /**
  *
  * @author Craig
@@ -17,6 +19,9 @@ public class FormNavigation extends javax.swing.JFrame {
      */
     public FormNavigation() {
         initComponents();
+        
+        this.getContentPane().setBackground(new Color (238,238,238));
+        
     }
 
     /**
@@ -42,7 +47,7 @@ public class FormNavigation extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

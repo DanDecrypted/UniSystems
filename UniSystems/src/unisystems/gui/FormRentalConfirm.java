@@ -21,9 +21,9 @@ public class FormRentalConfirm extends javax.swing.JFrame {
      */
     public FormRentalConfirm() {
         initComponents();
-        this.getContentPane().setBackground(new Color (219, 219, 219));
-        this.jPanel1.setBackground(new Color (219, 219, 219));
-        this.jPanel2.setBackground(new Color (219, 219, 219));
+        this.getContentPane().setBackground(new Color (238,238,238));
+        this.jPanel1.setBackground(new Color (238, 238, 238));
+        this.jPanel2.setBackground(new Color (238, 238, 238));
     }
 
     /**
@@ -282,7 +282,7 @@ public class FormRentalConfirm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancel)
                     .addComponent(btnConfirm))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();

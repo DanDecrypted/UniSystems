@@ -6,6 +6,10 @@
  */
 package unisystems.gui;
 
+import java.awt.Color;
+import javax.swing.DefaultComboBoxModel;
+import unisystems.car.Classification;
+
 /**
  *
  * @author Craig
@@ -17,6 +21,9 @@ public class FormAvailableCars extends javax.swing.JFrame {
      */
     public FormAvailableCars() {
         initComponents();
+        
+        this.getContentPane().setBackground(new Color (238,238,238));
+        
     }
 
     /**
@@ -47,7 +54,7 @@ public class FormAvailableCars extends javax.swing.JFrame {
         lblAvailableCars.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAvailableCars.setText("Available Cars");
 
-        cboClass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboClass.setModel(new DefaultComboBoxModel(Classification.values()));
 
         jLabel2.setText("Car Class:");
 

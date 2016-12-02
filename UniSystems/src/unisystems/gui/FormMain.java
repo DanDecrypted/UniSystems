@@ -6,6 +6,8 @@
  */
 package unisystems.gui;
 
+import java.awt.Color;
+
 /**
  *
  * @author Craig
@@ -17,6 +19,9 @@ public class FormMain extends javax.swing.JFrame {
      */
     public FormMain() {
         initComponents();
+        
+        this.getContentPane().setBackground(new Color (238,238,238));
+        
     }
 
     /**
