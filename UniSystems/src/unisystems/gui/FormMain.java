@@ -28,65 +28,76 @@ public class FormMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblStaffNumb = new javax.swing.JLabel();
         txtStaffNumb = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        lblFirstName = new javax.swing.JLabel();
         txtFirstName = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        lblSurname = new javax.swing.JLabel();
         txtSurname = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        lblPosition = new javax.swing.JLabel();
         txtPosition = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        lblFaculty = new javax.swing.JLabel();
         txtFaculty = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        lblOfficeRoom = new javax.swing.JLabel();
         txtOfficeRoom = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        lblOfficePhone = new javax.swing.JLabel();
         txtOfficePhone = new javax.swing.JTextField();
         btnLookup = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jlstRentalHistory = new javax.swing.JList<>();
+        lblRentalHistory = new javax.swing.JLabel();
+        btnRentCar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        jLabel1.setText("Staff Numb:");
+        lblStaffNumb.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblStaffNumb.setText("Staff Numb:");
 
-        jLabel2.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        jLabel2.setText("First Name:");
+        lblFirstName.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblFirstName.setText("Forename:");
 
-        jLabel3.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        jLabel3.setText("Surname:");
+        txtFirstName.setEditable(false);
 
-        jLabel4.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        jLabel4.setText("Position:");
+        lblSurname.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblSurname.setText("Surname:");
 
-        jLabel5.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        jLabel5.setText("Faculty:");
+        txtSurname.setEditable(false);
 
-        jLabel6.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        jLabel6.setText("Office Room:");
+        lblPosition.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblPosition.setText("Position:");
 
-        jLabel7.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        jLabel7.setText("Office Phone:");
+        txtPosition.setEditable(false);
+
+        lblFaculty.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblFaculty.setText("Faculty:");
+
+        txtFaculty.setEditable(false);
+
+        lblOfficeRoom.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblOfficeRoom.setText("Office Room:");
+
+        txtOfficeRoom.setEditable(false);
+
+        lblOfficePhone.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblOfficePhone.setText("Office Phone:");
+
+        txtOfficePhone.setEditable(false);
 
         btnLookup.setFont(new java.awt.Font("Lato", 0, 11)); // NOI18N
-        btnLookup.setIcon(new javax.swing.ImageIcon("/Users/Craig/NetBeansProjects/UniSystems/UniSystems/search.png")); // NOI18N
         btnLookup.setText("Lookup");
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        jlstRentalHistory.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(jlstRentalHistory);
 
-        jLabel8.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
-        jLabel8.setText("Rental History");
+        lblRentalHistory.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
+        lblRentalHistory.setText("Rental History");
 
-        jButton1.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        jButton1.setText("Rent Car");
+        btnRentCar.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        btnRentCar.setText("Rent Car");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,17 +111,15 @@ public class FormMain extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(jLabel1)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel2)
-                                            .addGap(9, 9, 9)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(lblStaffNumb)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addGap(26, 26, 26))
-                                    .addComponent(jLabel6))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblFirstName)
+                                            .addComponent(lblPosition)
+                                            .addComponent(lblOfficeRoom))
+                                        .addGap(2, 2, 2)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(txtFirstName)
                                     .addComponent(txtStaffNumb)
@@ -120,23 +129,20 @@ public class FormMain extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel3))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(1, 1, 1)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txtSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtFaculty, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addComponent(txtOfficePhone, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(lblFaculty)
+                                            .addComponent(lblOfficePhone)
+                                            .addComponent(lblSurname))
+                                        .addGap(5, 5, 5)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtOfficePhone, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtFaculty, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addComponent(btnLookup, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel8))
-                        .addGap(0, 85, Short.MAX_VALUE))
+                            .addComponent(lblRentalHistory))
+                        .addGap(0, 84, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(btnRentCar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -144,33 +150,33 @@ public class FormMain extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lblStaffNumb)
                     .addComponent(txtStaffNumb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLookup))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lblFirstName)
                     .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
+                    .addComponent(lblSurname)
                     .addComponent(txtSurname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(lblPosition)
                     .addComponent(txtPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
+                    .addComponent(lblFaculty)
                     .addComponent(txtFaculty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(lblOfficeRoom)
                     .addComponent(txtOfficeRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
+                    .addComponent(lblOfficePhone)
                     .addComponent(txtOfficePhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
-                .addComponent(jLabel8)
+                .addComponent(lblRentalHistory)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnRentCar)
                 .addContainerGap())
         );
 
@@ -214,17 +220,17 @@ public class FormMain extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLookup;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JButton btnRentCar;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> jlstRentalHistory;
+    private javax.swing.JLabel lblFaculty;
+    private javax.swing.JLabel lblFirstName;
+    private javax.swing.JLabel lblOfficePhone;
+    private javax.swing.JLabel lblOfficeRoom;
+    private javax.swing.JLabel lblPosition;
+    private javax.swing.JLabel lblRentalHistory;
+    private javax.swing.JLabel lblStaffNumb;
+    private javax.swing.JLabel lblSurname;
     private javax.swing.JTextField txtFaculty;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtOfficePhone;

@@ -27,54 +27,59 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="lblTitle" alignment="1" max="32767" attributes="0"/>
-          <Group type="102" alignment="1" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="202" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblIdTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblClassTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblRegTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblTransmissionTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblMileageTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblFuelTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblDoorsTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblSeatsTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblServiceTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblService" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblSeats" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblDoors" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblFuel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblMileage" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblTransmission" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblReg" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblClass" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblId" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblIdTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblClassTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblRegTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblTransmissionTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblMileageTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblFuelTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblDoorsTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblSeatsTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblServiceTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblService" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblSeats" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblDoors" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblFuel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblMileage" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblTransmission" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblReg" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblClass" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblId" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="jSeparator2" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblLoanHistory" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="202" max="-2" attributes="0"/>
+                              <Component id="jSeparator1" min="-2" pref="160" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblTitle" min="-2" pref="545" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="211" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="196" pref="196" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jSeparator1" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jSeparator2" max="32767" attributes="0"/>
-                      </Group>
+                      <EmptySpace min="0" pref="18" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -134,9 +139,9 @@
                   <Component id="lblService" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jSeparator2" min="-2" max="-2" attributes="0"/>
+              <Component id="jSeparator2" min="-2" pref="2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Component id="lblLoanHistory" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="179" max="-2" attributes="0"/>
               <EmptySpace pref="32" max="32767" attributes="0"/>
@@ -246,7 +251,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JList" name="jList1">
+        <Component class="javax.swing.JList" name="lstLoanHistory">
           <Properties>
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
               <StringArray count="5">
@@ -328,7 +333,7 @@
         <Property name="text" type="java.lang.String" value="jLabel2"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="lblLoanHistory">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Lato" size="18" style="0"/>

@@ -45,7 +45,7 @@ public class FormCar extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         lblServiceTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        lstLoanHistory = new javax.swing.JList<>();
         lblClass = new javax.swing.JLabel();
         lblReg = new javax.swing.JLabel();
         lblTransmission = new javax.swing.JLabel();
@@ -54,7 +54,7 @@ public class FormCar extends javax.swing.JFrame {
         lblDoors = new javax.swing.JLabel();
         lblSeats = new javax.swing.JLabel();
         lblService = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblLoanHistory = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,12 +93,12 @@ public class FormCar extends javax.swing.JFrame {
         lblServiceTitle.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblServiceTitle.setText("Service Status:");
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        lstLoanHistory.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(lstLoanHistory);
 
         lblClass.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblClass.setText("jLabel2");
@@ -124,53 +124,56 @@ public class FormCar extends javax.swing.JFrame {
         lblService.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblService.setText("jLabel2");
 
-        jLabel1.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
-        jLabel1.setText("Loan History");
+        lblLoanHistory.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
+        lblLoanHistory.setText("Loan History");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(202, 202, 202)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblIdTitle)
-                                    .addComponent(lblClassTitle)
-                                    .addComponent(lblRegTitle)
-                                    .addComponent(lblTransmissionTitle)
-                                    .addComponent(lblMileageTitle)
-                                    .addComponent(lblFuelTitle)
-                                    .addComponent(lblDoorsTitle)
-                                    .addComponent(lblSeatsTitle)
-                                    .addComponent(lblServiceTitle))
-                                .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblService)
-                                    .addComponent(lblSeats)
-                                    .addComponent(lblDoors)
-                                    .addComponent(lblFuel)
-                                    .addComponent(lblMileage)
-                                    .addComponent(lblTransmission)
-                                    .addComponent(lblReg)
-                                    .addComponent(lblClass)
-                                    .addComponent(lblId)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblIdTitle)
+                                            .addComponent(lblClassTitle)
+                                            .addComponent(lblRegTitle)
+                                            .addComponent(lblTransmissionTitle)
+                                            .addComponent(lblMileageTitle)
+                                            .addComponent(lblFuelTitle)
+                                            .addComponent(lblDoorsTitle)
+                                            .addComponent(lblSeatsTitle)
+                                            .addComponent(lblServiceTitle))
+                                        .addGap(26, 26, 26)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblService)
+                                            .addComponent(lblSeats)
+                                            .addComponent(lblDoors)
+                                            .addComponent(lblFuel)
+                                            .addComponent(lblMileage)
+                                            .addComponent(lblTransmission)
+                                            .addComponent(lblReg)
+                                            .addComponent(lblClass)
+                                            .addComponent(lblId)))
+                                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel1)))
-                        .addGap(0, 211, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(196, 196, 196)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator2))))
+                                .addComponent(lblLoanHistory))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(202, 202, 202)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 18, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -217,9 +220,9 @@ public class FormCar extends javax.swing.JFrame {
                     .addComponent(lblServiceTitle)
                     .addComponent(lblService))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
+                .addComponent(lblLoanHistory)
                 .addGap(2, 2, 2)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(32, Short.MAX_VALUE))
@@ -269,8 +272,6 @@ public class FormCar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -282,6 +283,7 @@ public class FormCar extends javax.swing.JFrame {
     private javax.swing.JLabel lblFuelTitle;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblIdTitle;
+    private javax.swing.JLabel lblLoanHistory;
     private javax.swing.JLabel lblMileage;
     private javax.swing.JLabel lblMileageTitle;
     private javax.swing.JLabel lblReg;
@@ -293,5 +295,6 @@ public class FormCar extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblTransmission;
     private javax.swing.JLabel lblTransmissionTitle;
+    private javax.swing.JList<String> lstLoanHistory;
     // End of variables declaration//GEN-END:variables
 }
