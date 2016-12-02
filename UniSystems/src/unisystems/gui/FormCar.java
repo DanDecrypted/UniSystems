@@ -5,6 +5,7 @@
  *  Daniel Scott and Najim Mazidi.
  */
 package unisystems.gui;
+import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 import unisystems.car.Transmission;
 import unisystems.car.FuelType;
@@ -20,6 +21,9 @@ public class FormCar extends javax.swing.JFrame {
      */
     public FormCar() {
         initComponents();
+        
+        this.getContentPane().setBackground(new Color (238,238,238));
+        
         
     }
     
