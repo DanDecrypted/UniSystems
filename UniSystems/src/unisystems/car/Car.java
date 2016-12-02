@@ -18,5 +18,7 @@ public class Car {
     private Status satus;
     private ServiceRecord serviceRecord;
     private Classification classification;
+    private FuelType fuelType;
+    private String location;
     
 }
