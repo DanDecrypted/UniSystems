@@ -6,6 +6,8 @@
  */
 package unisystems.people;
 
+import java.util.Date;
+
 /**
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
@@ -13,7 +15,13 @@ package unisystems.people;
 public class Person {
     private String title;
     private String firstName;
+    private String surname;
+    private Date dateOfBirth;
+    private String gender;
+    private String phoneNumber;
+    private String emailAddress;
     
+   
     public Person() {
         
     }
@@ -21,4 +29,29 @@ public class Person {
     public String getTitle() {
         return title;
     }
+    
+    public String getFirstName() {
+        return firstName;
+    }
+    
+    public String getSurname() {
+        return surname;
+    }
+    
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+    
+    public String getGender() {
+        return gender;
+    }
+    
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+    
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+    
 }

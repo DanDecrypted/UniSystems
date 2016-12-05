@@ -6,12 +6,47 @@
  */
 package unisystems.people;
 
+import unisystems.car.Car;
+
 /**
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
 public class Staff extends Person {
+    private String staffRefNumb;
+    private Position position;
+    private Faculty faculty;
+    private String officeRoom;
+    private String workNumb;
+    private Address address;
+    
     public Staff() {
         
     }
+    
+    public void dayLoan(Car car) {
+        //Code for creating day loan
+    }
+    
+    public String getStaffRefNumb() {
+        return staffRefNumb;
+    }
+    
+    public Position getPosition() {
+        return position;
+    }
+    
+    public Faculty getFaculty() {
+        return faculty;
+    }
+    
+    public String getOfficeRoom() {
+        return officeRoom;
+    }
+    
+    public String getWorkNumb() {
+        return workNumb;
+    }
+    
+    
 }
