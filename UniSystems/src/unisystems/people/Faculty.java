@@ -8,7 +8,7 @@ package unisystems.people;
 
 /**
  *
- * @author najimmazidi
+ * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
 public enum Faculty {
     ARTSANDHUMANITIES,
