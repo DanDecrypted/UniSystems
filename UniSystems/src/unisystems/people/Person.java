@@ -26,32 +26,72 @@ public class Person {
         
     }
     
+    public Person(String title, String firstName, String surname, Date dateOfBirth, String gender, String phoneNumber, String emailAddress) {
+        this.title = title;
+        this.firstName = firstName;
+        this.surname = surname;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.phoneNumber = phoneNumber;
+        this.emailAddress = emailAddress;
+    }
+
     public String getTitle() {
         return title;
     }
-    
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getFirstName() {
         return firstName;
     }
-    
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
     public String getSurname() {
         return surname;
     }
-    
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
-    
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
     public String getGender() {
         return gender;
     }
-    
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
-    
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public String getEmailAddress() {
         return emailAddress;
     }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+    
+    
     
 }

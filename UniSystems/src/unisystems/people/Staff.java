@@ -6,6 +6,7 @@
  */
 package unisystems.people;
 
+import java.util.Date;
 import unisystems.car.Car;
 
 /**
@@ -23,30 +24,71 @@ public class Staff extends Person {
     public Staff() {
         
     }
+
+public Staff(String staffRefNumb, Position position, Faculty faculty, String officeRoom, String workNumb, Address address, String title, String firstName, String surname, Date dateOfBirth, String gender, String phoneNumber, String emailAddress) {
+    super(title, firstName, surname, dateOfBirth, gender, phoneNumber, emailAddress);
+    this.staffRefNumb = staffRefNumb;
+    this.position = position;
+    this.faculty = faculty;
+    this.officeRoom = officeRoom;
+    this.workNumb = workNumb;
+    this.address = address;
+}
+   
     
     public void dayLoan(Car car) {
         //Code for creating day loan
     }
-    
+
     public String getStaffRefNumb() {
         return staffRefNumb;
     }
-    
+
+    public void setStaffRefNumb(String staffRefNumb) {
+        this.staffRefNumb = staffRefNumb;
+    }
+
     public Position getPosition() {
         return position;
     }
-    
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
     public Faculty getFaculty() {
         return faculty;
     }
-    
+
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
+    }
+
     public String getOfficeRoom() {
         return officeRoom;
     }
-    
+
+    public void setOfficeRoom(String officeRoom) {
+        this.officeRoom = officeRoom;
+    }
+
     public String getWorkNumb() {
         return workNumb;
     }
+
+    public void setWorkNumb(String workNumb) {
+        this.workNumb = workNumb;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+    
+    
     
     
 }
