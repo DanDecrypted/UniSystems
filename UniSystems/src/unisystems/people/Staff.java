@@ -25,28 +25,24 @@ public class Staff extends Person {
         
     }
 
-public Staff(String staffRefNumb, Position position, Faculty faculty, String officeRoom, String workNumb, Address address, String title, String firstName, String surname, Date dateOfBirth, String gender, String phoneNumber, String emailAddress) {
-    super(title, firstName, surname, dateOfBirth, gender, phoneNumber, emailAddress);
-    this.staffRefNumb = staffRefNumb;
-    this.position = position;
-    this.faculty = faculty;
-    this.officeRoom = officeRoom;
-    this.workNumb = workNumb;
-    this.address = address;
-}
-   
-    
-    public void dayLoan(Car car) {
-        //Code for creating day loan
+    public Staff(String staffRefNumb, Position position, Faculty faculty, String officeRoom, String workNumb, Address address, String title, String firstName, String surname, Date dateOfBirth, String gender, String phoneNumber, String emailAddress) {
+        super(title, firstName, surname, dateOfBirth, gender, phoneNumber, emailAddress);
+        this.staffRefNumb = staffRefNumb;
+        this.position = position;
+        this.faculty = faculty;
+        this.officeRoom = officeRoom;
+        this.workNumb = workNumb;
+        this.address = address;
     }
 
     public String getStaffRefNumb() {
         return staffRefNumb;
     }
 
+    /* Staff reference number should never change once creared - Dan
     public void setStaffRefNumb(String staffRefNumb) {
         this.staffRefNumb = staffRefNumb;
-    }
+    }*/
 
     public Position getPosition() {
         return position;
@@ -87,8 +83,4 @@ public Staff(String staffRefNumb, Position position, Faculty faculty, String off
     public void setAddress(Address address) {
         this.address = address;
     }
-    
-    
-    
-    
 }

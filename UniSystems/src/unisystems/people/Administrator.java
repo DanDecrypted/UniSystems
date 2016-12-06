@@ -22,7 +22,7 @@ public class Administrator extends Staff{
         
     }
     
-    public void assignDayLoan() {
+    public void assignDayLoan(Staff staff) {
         
     }
     
