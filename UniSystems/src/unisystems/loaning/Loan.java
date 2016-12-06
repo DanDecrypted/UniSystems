@@ -13,14 +13,19 @@ import unisystems.people.Staff;
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
-public class Loan {
+public class Loan implements java.io.Serializable{
     private Staff loaner;
     private Car car;
     private String carNotes;
+    private int fuelLevel;
     
     public Loan(Staff loaner, Car car){
         this.loaner = loaner;
         this.car = car;
+    }
+    
+    public int getFuelLevel() {
+        return this.fuelLevel;
     }
     
     public Staff getLoaner() {

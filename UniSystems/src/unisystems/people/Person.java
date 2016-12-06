@@ -12,7 +12,7 @@ import java.util.Date;
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
-public class Person {
+public class Person implements java.io.Serializable {
     private String title;
     private String firstName;
     private String surname;

@@ -5,14 +5,13 @@
  *  Daniel Scott and Najim Mazidi.
  */
 package unisystems.car;
-import java.util.Date;
 import java.util.ArrayList;
 
 /**
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
-public class ServiceRecord {
+public class ServiceRecord implements java.io.Serializable{
     private ArrayList<Service> record;
     public ServiceRecord() {
         this.record = new ArrayList<Service>();
@@ -27,10 +26,10 @@ public class ServiceRecord {
      * @return a copy of the array.
      */
     public ArrayList<Service> getServiceRecord() {
-        ArrayList<Service> returns = new ArrayList<Service>(); 
+        ArrayList<Service> temp = new ArrayList<Service>(); 
         for (Service service : record) {
-            returns.add(service);
+            temp.add(service);
         }
-        return returns;
+        return temp;
     }
 }

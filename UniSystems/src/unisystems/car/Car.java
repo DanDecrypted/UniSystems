@@ -11,7 +11,7 @@ import java.awt.Image;
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
-public class Car {
+public class Car implements java.io.Serializable{
     /**
      * RegNo should be unique. it is the method of identifying the car
      */
@@ -22,6 +22,11 @@ public class Car {
     private Classification classification;
     private FuelType fuelType;
     private String location;
+    private int milage;
+    
+    public Car(){
+        
+    }
     
     public Car(String regNo, Transmission transmission, FuelType fuelType, 
             String location, Classification classification) {
@@ -33,6 +38,14 @@ public class Car {
         this.status = Status.AVAILABLE;
         this.serviceRecord = new ServiceRecord();
         
+    }
+    
+    public String getRegNo() {
+        return regNo;
+    }
+    
+    public Status getStatus() {
+        return status;
     }
     
 }
