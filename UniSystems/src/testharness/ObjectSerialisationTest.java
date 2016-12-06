@@ -27,11 +27,6 @@ public class ObjectSerialisationTest {
     
     public static void loadFromDisk() {
         cars.loadFromDisk();
-        System.out.println(cars.getCars().size());
-        for (Car car : cars.getCars()) {
-            System.out.println("This car has the reg no " + car.getRegNo() + 
-                    " with the status " + car.getStatus());
-        }
     }
     
     public static void addCarAndSave() {
