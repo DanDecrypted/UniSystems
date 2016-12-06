@@ -54,16 +54,22 @@ public class FormAvailableCars extends javax.swing.JFrame {
         lblAvailableCars.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAvailableCars.setText("Available Cars");
 
+        cboClass.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         cboClass.setModel(new DefaultComboBoxModel(Classification.values()));
 
+        jLabel2.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         jLabel2.setText("Car Class:");
 
+        jLabel4.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         jLabel4.setText("Location:");
 
+        cboLocation.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         cboLocation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        btnUpdate.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         btnUpdate.setText("Update");
 
+        lstAvailableCars.setFont(new java.awt.Font("Lato", 0, 12)); // NOI18N
         lstAvailableCars.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -96,7 +102,7 @@ public class FormAvailableCars extends javax.swing.JFrame {
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cboLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                                 .addComponent(btnUpdate))
                             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING))

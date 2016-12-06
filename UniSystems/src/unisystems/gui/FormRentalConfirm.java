@@ -38,23 +38,23 @@ public class FormRentalConfirm extends javax.swing.JFrame {
         lblTitle = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lblStaffDetails = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblStaffNumber = new javax.swing.JLabel();
         txtStaffNumb = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblForename = new javax.swing.JLabel();
+        lblSurname = new javax.swing.JLabel();
         txtForename = new javax.swing.JTextField();
         txtPhone = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        lblOfficeRoom = new javax.swing.JLabel();
         txtRoom = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        lblOfficePhone = new javax.swing.JLabel();
         txtSurname = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         lblCarDetails = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        lblNumbPlate = new javax.swing.JLabel();
+        lblMake = new javax.swing.JLabel();
+        lblModel = new javax.swing.JLabel();
+        lblClass = new javax.swing.JLabel();
+        lblLocation = new javax.swing.JLabel();
         txtNumberPlate = new javax.swing.JTextField();
         txtMake = new javax.swing.JTextField();
         txtClass = new javax.swing.JTextField();
@@ -74,28 +74,28 @@ public class FormRentalConfirm extends javax.swing.JFrame {
         lblStaffDetails.setFont(new java.awt.Font("Lato", 1, 13)); // NOI18N
         lblStaffDetails.setText("Staff Details");
 
-        jLabel3.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        jLabel3.setText("Staff Number:");
+        lblStaffNumber.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblStaffNumber.setText("Staff Number:");
 
         txtStaffNumb.setEditable(false);
 
-        jLabel4.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        jLabel4.setText("Forename:");
+        lblForename.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblForename.setText("Forename:");
 
-        jLabel5.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        jLabel5.setText("Surname:");
+        lblSurname.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblSurname.setText("Surname:");
 
         txtForename.setEditable(false);
 
         txtPhone.setEditable(false);
 
-        jLabel6.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        jLabel6.setText("Office Room:");
+        lblOfficeRoom.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblOfficeRoom.setText("Office Room:");
 
         txtRoom.setEditable(false);
 
-        jLabel7.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        jLabel7.setText("Office Phone:");
+        lblOfficePhone.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblOfficePhone.setText("Office Phone:");
 
         txtSurname.setEditable(false);
 
@@ -110,25 +110,25 @@ public class FormRentalConfirm extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
+                                .addComponent(lblOfficeRoom)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(lblForename)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtForename, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(lblStaffNumber)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtStaffNumb, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
+                                .addComponent(lblSurname)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
+                                .addComponent(lblOfficePhone)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(29, Short.MAX_VALUE))
@@ -140,19 +140,19 @@ public class FormRentalConfirm extends javax.swing.JFrame {
                 .addComponent(lblStaffDetails)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(lblStaffNumber)
                     .addComponent(txtStaffNumb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
+                    .addComponent(lblForename)
+                    .addComponent(lblSurname)
                     .addComponent(txtForename, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSurname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
+                    .addComponent(lblOfficeRoom)
+                    .addComponent(lblOfficePhone)
                     .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
@@ -162,20 +162,20 @@ public class FormRentalConfirm extends javax.swing.JFrame {
         lblCarDetails.setFont(new java.awt.Font("Lato", 1, 13)); // NOI18N
         lblCarDetails.setText("Car Details");
 
-        jLabel9.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        jLabel9.setText("Number Plate:");
+        lblNumbPlate.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblNumbPlate.setText("Number Plate:");
 
-        jLabel10.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        jLabel10.setText("Make:");
+        lblMake.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblMake.setText("Make:");
 
-        jLabel11.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        jLabel11.setText("Model:");
+        lblModel.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblModel.setText("Model:");
 
-        jLabel12.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        jLabel12.setText("Class:");
+        lblClass.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblClass.setText("Class:");
 
-        jLabel13.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        jLabel13.setText("Location:");
+        lblLocation.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblLocation.setText("Location:");
 
         txtNumberPlate.setEditable(false);
 
@@ -196,27 +196,27 @@ public class FormRentalConfirm extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCarDetails)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
+                        .addComponent(lblNumbPlate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNumberPlate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
+                                .addComponent(lblMake)
                                 .addGap(53, 53, 53)
                                 .addComponent(txtMake, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel12)
+                                .addComponent(lblClass)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtClass, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel13)
+                                .addComponent(lblLocation)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel11)
+                                .addComponent(lblModel)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtModel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -228,18 +228,18 @@ public class FormRentalConfirm extends javax.swing.JFrame {
                 .addComponent(lblCarDetails)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
+                    .addComponent(lblNumbPlate)
                     .addComponent(txtNumberPlate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
+                    .addComponent(lblMake)
+                    .addComponent(lblModel)
                     .addComponent(txtMake, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtModel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel13)
+                    .addComponent(lblClass)
+                    .addComponent(lblLocation)
                     .addComponent(txtClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(14, Short.MAX_VALUE))
@@ -326,20 +326,20 @@ public class FormRentalConfirm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnConfirm;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblCarDetails;
+    private javax.swing.JLabel lblClass;
+    private javax.swing.JLabel lblForename;
+    private javax.swing.JLabel lblLocation;
+    private javax.swing.JLabel lblMake;
+    private javax.swing.JLabel lblModel;
+    private javax.swing.JLabel lblNumbPlate;
+    private javax.swing.JLabel lblOfficePhone;
+    private javax.swing.JLabel lblOfficeRoom;
     private javax.swing.JLabel lblStaffDetails;
+    private javax.swing.JLabel lblStaffNumber;
+    private javax.swing.JLabel lblSurname;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTextField txtClass;
     private javax.swing.JTextField txtForename;
