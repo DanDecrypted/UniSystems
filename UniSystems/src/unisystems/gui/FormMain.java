@@ -52,6 +52,7 @@ public class FormMain extends javax.swing.JFrame {
         jlstRentalHistory = new javax.swing.JList<>();
         lblRentalHistory = new javax.swing.JLabel();
         btnRentCar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,7 +103,10 @@ public class FormMain extends javax.swing.JFrame {
         lblRentalHistory.setText("Rental History");
 
         btnRentCar.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        btnRentCar.setText("Rent Car");
+        btnRentCar.setText("Day Loan");
+
+        jButton1.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        jButton1.setText("Long Term");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,11 +148,14 @@ public class FormMain extends javax.swing.JFrame {
                                             .addComponent(txtFaculty, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addComponent(btnLookup, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(lblRentalHistory))
-                        .addGap(0, 84, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnRentCar)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(181, 181, 181)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnRentCar)
+                .addContainerGap(194, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,7 +188,9 @@ public class FormMain extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(btnRentCar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRentCar)
+                    .addComponent(jButton1))
                 .addContainerGap())
         );
 
@@ -226,6 +235,7 @@ public class FormMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLookup;
     private javax.swing.JButton btnRentCar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> jlstRentalHistory;
     private javax.swing.JLabel lblFaculty;
