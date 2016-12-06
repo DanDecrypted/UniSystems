@@ -13,37 +13,24 @@ import java.util.ArrayList;
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
 public class ServiceRecord {
-    private Date dateOfService;
-    private ArrayList<String> repairs;
-    private String mechanic;
-    
-    public ServiceRecord(ArrayList<String> repairs, String mechanic) {
+    private ArrayList<Service> record;
+    public ServiceRecord() {
+        this.record = new ArrayList<Service>();
+    }
+
+    public void addService(String repair) {
         
     }
-
-    public ServiceRecord(Date dateOfService, ArrayList<String> repairs, String mechanic) {
-        this.dateOfService = dateOfService;
-        this.repairs = repairs;
-        this.mechanic = mechanic;
-    }
-
-    public Date getDateOfService() {
-        return this.dateOfService;
-    }
-
-    public ArrayList<String> getRepairs() {
-        ArrayList<String> repairsList = new ArrayList<String>();
-        for (String repair : repairs) {
-            repairsList.add(repair);
+    
+    /**
+     * Get a copy of the service history array so that it cannot be modified.
+     * @return a copy of the array.
+     */
+    public ArrayList<Service> getServiceRecord() {
+        ArrayList<Service> returns = new ArrayList<Service>(); 
+        for (Service service : record) {
+            returns.add(service);
         }
-        return repairsList;
-    }
-
-    public void setMechanic(String mechanic){
-        this.mechanic = mechanic;
-    }
-
-    public void addRepair(String repair) {
-        this.repairs.add(repair);
+        return returns;
     }
 }

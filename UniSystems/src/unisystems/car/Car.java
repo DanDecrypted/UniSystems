@@ -12,13 +12,27 @@ import java.awt.Image;
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
 public class Car {
-    private int id;
-    private Transmission transmission;
+    /**
+     * RegNo should be unique. it is the method of identifying the car
+     */
     private String regNo;
-    private Status satus;
+    private Transmission transmission;
+    private Status status;
     private ServiceRecord serviceRecord;
     private Classification classification;
     private FuelType fuelType;
     private String location;
+    
+    public Car(String regNo, Transmission transmission, FuelType fuelType, 
+            String location, Classification classification) {
+        this.regNo = regNo;
+        this.classification = classification;
+        this.transmission = transmission; 
+        this.fuelType = fuelType;
+        this.location = location;
+        this.status = Status.AVAILABLE;
+        this.serviceRecord = new ServiceRecord();
+        
+    }
     
 }
