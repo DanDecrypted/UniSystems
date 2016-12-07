@@ -39,14 +39,13 @@ public class FormCar extends javax.swing.JFrame {
         
         for (Car car : cars.getCars()) {
             if (car.getRegNo().equals(regNo)) {
-                this.txtID.setText(regNo);
+                this.txtRegNo.setText(regNo);
                 this.txtClass.setText(car.getClassification().name());
                 this.txtMileage.setText(Integer.toString(car.getMilage()));
                 this.cboFuelType.setSelectedItem(car.getFuelType());
                 this.cboTransmission.setSelectedItem(car.getTransmission());
                 this.txtDoors.setText(Integer.toString(car.getDoors()));
                 this.txtSeats.setText(Integer.toString(car.getSeats()));
-                
                 
                 this.lblStatus.setText(car.getStatus().name());
                 break;
@@ -67,7 +66,6 @@ public class FormCar extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        lblIdTitle = new javax.swing.JLabel();
         lblTitle = new javax.swing.JLabel();
         lblRegTitle = new javax.swing.JLabel();
         lblTransmissionTitle = new javax.swing.JLabel();
@@ -85,7 +83,6 @@ public class FormCar extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         lstServiceHistory = new javax.swing.JList<>();
         lblServiceHistory = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
         txtClass = new javax.swing.JTextField();
         txtRegNo = new javax.swing.JTextField();
         txtMileage = new javax.swing.JTextField();
@@ -96,9 +93,6 @@ public class FormCar extends javax.swing.JFrame {
         cboFuelType = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        lblIdTitle.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        lblIdTitle.setText("ID:");
 
         lblTitle.setFont(new java.awt.Font("Lato", 1, 24)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -176,18 +170,24 @@ public class FormCar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(166, 166, 166)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(101, 101, 101)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtMileage, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtDoors, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cboTransmission, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cboFuelType, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGap(101, 101, 101)
-                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtClass, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtRegNo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMileage, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDoors, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboTransmission, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboFuelType, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtRegNo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblRegTitle))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblClassTitle)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtClass, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -195,16 +195,13 @@ public class FormCar extends javax.swing.JFrame {
                             .addComponent(txtSeats, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblIdTitle)
-                            .addComponent(lblClassTitle)
-                            .addComponent(lblRegTitle)
                             .addComponent(lblTransmissionTitle)
                             .addComponent(lblMileageTitle)
                             .addComponent(lblFuelTitle)
                             .addComponent(lblDoorsTitle)
                             .addComponent(lblSeatsTitle)
                             .addComponent(lblStatusTitle))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(26, 26, 26)
                         .addComponent(lblStatus)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -217,16 +214,12 @@ public class FormCar extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblIdTitle)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblRegTitle)
+                    .addComponent(txtRegNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblClassTitle)
                     .addComponent(txtClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRegTitle)
-                    .addComponent(txtRegNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTransmissionTitle)
@@ -261,7 +254,7 @@ public class FormCar extends javax.swing.JFrame {
                 .addComponent(lblServiceHistory)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         pack();
@@ -315,7 +308,6 @@ public class FormCar extends javax.swing.JFrame {
     private javax.swing.JLabel lblClassTitle;
     private javax.swing.JLabel lblDoorsTitle;
     private javax.swing.JLabel lblFuelTitle;
-    private javax.swing.JLabel lblIdTitle;
     private javax.swing.JLabel lblLoanHistory;
     private javax.swing.JLabel lblMileageTitle;
     private javax.swing.JLabel lblRegTitle;
@@ -329,7 +321,6 @@ public class FormCar extends javax.swing.JFrame {
     private javax.swing.JList<String> lstServiceHistory;
     private javax.swing.JTextField txtClass;
     private javax.swing.JTextField txtDoors;
-    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtMileage;
     private javax.swing.JTextField txtRegNo;
     private javax.swing.JTextField txtSeats;

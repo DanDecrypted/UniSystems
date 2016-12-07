@@ -46,19 +46,28 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="166" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                       <Component id="jSeparator1" alignment="1" min="-2" pref="251" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="txtMileage" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="txtDoors" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="cboTransmission" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="cboFuelType" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
-                              <Component id="txtID" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="txtRegNo" min="-2" pref="150" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="txtClass" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="txtRegNo" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="txtMileage" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="txtDoors" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="cboTransmission" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="cboFuelType" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="lblRegTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="lblClassTitle" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="txtClass" min="-2" pref="150" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
@@ -70,9 +79,6 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblIdTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblClassTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblRegTitle" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblTransmissionTitle" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblMileageTitle" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblFuelTitle" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -80,7 +86,7 @@
                           <Component id="lblSeatsTitle" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblStatusTitle" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="lblStatus" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -97,20 +103,15 @@
               <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblIdTitle" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtID" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblRegTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtRegNo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblClassTitle" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtClass" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblRegTitle" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtRegNo" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblTransmissionTitle" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cboTransmission" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -150,20 +151,12 @@
               <Component id="lblServiceHistory" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="91" max="-2" attributes="0"/>
-              <EmptySpace pref="41" max="32767" attributes="0"/>
+              <EmptySpace pref="73" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="lblIdTitle">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Lato" size="13" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="ID:"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblTitle">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -307,8 +300,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Service History"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtID">
     </Component>
     <Component class="javax.swing.JTextField" name="txtClass">
     </Component>

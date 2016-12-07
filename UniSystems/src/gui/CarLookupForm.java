@@ -7,6 +7,7 @@
 package gui;
 import data.Cars;
 import car.Car;
+import java.awt.Color;
 /**
  *
  * @author Craig
@@ -17,6 +18,7 @@ public class CarLookupForm extends javax.swing.JFrame {
      * Creates new form CarLookupForm
      */
     public CarLookupForm() {
+        this.getContentPane().setBackground(new Color (238,238,238));
         initComponents();
         System.out.println(cars.loadFromDisk());
     }
