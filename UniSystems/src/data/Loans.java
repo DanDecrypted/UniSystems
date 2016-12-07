@@ -36,7 +36,7 @@ public class Loans implements java.io.Serializable{
         return loans;
     }   
     
-    public void loadFromDisk() {
+    public static String loadFromDisk() {
         File objFile = new File("Loans.dat");
         if (objFile.exists() && objFile.canRead()) {
             try (ObjectInputStream objIn = new ObjectInputStream(
@@ -46,36 +46,44 @@ public class Loans implements java.io.Serializable{
                 Loans newObj = (Loans)objData;
                 if (newObj != null) {
                     loans = newObj;
-                    System.out.println("Successfully loaded " + loanList.size() + " Loans");
-                }
+                }    
+                return ("Successfully loaded " + Loans.getInstance().getLoans().size() + " Loans");
             } catch (Exception ex) {
-                System.out.println("Data file could not be read " + ex.getMessage());
+                return("Data file could not be read " + ex.getMessage());
             }
         } else {
-            System.out.println("Data file could not be found!");
+            return ("Data file could not be found!");
         }
     }
     
-    public void saveToDisk() {
+    public static String saveToDisk() {
         File objFile = new File("Cars.dat");
         try (ObjectOutputStream objOut = new ObjectOutputStream(
                 new BufferedOutputStream(
                 new FileOutputStream(objFile)))) {
             objOut.writeObject(loans);
-            System.out.println("Successfully saved " + loanList.size() + " Loans");
+            return ("Successfully saved " + Loans.getInstance().getLoans().size() + " Loans");
         } catch (IOException ex) {
-            System.out.println("error: " + ex.getMessage());
+            return ("error: " + ex.getMessage());
         }
     }
     
-    public void addCar(Loan loan) {
+    public ArrayList<Loan> getLoans() {
+        ArrayList<Loan> temp = new ArrayList<Loan>();
+        for (Loan loan : loanList) {
+            temp.add(loan);
+        }
+        return temp;
+    }
+    
+    public void addLoan(Loan loan) {
         if (loanList == null) {
             loanList = new ArrayList<Loan>();
         }
         loanList.add(loan);
     }
     
-    public void removeCar(Loan loan) {
+    public void removeLoan(Loan loan) {
         if (loanList == null) return;
         loanList.remove(loan);
     }

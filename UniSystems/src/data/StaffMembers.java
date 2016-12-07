@@ -21,22 +21,23 @@ import model.people.Staff;
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
-public class StaffMembers implements java.io.Serializable {
+public class StaffMembers implements java.io.Serializable, ISerialisable {
     private ArrayList<Staff> staffList;
-    private static StaffMembers staffMembers;
+    private StaffMembers staffMembers;
     
     public StaffMembers() {
         
     }
     
-    public static StaffMembers getInstance() {
+    public StaffMembers getInstance() {
         if (staffMembers == null) {
             staffMembers = new StaffMembers();
         }
         return staffMembers;
     }
     
-    public void loadFromDisk() {
+    @Override
+    public String loadFromDisk() {
         File objFile = new File("Staff.dat");
         if (objFile.exists() && objFile.canRead()) {
             try (ObjectInputStream objIn = new ObjectInputStream(
@@ -46,47 +47,48 @@ public class StaffMembers implements java.io.Serializable {
                 StaffMembers newObj = (StaffMembers)objData;
                 if (staffMembers != null) {
                     staffMembers = newObj;
-                    System.out.println("Successfully loaded " + StaffMembers.getInstance().getStaffMembers().size() + " Staff members");
-                }
+                }    
+                return ("Successfully loaded " + getStaffMembers().size() + " Staff members");
             } catch (Exception ex) {
-                System.out.println("Data file could not be read " + ex.getMessage());
+                return ("Data file could not be read " + ex.getMessage());
             }
         } else {
-            System.out.println("Data file could not be found.");
+            return ("Data file could not be found.");
         }
     }
     
-    public void saveToDisk() {
+    @Override
+    public String saveToDisk() {
         File objFile = new File("Staff.dat");
         try (ObjectOutputStream objOut = new ObjectOutputStream(
                 new BufferedOutputStream(
                 new FileOutputStream(objFile)))) {
             objOut.writeObject(staffMembers);
-            System.out.println("Successfully saved " + StaffMembers.getInstance().getStaffMembers().size() + " staff members");
+            return ("Successfully saved " + getStaffMembers().size() + " staff members");
         } catch (IOException ex) {
-            System.out.println("error: " + ex.getMessage());
+            return ("error: " + ex.getMessage());
         }
     }
     
     public void addStaff(Staff staff) {
-        if (staffList == null) {
-            staffList = new ArrayList<Staff>();
+        if (getInstance().staffList == null) {
+            getInstance().staffList = new ArrayList<Staff>();
         }
-        staffList.add(staff);
+        getInstance().staffList.add(staff);
     }
     
     public void removeStaff(Staff staff) {
-        if (staffList == null) return;
-        staffList.remove(staff);
+        if (getInstance().staffList == null) return;
+        getInstance().staffList.remove(staff);
     }
     
     public ArrayList<Staff> getStaffMembers() {
-        if (staffList == null) {
-            staffList = new ArrayList<Staff>();
+        if (getInstance().staffList == null) {
+            getInstance().staffList = new ArrayList<Staff>();
         }
         
         ArrayList<Staff> temp = new ArrayList<Staff>();
-        for(Staff staff : staffList) {
+        for(Staff staff : getInstance().staffList) {
             temp.add(staff);
         }
         return temp;

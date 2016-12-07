@@ -27,7 +27,7 @@ public class Cars implements java.io.Serializable{
         return cars;
     }
     
-    public String loadFromDisk() {
+    public static String loadFromDisk() {
         File objFile = new File("Cars.dat");
         if (objFile.exists() && objFile.canRead()) {
             try (ObjectInputStream objIn = new ObjectInputStream(
@@ -38,7 +38,7 @@ public class Cars implements java.io.Serializable{
                 if (newObj != null) {
                     cars = newObj;
                 }
-                return("Successfully loaded " + carsList.size() + " Cars");
+                return("Successfully loaded " + Cars.getInstance().getCars().size() + " Cars");
             } catch (Exception ex) {
                 return("Data file could not be read " + ex.getMessage());
             }
@@ -47,13 +47,13 @@ public class Cars implements java.io.Serializable{
         }
     }
     
-    public String saveToDisk() {
+    public static String saveToDisk() {
         File objFile = new File("Cars.dat");
         try (ObjectOutputStream objOut = new ObjectOutputStream(
                 new BufferedOutputStream(
                 new FileOutputStream(objFile)))) {
             objOut.writeObject(cars);
-            return("Successfully saved " + carsList.size() + " Cars");
+            return("Successfully saved " + Cars.getInstance().getCars().size() + " Cars");
         } catch (IOException ex) {
            return("error: " + ex.getMessage());
         }
