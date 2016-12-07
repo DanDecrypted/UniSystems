@@ -7,15 +7,15 @@
 package gui;
 import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
-import car.Transmission;
-import car.FuelType;
+import car.*;
+import data.Cars;
 
 /**
  *
  * @author Craig
  */
 public class FormCar extends javax.swing.JFrame {
-
+    private Cars cars = Cars.getInstance();
     /**
      * Creates new form FormCar
      */
@@ -24,6 +24,35 @@ public class FormCar extends javax.swing.JFrame {
         
         this.getContentPane().setBackground(new Color (238,238,238));
         
+        
+    }
+    
+    /**
+     * This constructor will auto-populate the fields given that the 
+     * List of cars contains a car with the regNo that you pass as a param.
+     * @param regNo 
+     */
+    public FormCar(String regNo) {
+        initComponents();
+        cars.loadFromDisk();
+        this.getContentPane().setBackground(new Color (238,238,238));
+        
+        for (Car car : cars.getCars()) {
+            if (car.getRegNo().equals(regNo)) {
+                this.txtID.setText(regNo);
+                this.txtClass.setText(car.getClassification().name());
+                this.txtMileage.setText(Integer.toString(car.getMilage()));
+                this.cboFuelType.setSelectedItem(car.getFuelType());
+                this.cboTransmission.setSelectedItem(car.getTransmission());
+                this.txtDoors.setText(Integer.toString(car.getDoors()));
+                this.txtSeats.setText(Integer.toString(car.getSeats()));
+                
+                
+                this.lblStatus.setText(car.getStatus().name());
+                break;
+            }
+           
+        }
         
     }
     

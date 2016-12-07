@@ -5,18 +5,20 @@
  *  Daniel Scott and Najim Mazidi.
  */
 package gui;
-
+import data.Cars;
+import car.Car;
 /**
  *
  * @author Craig
  */
 public class CarLookupForm extends javax.swing.JFrame {
-
+    private Cars cars = Cars.getInstance();
     /**
      * Creates new form CarLookupForm
      */
     public CarLookupForm() {
         initComponents();
+        System.out.println(cars.loadFromDisk());
     }
 
     /**
@@ -40,6 +42,11 @@ public class CarLookupForm extends javax.swing.JFrame {
         lblRegTitle.setText("Reg Number:");
 
         btnEdtDlt.setText("Edit/Delete");
+        btnEdtDlt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEdtDltActionPerformed(evt);
+            }
+        });
 
         btnAddCar.setText("Add Car");
 
@@ -88,6 +95,17 @@ public class CarLookupForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEdtDltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdtDltActionPerformed
+        // TODO add your handling code here:
+        for (Car car : cars.getCars()) {
+            // foreach (Car car in cars.getCars()) { } 
+            if (car.getRegNo().equals(txtRegNumb.getText().toUpperCase())) {
+                FormCar frm = new FormCar(car.getRegNo());
+                frm.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_btnEdtDltActionPerformed
 
     /**
      * @param args the command line arguments

@@ -45,7 +45,7 @@ public class ObjectSerialisationTest{
 
     public static void addTestDataAndSave() {
         Car car = new Car("ABCDEFG", Transmission.AUTOMATIC, FuelType.DIESEL, 
-                            "Plymouth", Classification.COUPE);
+                            "Plymouth", Classification.COUPE, 5, 3);
         Staff staff = new Staff("10438524", Position.LECTURER, Faculty.SCIENCE_AND_ENGINEERING, "BGB106", "07474306999", new Address("1", "Tothill Avenue", "Plymouth", "Devon", "PL4 8PH"),
                 "Mr", "Najim", "Mazidi", new Date(1995,07,26), "Male", "07474306999", "nmazidi95@gmail.com");
         admin.assignDayLoan(car, staff);
@@ -67,18 +67,4 @@ public class ObjectSerialisationTest{
             System.out.println(loan.getLoaner().getForename() + " " + loan.getCar().getRegNo());
         }
     }
-    
-    public static void addCarAndSave() {
-        Car car = new Car("ABCDEFG", Transmission.AUTOMATIC, FuelType.DIESEL, 
-                            "Plymouth", Classification.COUPE);
-        cars.addCar(car);
-    }
-    
-    public static void addStaffAndSave() {
-        Staff staff = new Staff("10438524", Position.LECTURER, Faculty.SCIENCE_AND_ENGINEERING, "BGB106", "07474306999", new Address("1", "Tothill Avenue", "Plymouth", "Devon", "PL4 8PH"),
-                "Mr", "Najim", "Mazidi", new Date(1995,07,26), "Male", "07474306999", "nmazidi95@gmail.com");
-        staffMembers.addStaff(staff);
-        System.out.println(staffMembers.saveToDisk());
-    }
-    
 }

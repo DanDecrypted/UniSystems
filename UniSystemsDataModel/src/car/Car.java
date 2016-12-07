@@ -5,7 +5,7 @@
  *  Daniel Scott and Najim Mazidi.
  */
 package car;
-import java.awt.Image;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,25 +18,29 @@ public class Car implements java.io.Serializable{
     private String regNo;
     private Transmission transmission;
     private Status status;
-    private ServiceRecord serviceRecord;
+    private ArrayList<Service> serviceRecord;
     private Classification classification;
     private FuelType fuelType;
     private String location;
     private int milage;
+    private int seats;
+    private int doors;
     
     public Car(){
         
     }
     
     public Car(String regNo, Transmission transmission, FuelType fuelType, 
-            String location, Classification classification) {
+            String location, Classification classification, int seats, int doors) {
         this.regNo = regNo;
         this.classification = classification;
         this.transmission = transmission; 
         this.fuelType = fuelType;
         this.location = location;
         this.status = Status.AVAILABLE;
-        this.serviceRecord = new ServiceRecord();
+        this.serviceRecord = new ArrayList<Service>();
+        this.seats = seats;
+        this.doors = doors;
         
     }
     
@@ -52,4 +56,44 @@ public class Car implements java.io.Serializable{
         this.status = status;
     }
     
+    public Classification getClassification() {
+        return classification;
+    }
+    
+    public String getLocation() {
+        return location;
+    }
+    
+    public int getMilage() {
+        return milage;
+    }
+    
+    public Transmission getTransmission() {
+        return transmission;
+    }
+    
+    public FuelType getFuelType() {
+        return fuelType;
+    }
+    
+    public int getSeats(){
+        return seats;
+    }
+    
+    public int getDoors(){
+        return doors;
+    }
+    
+    public ArrayList<Service> getServiceRecord() {
+        ArrayList<Service> temp = new ArrayList<Service>();
+        for (Service service : serviceRecord) {
+            temp.add(service);
+        }
+        return temp;
+    }
+    
+    public void addService(Service service) {
+        if (serviceRecord == null) serviceRecord = new ArrayList<Service>();
+        serviceRecord.add(service);
+    }
 }
