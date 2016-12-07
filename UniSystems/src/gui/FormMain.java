@@ -6,7 +6,9 @@
  */
 package gui;
 
+import data.StaffMembers;
 import java.awt.Color;
+import model.people.Staff;
 
 /**
  *
@@ -14,10 +16,13 @@ import java.awt.Color;
  */
 public class FormMain extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormMain
-     */
+    private StaffMembers staffMembers;
+    
     public FormMain() {
+        staffMembers = StaffMembers.getInstance();
+        staffMembers.loadFromDisk();
+        staffMembers = StaffMembers.getInstance();
+                
         initComponents();
         
         this.getContentPane().setBackground(new Color (238,238,238));
@@ -91,6 +96,11 @@ public class FormMain extends javax.swing.JFrame {
 
         btnLookup.setFont(new java.awt.Font("Lato", 0, 11)); // NOI18N
         btnLookup.setText("Lookup");
+        btnLookup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLookupActionPerformed(evt);
+            }
+        });
 
         jlstRentalHistory.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -187,7 +197,7 @@ public class FormMain extends javax.swing.JFrame {
                 .addComponent(lblRentalHistory)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRentCar)
                     .addComponent(jButton1))
@@ -197,6 +207,20 @@ public class FormMain extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnLookupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLookupActionPerformed
+        populateStaffDetails();
+       
+    }//GEN-LAST:event_btnLookupActionPerformed
+
+    private void populateStaffDetails() {
+        for (Staff staff : staffMembers.getStaffMembers()) {
+            if (staff.getStaffRefNumb().toString() == txtStaffNumb.getText()) {
+                txtFirstName.setText(staff.getFirstName());
+            }
+            
+        }
+
+    }
     /**
      * @param args the command line arguments
      */
