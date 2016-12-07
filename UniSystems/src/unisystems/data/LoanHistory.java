@@ -5,27 +5,32 @@
  *  Daniel Scott and Najim Mazidi.
  */
 package unisystems.data;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.io.*;
-import unisystems.car.Car;
+import unisystems.loaning.Loan;
 
 /**
  *
- * @author Craig Banyard, Daniel Scott & Najim Mazidi
+ * @author Craig
  */
-public class Cars implements java.io.Serializable{
-    private ArrayList<Car> carsList;
-    private static Cars cars;
-    public Cars() {
-        
-    }
+public class LoanHistory {
+    private ArrayList<Loan> loanList;
+    private static LoanHistory loanHistory;
     
-    public static Cars getInstance() {
-        if (cars == null) { 
-            cars = new Cars();
+    public static LoanHistory getInstance(){
+        if (loanHistory == null){
+            loanHistory = new LoanHistory();
         }
-        return cars;
-    }
+        return loanHistory;
+    }   
     
     public void loadFromDisk() {
         File objFile = new File("Cars.dat");
@@ -34,10 +39,10 @@ public class Cars implements java.io.Serializable{
                   new BufferedInputStream(
                   new FileInputStream(objFile)))) {
                 Object objData = objIn.readObject();
-                ArrayList<Car> newList = (ArrayList)objData;
+                ArrayList<Loan> newList = (ArrayList)objData;
                 if (newList != null) {
-                    carsList = newList;
-                    System.out.println("Successfully loaded " + carsList.size() + " Cars");
+                    loanList = newList;
+                    System.out.println("Successfully loaded " + loanList.size() + " Loans");
                 }
             } catch (Exception ex) {
                 System.out.println("Data file could not be read " + ex.getMessage());
@@ -52,35 +57,23 @@ public class Cars implements java.io.Serializable{
         try (ObjectOutputStream objOut = new ObjectOutputStream(
                 new BufferedOutputStream(
                 new FileOutputStream(objFile)))) {
-            objOut.writeObject(carsList);
-            System.out.println("Successfully saved " + carsList.size() + " Cars");
+            objOut.writeObject(loanList);
+            System.out.println("Successfully saved " + loanList.size() + " Loans");
         } catch (IOException ex) {
             System.out.println("error: " + ex.getMessage());
         }
     }
     
-    public void addCar(Car car) {
-        if (carsList == null) {
-            carsList = new ArrayList<Car>();
+    public void addCar(Loan loan) {
+        if (loanList == null) {
+            loanList = new ArrayList<Loan>();
         }
-        carsList.add(car);
+        loanList.add(loan);
     }
     
-    public void removeCar(Car car) {
-        if (carsList == null) return;
-        carsList.remove(car);
-    }
-    
-    public ArrayList<Car> getCars(){
-        if (carsList == null) {
-            carsList = new ArrayList<Car>();
-        }
-        
-        ArrayList<Car> temp = new ArrayList<Car>();
-        for(Car car : carsList){
-            temp.add(car);
-        }
-        
-        return temp;
+    public void removeCar(Loan loan) {
+        if (loanList == null) return;
+        loanList.remove(loan);
     }
 }
+
