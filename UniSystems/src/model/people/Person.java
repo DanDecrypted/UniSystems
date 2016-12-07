@@ -14,7 +14,7 @@ import java.util.Date;
  */
 public class Person implements java.io.Serializable {
     private String title;
-    private String firstName;
+    private String forename;
     private String surname;
     private Date dateOfBirth;
     private String gender;
@@ -26,9 +26,9 @@ public class Person implements java.io.Serializable {
         
     }
     
-    public Person(String title, String firstName, String surname, Date dateOfBirth, String gender, String phoneNumber, String emailAddress) {
+    public Person(String title, String forename, String surname, Date dateOfBirth, String gender, String phoneNumber, String emailAddress) {
         this.title = title;
-        this.firstName = firstName;
+        this.forename = forename;
         this.surname = surname;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
@@ -44,12 +44,12 @@ public class Person implements java.io.Serializable {
         this.title = title;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getForename() {
+        return forename;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setForename(String forename) {
+        this.forename = forename;
     }
 
     public String getSurname() {

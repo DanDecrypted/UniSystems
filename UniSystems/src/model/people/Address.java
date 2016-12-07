@@ -10,13 +10,25 @@ package model.people;
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
-public class Address {
+public class Address implements java.io.Serializable {
     
     private String lineOne;
     private String lineTwo;
     private String city;
     private String county;
     private String postCode;
+    
+    public Address(){
+        
+    }
+    
+    public Address(String lineOne, String lineTwo, String city, String county, String postCode) {
+        this.lineOne = lineOne;
+        this.lineTwo = lineTwo;
+        this.city = city;
+        this.county = county;
+        this.postCode = postCode;
+    }
     
     public String getAddressString() {
         
@@ -32,4 +44,7 @@ public class Address {
         
         return address;
     }
+
+
+    
 }

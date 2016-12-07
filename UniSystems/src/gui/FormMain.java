@@ -39,7 +39,7 @@ public class FormMain extends javax.swing.JFrame {
         lblStaffNumb = new javax.swing.JLabel();
         txtStaffNumb = new javax.swing.JTextField();
         lblFirstName = new javax.swing.JLabel();
-        txtFirstName = new javax.swing.JTextField();
+        txtForename = new javax.swing.JTextField();
         lblSurname = new javax.swing.JLabel();
         txtSurname = new javax.swing.JTextField();
         lblPosition = new javax.swing.JLabel();
@@ -60,12 +60,12 @@ public class FormMain extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblStaffNumb.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        lblStaffNumb.setText("Staff Numb:");
+        lblStaffNumb.setText("Staff Number:");
 
         lblFirstName.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblFirstName.setText("Forename:");
 
-        txtFirstName.setEditable(false);
+        txtForename.setEditable(false);
 
         lblSurname.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblSurname.setText("Surname:");
@@ -138,7 +138,7 @@ public class FormMain extends javax.swing.JFrame {
                                             .addComponent(lblOfficeRoom))
                                         .addGap(2, 2, 2)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtFirstName)
+                                    .addComponent(txtForename)
                                     .addComponent(txtStaffNumb)
                                     .addComponent(txtPosition)
                                     .addComponent(txtOfficeRoom, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
@@ -176,7 +176,7 @@ public class FormMain extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFirstName)
-                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtForename, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSurname)
                     .addComponent(txtSurname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -206,14 +206,22 @@ public class FormMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLookupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLookupActionPerformed
-        populateStaffDetails();
+        populateStaffDetails(txtStaffNumb.getText());
        
     }//GEN-LAST:event_btnLookupActionPerformed
-
-    private void populateStaffDetails() {
-        for (Staff staff : staffMembers.getStaffMembers()) {
-            if (staff.getStaffRefNumb().toString() == txtStaffNumb.getText()) {
-                txtFirstName.setText(staff.getFirstName());
+/**
+ * populate staff detail fields depending on which ref number is typed in
+ * @param ref staff reference number
+ */
+    private void populateStaffDetails(String ref) {
+        for (Staff staff : staffMembers.getStaffMembers()) {    //loop though all staff members
+            if (staff.getStaffRefNumb().equals(ref)) {  
+                txtForename.setText(staff.getForename());
+                txtSurname.setText(staff.getSurname());
+                txtPosition.setText(staff.getPosition().toString());
+                txtFaculty.setText(staff.getFaculty().toString());
+                txtOfficeRoom.setText(staff.getOfficeRoom());
+                txtOfficePhone.setText(staff.getWorkNumb());
             }
             
         }
@@ -269,7 +277,7 @@ public class FormMain extends javax.swing.JFrame {
     private javax.swing.JLabel lblStaffNumb;
     private javax.swing.JLabel lblSurname;
     private javax.swing.JTextField txtFaculty;
-    private javax.swing.JTextField txtFirstName;
+    private javax.swing.JTextField txtForename;
     private javax.swing.JTextField txtOfficePhone;
     private javax.swing.JTextField txtOfficeRoom;
     private javax.swing.JTextField txtPosition;

@@ -45,7 +45,7 @@
                                   </Group>
                               </Group>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="txtFirstName" max="32767" attributes="0"/>
+                                  <Component id="txtForename" max="32767" attributes="0"/>
                                   <Component id="txtStaffNumb" max="32767" attributes="0"/>
                                   <Component id="txtPosition" max="32767" attributes="0"/>
                                   <Component id="txtOfficeRoom" pref="150" max="32767" attributes="0"/>
@@ -96,7 +96,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtForename" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblSurname" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtSurname" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -134,7 +134,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Lato" size="13" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Staff Numb:"/>
+        <Property name="text" type="java.lang.String" value="Staff Number:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtStaffNumb">
@@ -147,7 +147,7 @@
         <Property name="text" type="java.lang.String" value="Forename:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtFirstName">
+    <Component class="javax.swing.JTextField" name="txtForename">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>

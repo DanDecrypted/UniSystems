@@ -12,6 +12,10 @@ import model.car.FuelType;
 import model.car.Transmission;
 import data.Loans;
 import data.StaffMembers;
+import java.util.Date;
+import model.people.Address;
+import model.people.Faculty;
+import model.people.Position;
 import model.people.Staff;
 /**
  *
@@ -25,15 +29,13 @@ public class ObjectSerialisationTest {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        loadFromDisk();
         addStaffAndSave();
-        //System.out.println(staffMembers.loadFromDisk());
         loadFromDisk();
     }
     
     public static void loadFromDisk() {
         staffMembers.loadFromDisk();
-        System.out.println("StaffMembers[0] has the name: " + staffMembers.getStaffMembers().get(0).getFirstName() + " array size: " + staffMembers.getStaffMembers().size());
+        System.out.println("StaffMembers[0] has the name: " + staffMembers.getStaffMembers().get(0).getForename() + " array size: " + staffMembers.getStaffMembers().size());
     }
     
     public static void addCarAndSave() {
@@ -43,7 +45,8 @@ public class ObjectSerialisationTest {
         Cars.saveToDisk();
     }
     public static void addStaffAndSave() {
-        Staff staff = new Staff("Dan");
+        Staff staff = new Staff("10438524", Position.LECTURER, Faculty.SCIENCEANDENGINEERING, "BGB106", "07474306999", new Address("1", "Tothill Avenue", "Plymouth", "Devon", "PL4 8PH"),
+                "Mr", "Najim", "Mazidi", new Date(1995,07,26), "Male", "07474306999", "nmazidi95@gmail.com");
         staffMembers.addStaff(staff);
         System.out.println(staffMembers.saveToDisk());
     }
