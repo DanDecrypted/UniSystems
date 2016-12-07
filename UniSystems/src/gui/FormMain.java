@@ -8,7 +8,7 @@ package gui;
 
 import data.StaffMembers;
 import java.awt.Color;
-import model.people.Staff;
+import people.Staff;
 
 /**
  *

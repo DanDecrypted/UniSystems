@@ -8,7 +8,7 @@ package gui;
 
 import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
-import model.car.Classification;
+import car.Classification;
 
 /**
  *

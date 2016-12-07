@@ -7,8 +7,8 @@
 package gui;
 import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
-import model.car.Transmission;
-import model.car.FuelType;
+import car.Transmission;
+import car.FuelType;
 
 /**
  *
