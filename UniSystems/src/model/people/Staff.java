@@ -24,6 +24,10 @@ public class Staff extends Person {
     public Staff() {
         
     }
+    
+    public Staff(String firstName) {
+         super("", firstName, "", new Date(), "", "", ""); 
+    }
 
     public Staff(String staffRefNumb, Position position, Faculty faculty, String officeRoom, String workNumb, Address address, String title, String firstName, String surname, Date dateOfBirth, String gender, String phoneNumber, String emailAddress) {
         super(title, firstName, surname, dateOfBirth, gender, phoneNumber, emailAddress);

@@ -45,9 +45,7 @@ public class StaffMembers implements java.io.Serializable, ISerialisable {
                     new FileInputStream(objFile)))) {
                 Object objData = objIn.readObject();
                 StaffMembers newObj = (StaffMembers)objData;
-                if (staffMembers != null) {
-                    staffMembers = newObj;
-                }    
+                staffMembers = newObj;
                 return ("Successfully loaded " + getStaffMembers().size() + " Staff members");
             } catch (Exception ex) {
                 return ("Data file could not be read " + ex.getMessage());

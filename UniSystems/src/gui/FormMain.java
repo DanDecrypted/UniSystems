@@ -16,12 +16,10 @@ import model.people.Staff;
  */
 public class FormMain extends javax.swing.JFrame {
 
-    private StaffMembers staffMembers;
+    private StaffMembers staffMembers = new StaffMembers().getInstance();
     
     public FormMain() {
-        staffMembers = StaffMembers.getInstance();
-        staffMembers.loadFromDisk();
-        staffMembers = StaffMembers.getInstance();
+        System.out.println(staffMembers.loadFromDisk());
                 
         initComponents();
         

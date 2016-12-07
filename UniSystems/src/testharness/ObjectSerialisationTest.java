@@ -12,33 +12,28 @@ import model.car.FuelType;
 import model.car.Transmission;
 import data.Loans;
 import data.StaffMembers;
+import model.people.Staff;
 /**
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
 public class ObjectSerialisationTest {
     private static Cars cars;
-    private static StaffMembers staffMembers;
+    private static StaffMembers staffMembers = new StaffMembers().getInstance();
     private static Loans loans;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        staffMembers.getInstance();
-        addCarAndSave();
+        loadFromDisk();
+        addStaffAndSave();
+        //System.out.println(staffMembers.loadFromDisk());
         loadFromDisk();
     }
     
     public static void loadFromDisk() {
-        Cars.loadFromDisk();
-        cars = Cars.getInstance();
-        System.out.println("Cars[0] has the regNo: " + cars.getCars().get(0).getRegNo() + 
-                           " and availability of " + cars.getCars().get(0).getStatus());
         staffMembers.loadFromDisk();
-        System.out.println("StaffMembers[0] has the name: " + staffMembers.getStaffMembers().get(0).getFirstName() + 
-                           " and availability of " + cars.getCars().get(0).getStatus());
-        Loans.loadFromDisk();
+        System.out.println("StaffMembers[0] has the name: " + staffMembers.getStaffMembers().get(0).getFirstName() + " array size: " + staffMembers.getStaffMembers().size());
     }
     
     public static void addCarAndSave() {
@@ -46,6 +41,11 @@ public class ObjectSerialisationTest {
                             "Plymouth", Classification.COUPE);
         cars.addCar(car);
         Cars.saveToDisk();
+    }
+    public static void addStaffAndSave() {
+        Staff staff = new Staff("Dan");
+        staffMembers.addStaff(staff);
+        System.out.println(staffMembers.saveToDisk());
     }
     
 }
