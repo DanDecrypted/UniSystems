@@ -14,6 +14,7 @@ import java.util.ArrayList;
  */
 public class Observed implements ISubject {
     protected ArrayList<IObserver> observers;
+    
     @Override 
     public Boolean registerObserver(IObserver o) {
         Boolean observerAdded = false;

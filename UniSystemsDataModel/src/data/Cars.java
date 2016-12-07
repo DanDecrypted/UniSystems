@@ -20,7 +20,7 @@ import car.Car;
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
-public class Cars implements ISerialisable, ISubject{
+public class Cars extends Observed implements ISerialisable {
     private ArrayList<Car> carsList;
     private ArrayList<IObserver> observers;
     private static final Cars cars = new Cars();
@@ -61,42 +61,6 @@ public class Cars implements ISerialisable, ISubject{
             return("Successfully saved " + getCars().size() + " Cars");
         } catch (IOException ex) {
            return("error: " + ex.getMessage());
-        }
-    }
-    
-    @Override 
-    public Boolean registerObserver(IObserver o) {
-        Boolean observerAdded = false;
-        if (o != null) {
-            if (observers == null) {
-                observers = new ArrayList<IObserver>();
-            }
-            
-            if (!observers.contains(o)) {
-                observerAdded = observers.add(o);
-            }
-        }
-        return observerAdded;
-    }
-    
-    @Override
-    public Boolean removeObserver(IObserver o) {
-        Boolean observerRemoved = false;
-        //Validate we have something to remove
-        if (o != null) {
-            if(this.observers != null && observers.size() > 0){
-                observerRemoved = observers.remove(o);
-            }
-        }
-        return observerRemoved;
-    }
-    
-    @Override 
-    public void notifyObservers() {
-        if (observers != null && observers.size() > 0) {
-            for (IObserver o : observers) {
-                o.update();
-            }
         }
     }
     

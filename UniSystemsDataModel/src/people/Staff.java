@@ -14,12 +14,12 @@ import car.Car;
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
 public class Staff extends Person {
-    private String staffRefNumb;
-    private Position position;
-    private Faculty faculty;
-    private String officeRoom;
-    private String workNumb;
-    private Address address;
+    protected String staffRefNumb;
+    protected Position position;
+    protected Faculty faculty;
+    protected String officeRoom;
+    protected String workNumb;
+    protected Address address;
     
     public Staff() {
         

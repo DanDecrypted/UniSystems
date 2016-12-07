@@ -26,7 +26,7 @@ public class Administrator extends Staff implements IObserver{
     Cars cars = Cars.getInstance();
     
     public Administrator() {
-        
+        this.position = Position.TRANSPORT_OFFICE_ADMIN;
     }
     
     public void createCar(Car car) {
@@ -35,6 +35,7 @@ public class Administrator extends Staff implements IObserver{
     }
     
     public void createStaffMember(Staff staff) {
+        staffMembers.registerObserver(this);
         staffMembers.addStaff(staff);
     }
     
@@ -42,6 +43,7 @@ public class Administrator extends Staff implements IObserver{
         Date returnDate = new Date();
         returnDate.setYear(returnDate.getYear() + 1);
         LongLoan loan = new LongLoan(staff, car, new Date(), returnDate);
+        loans.registerObserver(this);
         loans.addLoan(loan);
     }
     
@@ -50,6 +52,7 @@ public class Administrator extends Staff implements IObserver{
         returnDate.setHours(23);
         returnDate.setMinutes(59);
         DayLoan loan = new DayLoan(staff, car, returnDate);
+        loans.registerObserver(this);
         loans.addLoan(loan);
     }
     

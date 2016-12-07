@@ -21,7 +21,7 @@ import people.Staff;
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
-public class StaffMembers implements ISerialisable {
+public class StaffMembers extends Observed implements ISerialisable {
     private ArrayList<Staff> staffList;
     private static final StaffMembers staffMembers = new StaffMembers();
     
@@ -69,11 +69,13 @@ public class StaffMembers implements ISerialisable {
             staffList = new ArrayList<Staff>();
         }
         staffList.add(staff);
+        notifyObservers();
     }
     
     public void removeStaff(Staff staff) {
         if (staffList == null) return;
         staffList.remove(staff);
+        notifyObservers();
     }
     
     public ArrayList<Staff> getStaffMembers() {

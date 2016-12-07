@@ -13,14 +13,13 @@ import java.util.Date;
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
 public class Person implements java.io.Serializable {
-    private String title;
-    private String forename;
-    private String surname;
-    private Date dateOfBirth;
-    private String gender;
-    private String phoneNumber;
-    private String emailAddress;
-    
+    protected String title;
+    protected String forename;
+    protected String surname;
+    protected Date dateOfBirth;
+    protected String gender;
+    protected String phoneNumber;
+    protected String emailAddress;
    
     public Person() {
         

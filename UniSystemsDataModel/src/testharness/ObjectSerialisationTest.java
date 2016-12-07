@@ -39,21 +39,18 @@ public class ObjectSerialisationTest{
                             "Plymouth", Classification.COUPE);
         admin.createCar(car);*/
         addTestDataAndSave();
-        loadFromDisk();
+        //loadFromDisk();
         
     }
 
     public static void addTestDataAndSave() {
         Car car = new Car("ABCDEFG", Transmission.AUTOMATIC, FuelType.DIESEL, 
                             "Plymouth", Classification.COUPE);
-        cars.addCar(car);
-        System.out.println(cars.saveToDisk());
-        Staff staff = new Staff("10438524", Position.LECTURER, Faculty.SCIENCEANDENGINEERING, "BGB106", "07474306999", new Address("1", "Tothill Avenue", "Plymouth", "Devon", "PL4 8PH"),
+        Staff staff = new Staff("10438524", Position.LECTURER, Faculty.SCIENCE_AND_ENGINEERING, "BGB106", "07474306999", new Address("1", "Tothill Avenue", "Plymouth", "Devon", "PL4 8PH"),
                 "Mr", "Najim", "Mazidi", new Date(1995,07,26), "Male", "07474306999", "nmazidi95@gmail.com");
-        staffMembers.addStaff(staff);
-        System.out.println(staffMembers.saveToDisk());
         admin.assignDayLoan(car, staff);
-        System.out.println(loans.saveToDisk());
+        admin.createCar(car);
+        admin.createStaffMember(staff);
     }
     
     public static void loadFromDisk() {
@@ -78,7 +75,7 @@ public class ObjectSerialisationTest{
     }
     
     public static void addStaffAndSave() {
-        Staff staff = new Staff("10438524", Position.LECTURER, Faculty.SCIENCEANDENGINEERING, "BGB106", "07474306999", new Address("1", "Tothill Avenue", "Plymouth", "Devon", "PL4 8PH"),
+        Staff staff = new Staff("10438524", Position.LECTURER, Faculty.SCIENCE_AND_ENGINEERING, "BGB106", "07474306999", new Address("1", "Tothill Avenue", "Plymouth", "Devon", "PL4 8PH"),
                 "Mr", "Najim", "Mazidi", new Date(1995,07,26), "Male", "07474306999", "nmazidi95@gmail.com");
         staffMembers.addStaff(staff);
         System.out.println(staffMembers.saveToDisk());

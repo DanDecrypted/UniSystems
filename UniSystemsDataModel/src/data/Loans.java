@@ -21,7 +21,7 @@ import loaning.Loan;
  *
  * @author Craig
  */
-public class Loans implements ISerialisable{
+public class Loans extends Observed implements ISerialisable{
     private ArrayList<Loan> loanList;
     private static final Loans loans = new Loans();
     
@@ -80,11 +80,13 @@ public class Loans implements ISerialisable{
             loanList = new ArrayList<Loan>();
         }
         loanList.add(loan);
+        notifyObservers();
     }
     
     public void removeLoan(Loan loan) {
         if (loanList == null) return;
         loanList.remove(loan);
+        notifyObservers();
     }
 }
 
