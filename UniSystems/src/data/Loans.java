@@ -21,33 +21,28 @@ import model.loaning.Loan;
  *
  * @author Craig
  */
-public class Loans implements java.io.Serializable{
+public class Loans implements ISerialisable{
     private ArrayList<Loan> loanList;
-    private static Loans loans;
+    private static final Loans loans = new Loans();
     
-    public Loans() {
-        
-    }
+    private Loans() { }
     
     public static Loans getInstance(){
-        if (loans == null){
-            loans = new Loans();
-        }
         return loans;
     }   
     
-    public static String loadFromDisk() {
+    public String loadFromDisk() {
         File objFile = new File("Loans.dat");
         if (objFile.exists() && objFile.canRead()) {
             try (ObjectInputStream objIn = new ObjectInputStream(
                   new BufferedInputStream(
                   new FileInputStream(objFile)))) {
                 Object objData = objIn.readObject();
-                Loans newObj = (Loans)objData;
-                if (newObj != null) {
-                    loans = newObj;
+                ArrayList<Loan> newLoanList = (ArrayList)objData;
+                if (newLoanList != null) {
+                    loanList = newLoanList;
                 }    
-                return ("Successfully loaded " + Loans.getInstance().getLoans().size() + " Loans");
+                return ("Successfully loaded " + getLoans().size() + " Loans");
             } catch (Exception ex) {
                 return("Data file could not be read " + ex.getMessage());
             }
@@ -56,20 +51,24 @@ public class Loans implements java.io.Serializable{
         }
     }
     
-    public static String saveToDisk() {
-        File objFile = new File("Cars.dat");
+    public String saveToDisk() {
+        File objFile = new File("Loans.dat");
         try (ObjectOutputStream objOut = new ObjectOutputStream(
                 new BufferedOutputStream(
                 new FileOutputStream(objFile)))) {
-            objOut.writeObject(loans);
-            return ("Successfully saved " + Loans.getInstance().getLoans().size() + " Loans");
+            
+            objOut.writeObject(loanList);
+            
+            return ("Successfully saved " + getLoans().size() + " Loans");
         } catch (IOException ex) {
             return ("error: " + ex.getMessage());
         }
     }
     
     public ArrayList<Loan> getLoans() {
+        if (loanList == null) return new ArrayList<Loan>();
         ArrayList<Loan> temp = new ArrayList<Loan>();
+        
         for (Loan loan : loanList) {
             temp.add(loan);
         }

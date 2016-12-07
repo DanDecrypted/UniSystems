@@ -48,4 +48,8 @@ public class Car implements java.io.Serializable{
         return status;
     }
     
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+    
 }

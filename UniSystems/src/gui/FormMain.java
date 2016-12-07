@@ -16,7 +16,7 @@ import model.people.Staff;
  */
 public class FormMain extends javax.swing.JFrame {
 
-    private StaffMembers staffMembers = new StaffMembers().getInstance();
+    private StaffMembers staffMembers = StaffMembers.getInstance();
     
     public FormMain() {
         System.out.println(staffMembers.loadFromDisk());

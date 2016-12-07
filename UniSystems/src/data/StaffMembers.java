@@ -21,31 +21,27 @@ import model.people.Staff;
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
-public class StaffMembers implements java.io.Serializable, ISerialisable {
+public class StaffMembers implements ISerialisable {
     private ArrayList<Staff> staffList;
-    private StaffMembers staffMembers;
+    private static final StaffMembers staffMembers = new StaffMembers();
     
-    public StaffMembers() {
-        
-    }
+    private StaffMembers() {}
     
-    public StaffMembers getInstance() {
-        if (staffMembers == null) {
-            staffMembers = new StaffMembers();
-        }
+    public static StaffMembers getInstance() {
         return staffMembers;
     }
     
     @Override
     public String loadFromDisk() {
-        File objFile = new File("Staff.dat");
+        File objFile = new File("StaffMembers.dat");
         if (objFile.exists() && objFile.canRead()) {
             try (ObjectInputStream objIn = new ObjectInputStream(
                     new BufferedInputStream(
                     new FileInputStream(objFile)))) {
                 Object objData = objIn.readObject();
-                StaffMembers newObj = (StaffMembers)objData;
-                staffMembers = newObj;
+                ArrayList<Staff> newStaffList = (ArrayList)objData;
+                if (newStaffList != null) 
+                    staffList = newStaffList;
                 return ("Successfully loaded " + getStaffMembers().size() + " Staff members");
             } catch (Exception ex) {
                 return ("Data file could not be read " + ex.getMessage());
@@ -57,11 +53,11 @@ public class StaffMembers implements java.io.Serializable, ISerialisable {
     
     @Override
     public String saveToDisk() {
-        File objFile = new File("Staff.dat");
+        File objFile = new File("StaffMembers.dat");
         try (ObjectOutputStream objOut = new ObjectOutputStream(
                 new BufferedOutputStream(
                 new FileOutputStream(objFile)))) {
-            objOut.writeObject(staffMembers);
+            objOut.writeObject(staffList);
             return ("Successfully saved " + getStaffMembers().size() + " staff members");
         } catch (IOException ex) {
             return ("error: " + ex.getMessage());
@@ -69,24 +65,24 @@ public class StaffMembers implements java.io.Serializable, ISerialisable {
     }
     
     public void addStaff(Staff staff) {
-        if (getInstance().staffList == null) {
-            getInstance().staffList = new ArrayList<Staff>();
+        if (staffList == null) {
+            staffList = new ArrayList<Staff>();
         }
-        getInstance().staffList.add(staff);
+        staffList.add(staff);
     }
     
     public void removeStaff(Staff staff) {
-        if (getInstance().staffList == null) return;
-        getInstance().staffList.remove(staff);
+        if (staffList == null) return;
+        staffList.remove(staff);
     }
     
     public ArrayList<Staff> getStaffMembers() {
-        if (getInstance().staffList == null) {
-            getInstance().staffList = new ArrayList<Staff>();
+        if (staffList == null) {
+            staffList = new ArrayList<Staff>();
         }
         
         ArrayList<Staff> temp = new ArrayList<Staff>();
-        for(Staff staff : getInstance().staffList) {
+        for(Staff staff : staffList) {
             temp.add(staff);
         }
         return temp;

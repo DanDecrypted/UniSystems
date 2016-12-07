@@ -13,7 +13,7 @@ package data;
 public interface ISerialisable {
 
     /**
-     *
+     * Loads the ArrayList data 
      * @return
      */
     public abstract String loadFromDisk();

@@ -7,26 +7,38 @@
 package model.people;
 
 import model.car.Car;
+import model.car.Status;
+import model.loaning.*;
+import data.Loans;
+import java.util.Date;
 
 /**
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
 public class Administrator extends Staff{
+    Loans loans = Loans.getInstance();
     
     public Administrator() {
         
     }
     
     public void assignLongLoan(Car car, Staff staff) {
-        
+        Date returnDate = new Date();
+        returnDate.setYear(returnDate.getYear() + 1);
+        LongLoan loan = new LongLoan(staff, car, new Date(), returnDate);
+        loans.addLoan(loan);
     }
     
-    public void assignDayLoan(Staff staff) {
-        
+    public void assignDayLoan(Car car, Staff staff) {
+        Date returnDate = new Date();
+        returnDate.setHours(23);
+        returnDate.setMinutes(59);
+        DayLoan loan = new DayLoan(staff, car, returnDate);
+        loans.addLoan(loan);
     }
     
     public void sendForService(Car car){
-        
+        car.setStatus(Status.IN_FOR_SERVICE);
     }
 }
