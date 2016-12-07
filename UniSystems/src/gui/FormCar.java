@@ -9,6 +9,7 @@ import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 import car.*;
 import data.Cars;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -50,7 +51,7 @@ public class FormCar extends javax.swing.JFrame {
                 this.lblStatus.setText(car.getStatus().name());
                 break;
             }
-           
+            
         }
         
     }
