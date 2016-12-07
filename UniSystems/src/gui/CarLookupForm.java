@@ -53,6 +53,11 @@ public class CarLookupForm extends javax.swing.JFrame {
         });
 
         btnAddCar.setText("Add Car");
+        btnAddCar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddCarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -117,6 +122,11 @@ public class CarLookupForm extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnEdtDltActionPerformed
+
+    private void btnAddCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCarActionPerformed
+        FormCar frm = new FormCar();
+        frm.setVisible(true);
+    }//GEN-LAST:event_btnAddCarActionPerformed
 
     /**
      * @param args the command line arguments
