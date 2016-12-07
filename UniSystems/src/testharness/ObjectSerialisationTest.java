@@ -5,11 +5,11 @@
  *  Daniel Scott and Najim Mazidi.
  */
 package testharness;
-import unisystems.data.*;
-import unisystems.car.Car;
-import unisystems.car.Classification;
-import unisystems.car.FuelType;
-import unisystems.car.Transmission;
+import data.Cars;
+import model.car.Car;
+import model.car.Classification;
+import model.car.FuelType;
+import model.car.Transmission;
 /**
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
