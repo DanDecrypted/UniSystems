@@ -22,7 +22,7 @@ public class Cars implements java.io.Serializable{
     
     public static Cars getInstance() {
         if (cars == null) { 
-            return new Cars();
+            cars = new Cars();
         }
         return cars;
     }

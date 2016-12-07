@@ -31,7 +31,7 @@ public class StaffMembers implements java.io.Serializable {
     
     public static StaffMembers getInstance() {
         if (staffMembers == null) {
-            return new StaffMembers();
+            staffMembers = new StaffMembers();
         }
         return staffMembers;
     }
