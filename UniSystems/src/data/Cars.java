@@ -34,9 +34,9 @@ public class Cars implements java.io.Serializable{
                   new BufferedInputStream(
                   new FileInputStream(objFile)))) {
                 Object objData = objIn.readObject();
-                ArrayList<Car> newList = (ArrayList)objData;
-                if (newList != null) {
-                    carsList = newList;
+                Cars newObj = (Cars)objData;
+                if (newObj != null) {
+                    cars = newObj;
                 }
                 return("Successfully loaded " + carsList.size() + " Cars");
             } catch (Exception ex) {
@@ -52,7 +52,7 @@ public class Cars implements java.io.Serializable{
         try (ObjectOutputStream objOut = new ObjectOutputStream(
                 new BufferedOutputStream(
                 new FileOutputStream(objFile)))) {
-            objOut.writeObject(carsList);
+            objOut.writeObject(cars);
             return("Successfully saved " + carsList.size() + " Cars");
         } catch (IOException ex) {
            return("error: " + ex.getMessage());

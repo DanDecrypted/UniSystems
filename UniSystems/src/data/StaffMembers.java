@@ -43,10 +43,10 @@ public class StaffMembers implements java.io.Serializable {
                     new BufferedInputStream(
                     new FileInputStream(objFile)))) {
                 Object objData = objIn.readObject();
-                ArrayList<Staff> newList = (ArrayList)objData;
-                if (newList != null) {
-                    staffList = newList;
-                    System.out.println("Successfully loaded " + staffList.size() + " Staff members");
+                StaffMembers newObj = (StaffMembers)objData;
+                if (staffMembers != null) {
+                    staffMembers = newObj;
+                    System.out.println("Successfully loaded " + StaffMembers.getInstance().getStaffMembers().size() + " Staff members");
                 }
             } catch (Exception ex) {
                 System.out.println("Data file could not be read " + ex.getMessage());
@@ -61,8 +61,8 @@ public class StaffMembers implements java.io.Serializable {
         try (ObjectOutputStream objOut = new ObjectOutputStream(
                 new BufferedOutputStream(
                 new FileOutputStream(objFile)))) {
-            objOut.writeObject(staffList);
-            System.out.println("Successfully saved " + staffList.size() + " staff members");
+            objOut.writeObject(staffMembers);
+            System.out.println("Successfully saved " + StaffMembers.getInstance().getStaffMembers().size() + " staff members");
         } catch (IOException ex) {
             System.out.println("error: " + ex.getMessage());
         }

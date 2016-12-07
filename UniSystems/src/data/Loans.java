@@ -21,27 +21,31 @@ import model.loaning.Loan;
  *
  * @author Craig
  */
-public class LoanHistory {
+public class Loans implements java.io.Serializable{
     private ArrayList<Loan> loanList;
-    private static LoanHistory loanHistory;
+    private static Loans loans;
     
-    public static LoanHistory getInstance(){
-        if (loanHistory == null){
-            loanHistory = new LoanHistory();
+    public Loans() {
+        
+    }
+    
+    public static Loans getInstance(){
+        if (loans == null){
+            loans = new Loans();
         }
-        return loanHistory;
+        return loans;
     }   
     
     public void loadFromDisk() {
-        File objFile = new File("Cars.dat");
+        File objFile = new File("Loans.dat");
         if (objFile.exists() && objFile.canRead()) {
             try (ObjectInputStream objIn = new ObjectInputStream(
                   new BufferedInputStream(
                   new FileInputStream(objFile)))) {
                 Object objData = objIn.readObject();
-                ArrayList<Loan> newList = (ArrayList)objData;
-                if (newList != null) {
-                    loanList = newList;
+                Loans newObj = (Loans)objData;
+                if (newObj != null) {
+                    loans = newObj;
                     System.out.println("Successfully loaded " + loanList.size() + " Loans");
                 }
             } catch (Exception ex) {
@@ -57,7 +61,7 @@ public class LoanHistory {
         try (ObjectOutputStream objOut = new ObjectOutputStream(
                 new BufferedOutputStream(
                 new FileOutputStream(objFile)))) {
-            objOut.writeObject(loanList);
+            objOut.writeObject(loans);
             System.out.println("Successfully saved " + loanList.size() + " Loans");
         } catch (IOException ex) {
             System.out.println("error: " + ex.getMessage());

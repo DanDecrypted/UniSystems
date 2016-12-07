@@ -27,6 +27,9 @@ public class ObjectSerialisationTest {
     
     public static void loadFromDisk() {
         cars.loadFromDisk();
+        cars = Cars.getInstance();
+        System.out.println("Cars[0] has the regNo: " + cars.getCars().get(0).getRegNo() + 
+                           " and availability of " + cars.getCars().get(0).getStatus());
     }
     
     public static void addCarAndSave() {
