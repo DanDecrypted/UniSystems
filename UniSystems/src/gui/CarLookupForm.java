@@ -45,6 +45,7 @@ public class CarLookupForm extends javax.swing.JFrame {
         lblRegTitle.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblRegTitle.setText("Reg Number:");
 
+        btnEdtDlt.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         btnEdtDlt.setText("Edit/Delete");
         btnEdtDlt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,6 +53,7 @@ public class CarLookupForm extends javax.swing.JFrame {
             }
         });
 
+        btnAddCar.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         btnAddCar.setText("Add Car");
         btnAddCar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,7 +83,7 @@ public class CarLookupForm extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(116, 116, 116)
                                 .addComponent(btnAddCar)))
-                        .addGap(0, 51, Short.MAX_VALUE))
+                        .addGap(0, 56, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
