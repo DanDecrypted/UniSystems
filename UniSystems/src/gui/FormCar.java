@@ -75,7 +75,7 @@ public class FormCar extends javax.swing.JFrame {
         
          for (Car objCar : cars.getCars()) {
              if (objCar.getRegNo().equals(reg)){
-                 listModel.addElement(objCar.getServiceRecord());
+                 listModel.addElement(objCar.getServiceRecord().toString());
                  break;
              }
          }
