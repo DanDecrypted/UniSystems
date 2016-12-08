@@ -230,6 +230,8 @@ public class FormMain extends javax.swing.JFrame {
                 txtFaculty.setText(staff.getFaculty().toString());
                 txtOfficeRoom.setText(staff.getOfficeRoom());
                 txtOfficePhone.setText(staff.getWorkNumb());
+                
+               
             }
             
         }
@@ -241,6 +243,7 @@ public class FormMain extends javax.swing.JFrame {
                 listModel.addElement(objLoan.getCar().getRegNo().toString());
             }
         }
+        jlstRentalHistory.setModel(listModel);
     }
     /**
      * @param args the command line arguments
