@@ -17,8 +17,9 @@ import javax.swing.DefaultListModel;
  */
 public class FormCar extends javax.swing.JFrame {
     
-    private DefaultListModel listModel;
+    
     private Cars cars = Cars.getInstance();
+    private DefaultListModel listModel;
 
     /**
      * Creates new form FormCar
@@ -74,7 +75,7 @@ public class FormCar extends javax.swing.JFrame {
         
          for (Car objCar : cars.getCars()) {
              if (objCar.getRegNo().equals(reg)){
-                 listModel.addElement(objCar.getServiceRecord().get(0));
+                 listModel.addElement(objCar.getServiceRecord());
                  break;
              }
          }

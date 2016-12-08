@@ -58,6 +58,7 @@ public class Administrator extends Staff implements IObserver{
     
     public void sendForService(Car car){
         car.setStatus(Status.IN_FOR_SERVICE);
+        
     }
     
     @Override 
