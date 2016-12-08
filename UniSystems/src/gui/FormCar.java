@@ -16,6 +16,7 @@ import data.Cars;
  */
 public class FormCar extends javax.swing.JFrame {
     private Cars cars = Cars.getInstance();
+   
     /**
      * Creates new form FormCar
      */
@@ -48,6 +49,7 @@ public class FormCar extends javax.swing.JFrame {
                 this.cboTransmission.setSelectedItem(car.getTransmission());
                 this.txtDoors.setText(Integer.toString(car.getDoors()));
                 this.txtSeats.setText(Integer.toString(car.getSeats()));
+                this.lstServiceHistory.setModel(car.getServiceRecord().toArray(a));
                 
                 this.lblStatus.setText(car.getStatus().name());
                 break;
@@ -139,11 +141,6 @@ public class FormCar extends javax.swing.JFrame {
         lblLoanHistory.setText("Loan History");
 
         lstServiceHistory.setFont(new java.awt.Font("Lato", 0, 12)); // NOI18N
-        lstServiceHistory.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane2.setViewportView(lstServiceHistory);
 
         lblServiceHistory.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
