@@ -22,6 +22,7 @@ public class FormStaffLookup extends javax.swing.JFrame {
      */
     public FormStaffLookup() {
         initComponents();
+        System.out.println(staff.loadFromDisk());
     }
 
     /**
@@ -109,7 +110,7 @@ public class FormStaffLookup extends javax.swing.JFrame {
         // TODO add your handling code here:
         Boolean found = false;
         for (Staff people : staff.getStaffMembers()) {
-            if (people.getStaffRefNumb().equals(txtStaffNumb.getText())) {
+            if (people.getStaffRefNumb().equals(this.txtStaffNumb.getText())) {
                 FormStaffDetails frm = new FormStaffDetails(people.getStaffRefNumb());
                 frm.setVisible(true);
                 found = true;
