@@ -8,6 +8,7 @@ package gui;
 
 import people.Staff;
 import data.StaffMembers;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +22,8 @@ public class FormStaffLookup extends javax.swing.JFrame {
      * Creates new form FormStaffLookup
      */
     public FormStaffLookup() {
+        
+        this.getContentPane().setBackground(new Color (238,238,238));
         initComponents();
         System.out.println(staff.loadFromDisk());
     }
