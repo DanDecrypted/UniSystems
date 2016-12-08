@@ -9,12 +9,15 @@ import data.Cars;
 import car.Car;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import people.Administrator;
+
 /**
  *
  * @author Craig
  */
 public class CarLookupForm extends javax.swing.JFrame {
     private Cars cars = Cars.getInstance();
+    private Administrator admin = new Administrator();
     /**
      * Creates new form CarLookupForm
      */
@@ -127,7 +130,7 @@ public class CarLookupForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEdtDltActionPerformed
 
     private void btnAddCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCarActionPerformed
-        FormCar frm = new FormCar();
+        FormCar frm = new FormCar(admin);
         frm.setVisible(true);
     }//GEN-LAST:event_btnAddCarActionPerformed
 
