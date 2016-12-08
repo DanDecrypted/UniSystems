@@ -9,9 +9,11 @@ import data.Cars;
 import car.Car;
 import car.Classification;
 import car.FuelType;
+import car.Service;
 import car.Transmission;
 import data.Loans;
 import data.StaffMembers;
+import java.util.ArrayList;
 import java.util.Date;
 import people.Address;
 import people.Faculty;
@@ -60,6 +62,12 @@ public class ObjectSerialisationTest{
                 "Mr", "Craig", "Banyard", new Date(1992,06,03), "Male", "0732345641", "craig.banyard@students.plymouth.ac.uk");
         Staff staff3 = new Staff("10501358", Position.ASSOCIATE_HEAD_OF_SCHOOL, Faculty.BUSINESS, "PSQA301", "07345723886", new Address("45", "Lipson Road", "Plymouth", "Devon", "PL4 8EA"),
                 "Mr", "Daniel", "Scott", new Date(1992,6,3), "Male", "07345723886", "daniel.scott@students.plymouth.ac.uk");
+        
+        ArrayList<String> arrayRepairs = new ArrayList<String>();
+        arrayRepairs.add("Breaks");
+        
+        Service service = new Service("John", arrayRepairs);
+        
         admin.assignDayLoan(car, staff);
         admin.assignLongLoan(car2, staff2);
         admin.assignDayLoan(car4, staff);
@@ -73,6 +81,7 @@ public class ObjectSerialisationTest{
         admin.createStaffMember(staff);
         admin.createStaffMember(staff2);
         admin.createStaffMember(staff3);
+        car2.addService(service);
     }
     
     public static void loadFromDisk() {

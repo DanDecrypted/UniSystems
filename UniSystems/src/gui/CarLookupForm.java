@@ -114,12 +114,14 @@ public class CarLookupForm extends javax.swing.JFrame {
             if (car.getRegNo().equals(txtRegNumb.getText().toUpperCase())) {
                 FormCar frm = new FormCar(car.getRegNo());
                 frm.setVisible(true);
+                //break;
             }
             else{
                 JOptionPane.showMessageDialog(null,
                         "The Registration entered was not found.",
                         "Car Lookup Error",
                         JOptionPane.WARNING_MESSAGE);
+                
             
             }
         }

@@ -233,12 +233,8 @@ public class FormMain extends javax.swing.JFrame {
                 txtFaculty.setText(staff.getFaculty().toString());
                 txtOfficeRoom.setText(staff.getOfficeRoom());
                 txtOfficePhone.setText(staff.getWorkNumb());
-                
-               
             }
-            
         }
-
     }
     
     private void populateRentalList(String ref) {

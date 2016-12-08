@@ -9,14 +9,17 @@ import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 import car.*;
 import data.Cars;
+import javax.swing.DefaultListModel;
 
 /**
  *
  * @author Craig
  */
 public class FormCar extends javax.swing.JFrame {
+    
+    private DefaultListModel listModel;
     private Cars cars = Cars.getInstance();
-   
+
     /**
      * Creates new form FormCar
      */
@@ -35,7 +38,12 @@ public class FormCar extends javax.swing.JFrame {
      * @param regNo 
      */
     public FormCar(String regNo) {
+        
         initComponents();
+        
+        listModel = new DefaultListModel();
+        
+        
         cars.loadFromDisk();
         this.getContentPane().setBackground(new Color (238,238,238));
         this.btnCreate.setVisible(false);
@@ -49,17 +57,29 @@ public class FormCar extends javax.swing.JFrame {
                 this.cboTransmission.setSelectedItem(car.getTransmission());
                 this.txtDoors.setText(Integer.toString(car.getDoors()));
                 this.txtSeats.setText(Integer.toString(car.getSeats()));
-                //this.lstServiceHistory.setModel(car.getServiceRecord().toArray(a));
-                
                 this.lblStatus.setText(car.getStatus().name());
                 break;
-            }
-            
+            }   
         }
+        populateServiceHistoryList(txtRegNo.getText());
+        this.lstServiceHistory.setModel(listModel);
         
     }
-    
-
+    /**
+     * populate car service history list
+     * @param reg car registration number
+     */
+    private void populateServiceHistoryList(String reg) {
+        listModel.clear();
+        
+         for (Car objCar : cars.getCars()) {
+             if (objCar.getRegNo().equals(reg)){
+                 listModel.addElement(objCar.getServiceRecord().get(0));
+                 break;
+             }
+         }
+    }
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
