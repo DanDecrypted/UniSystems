@@ -30,10 +30,12 @@ public class FormStaffDetails extends javax.swing.JFrame {
     public FormStaffDetails() {
         this.getContentPane().setBackground(new Color (238,238,238));
         initComponents();
+        this.btnUpdate.setVisible(false);
     }
     
     public FormStaffDetails(String staffNumb){
         this.getContentPane().setBackground(new Color (238,238,238));
+        
         initComponents();
         
         staff.loadFromDisk();
@@ -81,7 +83,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
                 longLoan.getEndDate();
             }
             if (objLoan.getLoaner().getStaffRefNumb().equals(ref)) {
-                String listElement = objLoan.getCar().getRegNo().toString();
+                String listElement = objLoan.getCar().getRegNo().toString() + " - ";
                 // TODO: Use functions in the JDK that aren't a heaping pile of shit
                 if (longLoan != null) {
                     //Deprecated but I'm too lazy to fix it right now 
@@ -94,6 +96,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
             }
         }
         lstLoanHistory.setModel(listModel);
+        this.btnCreate.setVisible(false);
     }
 
     /**
@@ -140,8 +143,11 @@ public class FormStaffDetails extends javax.swing.JFrame {
         lblLoanHistory = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         lstLoanHistory = new javax.swing.JList<>();
+        btnCreate = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(450, 250, 0, 0));
+        setLocation(new java.awt.Point(450, 300));
 
         txtStaffNumb.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
 
@@ -218,6 +224,11 @@ public class FormStaffDetails extends javax.swing.JFrame {
 
         btnCancel.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
         lblLoanHistory.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
         lblLoanHistory.setText("Loan History:");
@@ -230,6 +241,9 @@ public class FormStaffDetails extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(lstLoanHistory);
 
+        btnCreate.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        btnCreate.setText("Create");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -239,20 +253,17 @@ public class FormStaffDetails extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblStaffNumb, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblTitle)
+                            .addComponent(lblForename)
+                            .addComponent(lblSurname)
+                            .addComponent(lblDob)
+                            .addComponent(lblGender)
+                            .addComponent(lblGender1))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(88, 88, 88)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblStaffNumb, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblTitle)
-                                    .addComponent(lblForename)
-                                    .addComponent(lblSurname)
-                                    .addComponent(lblDob)
-                                    .addComponent(lblGender)
-                                    .addComponent(lblGender1))
-                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtForename, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -281,8 +292,9 @@ public class FormStaffDetails extends javax.swing.JFrame {
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(txtEmail)
                                                 .addComponent(txtPhoneNumb, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(txtPosition, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(0, 12, Short.MAX_VALUE))))
+                                            .addComponent(txtPosition, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 12, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,6 +303,8 @@ public class FormStaffDetails extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addComponent(btnUpdate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCreate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCancel)
                         .addGap(100, 100, 100))
@@ -365,7 +379,8 @@ public class FormStaffDetails extends javax.swing.JFrame {
                 .addGap(18, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate)
-                    .addComponent(btnCancel))
+                    .addComponent(btnCancel)
+                    .addComponent(btnCreate))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -377,6 +392,12 @@ public class FormStaffDetails extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        FormStaffLookup frm = new FormStaffLookup();
+        frm.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -415,6 +436,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

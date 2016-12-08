@@ -42,8 +42,10 @@ public class FormStaffLookup extends javax.swing.JFrame {
         txtStaffNumb = new javax.swing.JTextField();
         btnEdtDlt = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
+        btnAddStaff = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(450, 300));
 
         lblStaffHeader.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
         lblStaffHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -68,6 +70,14 @@ public class FormStaffLookup extends javax.swing.JFrame {
             }
         });
 
+        btnAddStaff.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        btnAddStaff.setText("Add Staff");
+        btnAddStaff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddStaffActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -79,7 +89,7 @@ public class FormStaffLookup extends javax.swing.JFrame {
                         .addComponent(lblStaffHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 13, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(lblStaffNumb)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtStaffNumb, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -87,9 +97,11 @@ public class FormStaffLookup extends javax.swing.JFrame {
                         .addComponent(btnEdtDlt)
                         .addGap(30, 30, 30))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(154, 154, 154)
+                .addGap(102, 102, 102)
+                .addComponent(btnAddStaff)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(btnCancel)
-                .addGap(0, 163, Short.MAX_VALUE))
+                .addGap(101, 101, 101))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,9 +113,11 @@ public class FormStaffLookup extends javax.swing.JFrame {
                     .addComponent(lblStaffNumb)
                     .addComponent(txtStaffNumb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEdtDlt))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCancel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancel)
+                    .addComponent(btnAddStaff))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -132,6 +146,11 @@ public class FormStaffLookup extends javax.swing.JFrame {
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnAddStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStaffActionPerformed
+        FormStaffDetails frm = new FormStaffDetails();
+        frm.setVisible(true);
+    }//GEN-LAST:event_btnAddStaffActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,6 +188,7 @@ public class FormStaffLookup extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddStaff;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnEdtDlt;
     private javax.swing.JLabel lblStaffHeader;

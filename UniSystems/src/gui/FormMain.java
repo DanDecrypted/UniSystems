@@ -258,7 +258,7 @@ public class FormMain extends javax.swing.JFrame {
                 longLoan.getEndDate();
             }
             if (objLoan.getLoaner().getStaffRefNumb().equals(ref)) {
-                String listElement = objLoan.getCar().getRegNo().toString();
+                String listElement = objLoan.getCar().getRegNo().toString()+ " - ";
                 // TODO: Use functions in the JDK that aren't a heaping pile of shit
                 if (longLoan != null) {
                     //Deprecated but I'm too lazy to fix it right now 
