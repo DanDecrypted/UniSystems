@@ -49,7 +49,7 @@ public class FormCar extends javax.swing.JFrame {
                 this.cboTransmission.setSelectedItem(car.getTransmission());
                 this.txtDoors.setText(Integer.toString(car.getDoors()));
                 this.txtSeats.setText(Integer.toString(car.getSeats()));
-                this.lstServiceHistory.setModel(car.getServiceRecord().toArray(a));
+                //this.lstServiceHistory.setModel(car.getServiceRecord().toArray(a));
                 
                 this.lblStatus.setText(car.getStatus().name());
                 break;

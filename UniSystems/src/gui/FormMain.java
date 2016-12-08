@@ -10,7 +10,10 @@ import data.Loans;
 import data.StaffMembers;
 import java.awt.Color;
 import javax.swing.DefaultListModel;
+<<<<<<< HEAD
 import java.util.Date;
+=======
+>>>>>>> origin/master
 import loaning.DayLoan;
 import loaning.Loan;
 import loaning.LongLoan;
