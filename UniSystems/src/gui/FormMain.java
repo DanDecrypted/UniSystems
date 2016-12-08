@@ -6,8 +6,11 @@
  */
 package gui;
 
+import data.Loans;
 import data.StaffMembers;
 import java.awt.Color;
+import javax.swing.DefaultListModel;
+import loaning.Loan;
 import people.Staff;
 
 /**
@@ -17,9 +20,13 @@ import people.Staff;
 public class FormMain extends javax.swing.JFrame {
 
     private StaffMembers staffMembers = StaffMembers.getInstance();
+    private Loans loans = Loans.getInstance();
+    private DefaultListModel listModel;
     
     public FormMain() {
         System.out.println(staffMembers.loadFromDisk());
+        System.out.println(loans.loadFromDisk());
+        listModel = new DefaultListModel();
                 
         initComponents();
         
@@ -207,6 +214,7 @@ public class FormMain extends javax.swing.JFrame {
 
     private void btnLookupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLookupActionPerformed
         populateStaffDetails(txtStaffNumb.getText());
+        populateRentalList(txtStaffNumb.getText());
        
     }//GEN-LAST:event_btnLookupActionPerformed
 /**
@@ -226,6 +234,13 @@ public class FormMain extends javax.swing.JFrame {
             
         }
 
+    }
+    private void populateRentalList(String ref) {
+        for (Loan objLoan : loans.getLoans()) {
+            if (objLoan.getLoaner().getStaffRefNumb().equals(ref)) {
+                listModel.addElement(objLoan.getCar().getRegNo().toString());
+            }
+        }
     }
     /**
      * @param args the command line arguments
