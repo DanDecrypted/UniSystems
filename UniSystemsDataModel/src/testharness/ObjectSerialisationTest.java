@@ -47,15 +47,15 @@ public class ObjectSerialisationTest{
 
     public static void addTestDataAndSave() {
         Car car = new Car("ABCDEFG", Transmission.AUTOMATIC, FuelType.DIESEL, 
-                            "Plymouth", Classification.COUPE, 5, 3);
+                            "Plymouth", Classification.COUPE, 5, 3,10);
         Car car2 = new Car("KP10TKN", Transmission.MANUAL, FuelType.PETROL,
-                            "Plymouth", Classification.COUPE, 5, 5);
+                            "Plymouth", Classification.COUPE, 5, 5,23445);
         Car car3 = new Car("AA16QWE", Transmission.AUTOMATIC, FuelType.ELECTRIC, 
-                            "DEVONPORT", Classification.ESTATE, 5, 5);
+                            "DEVONPORT", Classification.ESTATE, 5, 5,394);
         Car car4 = new Car("AB66ABC", Transmission.MANUAL, FuelType.LPG, 
-                            "Plymouth", Classification.VAN, 3, 3);
+                            "Plymouth", Classification.VAN, 3, 3, 237234);
         Car car5 = new Car("NA15PQD", Transmission.AUTOMATIC, FuelType.ELECTRIC, 
-                            "Plymouth", Classification.COMPACT, 4, 3);
+                            "Plymouth", Classification.COMPACT, 4, 3, 20050);
         Staff staff = new Staff("10438524", Position.LECTURER, Faculty.SCIENCE_AND_ENGINEERING, "BGB106", "07474306999", new Address("1", "Tothill Avenue", "Plymouth", "Devon", "PL4 8PH"),
                 "Mr", "Najim", "Mazidi", new Date(1995,07,26), "Male", "07474306999", "nmazidi95@gmail.com");
         Staff staff2 = new Staff("10488708", Position.SECURITY, Faculty.SCIENCE_AND_ENGINEERING, "PSQA104", "0732345641", new Address("105", "Drake Circus", "Plymouth", "Devon", "PL4 1AA"),

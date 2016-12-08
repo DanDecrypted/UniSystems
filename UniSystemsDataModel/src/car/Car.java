@@ -31,7 +31,7 @@ public class Car implements java.io.Serializable{
     }
     
     public Car(String regNo, Transmission transmission, FuelType fuelType, 
-            String location, Classification classification, int seats, int doors) {
+            String location, Classification classification, int seats, int doors, int mileage) {
         this.regNo = regNo;
         this.classification = classification;
         this.transmission = transmission; 
@@ -41,6 +41,7 @@ public class Car implements java.io.Serializable{
         this.serviceRecord = new ArrayList<Service>();
         this.seats = seats;
         this.doors = doors;
+        this.milage = mileage;
         
     }
     
