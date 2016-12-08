@@ -109,20 +109,17 @@ public class CarLookupForm extends javax.swing.JFrame {
 
     private void btnEdtDltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdtDltActionPerformed
         // TODO add your handling code here:
-        boolean foundCar = false;
+        Boolean found = false;
         for (Car car : cars.getCars()) {
             // foreach (Car car in cars.getCars()) { } 
             if (car.getRegNo().equals(txtRegNumb.getText().toUpperCase())) {
                 FormCar frm = new FormCar(car.getRegNo());
                 frm.setVisible(true);
-                foundCar = true;
+                found = true;
                 break;
             } 
-            else{
-                foundCar = false;
-            }
         }
-        if (foundCar == false){
+        if (!found){
         JOptionPane.showMessageDialog(null,
                         "The Registration entered was not found.",
                         "Car Lookup Error",

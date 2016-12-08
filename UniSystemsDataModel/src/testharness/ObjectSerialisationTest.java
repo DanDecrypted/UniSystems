@@ -64,9 +64,9 @@ public class ObjectSerialisationTest{
                 "Mr", "Daniel", "Scott", new Date(1992,6,3), "Male", "07345723886", "daniel.scott@students.plymouth.ac.uk");
         
         ArrayList<String> arrayRepairs = new ArrayList<String>();
-        arrayRepairs.add("Breaks");
+        arrayRepairs.add("Brakes");
         
-        Service service = new Service("John", arrayRepairs);
+        Service service = new Service("John", arrayRepairs, "Fixed the brakes");
         
         admin.assignDayLoan(car, staff);
         admin.assignLongLoan(car2, staff2);
@@ -74,6 +74,8 @@ public class ObjectSerialisationTest{
         admin.assignDayLoan(car5, staff3);
         admin.assignLongLoan(car3, staff3);
         admin.createCar(car);
+        
+        car2.addService(service);
         admin.createCar(car2);
         admin.createCar(car3);
         admin.createCar(car4);
@@ -81,7 +83,6 @@ public class ObjectSerialisationTest{
         admin.createStaffMember(staff);
         admin.createStaffMember(staff2);
         admin.createStaffMember(staff3);
-        car2.addService(service);
     }
     
     public static void loadFromDisk() {

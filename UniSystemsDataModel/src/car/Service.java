@@ -12,13 +12,32 @@ import java.util.Date;
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
-public class Service {
+public class Service implements java.io.Serializable{
     private String mechanic;
-    private ArrayList<String> repairs; 
+    private ArrayList<String> repairs;
+    private String summary;
     private Date dateOfService;
-    public Service(String mechanic, ArrayList<String> repairs) {
+    
+    public Service(String mechanic, ArrayList<String> repairs, String summary) {
         this.mechanic = mechanic;
         this.repairs = repairs;
         this.dateOfService = new Date();
+        this.summary = summary;
+    }
+    
+    public String getSummary() {
+        return summary;
+    }
+    
+    public String getMechanic(){
+        return mechanic;
+    }
+    
+    public ArrayList<String> getRepairs(){
+        return repairs;
+    }
+    
+    public Date getDateOfService(){
+        return dateOfService;
     }
 }

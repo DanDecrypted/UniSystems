@@ -59,30 +59,35 @@ public class FormCar extends javax.swing.JFrame {
                 this.txtDoors.setText(Integer.toString(car.getDoors()));
                 this.txtSeats.setText(Integer.toString(car.getSeats()));
                 this.lblStatus.setText(car.getStatus().name());
+                populateServiceHistoryList(car);
                 break;
             }   
         }
-        populateServiceHistoryList(txtRegNo.getText());
-        this.lstServiceHistory.setModel(listModel);
+        
         
     }
     /**
      * populate car service history list
      * @param reg car registration number
      */
-    private void populateServiceHistoryList(String reg) {
+    private void populateServiceHistoryList(Car objCar) {
         listModel.clear();
         
-         for (Car objCar : cars.getCars()) {
-             if (objCar.getRegNo().equals(reg)){
-                 for (int i=0; i <= objCar.getServiceRecord().size(); i++)
-                 {
-                     listModel.addElement(objCar.getServiceRecord().get(i));
+         
+             
+                 for (int i=0; i < objCar.getServiceRecord().size(); i++)
+                 { 
+                    String listElement = objCar.getServiceRecord().get(i).getMechanic() + " - ";
+                            listElement += objCar.getServiceRecord().get(i).getSummary() + " - ";
+                            listElement += data.UtilityFunctions.formatDate(
+                                    objCar.getServiceRecord().get(i).getDateOfService()) + " ";
+                            listModel.addElement(listElement);
                  }
-
-                 break;
-             }
-         }
+                 
+                 this.lstServiceHistory.setModel(listModel);
+                 
+             
+         
     }
      
     /**
