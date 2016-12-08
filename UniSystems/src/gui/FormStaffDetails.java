@@ -9,6 +9,7 @@ package gui;
 import data.Loans;
 import data.StaffMembers;
 import java.awt.Color;
+import java.util.Calendar;
 import javax.swing.DefaultListModel;
 import loaning.DayLoan;
 import loaning.Loan;
@@ -42,7 +43,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
         for(Staff people : staff.getStaffMembers()){
             if (people.getStaffRefNumb().equals(staffNumb)){
                 this.txtStaffNumb.setText(staffNumb);
-                this.txtDob.setText(people.getDateOfBirth().toGMTString());
+                this.txtDob.setText(data.UtilityFunctions.formatDateOfBirth(people.getDateOfBirth()));
                 this.txtEmail.setText(people.getEmailAddress());
                 this.txtFaculty.setText(people.getFaculty().toString());
                 this.txtForename.setText(people.getForename());
