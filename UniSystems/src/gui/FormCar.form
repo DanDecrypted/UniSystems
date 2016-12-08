@@ -61,10 +61,15 @@
                                       <EmptySpace min="-2" pref="199" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtRegNo" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                          <Component id="cboClassification" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace pref="2" max="-2" attributes="0"/>
+                                              <Component id="txtRegNo" min="-2" pref="150" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="cboFuelType" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                          <Component id="cboTransmission" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                          <Component id="cboClassification" min="-2" pref="150" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -95,18 +100,8 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblFuelTitle" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="cboFuelType" min="-2" pref="150" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblTransmissionTitle" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="cboTransmission" min="-2" pref="150" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="lblFuelTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTransmissionTitle" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblClassTitle" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -331,12 +326,32 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtRegNo">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lato" size="13" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtMileage">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lato" size="13" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtDoors">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lato" size="13" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtSeats">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lato" size="13" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblStatus">
       <Properties>
@@ -348,6 +363,9 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="cboTransmission">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lato" size="13" style="0"/>
+        </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="new DefaultComboBoxModel(Transmission.values())" type="code"/>
         </Property>
@@ -358,6 +376,9 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="cboFuelType">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lato" size="13" style="0"/>
+        </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="new DefaultComboBoxModel(FuelType.values())" type="code"/>
         </Property>
@@ -375,9 +396,17 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtLocation">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lato" size="13" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cboClassification">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lato" size="13" style="0"/>
+        </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="new DefaultComboBoxModel(Classification.values())" type="code"/>
         </Property>

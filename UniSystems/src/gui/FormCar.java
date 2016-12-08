@@ -83,6 +83,7 @@ public class FormCar extends javax.swing.JFrame {
                 this.cboTransmission.setSelectedItem(car.getTransmission());
                 this.txtDoors.setText(Integer.toString(car.getDoors()));
                 this.txtSeats.setText(Integer.toString(car.getSeats()));
+                this.txtLocation.setText(car.getLocation());
                 this.lblStatus.setText(car.getStatus().name());
                 populateServiceHistoryList(car);
                 populateLoanHistory(car);
@@ -235,16 +236,29 @@ public class FormCar extends javax.swing.JFrame {
         lblServiceHistory.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
         lblServiceHistory.setText("Service History");
 
+        txtRegNo.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+
+        txtMileage.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+
+        txtDoors.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+
+        txtSeats.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+
         lblStatus.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         lblStatus.setText("PLACEHOLDER");
 
+        cboTransmission.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         cboTransmission.setModel(new DefaultComboBoxModel(Transmission.values()));
 
+        cboFuelType.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         cboFuelType.setModel(new DefaultComboBoxModel(FuelType.values()));
 
         lblDoorsTitle.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblDoorsTitle.setText("Doors:");
 
+        txtLocation.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+
+        cboClassification.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         cboClassification.setModel(new DefaultComboBoxModel(Classification.values()));
 
         btnCancel.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
@@ -299,9 +313,13 @@ public class FormCar extends javax.swing.JFrame {
                                         .addComponent(lblStatus)
                                         .addGap(199, 199, 199))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGap(4, 4, 4)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtRegNo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtRegNo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(cboFuelType, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cboTransmission, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(cboClassification, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(30, 30, 30)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,15 +341,8 @@ public class FormCar extends javax.swing.JFrame {
                                                     .addGap(18, 18, 18)
                                                     .addComponent(txtDoors, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                         .addGap(18, 18, 18))))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(lblFuelTitle)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cboFuelType, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(lblTransmissionTitle)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(cboTransmission, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblFuelTitle)
+                            .addComponent(lblTransmissionTitle)
                             .addComponent(lblClassTitle))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
