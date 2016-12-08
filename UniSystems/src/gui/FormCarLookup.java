@@ -15,13 +15,13 @@ import people.Administrator;
  *
  * @author Craig
  */
-public class CarLookupForm extends javax.swing.JFrame {
+public class FormCarLookup extends javax.swing.JFrame {
     private Cars cars = Cars.getInstance();
     private Administrator admin = new Administrator();
     /**
      * Creates new form CarLookupForm
      */
-    public CarLookupForm() {
+    public FormCarLookup() {
         this.getContentPane().setBackground(new Color (238,238,238));
 
         initComponents();
@@ -170,20 +170,21 @@ public class CarLookupForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CarLookupForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormCarLookup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CarLookupForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormCarLookup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CarLookupForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormCarLookup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CarLookupForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormCarLookup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CarLookupForm().setVisible(true);
+                new FormCarLookup().setVisible(true);
             }
         });
     }

@@ -68,6 +68,7 @@ public class FormMain extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(450, 300));
 
         lblStaffNumb.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblStaffNumb.setText("Staff Number:");
@@ -168,12 +169,12 @@ public class FormMain extends javax.swing.JFrame {
                             .addComponent(lblRentalHistory))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(181, 181, 181)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnRentCar)
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addGap(194, 194, 194))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
