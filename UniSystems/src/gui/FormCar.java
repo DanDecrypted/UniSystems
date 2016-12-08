@@ -9,7 +9,6 @@ import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 import car.*;
 import data.Cars;
-import javax.swing.JOptionPane;
 
 /**
  *
