@@ -10,10 +10,7 @@ import data.Loans;
 import data.StaffMembers;
 import java.awt.Color;
 import javax.swing.DefaultListModel;
-<<<<<<< HEAD
 import java.util.Date;
-=======
->>>>>>> origin/master
 import loaning.DayLoan;
 import loaning.Loan;
 import loaning.LongLoan;
@@ -243,27 +240,9 @@ public class FormMain extends javax.swing.JFrame {
         }
 
     }
-    /**
-     * Watch this space, gonna submit it to the shit people that developed
-     * the JDK.
-     * @param date
-     * @return a string in a format that actually makes sense.
-     * 
-     */
-    private String formatDate(Date date) {
-        String returns = "";
-        int month = date.getMonth() + 1;
-        int year = date.getYear() + 1900;
-        returns += " " + date.getDate()+ "/"
-                + month + "/" //10438524 
-                + year + " ";
-        returns += date.getHours() + ":"
-                + date.getMinutes();
-        return returns;
-    }
     
     private void populateRentalList(String ref) {
-        
+        listModel.clear();
         for (Loan objLoan : loans.getLoans()) {
             DayLoan dayLoan = null;
             LongLoan longLoan = null;
@@ -286,10 +265,10 @@ public class FormMain extends javax.swing.JFrame {
                 // TODO: Use functions in the JDK that aren't a heaping pile of shit
                 if (longLoan != null) {
                     //Deprecated but I'm too lazy to fix it right now 
-                    listElement += formatDate(longLoan.getStartDate()) + " - "
-                                + formatDate(longLoan.getEndDate());
+                    listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
+                                + data.UtilityFunctions.formatDate(longLoan.getEndDate());
                 } else if (dayLoan != null) {
-                    listElement += formatDate(dayLoan.getRentalDate());
+                    listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
                 }
                 listModel.addElement(listElement);
             }
