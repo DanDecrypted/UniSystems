@@ -9,6 +9,8 @@ import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 import car.*;
 import data.Cars;
+import data.Loans;
+import loaning.*;
 import javax.swing.DefaultListModel;
 
 /**
@@ -19,7 +21,9 @@ public class FormCar extends javax.swing.JFrame {
     
     
     private Cars cars = Cars.getInstance();
-    private DefaultListModel listModel;
+    private Loans loans = Loans.getInstance();
+    private DefaultListModel serviceListModel;
+    private DefaultListModel loanListModel;
 
     /**
      * Creates new form FormCar
@@ -42,10 +46,12 @@ public class FormCar extends javax.swing.JFrame {
         
         initComponents();
         
-        listModel = new DefaultListModel();
+        serviceListModel = new DefaultListModel();
+        loanListModel = new DefaultListModel();
         
         
         cars.loadFromDisk();
+        loans.loadFromDisk();
         this.getContentPane().setBackground(new Color (238,238,238));
         this.btnCreate.setVisible(false);
         
@@ -60,6 +66,7 @@ public class FormCar extends javax.swing.JFrame {
                 this.txtSeats.setText(Integer.toString(car.getSeats()));
                 this.lblStatus.setText(car.getStatus().name());
                 populateServiceHistoryList(car);
+                populateLoanHistory(car);
                 break;
             }   
         }
@@ -71,23 +78,57 @@ public class FormCar extends javax.swing.JFrame {
      * @param reg car registration number
      */
     private void populateServiceHistoryList(Car objCar) {
-        listModel.clear();
+        serviceListModel.clear();
         
          
-             
-                 for (int i=0; i < objCar.getServiceRecord().size(); i++)
-                 { 
-                    String listElement = objCar.getServiceRecord().get(i).getMechanic() + " - ";
-                            listElement += objCar.getServiceRecord().get(i).getSummary() + " - ";
-                            listElement += data.UtilityFunctions.formatDate(
-                                    objCar.getServiceRecord().get(i).getDateOfService()) + " ";
-                            listModel.addElement(listElement);
-                 }
+        for (int i=0; i < objCar.getServiceRecord().size(); i++){ 
+            String listElement = objCar.getServiceRecord().get(i).getMechanic() + " - ";
+            listElement += objCar.getServiceRecord().get(i).getSummary() + " - ";
+            listElement += data.UtilityFunctions.formatDate(
+            objCar.getServiceRecord().get(i).getDateOfService()) + " ";
+            serviceListModel.addElement(listElement);
+        }
                  
-                 this.lstServiceHistory.setModel(listModel);
-                 
-             
-         
+        this.lstServiceHistory.setModel(serviceListModel);
+          
+    }
+    
+    private void populateLoanHistory(Car objCar){
+        loanListModel.clear();
+        String listElement = "";
+        for(Loan loan : loans.getLoans()){
+            if(loan.getCar().getRegNo().equals(objCar.getRegNo())){
+                DayLoan dayLoan = null;
+                LongLoan longLoan = null;
+                try {
+                    dayLoan = (DayLoan)loan;
+                } catch (Exception e) {} 
+                try {
+                    longLoan = (LongLoan)loan;
+                } catch (Exception e) {}
+
+                if(dayLoan != null) {
+                    //we have a day loan
+                    dayLoan.getRentalDate();
+                } else if (longLoan != null) {
+                    //we have a long loan
+                    longLoan.getEndDate();
+                }
+                listElement = loan.getLoaner().getForename().toString()+" " 
+                        + loan.getLoaner().getSurname()+" - ";
+                if(longLoan != null){
+                   listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate())+" - "+
+                           data.UtilityFunctions.formatDate(longLoan.getEndDate());
+                }
+                else if (dayLoan != null){
+                    listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
+                }
+                
+                loanListModel.addElement(listElement);
+            }  
+        }
+        
+        this.lstLoanHistory.setModel(loanListModel);
     }
      
     /**
@@ -127,6 +168,7 @@ public class FormCar extends javax.swing.JFrame {
         cboFuelType = new javax.swing.JComboBox<>();
         btnCreate = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -160,11 +202,6 @@ public class FormCar extends javax.swing.JFrame {
         lblStatusTitle.setText("Status:");
 
         lstLoanHistory.setFont(new java.awt.Font("Lato", 0, 12)); // NOI18N
-        lstLoanHistory.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(lstLoanHistory);
 
         lblLoanHistory.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
@@ -185,9 +222,22 @@ public class FormCar extends javax.swing.JFrame {
 
         btnCreate.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         btnCreate.setText("Create");
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateActionPerformed(evt);
+            }
+        });
 
         btnUpdate.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         btnUpdate.setText("Update");
+
+        btnCancel.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -249,7 +299,9 @@ public class FormCar extends javax.swing.JFrame {
                                 .addGap(197, 197, 197)
                                 .addComponent(btnUpdate)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCreate)))
+                                .addComponent(btnCreate)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnCancel)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -305,12 +357,21 @@ public class FormCar extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate)
-                    .addComponent(btnCreate))
+                    .addComponent(btnCreate)
+                    .addComponent(btnCancel))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+        
+    }//GEN-LAST:event_btnCreateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -350,6 +411,7 @@ public class FormCar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnUpdate;
     private javax.swing.ButtonGroup buttonGroup1;

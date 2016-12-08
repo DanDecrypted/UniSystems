@@ -111,7 +111,6 @@ public class CarLookupForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         Boolean found = false;
         for (Car car : cars.getCars()) {
-            // foreach (Car car in cars.getCars()) { } 
             if (car.getRegNo().equals(txtRegNumb.getText().toUpperCase())) {
                 FormCar frm = new FormCar(car.getRegNo());
                 frm.setVisible(true);
