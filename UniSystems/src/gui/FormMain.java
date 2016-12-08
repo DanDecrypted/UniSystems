@@ -10,7 +10,10 @@ import data.Loans;
 import data.StaffMembers;
 import java.awt.Color;
 import javax.swing.DefaultListModel;
+import java.util.Date;
+import loaning.DayLoan;
 import loaning.Loan;
+import loaning.LongLoan;
 import people.Staff;
 
 /**
@@ -237,10 +240,55 @@ public class FormMain extends javax.swing.JFrame {
         }
 
     }
+    /**
+     * Watch this space, gonna submit it to the shit people that developed
+     * the JDK.
+     * @param date
+     * @return a string in a format that actually makes sense.
+     * 
+     */
+    private String formatDate(Date date) {
+        String returns = "";
+        int month = date.getMonth() + 1;
+        int year = date.getYear() + 1900;
+        returns += " " + date.getDate()+ "/"
+                + month + "/" //10438524 
+                + year + " ";
+        returns += date.getHours() + ":"
+                + date.getMinutes();
+        return returns;
+    }
+    
     private void populateRentalList(String ref) {
+        
         for (Loan objLoan : loans.getLoans()) {
+            DayLoan dayLoan = null;
+            LongLoan longLoan = null;
+            try {
+                dayLoan = (DayLoan)objLoan;
+            } catch (Exception e) {} 
+            try {
+                longLoan = (LongLoan)objLoan;
+            } catch (Exception e) {}
+            
+            if(dayLoan != null) {
+                //we have a day loan
+                dayLoan.getRentalDate();
+            } else if (longLoan != null) {
+                //we have a long loan
+                longLoan.getEndDate();
+            }
             if (objLoan.getLoaner().getStaffRefNumb().equals(ref)) {
-                listModel.addElement(objLoan.getCar().getRegNo().toString());
+                String listElement = objLoan.getCar().getRegNo().toString();
+                // TODO: Use functions in the JDK that aren't a heaping pile of shit
+                if (longLoan != null) {
+                    //Deprecated but I'm too lazy to fix it right now 
+                    listElement += formatDate(longLoan.getStartDate()) + " - "
+                                + formatDate(longLoan.getEndDate());
+                } else if (dayLoan != null) {
+                    listElement += formatDate(dayLoan.getRentalDate());
+                }
+                listModel.addElement(listElement);
             }
         }
         jlstRentalHistory.setModel(listModel);
