@@ -3,7 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< Updated upstream
             <file>file:/Users/Craig/NetBeansProjects/UniSystems/UniSystemsDataModel/src/data/UtilityFunctions.java</file>
+=======
+            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/src/people/Address.java</file>
+            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/src/car/Car.java</file>
+            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/src/car/Service.java</file>
+            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/src/loaning/LongLoan.java</file>
+            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/src/testharness/ObjectSerialisationTest.java</file>
+            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/src/loaning/Loan.java</file>
+            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/src/data/ISerialisable.java</file>
+            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/src/data/Loans.java</file>
+            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/src/data/StaffMembers.java</file>
+>>>>>>> Stashed changes
         </group>
     </open-files>
 </project-private>
