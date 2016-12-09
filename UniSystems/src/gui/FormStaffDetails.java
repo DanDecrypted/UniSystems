@@ -31,12 +31,6 @@ public class FormStaffDetails extends javax.swing.JFrame {
         this.getContentPane().setBackground(new Color (238,238,238));
         initComponents();
         this.btnUpdate.setVisible(false);
-        this.lstLoanHistory.setVisible(false);
-        this.lblLoanHistory.setVisible(false);
-        this.jScrollPane2.setVisible(false);
-        this.setSize(this.getSize().width,
-                jSeparator2.getLocation().y + jSeparator2.getSize().height 
-                        + btnCreate.getSize().height);
     }
     
     public FormStaffDetails(String staffNumb){
