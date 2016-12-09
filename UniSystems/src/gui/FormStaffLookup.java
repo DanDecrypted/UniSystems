@@ -10,6 +10,7 @@ import people.Staff;
 import data.StaffMembers;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import people.Administrator;
 
 /**
  *
@@ -18,6 +19,7 @@ import javax.swing.JOptionPane;
 public class FormStaffLookup extends javax.swing.JFrame {
     
     private StaffMembers staff = StaffMembers.getInstance();
+    private Administrator admin = new Administrator();
     /**
      * Creates new form FormStaffLookup
      */
@@ -148,7 +150,7 @@ public class FormStaffLookup extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnAddStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStaffActionPerformed
-        FormStaffDetails frm = new FormStaffDetails();
+        FormStaffDetails frm = new FormStaffDetails(admin);
         frm.setVisible(true);
     }//GEN-LAST:event_btnAddStaffActionPerformed
 

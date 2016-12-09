@@ -9,11 +9,16 @@ package gui;
 import data.Loans;
 import data.StaffMembers;
 import java.awt.Color;
-import java.util.Calendar;
+import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import loaning.DayLoan;
 import loaning.Loan;
 import loaning.LongLoan;
+import people.Address;
+import people.Administrator;
+import people.Faculty;
+import people.Position;
 import people.Staff;
 
 /**
@@ -22,12 +27,18 @@ import people.Staff;
  */
 public class FormStaffDetails extends javax.swing.JFrame {
     private StaffMembers staff = StaffMembers.getInstance();
-     private Loans loans = Loans.getInstance();
+    private Loans loans = Loans.getInstance();
+    private Administrator admin;
     private DefaultListModel listModel;
     /**
      * Creates new form FormStaffDetails
      */
     public FormStaffDetails() {
+        this.getContentPane().setBackground(new Color (238,238,238));
+        initComponents();
+    }
+    
+    public FormStaffDetails(Administrator admin){
         this.getContentPane().setBackground(new Color (238,238,238));
         initComponents();
         this.btnUpdate.setVisible(false);
@@ -37,6 +48,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
         this.setSize(this.getSize().width,
                 jSeparator2.getLocation().y + jSeparator2.getSize().height 
                         + btnCreate.getSize().height);
+        this.admin = admin;
     }
     
     public FormStaffDetails(String staffNumb){
@@ -53,12 +65,12 @@ public class FormStaffDetails extends javax.swing.JFrame {
                 this.txtStaffNumb.setText(staffNumb);
                 this.txtDob.setText(data.UtilityFunctions.formatDateOfBirth(people.getDateOfBirth()));
                 this.txtEmail.setText(people.getEmailAddress());
-                this.txtFaculty.setText(people.getFaculty().toString());
+                this.cboFaculty.setSelectedItem(people.getFaculty().toString());
                 this.txtForename.setText(people.getForename());
                 this.txtGender.setText(people.getGender());
                 this.txtOffice.setText(people.getOfficeRoom());
                 this.txtPhoneNumb.setText(people.getPhoneNumber());
-                this.txtPosition.setText(people.getPosition().toString());
+                this.cboPosition.setSelectedItem(people.getPosition().toString());
                 this.txtSurname.setText(people.getSurname());
                 this.txtTitle.setText(people.getTitle());
                 this.txtWorkNumb.setText(people.getWorkNumb());
@@ -118,9 +130,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
         lblStaffNumb = new javax.swing.JLabel();
         lblMainTitle = new javax.swing.JLabel();
         lblPosition = new javax.swing.JLabel();
-        txtPosition = new javax.swing.JTextField();
         lblFaculty = new javax.swing.JLabel();
-        txtFaculty = new javax.swing.JTextField();
         lblOffice = new javax.swing.JLabel();
         txtOffice = new javax.swing.JTextField();
         lblWorkNumb = new javax.swing.JLabel();
@@ -132,7 +142,6 @@ public class FormStaffDetails extends javax.swing.JFrame {
         lblSurname = new javax.swing.JLabel();
         txtSurname = new javax.swing.JTextField();
         lblDob = new javax.swing.JLabel();
-        txtDob = new javax.swing.JTextField();
         lblGender = new javax.swing.JLabel();
         txtGender = new javax.swing.JTextField();
         lblPhone = new javax.swing.JLabel();
@@ -150,6 +159,9 @@ public class FormStaffDetails extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         lstLoanHistory = new javax.swing.JList<>();
         btnCreate = new javax.swing.JButton();
+        cboFaculty = new javax.swing.JComboBox<>();
+        cboPosition = new javax.swing.JComboBox<>();
+        txtDob = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(450, 250, 0, 0));
@@ -167,12 +179,8 @@ public class FormStaffDetails extends javax.swing.JFrame {
         lblPosition.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblPosition.setText("Position:");
 
-        txtPosition.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-
         lblFaculty.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblFaculty.setText("Faculty:");
-
-        txtFaculty.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
 
         lblOffice.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblOffice.setText("Office Room:");
@@ -201,8 +209,6 @@ public class FormStaffDetails extends javax.swing.JFrame {
 
         lblDob.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblDob.setText("DOB:");
-
-        txtDob.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
 
         lblGender.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblGender.setText("Gender:");
@@ -249,6 +255,17 @@ public class FormStaffDetails extends javax.swing.JFrame {
 
         btnCreate.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         btnCreate.setText("Create");
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateActionPerformed(evt);
+            }
+        });
+
+        cboFaculty.setModel(new DefaultComboBoxModel(Faculty.values()));
+
+        cboPosition.setModel(new DefaultComboBoxModel(Position.values()));
+
+        txtDob.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("YYYY/MM/dd"))));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -271,12 +288,12 @@ public class FormStaffDetails extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtForename, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtStaffNumb, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtGender, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtForename, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                    .addComponent(txtStaffNumb, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                    .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                    .addComponent(txtSurname, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                    .addComponent(txtGender, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                    .addComponent(txtDob, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(34, 34, 34)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblOffice)
@@ -286,19 +303,18 @@ public class FormStaffDetails extends javax.swing.JFrame {
                                     .addComponent(lblPhone)
                                     .addComponent(lblEmail))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtEmail)
+                                            .addComponent(txtPhoneNumb, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGap(7, 7, 7)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtWorkNumb, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtOffice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtFaculty, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(txtEmail)
-                                                .addComponent(txtPhoneNumb, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(txtPosition, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(cboFaculty, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cboPosition, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 12, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -330,7 +346,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
                 .addComponent(lblMainTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -351,8 +367,8 @@ public class FormStaffDetails extends javax.swing.JFrame {
                             .addComponent(lblWorkNumb))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblDob))
+                            .addComponent(lblDob)
+                            .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -360,12 +376,12 @@ public class FormStaffDetails extends javax.swing.JFrame {
                             .addComponent(lblEmail)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPosition))
+                            .addComponent(lblPosition)
+                            .addComponent(cboPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtFaculty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblFaculty))
+                            .addComponent(lblFaculty)
+                            .addComponent(cboFaculty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtOffice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -382,7 +398,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblGender1)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 31, Short.MAX_VALUE)
+                .addGap(18, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate)
                     .addComponent(btnCancel)
@@ -404,6 +420,15 @@ public class FormStaffDetails extends javax.swing.JFrame {
         frm.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+        Staff newStaff = new Staff(txtStaffNumb.getText(), (Position)cboPosition.getSelectedItem(), 
+                (Faculty)cboFaculty.getSelectedItem(), txtOffice.getText(), txtWorkNumb.getText(), 
+                new Address(jtxtAddress.getText(),"","","",""), txtTitle.getText(), txtForename.getText(), 
+                txtSurname.getText(),new Date(txtDob.getText()),
+                txtGender.getText(), txtPhoneNumb.getText(), txtEmail.getText() );
+        admin.createStaffMember(newStaff);
+    }//GEN-LAST:event_btnCreateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -444,6 +469,8 @@ public class FormStaffDetails extends javax.swing.JFrame {
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JComboBox<String> cboFaculty;
+    private javax.swing.JComboBox<String> cboPosition;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
@@ -465,14 +492,12 @@ public class FormStaffDetails extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblWorkNumb;
     private javax.swing.JList<String> lstLoanHistory;
-    private javax.swing.JTextField txtDob;
+    private javax.swing.JFormattedTextField txtDob;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtFaculty;
     private javax.swing.JTextField txtForename;
     private javax.swing.JTextField txtGender;
     private javax.swing.JTextField txtOffice;
     private javax.swing.JTextField txtPhoneNumb;
-    private javax.swing.JTextField txtPosition;
     private javax.swing.JTextField txtStaffNumb;
     private javax.swing.JTextField txtSurname;
     private javax.swing.JTextField txtTitle;
