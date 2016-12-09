@@ -22,7 +22,6 @@ import car.Car;
  */
 public class Cars extends Observed implements ISerialisable {
     private ArrayList<Car> carsList;
-    private ArrayList<IObserver> observers;
     private static final Cars cars = new Cars();
     
     private Cars() { }
@@ -40,8 +39,14 @@ public class Cars extends Observed implements ISerialisable {
                   new FileInputStream(objFile)))) {
                 Object objData = objIn.readObject();
                 ArrayList<Car> newCarsList = (ArrayList)objData;
-                if (newCarsList != null) 
+                if (newCarsList != null) {
                     carsList = newCarsList;
+                    CarsObserver carsObserver = new CarsObserver();
+                    for (Car car : carsList) {
+                        car.registerObserver(carsObserver);
+                    }
+                }
+                
                 return("Successfully loaded " + getCars().size() + " Cars");
             } catch (Exception ex) {
                 return("Data file could not be read " + ex.getMessage());

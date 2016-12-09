@@ -41,6 +41,10 @@ public class Loans extends Observed implements ISerialisable{
                 ArrayList<Loan> newLoanList = (ArrayList)objData;
                 if (newLoanList != null) {
                     loanList = newLoanList;
+                    LoansObserver loansObserver = new LoansObserver();
+                    for (Loan loan : loanList) {
+                        loan.registerObserver(loansObserver);
+                    }
                 }    
                 return ("Successfully loaded " + getLoans().size() + " Loans");
             } catch (Exception ex) {

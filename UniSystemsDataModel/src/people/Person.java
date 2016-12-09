@@ -23,7 +23,6 @@ public class Person extends data.Observed implements java.io.Serializable {
     protected String gender;
     protected String phoneNumber;
     protected String emailAddress;
-    protected transient ArrayList<IObserver> observers;
    
     public Person() {
         

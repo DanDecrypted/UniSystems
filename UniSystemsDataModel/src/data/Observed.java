@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author dansc
  */
 public class Observed implements ISubject {
-    protected ArrayList<IObserver> observers;
+    protected transient ArrayList<IObserver> observers;
     
     @Override 
     public Boolean registerObserver(IObserver o) {

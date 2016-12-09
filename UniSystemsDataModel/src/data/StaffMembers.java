@@ -40,8 +40,13 @@ public class StaffMembers extends Observed implements ISerialisable {
                     new FileInputStream(objFile)))) {
                 Object objData = objIn.readObject();
                 ArrayList<Staff> newStaffList = (ArrayList)objData;
-                if (newStaffList != null) 
+                if (newStaffList != null) {
                     staffList = newStaffList;
+                    StaffObserver staffObserver = new StaffObserver();
+                    for (Staff staff : staffList) {
+                        staff.registerObserver(staffObserver);
+                    }
+                }
                 return ("Successfully loaded " + getStaffMembers().size() + " Staff members");
             } catch (Exception ex) {
                 return ("Data file could not be read " + ex.getMessage());
