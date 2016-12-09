@@ -33,7 +33,7 @@ public class Cars extends Observed implements ISerialisable {
     
     @Override
     public String loadFromDisk() {
-        File objFile = new File("Cars.dat");
+        File objFile = new File("dist/Cars.dat");
         if (objFile.exists() && objFile.canRead()) {
             try (ObjectInputStream objIn = new ObjectInputStream(
                   new BufferedInputStream(
@@ -53,7 +53,7 @@ public class Cars extends Observed implements ISerialisable {
     
     @Override
     public String saveToDisk() {
-        File objFile = new File("Cars.dat");
+        File objFile = new File("dist/Cars.dat");
         try (ObjectOutputStream objOut = new ObjectOutputStream(
                 new BufferedOutputStream(
                 new FileOutputStream(objFile)))) {

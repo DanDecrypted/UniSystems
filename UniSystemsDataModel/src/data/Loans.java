@@ -32,7 +32,7 @@ public class Loans extends Observed implements ISerialisable{
     }   
     
     public String loadFromDisk() {
-        File objFile = new File("Loans.dat");
+        File objFile = new File("dist/Loans.dat");
         if (objFile.exists() && objFile.canRead()) {
             try (ObjectInputStream objIn = new ObjectInputStream(
                   new BufferedInputStream(
@@ -52,7 +52,7 @@ public class Loans extends Observed implements ISerialisable{
     }
     
     public String saveToDisk() {
-        File objFile = new File("Loans.dat");
+        File objFile = new File("dist/Loans.dat");
         try (ObjectOutputStream objOut = new ObjectOutputStream(
                 new BufferedOutputStream(
                 new FileOutputStream(objFile)))) {

@@ -14,28 +14,34 @@ import data.Loans;
 import data.StaffMembers;
 import data.Cars;
 import java.util.Date;
-import data.IObserver;
+import data.LoansObserver;
+import data.CarsObserver;
+import data.StaffObserver;
 
 /**
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
-public class Administrator extends Staff implements IObserver{
+public class Administrator extends Staff {
     Loans loans = Loans.getInstance();
     StaffMembers staffMembers = StaffMembers.getInstance();
     Cars cars = Cars.getInstance();
+    LoansObserver loanObserver = new LoansObserver();
+    StaffObserver staffObserver = new StaffObserver();
+    CarsObserver carsObserver = new CarsObserver();
+    
     
     public Administrator() {
         this.position = Position.TRANSPORT_OFFICE_ADMIN;
     }
     
     public void createCar(Car car) {
-        cars.registerObserver(this);
+        cars.registerObserver(carsObserver);
         cars.addCar(car);
     }
     
     public void createStaffMember(Staff staff) {
-        staffMembers.registerObserver(this);
+        staffMembers.registerObserver(staffObserver);
         staffMembers.addStaff(staff);
     }
     
@@ -43,7 +49,7 @@ public class Administrator extends Staff implements IObserver{
         Date returnDate = new Date();
         returnDate.setYear(returnDate.getYear() + 1);
         LongLoan loan = new LongLoan(staff, car, new Date(), returnDate);
-        loans.registerObserver(this);
+        loans.registerObserver(loanObserver);
         loans.addLoan(loan);
     }
     
@@ -52,19 +58,12 @@ public class Administrator extends Staff implements IObserver{
         returnDate.setHours(23);
         returnDate.setMinutes(59);
         DayLoan loan = new DayLoan(staff, car, returnDate);
-        loans.registerObserver(this);
+        loans.registerObserver(loanObserver);
         loans.addLoan(loan);
     }
     
     public void sendForService(Car car){
         car.setStatus(Status.IN_FOR_SERVICE);
         
-    }
-    
-    @Override 
-    public void update() {
-        System.out.println(loans.saveToDisk());
-        System.out.println(cars.saveToDisk());
-        System.out.println(staffMembers.saveToDisk());
     }
 }

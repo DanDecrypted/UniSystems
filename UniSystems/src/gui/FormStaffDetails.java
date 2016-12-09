@@ -10,6 +10,8 @@ import data.Loans;
 import data.StaffMembers;
 import java.awt.Color;
 import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import loaning.DayLoan;
@@ -63,7 +65,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
         for(Staff people : staff.getStaffMembers()){
             if (people.getStaffRefNumb().equals(staffNumb)){
                 this.txtStaffNumb.setText(staffNumb);
-                this.txtDob.setText(data.UtilityFunctions.formatDateOfBirth(people.getDateOfBirth()));
+                this.txtDOB.setText(data.UtilityFunctions.formatDateOfBirth(people.getDateOfBirth()));
                 this.txtEmail.setText(people.getEmailAddress());
                 this.cboFaculty.setSelectedItem(people.getFaculty().toString());
                 this.txtForename.setText(people.getForename());
@@ -161,7 +163,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
         btnCreate = new javax.swing.JButton();
         cboFaculty = new javax.swing.JComboBox<>();
         cboPosition = new javax.swing.JComboBox<>();
-        txtDob = new javax.swing.JFormattedTextField();
+        txtDOB = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(450, 250, 0, 0));
@@ -265,8 +267,6 @@ public class FormStaffDetails extends javax.swing.JFrame {
 
         cboPosition.setModel(new DefaultComboBoxModel(Position.values()));
 
-        txtDob.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("YYYY/MM/dd"))));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -293,7 +293,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
                                     .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                                     .addComponent(txtSurname, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                                     .addComponent(txtGender, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                    .addComponent(txtDob, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(txtDOB))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(34, 34, 34)
@@ -372,7 +372,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblDob)
-                            .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -428,12 +428,18 @@ public class FormStaffDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-        Staff newStaff = new Staff(txtStaffNumb.getText(), (Position)cboPosition.getSelectedItem(), 
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-YYYY");
+        try {
+            Staff newStaff = new Staff(txtStaffNumb.getText(), (Position)cboPosition.getSelectedItem(), 
                 (Faculty)cboFaculty.getSelectedItem(), txtOffice.getText(), txtWorkNumb.getText(), 
                 new Address(jtxtAddress.getText(),"","","",""), txtTitle.getText(), txtForename.getText(), 
-                txtSurname.getText(),new Date(txtDob.getText()),
+                txtSurname.getText(), formatter.parse(txtDOB.getText()),
                 txtGender.getText(), txtPhoneNumb.getText(), txtEmail.getText() );
-        admin.createStaffMember(newStaff);
+            System.out.println("new staff member created " + newStaff.getForename());
+            if (admin == null) admin = new Administrator(); 
+            admin.createStaffMember(newStaff);
+        } catch (Exception e) {
+        }  //formatter.parse throws an uncaught exception if not properly used.
     }//GEN-LAST:event_btnCreateActionPerformed
 
     /**
@@ -498,7 +504,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblWorkNumb;
     private javax.swing.JList<String> lstLoanHistory;
-    private javax.swing.JFormattedTextField txtDob;
+    private javax.swing.JTextField txtDOB;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtForename;
     private javax.swing.JTextField txtGender;
