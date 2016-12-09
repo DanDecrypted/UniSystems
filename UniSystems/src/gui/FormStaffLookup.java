@@ -49,7 +49,7 @@ public class FormStaffLookup extends javax.swing.JFrame {
 
         lblStaffHeader.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
         lblStaffHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblStaffHeader.setText("Car Search");
+        lblStaffHeader.setText("Staff Search");
 
         lblStaffNumb.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblStaffNumb.setText("Staff Number:");
