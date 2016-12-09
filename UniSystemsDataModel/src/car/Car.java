@@ -25,6 +25,7 @@ public class Car implements java.io.Serializable{
     private int milage;
     private int seats;
     private int doors;
+    private LoanType loanType;
     
     public Car(){
         
@@ -84,6 +85,15 @@ public class Car implements java.io.Serializable{
     public int getDoors(){
         return doors;
     }
+
+    public LoanType getLoanType() {
+        return loanType;
+    }
+
+    public void setLoanType(LoanType loanType) {
+        this.loanType = loanType;
+    }
+    
     
     public ArrayList<Service> getServiceRecord() {
         ArrayList<Service> temp = new ArrayList<Service>();

@@ -25,6 +25,7 @@ public class FormMain extends javax.swing.JFrame {
     private StaffMembers staffMembers = StaffMembers.getInstance();
     private Loans loans = Loans.getInstance();
     private DefaultListModel listModel;
+    private Staff staff;
     
     public FormMain() {
         System.out.println(staffMembers.loadFromDisk());
@@ -123,6 +124,11 @@ public class FormMain extends javax.swing.JFrame {
 
         btnRentCar.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         btnRentCar.setText("Day Loan");
+        btnRentCar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRentCarActionPerformed(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         jButton1.setText("Long Term");
@@ -217,28 +223,39 @@ public class FormMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLookupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLookupActionPerformed
-        populateStaffDetails(txtStaffNumb.getText());
-        populateRentalList(txtStaffNumb.getText());
+        lookupStaffMember(txtStaffNumb.getText());
+        populateStaffDetails(this.staff);
+        populateRentalList(this.staff);
        
     }//GEN-LAST:event_btnLookupActionPerformed
+
+    private void btnRentCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentCarActionPerformed
+        FormAvailableCars frm = new FormAvailableCars(this.staff, "");
+        frm.setVisible(true);
+    }//GEN-LAST:event_btnRentCarActionPerformed
 /**
  * populate staff detail fields depending on which ref number is typed in
  * @param ref staff reference number
  */
-    private void populateStaffDetails(String ref) {
+    private void lookupStaffMember(String ref) {
         for (Staff staff : staffMembers.getStaffMembers()) {    //loop though all staff members
-            if (staff.getStaffRefNumb().equals(ref)) {  
+            if (staff.getStaffRefNumb().equals(ref)) {
+                this.staff = staff;
+            }
+        }
+    }
+    
+    private void populateStaffDetails(Staff staff) {
+        
                 txtForename.setText(staff.getForename());
                 txtSurname.setText(staff.getSurname());
                 txtPosition.setText(staff.getPosition().toString());
                 txtFaculty.setText(staff.getFaculty().toString());
                 txtOfficeRoom.setText(staff.getOfficeRoom());
                 txtOfficePhone.setText(staff.getWorkNumb());
-            }
-        }
     }
     
-    private void populateRentalList(String ref) {
+    private void populateRentalList(Staff staff) {
         listModel.clear();
         for (Loan objLoan : loans.getLoans()) {
             DayLoan dayLoan = null;
@@ -257,7 +274,7 @@ public class FormMain extends javax.swing.JFrame {
                 //we have a long loan
                 longLoan.getEndDate();
             }
-            if (objLoan.getLoaner().getStaffRefNumb().equals(ref)) {
+            if (objLoan.getLoaner().equals(staff)) {
                 String listElement = objLoan.getCar().getRegNo().toString()+ " - ";
                 // TODO: Use functions in the JDK that aren't a heaping pile of shit
                 if (longLoan != null) {
