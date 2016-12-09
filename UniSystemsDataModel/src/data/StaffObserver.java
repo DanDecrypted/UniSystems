@@ -13,7 +13,7 @@ import data.StaffMembers;
 public class StaffObserver implements IObserver {
     StaffMembers staffMembers = StaffMembers.getInstance();
     public StaffObserver() {
-        System.out.println(staffMembers.loadFromDisk());
+        
     }
     
     @Override

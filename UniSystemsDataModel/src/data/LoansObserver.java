@@ -12,7 +12,7 @@ import data.Loans;
 public class LoansObserver implements IObserver {
     private Loans loans = Loans.getInstance();
     public LoansObserver() { 
-        System.out.println(loans.loadFromDisk());
+        
     }
     
     @Override 

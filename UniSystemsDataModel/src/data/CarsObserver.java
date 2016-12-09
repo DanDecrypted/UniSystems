@@ -13,7 +13,7 @@ import data.Cars;
 public class CarsObserver implements IObserver{
     private Cars cars = Cars.getInstance();
     public CarsObserver() {
-        System.out.println(cars.loadFromDisk());
+        
     }
     
     @Override
