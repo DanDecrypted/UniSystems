@@ -12,7 +12,7 @@ import java.util.Date;
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
-public class Service implements java.io.Serializable{
+public class Service extends data.Observed implements java.io.Serializable{
     private String mechanic;
     private ArrayList<String> repairs;
     private String summary;
@@ -35,6 +35,12 @@ public class Service implements java.io.Serializable{
     
     public ArrayList<String> getRepairs(){
         return repairs;
+    }
+    
+    public void addRepair(String repair) {
+        if (repairs == null) repairs = new ArrayList<String>();
+        repairs.add(repair);
+        this.notifyObservers();
     }
     
     public Date getDateOfService(){

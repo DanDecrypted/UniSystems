@@ -51,6 +51,7 @@ public class Staff extends Person {
 
     public void setPosition(Position position) {
         this.position = position;
+        this.notifyObservers();
     }
 
     public Faculty getFaculty() {
@@ -59,6 +60,7 @@ public class Staff extends Person {
 
     public void setFaculty(Faculty faculty) {
         this.faculty = faculty;
+        this.notifyObservers();
     }
 
     public String getOfficeRoom() {
@@ -67,6 +69,7 @@ public class Staff extends Person {
 
     public void setOfficeRoom(String officeRoom) {
         this.officeRoom = officeRoom;
+        this.notifyObservers();
     }
 
     public String getWorkNumb() {
@@ -75,6 +78,7 @@ public class Staff extends Person {
 
     public void setWorkNumb(String workNumb) {
         this.workNumb = workNumb;
+        this.notifyObservers();
     }
 
     public Address getAddress() {
@@ -83,5 +87,6 @@ public class Staff extends Person {
 
     public void setAddress(Address address) {
         this.address = address;
+        this.notifyObservers();
     }
 }

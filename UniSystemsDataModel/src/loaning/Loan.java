@@ -13,7 +13,7 @@ import people.Staff;
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
-public class Loan implements java.io.Serializable{
+public class Loan extends data.Observed implements java.io.Serializable{
     private Staff loaner;
     private Car car;
     private String carNotes;

@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
-public class Car implements java.io.Serializable{
+public class Car extends data.Observed implements java.io.Serializable{
     /**
      * RegNo should be unique. it is the method of identifying the car
      */
@@ -56,6 +56,7 @@ public class Car implements java.io.Serializable{
     
     public void setStatus(Status status) {
         this.status = status;
+        this.notifyObservers();
     }
     
     public Classification getClassification() {
@@ -92,6 +93,7 @@ public class Car implements java.io.Serializable{
 
     public void setLoanType(LoanType loanType) {
         this.loanType = loanType;
+        this.notifyObservers();
     }
     
     
@@ -106,5 +108,6 @@ public class Car implements java.io.Serializable{
     public void addService(Service service) {
         if (serviceRecord == null) serviceRecord = new ArrayList<Service>();
         serviceRecord.add(service);
+        this.notifyObservers();
     }
 }

@@ -36,19 +36,30 @@ public class Administrator extends Staff {
     }
     
     public void createCar(Car car) {
+        car.registerObserver(carsObserver);
         cars.registerObserver(carsObserver);
         cars.addCar(car);
     }
     
     public void createStaffMember(Staff staff) {
+        staff.registerObserver(staffObserver);
         staffMembers.registerObserver(staffObserver);
         staffMembers.addStaff(staff);
+    }
+    
+    public void removeStaffMember(Staff staff) {
+        if (staffMembers.getStaffMembers().contains(staff)) {
+            staff.removeObserver(staffObserver);
+            staffMembers.removeObserver(staffObserver);
+            staffMembers.removeStaff(staff);
+        }
     }
     
     public void assignLongLoan(Car car, Staff staff) {
         Date returnDate = new Date();
         returnDate.setYear(returnDate.getYear() + 1);
         LongLoan loan = new LongLoan(staff, car, new Date(), returnDate);
+        loan.registerObserver(loanObserver);
         loans.registerObserver(loanObserver);
         loans.addLoan(loan);
     }
@@ -58,12 +69,12 @@ public class Administrator extends Staff {
         returnDate.setHours(23);
         returnDate.setMinutes(59);
         DayLoan loan = new DayLoan(staff, car, returnDate);
+        loan.registerObserver(loanObserver);
         loans.registerObserver(loanObserver);
         loans.addLoan(loan);
     }
     
     public void sendForService(Car car){
         car.setStatus(Status.IN_FOR_SERVICE);
-        
     }
 }

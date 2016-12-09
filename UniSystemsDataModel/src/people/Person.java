@@ -6,13 +6,16 @@
  */
 package people;
 
+import data.IObserver;
+import data.Observed;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
-public class Person implements java.io.Serializable {
+public class Person extends data.Observed implements java.io.Serializable {
     protected String title;
     protected String forename;
     protected String surname;
@@ -20,6 +23,7 @@ public class Person implements java.io.Serializable {
     protected String gender;
     protected String phoneNumber;
     protected String emailAddress;
+    protected transient ArrayList<IObserver> observers;
    
     public Person() {
         
@@ -41,6 +45,7 @@ public class Person implements java.io.Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+        this.notifyObservers();
     }
 
     public String getForename() {
@@ -49,6 +54,7 @@ public class Person implements java.io.Serializable {
 
     public void setForename(String forename) {
         this.forename = forename;
+        this.notifyObservers();
     }
 
     public String getSurname() {
@@ -57,6 +63,7 @@ public class Person implements java.io.Serializable {
 
     public void setSurname(String surname) {
         this.surname = surname;
+        this.notifyObservers();
     }
 
     public Date getDateOfBirth() {
@@ -81,6 +88,7 @@ public class Person implements java.io.Serializable {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+        this.notifyObservers();
     }
 
     public String getEmailAddress() {
@@ -89,8 +97,6 @@ public class Person implements java.io.Serializable {
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+        this.notifyObservers();
     }
-    
-    
-    
 }

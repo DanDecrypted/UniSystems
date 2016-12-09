@@ -12,11 +12,11 @@ import data.Loans;
 public class LoansObserver implements IObserver {
     private Loans loans = Loans.getInstance();
     public LoansObserver() { 
-        loans.loadFromDisk();
+        System.out.println(loans.loadFromDisk());
     }
     
     @Override 
     public void update() {
-        loans.saveToDisk();
+        System.out.println(loans.saveToDisk());
     }
 }

@@ -74,8 +74,10 @@ public class StaffMembers extends Observed implements ISerialisable {
     
     public void removeStaff(Staff staff) {
         if (staffList == null) return;
-        staffList.remove(staff);
-        notifyObservers();
+        if (staffList.contains(staff)) {
+            staffList.remove(staff);
+            notifyObservers();
+        }
     }
     
     public ArrayList<Staff> getStaffMembers() {
