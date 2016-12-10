@@ -6,11 +6,11 @@
  */
 package gui;
 
+import data.Cars;
 import data.Loans;
 import data.StaffMembers;
 import java.awt.Color;
 import javax.swing.DefaultListModel;
-import java.util.Date;
 import loaning.DayLoan;
 import loaning.Loan;
 import loaning.LongLoan;
@@ -24,12 +24,14 @@ public class FormMain extends javax.swing.JFrame {
 
     private StaffMembers staffMembers = StaffMembers.getInstance();
     private Loans loans = Loans.getInstance();
+    private Cars cars = Cars.getInstance();
     private DefaultListModel listModel;
     private Staff staff;
     
     public FormMain() {
         System.out.println(staffMembers.loadFromDisk());
         System.out.println(loans.loadFromDisk());
+        System.out.println(cars.loadFromDisk());
         listModel = new DefaultListModel();
                 
         initComponents();
@@ -246,35 +248,34 @@ public class FormMain extends javax.swing.JFrame {
     }
     
     private void populateStaffDetails(Staff staff) {
-        
-                txtForename.setText(staff.getForename());
-                txtSurname.setText(staff.getSurname());
-                txtPosition.setText(staff.getPosition().toString());
-                txtFaculty.setText(staff.getFaculty().toString());
-                txtOfficeRoom.setText(staff.getOfficeRoom());
-                txtOfficePhone.setText(staff.getWorkNumb());
+        txtForename.setText(staff.getForename());
+        txtSurname.setText(staff.getSurname());
+        txtPosition.setText(staff.getPosition().toString());
+        txtFaculty.setText(staff.getFaculty().toString());
+        txtOfficeRoom.setText(staff.getOfficeRoom());
+        txtOfficePhone.setText(staff.getWorkNumb());
     }
     
     private void populateRentalList(Staff staff) {
         listModel.clear();
         for (Loan objLoan : loans.getLoans()) {
-            DayLoan dayLoan = null;
-            LongLoan longLoan = null;
-            try {
-                dayLoan = (DayLoan)objLoan;
-            } catch (Exception e) {} 
-            try {
-                longLoan = (LongLoan)objLoan;
-            } catch (Exception e) {}
-            
-            if(dayLoan != null) {
-                //we have a day loan
-                dayLoan.getRentalDate();
-            } else if (longLoan != null) {
-                //we have a long loan
-                longLoan.getEndDate();
-            }
-            if (objLoan.getLoaner().equals(staff)) {
+            if (objLoan.getLoaner().getStaffRefNumb().equals(staff.getStaffRefNumb())) {
+                DayLoan dayLoan = null;
+                LongLoan longLoan = null;
+                try {
+                    dayLoan = (DayLoan)objLoan;
+                } catch (Exception e) {} 
+                try {
+                    longLoan = (LongLoan)objLoan;
+                } catch (Exception e) {}
+
+                if(dayLoan != null) {
+                    //we have a day loan
+                    dayLoan.getRentalDate();
+                } else if (longLoan != null) {
+                    //we have a long loan
+                    longLoan.getEndDate();
+                }
                 String listElement = objLoan.getCar().getRegNo().toString()+ " - ";
                 // TODO: Use functions in the JDK that aren't a heaping pile of shit
                 if (longLoan != null) {

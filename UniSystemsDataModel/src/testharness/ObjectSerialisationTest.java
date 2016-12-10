@@ -84,19 +84,4 @@ public class ObjectSerialisationTest{
         admin.createStaffMember(staff2);
         admin.createStaffMember(staff3);
     }
-    
-    public static void loadFromDisk() {
-        System.out.println(staffMembers.loadFromDisk());
-        for (Staff staff : staffMembers.getStaffMembers()) {
-            System.out.println(staff.getStaffRefNumb() + " " + staff.getForename() + " " + staff.getSurname());
-        }
-        System.out.println(cars.loadFromDisk());
-        for (Car car : cars.getCars()) {
-            System.out.println(car.getRegNo() + " " + car.getStatus());
-        }
-        System.out.println(loans.loadFromDisk());
-        for (Loan loan : loans.getLoans()) {
-            System.out.println(loan.getLoaner().getForename() + " " + loan.getCar().getRegNo());
-        }
-    }
 }

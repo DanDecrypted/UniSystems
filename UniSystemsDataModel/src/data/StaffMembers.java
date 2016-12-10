@@ -47,12 +47,12 @@ public class StaffMembers extends Observed implements ISerialisable {
                         staff.registerObserver(staffObserver);
                     }
                 }
-                return ("Successfully loaded " + getStaffMembers().size() + " Staff members");
+                return ("Successfully loaded " + getStaffMembers().size() + " staff members");
             } catch (Exception ex) {
                 return ("Data file could not be read " + ex.getMessage());
             }
         } else {
-            return ("Data file could not be found.");
+            return ("Data file could not be found");
         }
     }
     

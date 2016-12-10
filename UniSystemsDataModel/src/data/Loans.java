@@ -46,12 +46,12 @@ public class Loans extends Observed implements ISerialisable{
                         loan.registerObserver(loansObserver);
                     }
                 }    
-                return ("Successfully loaded " + getLoans().size() + " Loans");
+                return ("Successfully loaded " + getLoans().size() + " loans");
             } catch (Exception ex) {
                 return("Data file could not be read " + ex.getMessage());
             }
         } else {
-            return ("Data file could not be found!");
+            return ("Data file could not be found");
         }
     }
     
@@ -63,7 +63,7 @@ public class Loans extends Observed implements ISerialisable{
             
             objOut.writeObject(loanList);
             
-            return ("Successfully saved " + getLoans().size() + " Loans");
+            return ("Successfully saved " + getLoans().size() + " loans");
         } catch (IOException ex) {
             return ("error: " + ex.getMessage());
         }

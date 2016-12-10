@@ -47,12 +47,12 @@ public class Cars extends Observed implements ISerialisable {
                     }
                 }
                 
-                return("Successfully loaded " + getCars().size() + " Cars");
+                return("Successfully loaded " + getCars().size() + " cars");
             } catch (Exception ex) {
                 return("Data file could not be read " + ex.getMessage());
             }
         } else {
-            return("Data file could not be found!");
+            return("Data file could not be found");
         }
     }
     
@@ -63,7 +63,7 @@ public class Cars extends Observed implements ISerialisable {
                 new BufferedOutputStream(
                 new FileOutputStream(objFile)))) {
             objOut.writeObject(carsList);
-            return("Successfully saved " + getCars().size() + " Cars");
+            return("Successfully saved " + getCars().size() + " cars");
         } catch (IOException ex) {
            return("error: " + ex.getMessage());
         }
