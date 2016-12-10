@@ -11,6 +11,8 @@ import data.Loans;
 import data.StaffMembers;
 import java.awt.Color;
 import javax.swing.DefaultListModel;
+import javax.swing.Icon;
+import javax.swing.JOptionPane;
 import loaning.DayLoan;
 import loaning.Loan;
 import loaning.LongLoan;
@@ -114,11 +116,6 @@ public class FormMain extends javax.swing.JFrame {
             }
         });
 
-        jlstRentalHistory.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(jlstRentalHistory);
 
         lblRentalHistory.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
@@ -225,10 +222,16 @@ public class FormMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLookupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLookupActionPerformed
-        lookupStaffMember(txtStaffNumb.getText());
-        populateStaffDetails(this.staff);
-        populateRentalList(this.staff);
-       
+        if (lookupStaffMember(txtStaffNumb.getText())) {
+            populateStaffDetails(this.staff);
+            populateRentalList(this.staff);
+        } else {
+            JOptionPane.showMessageDialog(null,
+                "The member of staff with the ID " + txtStaffNumb.getText() 
+                + " was not found.",
+                "Staff Lookup Error",
+                JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnLookupActionPerformed
 
     private void btnRentCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentCarActionPerformed
@@ -239,12 +242,14 @@ public class FormMain extends javax.swing.JFrame {
  * populate staff detail fields depending on which ref number is typed in
  * @param ref staff reference number
  */
-    private void lookupStaffMember(String ref) {
+    private Boolean lookupStaffMember(String ref) {
         for (Staff staff : staffMembers.getStaffMembers()) {    //loop though all staff members
             if (staff.getStaffRefNumb().equals(ref)) {
                 this.staff = staff;
+                return true;
             }
         }
+        return false;
     }
     
     private void populateStaffDetails(Staff staff) {

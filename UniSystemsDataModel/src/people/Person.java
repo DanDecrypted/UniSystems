@@ -25,7 +25,13 @@ public class Person extends data.Observed implements java.io.Serializable {
     protected String emailAddress;
    
     public Person() {
-        
+        this.title = "UKNOWN";
+        this.forename = "UNKNOWN";
+        this.surname = "UNKNOWN";
+        this.dateOfBirth = null;
+        this.gender = "UNKNOWN";
+        this.phoneNumber = "UNKNOWN";
+        this.emailAddress = "UNKNOWN";
     }
     
     public Person(String title, String forename, String surname, Date dateOfBirth, String gender, String phoneNumber, String emailAddress) {
@@ -45,6 +51,10 @@ public class Person extends data.Observed implements java.io.Serializable {
     public void setTitle(String title) {
         this.title = title;
         this.notifyObservers();
+    }
+    
+    public String getFullName() {
+        return forename + " " + surname;
     }
 
     public String getForename() {
@@ -71,6 +81,7 @@ public class Person extends data.Observed implements java.io.Serializable {
 
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+        this.notifyObservers();
     }
 
     public String getGender() {
@@ -79,6 +90,7 @@ public class Person extends data.Observed implements java.io.Serializable {
 
     public void setGender(String gender) {
         this.gender = gender;
+        this.notifyObservers();
     }
 
     public String getPhoneNumber() {

@@ -22,7 +22,13 @@ public class Staff extends Person {
     protected Address address;
     
     public Staff() {
-        
+        super();
+        this.staffRefNumb = "UNKNOWN";
+        this.position = null;
+        this.faculty = null;
+        this.officeRoom = "UNKNWON";
+        this.workNumb = "UNKNOWN";
+        this.address = null;
     }
     
 
