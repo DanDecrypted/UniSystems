@@ -32,7 +32,11 @@ public class Staff extends Person {
     }
     
 
-    public Staff(String staffRefNumb, Position position, Faculty faculty, String officeRoom, String workNumb, Address address, String title, String forename, String surname, Date dateOfBirth, String gender, String phoneNumber, String emailAddress) {
+    public Staff(String staffRefNumb, Position position, Faculty faculty, 
+                 String officeRoom, String workNumb, Address address, 
+                 String title, String forename, String surname, 
+                 Date dateOfBirth, String gender, String phoneNumber, 
+                 String emailAddress) {
         super(title, forename, surname, dateOfBirth, gender, phoneNumber, emailAddress);
         this.staffRefNumb = staffRefNumb;
         this.position = position;

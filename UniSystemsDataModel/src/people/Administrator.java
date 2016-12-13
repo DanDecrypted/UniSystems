@@ -17,22 +17,50 @@ import java.util.Date;
 import data.LoansObserver;
 import data.CarsObserver;
 import data.StaffObserver;
+import data.AdministratorsObserver;
+import data.Administrators;
+import people.Administrator;
 
 /**
- *
+ * The administrator class should be used as a factory for the other objects
+ * which are contained within the system
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
-public class Administrator extends Staff {
-    Loans loans = Loans.getInstance();
-    StaffMembers staffMembers = StaffMembers.getInstance();
-    Cars cars = Cars.getInstance();
-    LoansObserver loanObserver = new LoansObserver();
-    StaffObserver staffObserver = new StaffObserver();
-    CarsObserver carsObserver = new CarsObserver();
+public class Administrator extends Staff implements java.io.Serializable {
+    transient Loans loans = Loans.getInstance();
+    transient StaffMembers staffMembers = StaffMembers.getInstance();
+    transient Cars cars = Cars.getInstance();
+    transient Administrators admins = Administrators.getInstance();
+    transient LoansObserver loanObserver = new LoansObserver();
+    transient StaffObserver staffObserver = new StaffObserver();
+    transient CarsObserver carsObserver = new CarsObserver();
+    transient AdministratorsObserver adminsObserver = new AdministratorsObserver();
     
+    private String password;
     
     public Administrator() {
         this.position = Position.TRANSPORT_OFFICE_ADMIN;
+    }
+    
+    public Administrator(String staffRefNumb, Position position, Faculty faculty, 
+                 String officeRoom, String workNumb, Address address, 
+                 String title, String forename, String surname, 
+                 Date dateOfBirth, String gender, String phoneNumber, 
+                 String emailAddress, String password) {
+        super(staffRefNumb, position, faculty, officeRoom, workNumb, address, 
+                title, forename, surname, dateOfBirth, gender, phoneNumber, 
+                emailAddress);
+        this.position = Position.TRANSPORT_OFFICE_ADMIN;
+        this.password = password;
+    }
+    
+    public String getPassword() {
+        return password;
+    }
+    
+    public void setPassword() {
+        this.password = password;
+        this.notifyObservers();
     }
     
     public void createCar(Car car) {
@@ -45,6 +73,20 @@ public class Administrator extends Staff {
         staff.registerObserver(staffObserver);
         staffMembers.registerObserver(staffObserver);
         staffMembers.addStaff(staff);
+    }
+    
+    public void createAdministrator(Administrator admin) {
+        admin.registerObserver(adminsObserver);
+        admins.registerObserver(adminsObserver);
+        admins.addAdministrator(admin);
+    }
+    
+    public void removeAdministrator(Administrator admin) {
+        if (admins.getAdministrators().contains(admin)) {
+            admin.removeObserver(adminsObserver);
+            admins.removeObserver(adminsObserver);
+            admins.removeAdministrator(admin);
+        }
     }
     
     public void removeStaffMember(Staff staff) {

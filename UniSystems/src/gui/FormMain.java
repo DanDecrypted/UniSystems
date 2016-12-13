@@ -17,6 +17,7 @@ import loaning.DayLoan;
 import loaning.Loan;
 import loaning.LongLoan;
 import people.Staff;
+import people.Administrator;
 
 /**
  *
@@ -29,13 +30,19 @@ public class FormMain extends javax.swing.JFrame {
     private Cars cars = Cars.getInstance();
     private DefaultListModel listModel;
     private Staff staff;
+    private Administrator admin;
     
     public FormMain() {
+        
+    }
+    
+    public FormMain(Administrator admin) {
         System.out.println(staffMembers.loadFromDisk());
         System.out.println(loans.loadFromDisk());
         System.out.println(cars.loadFromDisk());
+        this.admin = admin;
         listModel = new DefaultListModel();
-                
+        
         initComponents();
         
         this.getContentPane().setBackground(new Color (238,238,238));

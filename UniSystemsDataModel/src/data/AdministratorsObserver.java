@@ -4,17 +4,19 @@
  * and open the template in the editor.
  */
 package data;
-import data.Loans;
+import data.Administrators;
+
 /**
  *
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
-public class LoansObserver implements IObserver {
-    private Loans loans = Loans.getInstance();
-    public LoansObserver() { }
+public class AdministratorsObserver implements IObserver {
+    Administrators admins = Administrators.getInstance();
     
-    @Override 
+    public AdministratorsObserver() { }
+    
+    @Override
     public void update() {
-        System.out.println(loans.saveToDisk());
+        System.out.println(admins.saveToDisk());
     }
 }

@@ -13,6 +13,7 @@ import car.Service;
 import car.Transmission;
 import data.Loans;
 import data.StaffMembers;
+import data.Administrators;
 import java.util.ArrayList;
 import java.util.Date;
 import people.Address;
@@ -20,9 +21,6 @@ import people.Faculty;
 import people.Position;
 import people.Staff;
 import people.Administrator;
-import loaning.Loan;
-import loaning.DayLoan;
-import loaning.LongLoan;
 
 /**
  *
@@ -32,7 +30,8 @@ public class ObjectSerialisationTest{
     private static Cars cars = Cars.getInstance();
     private static StaffMembers staffMembers = StaffMembers.getInstance();
     private static Loans loans = Loans.getInstance();
-    private static Administrator admin = new Administrator();
+    private static Administrators admins = Administrators.getInstance();
+    
     /**
      * @param args the command line arguments
      */
@@ -60,28 +59,32 @@ public class ObjectSerialisationTest{
                 "Mr", "Najim", "Mazidi", new Date(1995,07,26), "Male", "07474306999", "nmazidi95@gmail.com");
         Staff staff2 = new Staff("10488708", Position.SECURITY, Faculty.SCIENCE_AND_ENGINEERING, "PSQA104", "0732345641", new Address("105", "Drake Circus", "Plymouth", "Devon", "PL4 1AA"),
                 "Mr", "Craig", "Banyard", new Date(1992,06,03), "Male", "0732345641", "craig.banyard@students.plymouth.ac.uk");
-        Staff staff3 = new Staff("10501358", Position.ASSOCIATE_HEAD_OF_SCHOOL, Faculty.BUSINESS, "PSQA301", "07345723886", new Address("45", "Lipson Road", "Plymouth", "Devon", "PL4 8EA"),
-                "Mr", "Daniel", "Scott", new Date(1992,6,3), "Male", "07345723886", "daniel.scott@students.plymouth.ac.uk");
+        Staff staff3 = new Staff("10501358", Position.TRANSPORT_OFFICE_ADMIN, Faculty.SCIENCE_AND_ENGINEERING, "PSQA301", "07594875693", new Address("45", "Lipson Road", "Plymouth", "Devon", "PL4 8EA"),
+                "Dr", "Daniel", "Scott", new Date(1994,6,28), "Male", "07594875693", "daniel.r.scott@students.plymouth.ac.uk");
+        
+        Administrator danScott = new Administrator("10501358", Position.TRANSPORT_OFFICE_ADMIN, Faculty.SCIENCE_AND_ENGINEERING, "PSQA301", "07594875693", new Address("45", "Lipson Road", "Plymouth", "Devon", "PL4 8EA"),
+                "Dr", "Daniel", "Scott", new Date(1994,6,28), "Male", "07594875693", "daniel.r.scott@students.plymouth.ac.uk", "password");
         
         ArrayList<String> arrayRepairs = new ArrayList<String>();
         arrayRepairs.add("Brakes");
         
         Service service = new Service("John", arrayRepairs, "Fixed the brakes");
         
-        admin.assignDayLoan(car, staff);
-        admin.assignLongLoan(car2, staff2);
-        admin.assignDayLoan(car4, staff);
-        admin.assignDayLoan(car5, staff3);
-        admin.assignLongLoan(car3, staff3);
-        admin.createCar(car);
+        danScott.assignDayLoan(car, staff);
+        danScott.assignLongLoan(car2, staff2);
+        danScott.assignDayLoan(car4, staff);
+        danScott.assignDayLoan(car5, staff3);
+        danScott.assignLongLoan(car3, staff3);
+        danScott.createCar(car);
+        danScott.createAdministrator(danScott);
         
         car2.addService(service);
-        admin.createCar(car2);
-        admin.createCar(car3);
-        admin.createCar(car4);
-        admin.createCar(car5);
-        admin.createStaffMember(staff);
-        admin.createStaffMember(staff2);
-        admin.createStaffMember(staff3);
+        danScott.createCar(car2);
+        danScott.createCar(car3);
+        danScott.createCar(car4);
+        danScott.createCar(car5);
+        danScott.createStaffMember(staff);
+        danScott.createStaffMember(staff2);
+        danScott.createStaffMember(staff3);
     }
 }
