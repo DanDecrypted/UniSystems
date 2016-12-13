@@ -64,27 +64,36 @@ public class Administrator extends Staff implements java.io.Serializable {
     }
     
     public void createCar(Car car) {
+        if (cars == null) cars = Cars.getInstance();
+        if (carsObserver == null) carsObserver = new CarsObserver();
         car.registerObserver(carsObserver);
         cars.registerObserver(carsObserver);
         cars.addCar(car);
     }
     
     public void createStaffMember(Staff staff) {
+        if (staffObserver == null) staffObserver = new StaffObserver();
+        if (staffMembers == null) staffMembers = StaffMembers.getInstance();
         staff.registerObserver(staffObserver);
         staffMembers.registerObserver(staffObserver);
         staffMembers.addStaff(staff);
     }
     
     public void createAdministrator(Administrator admin) {
+        if (adminsObserver == null) adminsObserver = new AdministratorsObserver();
+        if (admins == null) admins = Administrators.getInstance();
         admin.registerObserver(adminsObserver);
         admins.registerObserver(adminsObserver);
         admins.addAdministrator(admin);
     }
     
     public void removeAdministrator(Administrator admin) {
+        if (admins == null) return;
         if (admins.getAdministrators().contains(admin)) {
-            admin.removeObserver(adminsObserver);
-            admins.removeObserver(adminsObserver);
+            if (adminsObserver != null) {
+                admin.removeObserver(adminsObserver);
+                admins.removeObserver(adminsObserver);
+            }
             admins.removeAdministrator(admin);
         }
     }
@@ -98,6 +107,8 @@ public class Administrator extends Staff implements java.io.Serializable {
     }
     
     public void assignLongLoan(Car car, Staff staff) {
+        if (loans == null) loans = Loans.getInstance();
+        if (loanObserver == null) loanObserver = new LoansObserver(); 
         Date returnDate = new Date();
         returnDate.setYear(returnDate.getYear() + 1);
         LongLoan loan = new LongLoan(staff, car, new Date(), returnDate);
@@ -107,6 +118,8 @@ public class Administrator extends Staff implements java.io.Serializable {
     }
     
     public void assignDayLoan(Car car, Staff staff) {
+        if (loans == null) loans = Loans.getInstance();
+        if (loanObserver == null) loanObserver = new LoansObserver();
         Date returnDate = new Date();
         returnDate.setHours(23);
         returnDate.setMinutes(59);

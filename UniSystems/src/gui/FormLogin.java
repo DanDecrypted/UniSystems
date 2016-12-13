@@ -114,18 +114,20 @@ public class FormLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        for (Administrator admin : admins.getAdministrators()) {
+        admins.getAdministrators().forEach((admin) -> {
             String adminPass = admin.getPassword();
             String txtPass = new String(txtPassword.getPassword());
             System.out.println(adminPass);
             System.out.println(txtPass);
             if (adminPass.equals(txtPass)) {
                 if (admin.getStaffRefNumb().equals(txtUsername.getText())) {
-                    FormMain frmMain = new FormMain(admin);
-                    frmMain.setVisible(true);
+                    FormCarLookup frmCarLookup = new FormCarLookup(admin);
+                    frmCarLookup.setVisible(true);
+                    //FormMain frmMain = new FormMain(admin);
+                    //frmMain.setVisible(true);
                 }
             }
-        }
+        });
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**

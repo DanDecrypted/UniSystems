@@ -27,6 +27,14 @@ public class FormCarLookup extends javax.swing.JFrame {
         initComponents();
         System.out.println(cars.loadFromDisk());
     }
+    
+    public FormCarLookup(Administrator admin) {
+        this.admin = admin;
+        this.getContentPane().setBackground(new Color (238,238,238));
+
+        initComponents();
+        System.out.println(cars.loadFromDisk());
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
