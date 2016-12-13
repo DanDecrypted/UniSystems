@@ -129,8 +129,8 @@ public class FormStaffLookup extends javax.swing.JFrame {
         // TODO add your handling code here:
         Boolean found = false;
         for (Staff people : staff.getStaffMembers()) {
-            if (people.getStaffRefNumb().equals(this.txtStaffNumb.getText())) {
-                FormStaffDetails frm = new FormStaffDetails(people.getStaffRefNumb());
+            if (people.getRefNumb().equals(this.txtStaffNumb.getText())) {
+                FormStaffDetails frm = new FormStaffDetails(people.getRefNumb());
                 frm.setVisible(true);
                 found = true;
                 break;

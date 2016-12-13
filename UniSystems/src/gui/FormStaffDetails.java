@@ -63,7 +63,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
         listModel = new DefaultListModel();
         
         for(Staff people : staff.getStaffMembers()){
-            if (people.getStaffRefNumb().equals(staffNumb)){
+            if (people.getRefNumb().equals(staffNumb)){
                 this.txtStaffNumb.setText(staffNumb);
                 this.txtDOB.setText(data.UtilityFunctions.formatDateOfBirth(people.getDateOfBirth()));
                 this.txtEmail.setText(people.getEmailAddress());
@@ -85,7 +85,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
     }
     private void populateLoanList(String ref) {
         listModel.clear();
-        for (Loan objLoan : loans.getLoans()) {
+        for (Loan objLoan : admin.getLoansForRef(ref)) {
             DayLoan dayLoan = null;
             LongLoan longLoan = null;
             try {
@@ -102,18 +102,16 @@ public class FormStaffDetails extends javax.swing.JFrame {
                 //we have a long loan
                 longLoan.getEndDate();
             }
-            if (objLoan.getLoaner().getStaffRefNumb().equals(ref)) {
-                String listElement = objLoan.getCar().getRegNo().toString() + " - ";
-                // TODO: Use functions in the JDK that aren't a heaping pile of shit
-                if (longLoan != null) {
-                    //Deprecated but I'm too lazy to fix it right now 
-                    listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
-                                + data.UtilityFunctions.formatDate(longLoan.getEndDate());
-                } else if (dayLoan != null) {
-                    listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
-                }
-                listModel.addElement(listElement);
+            String listElement = objLoan.getCar().getRegNo().toString() + " - ";
+            // TODO: Use functions in the JDK that aren't a heaping pile of shit
+            if (longLoan != null) {
+                //Deprecated but I'm too lazy to fix it right now 
+                listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
+                            + data.UtilityFunctions.formatDate(longLoan.getEndDate());
+            } else if (dayLoan != null) {
+                listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
             }
+            listModel.addElement(listElement);
         }
         lstLoanHistory.setModel(listModel);
         this.btnCreate.setVisible(false);

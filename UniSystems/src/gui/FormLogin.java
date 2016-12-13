@@ -120,7 +120,7 @@ public class FormLogin extends javax.swing.JFrame {
             System.out.println(adminPass);
             System.out.println(txtPass);
             if (adminPass.equals(txtPass)) {
-                if (admin.getStaffRefNumb().equals(txtUsername.getText())) {
+                if (admin.getRefNumb().equals(txtUsername.getText())) {
                     FormCarLookup frmCarLookup = new FormCarLookup(admin);
                     frmCarLookup.setVisible(true);
                     //FormMain frmMain = new FormMain(admin);

@@ -19,7 +19,8 @@ import data.CarsObserver;
 import data.StaffObserver;
 import data.AdministratorsObserver;
 import data.Administrators;
-import people.Administrator;
+import java.util.ArrayList;
+import loaning.Loan;
 
 /**
  * The administrator class should be used as a factory for the other objects
@@ -69,6 +70,26 @@ public class Administrator extends Staff implements java.io.Serializable {
         car.registerObserver(carsObserver);
         cars.registerObserver(carsObserver);
         cars.addCar(car);
+    }
+    
+    public ArrayList<Loan> getLoansForRef(String refNumb) {
+        ArrayList<Loan> temp = new ArrayList<Loan>();
+        for (Loan loan : loans.getLoans()) {
+            if (loan.getLoaner().getRefNumb().equals(refNumb)) {
+                temp.add(loan);
+            }
+        }
+        return temp;
+    }
+    
+    public Staff getStaffForRefNumb(String refNumb) {
+        if (staffMembers == null) staffMembers = StaffMembers.getInstance();
+        for (Staff staff : staffMembers.getStaffMembers()) {
+            if (staff.getRefNumb().equals(refNumb)) {
+                return staff;
+            }
+        }
+        return null;
     }
     
     public void createStaffMember(Staff staff) {

@@ -46,7 +46,7 @@ public class Staff extends Person {
         this.address = address;
     }
 
-    public String getStaffRefNumb() {
+    public String getRefNumb() {
         return staffRefNumb;
     }
 

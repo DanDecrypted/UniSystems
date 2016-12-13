@@ -32,9 +32,7 @@ public class FormMain extends javax.swing.JFrame {
     private Staff staff;
     private Administrator admin;
     
-    public FormMain() {
-        
-    }
+    public FormMain() { }
     
     public FormMain(Administrator admin) {
         System.out.println(staffMembers.loadFromDisk());
@@ -229,9 +227,10 @@ public class FormMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLookupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLookupActionPerformed
-        if (lookupStaffMember(txtStaffNumb.getText())) {
-            populateStaffDetails(this.staff);
-            populateRentalList(this.staff);
+        Staff staffObj = admin.getStaffForRefNumb(txtStaffNumb.getText());
+        if (staffObj != null) {
+            populateStaffDetails(staffObj);
+            populateRentalList(staffObj);
         } else {
             JOptionPane.showMessageDialog(null,
                 "The member of staff with the ID " + txtStaffNumb.getText() 
@@ -245,19 +244,6 @@ public class FormMain extends javax.swing.JFrame {
         FormAvailableCars frm = new FormAvailableCars(this.staff, "");
         frm.setVisible(true);
     }//GEN-LAST:event_btnRentCarActionPerformed
-/**
- * populate staff detail fields depending on which ref number is typed in
- * @param ref staff reference number
- */
-    private Boolean lookupStaffMember(String ref) {
-        for (Staff staff : staffMembers.getStaffMembers()) {    //loop though all staff members
-            if (staff.getStaffRefNumb().equals(ref)) {
-                this.staff = staff;
-                return true;
-            }
-        }
-        return false;
-    }
     
     private void populateStaffDetails(Staff staff) {
         txtForename.setText(staff.getForename());
@@ -271,7 +257,7 @@ public class FormMain extends javax.swing.JFrame {
     private void populateRentalList(Staff staff) {
         listModel.clear();
         for (Loan objLoan : loans.getLoans()) {
-            if (objLoan.getLoaner().getStaffRefNumb().equals(staff.getStaffRefNumb())) {
+            if (objLoan.getLoaner().getRefNumb().equals(staff.getRefNumb())) {
                 DayLoan dayLoan = null;
                 LongLoan longLoan = null;
                 try {
