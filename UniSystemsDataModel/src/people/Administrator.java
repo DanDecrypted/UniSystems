@@ -57,6 +57,13 @@ public class Administrator extends Staff implements java.io.Serializable {
         this.password = password;
     }
     
+    public void initialiseData() {
+        System.out.println(cars.loadFromDisk());
+        System.out.println(loans.loadFromDisk());
+        System.out.println(admins.loadFromDisk());
+        System.out.println(staffMembers.loadFromDisk());
+    }
+    
     public String getPassword() {
         return password;
     }

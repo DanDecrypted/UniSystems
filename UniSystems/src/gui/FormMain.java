@@ -6,9 +6,6 @@
  */
 package gui;
 
-import data.Cars;
-import data.Loans;
-import data.StaffMembers;
 import java.awt.Color;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
@@ -24,10 +21,6 @@ import people.Administrator;
  * @author Craig
  */
 public class FormMain extends javax.swing.JFrame {
-
-    private StaffMembers staffMembers = StaffMembers.getInstance();
-    private Loans loans = Loans.getInstance();
-    private Cars cars = Cars.getInstance();
     private DefaultListModel listModel;
     private Staff staff;
     private Administrator admin;
@@ -35,10 +28,8 @@ public class FormMain extends javax.swing.JFrame {
     public FormMain() { }
     
     public FormMain(Administrator admin) {
-        System.out.println(staffMembers.loadFromDisk());
-        System.out.println(loans.loadFromDisk());
-        System.out.println(cars.loadFromDisk());
         this.admin = admin;
+        admin.initialiseData();
         listModel = new DefaultListModel();
         
         initComponents();
@@ -256,36 +247,19 @@ public class FormMain extends javax.swing.JFrame {
     
     private void populateRentalList(Staff staff) {
         listModel.clear();
-        for (Loan objLoan : loans.getLoans()) {
-            if (objLoan.getLoaner().getRefNumb().equals(staff.getRefNumb())) {
-                DayLoan dayLoan = null;
-                LongLoan longLoan = null;
-                try {
-                    dayLoan = (DayLoan)objLoan;
-                } catch (Exception e) {} 
-                try {
-                    longLoan = (LongLoan)objLoan;
-                } catch (Exception e) {}
-
-                if(dayLoan != null) {
-                    //we have a day loan
-                    dayLoan.getRentalDate();
-                } else if (longLoan != null) {
-                    //we have a long loan
-                    longLoan.getEndDate();
-                }
-                String listElement = objLoan.getCar().getRegNo().toString()+ " - ";
-                // TODO: Use functions in the JDK that aren't a heaping pile of shit
-                if (longLoan != null) {
-                    //Deprecated but I'm too lazy to fix it right now 
-                    listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
-                                + data.UtilityFunctions.formatDate(longLoan.getEndDate());
-                } else if (dayLoan != null) {
-                    listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
-                }
-                listModel.addElement(listElement);
-            }
+        for (DayLoan dayLoan : admin.getDayLoansForRef(staff.getRefNumb())) {
+            String listElement = dayLoan.getCar().getRegNo().toString()+ " - ";
+            listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
+            listModel.addElement(listElement);
         }
+        
+        for (LongLoan longLoan : admin.getLongLoansForRef(staff.getRefNumb())) {
+            String listElement = longLoan.getCar().getRegNo().toString()+ " - ";
+            listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
+                        + data.UtilityFunctions.formatDate(longLoan.getEndDate());
+            listModel.addElement(listElement);
+        }
+        
         jlstRentalHistory.setModel(listModel);
     }
     /**
