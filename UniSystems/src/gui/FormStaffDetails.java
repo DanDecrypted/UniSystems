@@ -80,9 +80,8 @@ public class FormStaffDetails extends javax.swing.JFrame {
             }
             populateLoanList(staffNumb);
         }
-        
-        
     }
+    
     private void populateLoanList(String ref) {
         listModel.clear();
         for (Loan objLoan : admin.getLoansForRef(ref)) {
