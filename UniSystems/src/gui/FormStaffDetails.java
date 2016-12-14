@@ -8,10 +8,10 @@ package gui;
 
 import data.Loans;
 import data.StaffMembers;
+import data.UtilityFunctions;
 import java.awt.Color;
-import java.util.Date;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import loaning.DayLoan;
@@ -84,32 +84,22 @@ public class FormStaffDetails extends javax.swing.JFrame {
     
     private void populateLoanList(String ref) {
         listModel.clear();
-        for (Loan objLoan : admin.getLoansForRef(ref)) {
-            DayLoan dayLoan = null;
-            LongLoan longLoan = null;
-            try {
-                dayLoan = (DayLoan)objLoan;
-            } catch (Exception e) {} 
-            try {
-                longLoan = (LongLoan)objLoan;
-            } catch (Exception e) {}
-            
-            if(dayLoan != null) {
-                //we have a day loan
-                dayLoan.getRentalDate();
-            } else if (longLoan != null) {
-                //we have a long loan
-                longLoan.getEndDate();
-            }
-            String listElement = objLoan.getCar().getRegNo().toString() + " - ";
+        ArrayList<LongLoan> longLoans = admin.getLongLoansForRef(ref);
+        ArrayList<DayLoan> dayLoans = admin.getDayLoansForRef(ref);
+        for (LongLoan longLoan : longLoans) {
+            String listElement = longLoan.getCar().getRegNo().toString() + " - ";
             // TODO: Use functions in the JDK that aren't a heaping pile of shit
-            if (longLoan != null) {
                 //Deprecated but I'm too lazy to fix it right now 
-                listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
-                            + data.UtilityFunctions.formatDate(longLoan.getEndDate());
-            } else if (dayLoan != null) {
-                listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
-            }
+            listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
+                        + data.UtilityFunctions.formatDate(longLoan.getEndDate());
+            listModel.addElement(listElement);
+        }
+        
+        for (DayLoan dayLoan : dayLoans) {
+            String listElement = dayLoan.getCar().getRegNo().toString() + " - ";
+            // TODO: Use functions in the JDK that aren't a heaping pile of shit
+                //Deprecated but I'm too lazy to fix it right now 
+            listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
             listModel.addElement(listElement);
         }
         lstLoanHistory.setModel(listModel);

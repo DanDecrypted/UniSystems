@@ -20,6 +20,7 @@ import data.CarsObserver;
 import data.StaffObserver;
 import data.AdministratorsObserver;
 import data.Administrators;
+import data.UtilityFunctions;
 import java.util.ArrayList;
 import loaning.Loan;
 
@@ -81,6 +82,14 @@ public class Administrator extends Staff implements java.io.Serializable {
             }
         }
         return temp;
+    }
+    
+    public ArrayList<DayLoan> getDayLoansForRef(String refNumb) {
+        return UtilityFunctions.getDayLoans(getLoansForRef(refNumb));
+    }
+    
+    public ArrayList<LongLoan> getLongLoansForRef(String refNumb) {
+        return UtilityFunctions.getLongLoans(getLoansForRef(refNumb));
     }
     
     public Staff getStaffForRefNumb(String refNumb) {

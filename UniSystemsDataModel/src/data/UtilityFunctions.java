@@ -30,7 +30,7 @@ public class UtilityFunctions {
         return returns;
     }
     
-    public ArrayList<DayLoan> getDayLoans(ArrayList<Loan> loans) {
+    public static ArrayList<DayLoan> getDayLoans(ArrayList<Loan> loans) {
         ArrayList<DayLoan> temp = new ArrayList<DayLoan>();
         for (Loan loan : loans) {
             try {
@@ -40,7 +40,7 @@ public class UtilityFunctions {
         return temp;
     }
     
-    public ArrayList<LongLoan> getLongLoans(ArrayList<Loan> loans) {
+    public static ArrayList<LongLoan> getLongLoans(ArrayList<Loan> loans) {
         ArrayList<LongLoan> temp = new ArrayList<LongLoan>();
         for (Loan loan : loans) {
             try {
