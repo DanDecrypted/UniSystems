@@ -109,6 +109,15 @@ public class Administrator extends Staff implements java.io.Serializable {
         return null;
     }
     
+    public Car getCarByReg(String carReg) {
+        for (Car car : cars.getCars()) {
+            if (car.getRegNo().equals(carReg)) { 
+                return car;
+            }
+        }
+        return null;
+    }
+    
     public ArrayList<Loan> getLoansForCar(String carReg){
         ArrayList<Loan> temp = new ArrayList<Loan>();
         for (Loan loan : loans.getLoans()){

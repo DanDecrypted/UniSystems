@@ -8,8 +8,6 @@ package gui;
 import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 import car.*;
-import data.Cars;
-import data.Loans;
 import loaning.*;
 import javax.swing.DefaultListModel;
 import people.Administrator;
@@ -20,9 +18,6 @@ import people.Administrator;
  */
 public class FormCar extends javax.swing.JFrame {
 
-
-    private Cars cars = Cars.getInstance();
-    private Loans loans = Loans.getInstance();
     private Administrator admin;
     private DefaultListModel serviceListModel;
     private DefaultListModel loanListModel;
@@ -69,26 +64,23 @@ public class FormCar extends javax.swing.JFrame {
         loanListModel = new DefaultListModel();
 
 
-        cars.loadFromDisk();
-        loans.loadFromDisk();
+        //cars.loadFromDisk();
+        //loans.loadFromDisk();
         this.getContentPane().setBackground(new Color (238,238,238));
         this.btnCreate.setVisible(false);
-
-        for (Car car : cars.getCars()) {
-            if (car.getRegNo().equals(regNo)) {
-                this.txtRegNo.setText(regNo);
-                this.cboClassification.setSelectedItem(car.getClassification());
-                this.txtMileage.setText(Integer.toString(car.getMilage()));
-                this.cboFuelType.setSelectedItem(car.getFuelType());
-                this.cboTransmission.setSelectedItem(car.getTransmission());
-                this.txtDoors.setText(Integer.toString(car.getDoors()));
-                this.txtSeats.setText(Integer.toString(car.getSeats()));
-                this.txtLocation.setText(car.getLocation());
-                this.lblStatus.setText(car.getStatus().name());
-                populateServiceHistoryList(car);
-                populateLoanHistory(car);
-                break;
-            }
+        Car car = admin.getCarByReg(regNo);
+        if (car != null) {
+            this.txtRegNo.setText(regNo);
+            this.cboClassification.setSelectedItem(car.getClassification());
+            this.txtMileage.setText(Integer.toString(car.getMilage()));
+            this.cboFuelType.setSelectedItem(car.getFuelType());
+            this.cboTransmission.setSelectedItem(car.getTransmission());
+            this.txtDoors.setText(Integer.toString(car.getDoors()));
+            this.txtSeats.setText(Integer.toString(car.getSeats()));
+            this.txtLocation.setText(car.getLocation());
+            this.lblStatus.setText(car.getStatus().name());
+            populateServiceHistoryList(car);
+            populateLoanHistory(car);
         }
 
 
@@ -99,7 +91,6 @@ public class FormCar extends javax.swing.JFrame {
      */
     private void populateServiceHistoryList(Car objCar) {
         serviceListModel.clear();
-
 
         for (int i=0; i < objCar.getServiceRecord().size(); i++){
             String listElement = objCar.getServiceRecord().get(i).getMechanic() + " - ";
@@ -116,36 +107,20 @@ public class FormCar extends javax.swing.JFrame {
     private void populateLoanHistory(Car objCar){
         loanListModel.clear();
         String listElement = "";
-        for(Loan loan : admin.getLoansForCar(objCar.getRegNo())){
-            
-                DayLoan dayLoan = null;
-                LongLoan longLoan = null;
-                try {
-                    dayLoan = (DayLoan)loan;
-                } catch (Exception e) {}
-                try {
-                    longLoan = (LongLoan)loan;
-                } catch (Exception e) {}
-
-                if(dayLoan != null) {
-                    //we have a day loan
-                    dayLoan.getRentalDate();
-                } else if (longLoan != null) {
-                    //we have a long loan
-                    longLoan.getEndDate();
-                }
-                listElement = loan.getLoaner().getForename().toString()+" "
-                        + loan.getLoaner().getSurname()+" - ";
-                if(longLoan != null){
-                   listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate())+" - "+
+        
+        for (DayLoan dayLoan : admin.getDayLoansForRef(objCar.getRegNo())) {
+            listElement = dayLoan.getLoaner().getForename().toString()+" "
+                        + dayLoan.getLoaner().getSurname()+" - ";
+            listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
+            loanListModel.addElement(listElement);
+        }
+        
+        for (LongLoan longLoan : admin.getLongLoansForRef(objCar.getRegNo())) {
+            listElement = longLoan.getLoaner().getForename().toString()+" "
+                        + longLoan.getLoaner().getSurname()+" - ";
+            listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate())+" - "+
                            data.UtilityFunctions.formatDate(longLoan.getEndDate());
-                }
-                else if (dayLoan != null){
-                    listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
-                }
-
-                loanListModel.addElement(listElement);
-            
+            loanListModel.addElement(listElement);
         }
 
         this.lstLoanHistory.setModel(loanListModel);
