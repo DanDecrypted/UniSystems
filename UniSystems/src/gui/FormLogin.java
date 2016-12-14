@@ -24,6 +24,7 @@ public class FormLogin extends javax.swing.JFrame {
      */
     public FormLogin() {
         initComponents();
+        this.rootPane.setDefaultButton(btnLogin);
         System.out.println(staff.loadFromDisk());
         System.out.println(admins.loadFromDisk());
     }
@@ -55,6 +56,11 @@ public class FormLogin extends javax.swing.JFrame {
         jLabel3.setText("UniSystems Login");
 
         btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -122,14 +128,16 @@ public class FormLogin extends javax.swing.JFrame {
             if (adminPass.equals(txtPass)) {
                 if (admin.getRefNumb().equals(txtUsername.getText())) {
                     admin.initialiseData();
-                    FormCarLookup frmCarLookup = new FormCarLookup(admin);
-                    frmCarLookup.setVisible(true);
-                    //FormMain frmMain = new FormMain(admin);
-                    //frmMain.setVisible(true);
+                    FormNavigation frmNavigation = new FormNavigation(admin);
+                    frmNavigation.setVisible(true);
                 }
             }
         });
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
      * @param args the command line arguments

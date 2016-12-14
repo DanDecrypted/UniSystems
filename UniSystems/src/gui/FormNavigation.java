@@ -39,8 +39,9 @@ public class FormNavigation extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        btnRental = new javax.swing.JButton();
+        btnCarSearch = new javax.swing.JButton();
+        btnStaffSearch = new javax.swing.JButton();
+        btnRentals = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(450, 300));
@@ -49,19 +50,26 @@ public class FormNavigation extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Management Navigation");
 
-        jButton1.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        jButton1.setText("Car Search");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCarSearch.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        btnCarSearch.setText("Car Search");
+        btnCarSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCarSearchActionPerformed(evt);
             }
         });
 
-        btnRental.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        btnRental.setText("Rental");
-        btnRental.addActionListener(new java.awt.event.ActionListener() {
+        btnStaffSearch.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        btnStaffSearch.setText("Staff Search");
+        btnStaffSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRentalActionPerformed(evt);
+                btnStaffSearchActionPerformed(evt);
+            }
+        });
+
+        btnRentals.setText("Manage Rentals");
+        btnRentals.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRentalsActionPerformed(evt);
             }
         });
 
@@ -71,14 +79,16 @@ public class FormNavigation extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRental)
-                .addGap(92, 92, 92))
+                .addComponent(btnCarSearch)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(btnRentals)
+                .addGap(28, 28, 28)
+                .addComponent(btnStaffSearch)
+                .addGap(82, 82, 82))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,23 +97,29 @@ public class FormNavigation extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(btnRental))
+                    .addComponent(btnCarSearch)
+                    .addComponent(btnStaffSearch)
+                    .addComponent(btnRentals))
                 .addContainerGap(379, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        FormCarLookup frm = new FormCarLookup();
-        frm.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnCarSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarSearchActionPerformed
+        FormCarLookup frmCarLookup = new FormCarLookup(admin);
+        frmCarLookup.setVisible(true);
+    }//GEN-LAST:event_btnCarSearchActionPerformed
 
-    private void btnRentalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentalActionPerformed
-        FormMain frm = new FormMain();
-        frm.setVisible(true);
-    }//GEN-LAST:event_btnRentalActionPerformed
+    private void btnStaffSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStaffSearchActionPerformed
+        FormMain frmMain = new FormMain(admin);
+        frmMain.setVisible(true);
+    }//GEN-LAST:event_btnStaffSearchActionPerformed
+
+    private void btnRentalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentalsActionPerformed
+        FormManageRentals frmRental = new FormManageRentals(admin);
+        frmRental.setVisible(true);
+    }//GEN-LAST:event_btnRentalsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,8 +157,9 @@ public class FormNavigation extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRental;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnCarSearch;
+    private javax.swing.JButton btnRentals;
+    private javax.swing.JButton btnStaffSearch;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

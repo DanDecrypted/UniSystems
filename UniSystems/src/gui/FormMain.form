@@ -80,9 +80,9 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="181" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="btnRentLong" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="32767" attributes="0"/>
-              <Component id="btnRentCar" min="-2" max="-2" attributes="0"/>
+              <Component id="btnRentDay" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -123,8 +123,8 @@
               <Component id="jScrollPane1" min="-2" pref="237" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnRentCar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnRentDay" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnRentLong" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -255,7 +255,7 @@
         <Property name="text" type="java.lang.String" value="Rental History"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnRentCar">
+    <Component class="javax.swing.JButton" name="btnRentDay">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Lato" size="13" style="0"/>
@@ -263,10 +263,10 @@
         <Property name="text" type="java.lang.String" value="Day Loan"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRentCarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRentDayActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnRentLong">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Lato" size="13" style="0"/>

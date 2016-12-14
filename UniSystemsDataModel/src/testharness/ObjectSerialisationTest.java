@@ -64,6 +64,8 @@ public class ObjectSerialisationTest{
         
         Administrator danScott = new Administrator("10501358", Position.TRANSPORT_OFFICE_ADMIN, Faculty.SCIENCE_AND_ENGINEERING, "PSQA301", "07594875693", new Address("45", "Lipson Road", "Plymouth", "Devon", "PL4 8EA"),
                 "Dr", "Daniel", "Scott", new Date(1994,6,28), "Male", "07594875693", "daniel.r.scott@students.plymouth.ac.uk", "password");
+        Administrator najim = new Administrator("10438524", Position.TRANSPORT_OFFICE_ADMIN, Faculty.SCIENCE_AND_ENGINEERING, "BGB106", "07474305999", new Address("1", "Tothill Avenue", "Plymouth", "Devon", "PL4 8PH"),
+                "Mr", "Najim", "Mazidi", new Date(1995,7,26), "Male", "07474306999", "nmazidi95@gmail.com", "password");
         
         ArrayList<String> arrayRepairs = new ArrayList<String>();
         arrayRepairs.add("Brakes");
@@ -77,6 +79,7 @@ public class ObjectSerialisationTest{
         danScott.assignLongLoan(car3, staff3);
         danScott.createCar(car);
         danScott.createAdministrator(danScott);
+        najim.createAdministrator(najim);
         
         car2.addService(service);
         danScott.createCar(car2);

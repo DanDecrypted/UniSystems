@@ -21,14 +21,14 @@ public class FormCarLookup extends javax.swing.JFrame {
      */
     public FormCarLookup() {
         this.getContentPane().setBackground(new Color (238,238,238));
-
+        
         initComponents();
     }
     
     public FormCarLookup(Administrator admin) {
         this.admin = admin;
         this.getContentPane().setBackground(new Color (238,238,238));
-
+        this.rootPane.setDefaultButton(btnEdtDlt);
         initComponents();
     }
 
@@ -128,7 +128,7 @@ public class FormCarLookup extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEdtDltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdtDltActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
         Car car = admin.getCarByReg(txtRegNumb.getText().toUpperCase());
         if (car != null) {
             FormCar frm = new FormCar(car.getRegNo(), admin);

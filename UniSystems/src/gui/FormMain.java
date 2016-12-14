@@ -23,9 +23,14 @@ import people.Administrator;
 public class FormMain extends javax.swing.JFrame {
     private DefaultListModel listModel;
     private Staff staff;
-    private Administrator admin;
+    private Administrator admin = new Administrator();
     
-    public FormMain() { }
+    public FormMain() { 
+        initComponents();
+        this.getContentPane().setBackground(new Color (238,238,238));
+        
+        listModel = new DefaultListModel();
+    }
     
     public FormMain(Administrator admin) {
         this.admin = admin;
@@ -35,6 +40,7 @@ public class FormMain extends javax.swing.JFrame {
         initComponents();
         
         this.getContentPane().setBackground(new Color (238,238,238));
+        this.rootPane.setDefaultButton(btnLookup);
         
     }
 
@@ -65,8 +71,8 @@ public class FormMain extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jlstRentalHistory = new javax.swing.JList<>();
         lblRentalHistory = new javax.swing.JLabel();
-        btnRentCar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnRentDay = new javax.swing.JButton();
+        btnRentLong = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(450, 300));
@@ -117,16 +123,16 @@ public class FormMain extends javax.swing.JFrame {
         lblRentalHistory.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
         lblRentalHistory.setText("Rental History");
 
-        btnRentCar.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        btnRentCar.setText("Day Loan");
-        btnRentCar.addActionListener(new java.awt.event.ActionListener() {
+        btnRentDay.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        btnRentDay.setText("Day Loan");
+        btnRentDay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRentCarActionPerformed(evt);
+                btnRentDayActionPerformed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        jButton1.setText("Long Term");
+        btnRentLong.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        btnRentLong.setText("Long Term");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,9 +178,9 @@ public class FormMain extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(181, 181, 181)
-                .addComponent(jButton1)
+                .addComponent(btnRentLong)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRentCar)
+                .addComponent(btnRentDay)
                 .addGap(194, 194, 194))
         );
         layout.setVerticalGroup(
@@ -209,8 +215,8 @@ public class FormMain extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRentCar)
-                    .addComponent(jButton1))
+                    .addComponent(btnRentDay)
+                    .addComponent(btnRentLong))
                 .addContainerGap())
         );
 
@@ -231,10 +237,10 @@ public class FormMain extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLookupActionPerformed
 
-    private void btnRentCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentCarActionPerformed
+    private void btnRentDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentDayActionPerformed
         FormAvailableCars frm = new FormAvailableCars(this.staff, "");
         frm.setVisible(true);
-    }//GEN-LAST:event_btnRentCarActionPerformed
+    }//GEN-LAST:event_btnRentDayActionPerformed
     
     private void populateStaffDetails(Staff staff) {
         txtForename.setText(staff.getForename());
@@ -299,8 +305,8 @@ public class FormMain extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLookup;
-    private javax.swing.JButton btnRentCar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnRentDay;
+    private javax.swing.JButton btnRentLong;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> jlstRentalHistory;
     private javax.swing.JLabel lblFaculty;
