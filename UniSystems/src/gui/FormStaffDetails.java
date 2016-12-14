@@ -5,17 +5,12 @@
  *  Daniel Scott and Najim Mazidi.
  */
 package gui;
-
-import data.Loans;
-import data.StaffMembers;
-import data.UtilityFunctions;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import loaning.DayLoan;
-import loaning.Loan;
 import loaning.LongLoan;
 import people.Address;
 import people.Administrator;
@@ -28,10 +23,11 @@ import people.Staff;
  * @author Craig
  */
 public class FormStaffDetails extends javax.swing.JFrame {
-    private StaffMembers staff = StaffMembers.getInstance();
-    private Loans loans = Loans.getInstance();
+    //private StaffMembers staff = StaffMembers.getInstance();
+    //private Loans loans = Loans.getInstance();
     private Administrator admin;
     private DefaultListModel listModel;
+    
     /**
      * Creates new form FormStaffDetails
      */
@@ -58,28 +54,24 @@ public class FormStaffDetails extends javax.swing.JFrame {
         
         initComponents();
         
-        staff.loadFromDisk();
-        loans.loadFromDisk();
         listModel = new DefaultListModel();
-        
-        for(Staff people : staff.getStaffMembers()){
-            if (people.getRefNumb().equals(staffNumb)){
-                this.txtStaffNumb.setText(staffNumb);
-                this.txtDOB.setText(data.UtilityFunctions.formatDateOfBirth(people.getDateOfBirth()));
-                this.txtEmail.setText(people.getEmailAddress());
-                this.cboFaculty.setSelectedItem(people.getFaculty().toString());
-                this.txtForename.setText(people.getForename());
-                this.txtGender.setText(people.getGender());
-                this.txtOffice.setText(people.getOfficeRoom());
-                this.txtPhoneNumb.setText(people.getPhoneNumber());
-                this.cboPosition.setSelectedItem(people.getPosition().toString());
-                this.txtSurname.setText(people.getSurname());
-                this.txtTitle.setText(people.getTitle());
-                this.txtWorkNumb.setText(people.getWorkNumb());
-                this.jtxtAddress.setText(people.getAddress().getAddressString());
-            }
-            populateLoanList(staffNumb);
+        Staff staff = admin.getStaffForRefNumb(staffNumb);
+        if (staff != null) {
+            this.txtStaffNumb.setText(staffNumb);
+            this.txtDOB.setText(data.UtilityFunctions.formatDateOfBirth(staff.getDateOfBirth()));
+            this.txtEmail.setText(staff.getEmailAddress());
+            this.cboFaculty.setSelectedItem(staff.getFaculty().toString());
+            this.txtForename.setText(staff.getForename());
+            this.txtGender.setText(staff.getGender());
+            this.txtOffice.setText(staff.getOfficeRoom());
+            this.txtPhoneNumb.setText(staff.getPhoneNumber());
+            this.cboPosition.setSelectedItem(staff.getPosition().toString());
+            this.txtSurname.setText(staff.getSurname());
+            this.txtTitle.setText(staff.getTitle());
+            this.txtWorkNumb.setText(staff.getWorkNumb());
+            this.jtxtAddress.setText(staff.getAddress().getAddressString());
         }
+        populateLoanList(staffNumb);
     }
     
     private void populateLoanList(String ref) {

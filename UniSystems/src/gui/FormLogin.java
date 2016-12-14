@@ -121,6 +121,7 @@ public class FormLogin extends javax.swing.JFrame {
             System.out.println(txtPass);
             if (adminPass.equals(txtPass)) {
                 if (admin.getRefNumb().equals(txtUsername.getText())) {
+                    admin.initialiseData();
                     FormCarLookup frmCarLookup = new FormCarLookup(admin);
                     frmCarLookup.setVisible(true);
                     //FormMain frmMain = new FormMain(admin);

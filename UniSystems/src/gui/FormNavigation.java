@@ -7,19 +7,24 @@
 package gui;
 
 import java.awt.Color;
+import people.Administrator;
 
 /**
  *
  * @author Craig
  */
 public class FormNavigation extends javax.swing.JFrame {
-
+    private Administrator admin;
     /**
      * Creates new form FormNavigation
      */
     public FormNavigation() {
         initComponents();
-        
+    }
+    
+    public FormNavigation(Administrator admin) {
+        initComponents();
+        this.admin = admin;
         this.getContentPane().setBackground(new Color (238,238,238));
         
     }

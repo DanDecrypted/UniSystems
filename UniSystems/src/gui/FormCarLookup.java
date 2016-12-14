@@ -5,7 +5,6 @@
  *  Daniel Scott and Najim Mazidi.
  */
 package gui;
-import data.Cars;
 import car.Car;
 import java.awt.Color;
 import javax.swing.JOptionPane;
@@ -16,7 +15,6 @@ import people.Administrator;
  * @author Craig
  */
 public class FormCarLookup extends javax.swing.JFrame {
-    private Cars cars = Cars.getInstance();
     private Administrator admin = new Administrator();
     /**
      * Creates new form CarLookupForm
@@ -25,7 +23,6 @@ public class FormCarLookup extends javax.swing.JFrame {
         this.getContentPane().setBackground(new Color (238,238,238));
 
         initComponents();
-        System.out.println(cars.loadFromDisk());
     }
     
     public FormCarLookup(Administrator admin) {
@@ -33,7 +30,6 @@ public class FormCarLookup extends javax.swing.JFrame {
         this.getContentPane().setBackground(new Color (238,238,238));
 
         initComponents();
-        System.out.println(cars.loadFromDisk());
     }
 
     /**
@@ -133,22 +129,17 @@ public class FormCarLookup extends javax.swing.JFrame {
 
     private void btnEdtDltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdtDltActionPerformed
         // TODO add your handling code here:
-        Boolean found = false;
-        for (Car car : cars.getCars()) {
-            if (car.getRegNo().equals(txtRegNumb.getText().toUpperCase())) {
-                FormCar frm = new FormCar(car.getRegNo());
-                frm.setVisible(true);
-                found = true;
-                break;
-            } 
-        }
-        if (!found){
+        Car car = admin.getCarByReg(txtRegNumb.getText().toUpperCase());
+        if (car != null) {
+            FormCar frm = new FormCar(car.getRegNo(), admin);
+            frm.setVisible(true);
+            this.setVisible(false);
+        } else {
         JOptionPane.showMessageDialog(null,
                         "The Registration entered was not found.",
                         "Car Lookup Error",
                         JOptionPane.WARNING_MESSAGE);
         }
-        this.setVisible(false);
     }//GEN-LAST:event_btnEdtDltActionPerformed
 
     private void btnAddCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCarActionPerformed

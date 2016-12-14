@@ -58,6 +58,10 @@ public class Administrator extends Staff implements java.io.Serializable {
     }
     
     public void initialiseData() {
+        cars = Cars.getInstance();
+        loans = Loans.getInstance();
+        admins = Administrators.getInstance();
+        staffMembers = StaffMembers.getInstance();
         System.out.println(cars.loadFromDisk());
         System.out.println(loans.loadFromDisk());
         System.out.println(admins.loadFromDisk());
@@ -110,6 +114,8 @@ public class Administrator extends Staff implements java.io.Serializable {
     }
     
     public Car getCarByReg(String carReg) {
+        if (cars == null) cars = Cars.getInstance();
+        cars.loadFromDisk();
         for (Car car : cars.getCars()) {
             if (car.getRegNo().equals(carReg)) { 
                 return car;

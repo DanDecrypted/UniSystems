@@ -56,7 +56,7 @@ public class FormCar extends javax.swing.JFrame {
      * List of cars contains a car with the regNo that you pass as a param.
      * @param regNo
      */
-    public FormCar(String regNo) {
+    public FormCar(String regNo, Administrator admin) {
 
         initComponents();
 
@@ -69,6 +69,7 @@ public class FormCar extends javax.swing.JFrame {
         this.getContentPane().setBackground(new Color (238,238,238));
         this.btnCreate.setVisible(false);
         Car car = admin.getCarByReg(regNo);
+        this.admin = admin;
         if (car != null) {
             this.txtRegNo.setText(regNo);
             this.cboClassification.setSelectedItem(car.getClassification());
