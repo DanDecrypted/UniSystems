@@ -50,15 +50,17 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblRegTitle" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
+                                  <Component id="lblRegTitle" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblLoanType" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                                       <Component id="lblStatusTitle" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="lblStatus" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="199" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
@@ -70,12 +72,13 @@
                                           <Component id="cboFuelType" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                                           <Component id="cboTransmission" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                                           <Component id="cboClassification" min="-2" pref="150" max="-2" attributes="0"/>
+                                          <Component id="cboLoanType" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
                                               <Component id="lblMileageTitle" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Component id="txtMileage" min="-2" pref="150" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
@@ -83,20 +86,18 @@
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="txtLocation" min="-2" pref="150" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="lblSeatsTitle" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="txtSeats" min="-2" pref="150" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lblDoorsTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblSeatsTitle" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="lblDoorsTitle" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txtSeats" min="-2" pref="150" max="-2" attributes="0"/>
                                                   <Component id="txtDoors" min="-2" pref="150" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -165,7 +166,12 @@
                   <Component id="lblSeatsTitle" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtSeats" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="cboLoanType" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblLoanType" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblStatus" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblStatusTitle" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -447,6 +453,27 @@
         <Property name="text" type="java.lang.String" value="Update"/>
         <Property name="alignmentX" type="float" value="0.5"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblLoanType">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lato" size="13" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Loan Type:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cboLoanType">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lato" size="13" style="0"/>
+        </Property>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new DefaultComboBoxModel(LoanType.values())" type="code"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

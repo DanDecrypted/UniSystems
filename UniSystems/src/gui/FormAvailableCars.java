@@ -6,6 +6,7 @@
  */
 package gui;
 
+import car.Car;
 import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 import car.Classification;
@@ -43,16 +44,34 @@ public class FormAvailableCars extends javax.swing.JFrame {
         this.staff = staff;
         this.loanType = loanType;
         this.lblStaff.setText("Cars for: " + staff.getFullName());
-        this.lblCarLoanType.setText("Showing cars available for a " + loanType + " loan.");
+        this.lblCarLoanType.setText("Showing cars available for a " + loanType);
         populateAvailableCars();
     }
     
     private void populateAvailableCars() {
         listModel.clear();
         
-        if (this.loanType == LoanType.DAY_LOAN) {
-            
+        for (Car car : admin.getCars()) {
+                if (car.getLoanType().equals(this.loanType)) {
+                    listModel.addElement(car.getRegNo());
+                }
+            }
+        lstAvailableCars.setModel(listModel);
+    }
+    
+    private void updateAvailableCars() {
+        listModel.clear();
+        lstAvailableCars.setModel(listModel);
+        
+        if (cboClass.getSelectedItem() != null) {
+            for (Car car : admin.getCars()) {
+                if (car.getClassification().equals(this.cboClass.getSelectedItem())) {
+                    listModel.addElement(car.getRegNo());
+                }
+            }
         }
+        
+        lstAvailableCars.setModel(listModel);
     }
 
     /**
@@ -86,6 +105,8 @@ public class FormAvailableCars extends javax.swing.JFrame {
 
         cboClass.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         cboClass.setModel(new DefaultComboBoxModel(Classification.values()));
+        cboClass.setSelectedItem(null);
+        cboClass.setToolTipText("");
 
         jLabel2.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         jLabel2.setText("Car Class:");
@@ -98,13 +119,13 @@ public class FormAvailableCars extends javax.swing.JFrame {
 
         btnUpdate.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         lstAvailableCars.setFont(new java.awt.Font("Lato", 0, 12)); // NOI18N
-        lstAvailableCars.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(lstAvailableCars);
 
         lblCarLoanType.setText("PLACEHOLDER");
@@ -175,6 +196,10 @@ public class FormAvailableCars extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        updateAvailableCars();
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     /**
      * @param args the command line arguments

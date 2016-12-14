@@ -153,6 +153,7 @@
     <Component class="javax.swing.JTextField" name="txtForename">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblSurname">
@@ -166,6 +167,7 @@
     <Component class="javax.swing.JTextField" name="txtSurname">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblPosition">
@@ -179,6 +181,7 @@
     <Component class="javax.swing.JTextField" name="txtPosition">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblFaculty">
@@ -192,6 +195,7 @@
     <Component class="javax.swing.JTextField" name="txtFaculty">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblOfficeRoom">
@@ -205,6 +209,7 @@
     <Component class="javax.swing.JTextField" name="txtOfficeRoom">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblOfficePhone">
@@ -218,6 +223,7 @@
     <Component class="javax.swing.JTextField" name="txtOfficePhone">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnLookup">
@@ -240,6 +246,7 @@
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
               <StringArray count="0"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -261,6 +268,7 @@
           <Font name="Lato" size="13" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Day Loan"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRentDayActionPerformed"/>
@@ -272,6 +280,7 @@
           <Font name="Lato" size="13" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Long Term"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRentLongActionPerformed"/>

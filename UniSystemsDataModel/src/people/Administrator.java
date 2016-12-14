@@ -94,8 +94,7 @@ public class Administrator extends Staff implements java.io.Serializable {
         }
         return temp;
     }
-    
-    
+        
     public ArrayList<DayLoan> getDayLoansForRef(String refNumb) {
         return UtilityFunctions.getDayLoans(getLoansForRef(refNumb));
     }
@@ -197,4 +196,9 @@ public class Administrator extends Staff implements java.io.Serializable {
     public void sendForService(Car car){
         car.setStatus(Status.IN_FOR_SERVICE);
     }
-}
+    
+    public ArrayList<Car> getCars() {
+        return cars.getCars();
+    }
+    
+   }

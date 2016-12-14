@@ -82,31 +82,37 @@ public class FormMain extends javax.swing.JFrame {
         lblFirstName.setText("Forename:");
 
         txtForename.setEditable(false);
+        txtForename.setEnabled(false);
 
         lblSurname.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblSurname.setText("Surname:");
 
         txtSurname.setEditable(false);
+        txtSurname.setEnabled(false);
 
         lblPosition.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblPosition.setText("Position:");
 
         txtPosition.setEditable(false);
+        txtPosition.setEnabled(false);
 
         lblFaculty.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblFaculty.setText("Faculty:");
 
         txtFaculty.setEditable(false);
+        txtFaculty.setEnabled(false);
 
         lblOfficeRoom.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblOfficeRoom.setText("Office Room:");
 
         txtOfficeRoom.setEditable(false);
+        txtOfficeRoom.setEnabled(false);
 
         lblOfficePhone.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblOfficePhone.setText("Office Phone:");
 
         txtOfficePhone.setEditable(false);
+        txtOfficePhone.setEnabled(false);
 
         btnLookup.setFont(new java.awt.Font("Lato", 0, 11)); // NOI18N
         btnLookup.setText("Lookup");
@@ -116,6 +122,7 @@ public class FormMain extends javax.swing.JFrame {
             }
         });
 
+        jlstRentalHistory.setEnabled(false);
         jScrollPane1.setViewportView(jlstRentalHistory);
 
         lblRentalHistory.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
@@ -123,6 +130,7 @@ public class FormMain extends javax.swing.JFrame {
 
         btnRentDay.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         btnRentDay.setText("Day Loan");
+        btnRentDay.setEnabled(false);
         btnRentDay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRentDayActionPerformed(evt);
@@ -131,6 +139,7 @@ public class FormMain extends javax.swing.JFrame {
 
         btnRentLong.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         btnRentLong.setText("Long Term");
+        btnRentLong.setEnabled(false);
         btnRentLong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRentLongActionPerformed(evt);
@@ -231,6 +240,18 @@ public class FormMain extends javax.swing.JFrame {
         if (staffObj != null) {
             populateStaffDetails(staffObj);
             populateRentalList(staffObj);
+            
+            txtForename.setEnabled(true);
+            txtSurname.setEnabled(true);
+            txtPosition.setEnabled(true);
+            txtFaculty.setEnabled(true);
+            txtOfficePhone.setEnabled(true);
+            txtOfficeRoom.setEnabled(true);
+            jlstRentalHistory.setEnabled(true);
+            txtForename.setEnabled(true);
+            btnRentDay.setEnabled(true);
+            btnRentLong.setEnabled(true);
+
         } else {
             JOptionPane.showMessageDialog(null,
                 "The member of staff with the ID " + txtStaffNumb.getText() 
