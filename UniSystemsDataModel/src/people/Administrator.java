@@ -9,6 +9,7 @@ package people;
 import loaning.DayLoan;
 import loaning.LongLoan;
 import car.Car;
+import car.Service;
 import car.Status;
 import data.Loans;
 import data.StaffMembers;
@@ -91,6 +92,17 @@ public class Administrator extends Staff implements java.io.Serializable {
         }
         return null;
     }
+    
+    public ArrayList<Loan> getLoansForCar(String carReg){
+        ArrayList<Loan> temp = new ArrayList<Loan>();
+        for (Loan loan : loans.getLoans()){
+            if (loan.getCar().getRegNo().equals(carReg)){
+                temp.add(loan);
+            }
+        }
+        return temp;
+    }
+    
     
     public void createStaffMember(Staff staff) {
         if (staffObserver == null) staffObserver = new StaffObserver();

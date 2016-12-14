@@ -116,8 +116,8 @@ public class FormCar extends javax.swing.JFrame {
     private void populateLoanHistory(Car objCar){
         loanListModel.clear();
         String listElement = "";
-        for(Loan loan : loans.getLoans()){
-            if(loan.getCar().getRegNo().equals(objCar.getRegNo())){
+        for(Loan loan : admin.getLoansForCar(objCar.getRegNo())){
+            
                 DayLoan dayLoan = null;
                 LongLoan longLoan = null;
                 try {
@@ -145,7 +145,7 @@ public class FormCar extends javax.swing.JFrame {
                 }
 
                 loanListModel.addElement(listElement);
-            }
+            
         }
 
         this.lstLoanHistory.setModel(loanListModel);
