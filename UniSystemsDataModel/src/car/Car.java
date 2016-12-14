@@ -32,7 +32,7 @@ public class Car extends data.Observed implements java.io.Serializable{
     }
     
     public Car(String regNo, Transmission transmission, FuelType fuelType, 
-            String location, Classification classification, int seats, int doors, int mileage) {
+            String location, Classification classification, int seats, int doors, int mileage, LoanType loanType) {
         this.regNo = regNo;
         this.classification = classification;
         this.transmission = transmission; 
@@ -43,6 +43,7 @@ public class Car extends data.Observed implements java.io.Serializable{
         this.seats = seats;
         this.doors = doors;
         this.milage = mileage;
+        this.loanType = loanType;
         
     }
     

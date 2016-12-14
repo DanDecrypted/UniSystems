@@ -95,6 +95,7 @@ public class Administrator extends Staff implements java.io.Serializable {
         return temp;
     }
     
+    
     public ArrayList<DayLoan> getDayLoansForRef(String refNumb) {
         return UtilityFunctions.getDayLoans(getLoansForRef(refNumb));
     }

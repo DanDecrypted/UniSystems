@@ -6,6 +6,7 @@
  */
 package gui;
 
+import car.LoanType;
 import java.awt.Color;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
@@ -22,7 +23,6 @@ import people.Administrator;
  */
 public class FormMain extends javax.swing.JFrame {
     private DefaultListModel listModel;
-    private Staff staff;
     private Administrator admin = new Administrator();
     
     public FormMain() { 
@@ -34,14 +34,12 @@ public class FormMain extends javax.swing.JFrame {
     
     public FormMain(Administrator admin) {
         this.admin = admin;
-        admin.initialiseData();
+        //admin.initialiseData();
         listModel = new DefaultListModel();
-        
-        initComponents();
-        
+                
         this.getContentPane().setBackground(new Color (238,238,238));
         this.rootPane.setDefaultButton(btnLookup);
-        
+        initComponents();
     }
 
     /**
@@ -133,6 +131,11 @@ public class FormMain extends javax.swing.JFrame {
 
         btnRentLong.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         btnRentLong.setText("Long Term");
+        btnRentLong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRentLongActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -238,9 +241,16 @@ public class FormMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLookupActionPerformed
 
     private void btnRentDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentDayActionPerformed
-        FormAvailableCars frm = new FormAvailableCars(this.staff, "");
+        Staff objStaff = admin.getStaffForRefNumb(txtStaffNumb.getText());
+        FormAvailableCars frm = new FormAvailableCars(admin, objStaff, LoanType.DAY_LOAN);
         frm.setVisible(true);
     }//GEN-LAST:event_btnRentDayActionPerformed
+
+    private void btnRentLongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentLongActionPerformed
+        Staff objStaff = admin.getStaffForRefNumb(txtStaffNumb.getText());
+        FormAvailableCars frm = new FormAvailableCars(admin, objStaff, LoanType.LONG_TERM_LOAN);
+        frm.setVisible(true);
+    }//GEN-LAST:event_btnRentLongActionPerformed
     
     private void populateStaffDetails(Staff staff) {
         txtForename.setText(staff.getForename());

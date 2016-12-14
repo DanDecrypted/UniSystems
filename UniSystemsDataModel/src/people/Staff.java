@@ -26,7 +26,7 @@ public class Staff extends Person {
         this.staffRefNumb = "UNKNOWN";
         this.position = null;
         this.faculty = null;
-        this.officeRoom = "UNKNWON";
+        this.officeRoom = "UNKNOWN";
         this.workNumb = "UNKNOWN";
         this.address = null;
     }

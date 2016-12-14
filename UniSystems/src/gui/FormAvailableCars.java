@@ -9,6 +9,9 @@ package gui;
 import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 import car.Classification;
+import car.LoanType;
+import javax.swing.DefaultListModel;
+import people.Administrator;
 import people.Staff;
 
 /**
@@ -16,7 +19,11 @@ import people.Staff;
  * @author Craig
  */
 public class FormAvailableCars extends javax.swing.JFrame {
-
+    private DefaultListModel listModel;
+    private Administrator admin = new Administrator();
+    private LoanType loanType;
+    private Staff staff = new Staff();
+    
     /**
      * Creates new form FormAvailableCars
      */
@@ -26,11 +33,26 @@ public class FormAvailableCars extends javax.swing.JFrame {
         this.getContentPane().setBackground(new Color (238,238,238));
         
     }
-    public FormAvailableCars(Staff staff, String loanType) {
+    public FormAvailableCars(Administrator admin, Staff staff, LoanType loanType) {
         initComponents();
         this.getContentPane().setBackground(new Color (238,238,238));
         
-        this.lblStaffMember.setText(staff.getForename() + " " + staff.getSurname());
+        listModel = new DefaultListModel();
+        
+        this.admin = admin;
+        this.staff = staff;
+        this.loanType = loanType;
+        this.lblStaff.setText("Cars for: " + staff.getFullName());
+        this.lblCarLoanType.setText("Showing cars available for a " + loanType + " loan.");
+        populateAvailableCars();
+    }
+    
+    private void populateAvailableCars() {
+        listModel.clear();
+        
+        if (this.loanType == LoanType.DAY_LOAN) {
+            
+        }
     }
 
     /**
@@ -42,7 +64,7 @@ public class FormAvailableCars extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblAvailableCars = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
         cboClass = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -53,13 +75,14 @@ public class FormAvailableCars extends javax.swing.JFrame {
         btnUpdate = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstAvailableCars = new javax.swing.JList<>();
-        lblStaffMember = new javax.swing.JLabel();
+        lblCarLoanType = new javax.swing.JLabel();
+        lblStaff = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblAvailableCars.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
-        lblAvailableCars.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAvailableCars.setText("Available Cars");
+        lblTitle.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("Available Cars");
 
         cboClass.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         cboClass.setModel(new DefaultComboBoxModel(Classification.values()));
@@ -84,19 +107,18 @@ public class FormAvailableCars extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(lstAvailableCars);
 
-        lblStaffMember.setText("Cars for:");
+        lblCarLoanType.setText("PLACEHOLDER");
+
+        lblStaff.setText("PLACEHOLDER");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblAvailableCars, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
+            .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -109,24 +131,32 @@ public class FormAvailableCars extends javax.swing.JFrame {
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cboLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                                 .addComponent(btnUpdate))
                             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblStaffMember)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCarLoanType)
+                            .addComponent(lblStaff))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblAvailableCars)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addGap(14, 14, 14)
-                .addComponent(lblStaffMember)
+                .addComponent(lblTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(14, 14, 14))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblStaff)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(lblCarLoanType)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
@@ -191,8 +221,9 @@ public class FormAvailableCars extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel lblAvailableCars;
-    private javax.swing.JLabel lblStaffMember;
+    private javax.swing.JLabel lblCarLoanType;
+    private javax.swing.JLabel lblStaff;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JList<String> lstAvailableCars;
     // End of variables declaration//GEN-END:variables
 }
