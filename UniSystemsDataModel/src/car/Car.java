@@ -21,7 +21,8 @@ public class Car extends data.Observed implements java.io.Serializable{
     private ArrayList<Service> serviceRecord;
     private Classification classification;
     private FuelType fuelType;
-    private String location;
+    private Location location;
+    private String parkingSpace;
     private int milage;
     private int seats;
     private int doors;
@@ -32,12 +33,13 @@ public class Car extends data.Observed implements java.io.Serializable{
     }
     
     public Car(String regNo, Transmission transmission, FuelType fuelType, 
-            String location, Classification classification, int seats, int doors, int mileage, LoanType loanType) {
+            Location location, String parkingSpace, Classification classification, int seats, int doors, int mileage, LoanType loanType) {
         this.regNo = regNo.toUpperCase();
         this.classification = classification;
         this.transmission = transmission; 
         this.fuelType = fuelType;
         this.location = location;
+        this.parkingSpace = parkingSpace;
         this.status = Status.AVAILABLE;
         this.serviceRecord = new ArrayList<Service>();
         this.seats = seats;
@@ -64,8 +66,16 @@ public class Car extends data.Observed implements java.io.Serializable{
         return classification;
     }
     
-    public String getLocation() {
+    public Location getLocation() {
         return location;
+    }
+
+    public String getParkingSpace() {
+        return parkingSpace;
+    }
+
+    public void setParkingSpace(String parkingSpace) {
+        this.parkingSpace = parkingSpace;
     }
     
     public int getMilage() {

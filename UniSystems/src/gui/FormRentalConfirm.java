@@ -6,8 +6,11 @@
  */
 package gui;
 
+import car.Car;
 import java.awt.Color;
 import static javafx.scene.paint.Color.color;
+import people.Administrator;
+import people.Staff;
 
 /**
  *
@@ -24,6 +27,23 @@ public class FormRentalConfirm extends javax.swing.JFrame {
         this.getContentPane().setBackground(new Color (238,238,238));
         this.jPanel1.setBackground(new Color (238, 238, 238));
         this.jPanel2.setBackground(new Color (238, 238, 238));
+    }
+    
+    public FormRentalConfirm(Administrator admin, Staff staff, Car carToRent) {
+        initComponents();
+        this.getContentPane().setBackground(new Color (238,238,238));
+        this.jPanel1.setBackground(new Color (238, 238, 238));
+        this.jPanel2.setBackground(new Color (238, 238, 238));
+        
+        this.txtStaffNumb.setText(staff.getRefNumb());
+        this.txtForename.setText(staff.getForename());
+        this.txtSurname.setText(staff.getSurname());
+        this.txtRoom.setText(staff.getOfficeRoom());
+        this.txtPhone.setText(staff.getWorkNumb());
+        
+        this.txtNumberPlate.setText(carToRent.getRegNo());
+        this.txtClass.setText(carToRent.getClassification().toString());
+        this.txtLocation.setText(carToRent.getLocation().toString());
     }
 
     /**

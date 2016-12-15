@@ -69,20 +69,48 @@ public class FormAvailableCars extends javax.swing.JFrame {
         listModel.clear();
         lstAvailableCars.setModel(listModel);
         
-       if (cboClass.getSelectedItem() == "ALL"){
+       if (cboClass.getSelectedItem() == "ALL" && cboLocation.getSelectedItem() == "ALL"){
            populateAvailableCars();
        } else {
-           for (Car car : admin.getCars()) {
-               if (car.getLoanType().equals(this.loanType)) {
-                   if (car.getClassification().toString().equals(this.cboClass.getSelectedItem().toString())) {
-                       String listElement = car.getRegNo().toString() + " - "
-                            + formatEnum(car.getTransmission().toString()) + " "
-                            + formatEnum(car.getClassification().toString()) + " in "
-                            + formatEnum(car.getLocation().toString());
-                       listModel.addElement(listElement);
+           if (cboClass.getSelectedItem() == "ALL") {
+               for (Car car : admin.getCars()) {
+                   if (car.getLoanType().equals(this.loanType)) {
+                       if (car.getLocation().toString().equals(this.cboLocation.getSelectedItem().toString())) {
+                           String listElement = car.getRegNo().toString() + " - "
+                                + formatEnum(car.getTransmission().toString()) + " "
+                                + formatEnum(car.getClassification().toString()) + " in "
+                                + formatEnum(car.getLocation().toString());
+                           listModel.addElement(listElement);
+                       }
+                   }
+               }
+           } else if (cboLocation.getSelectedItem() == "ALL") {
+               for (Car car : admin.getCars()) {
+                   if (car.getLoanType().equals(this.loanType)) {
+                       if (car.getClassification().toString().equals(this.cboClass.getSelectedItem().toString())) {
+                           String listElement = car.getRegNo().toString() + " - "
+                                + formatEnum(car.getTransmission().toString()) + " "
+                                + formatEnum(car.getClassification().toString()) + " in "
+                                + formatEnum(car.getLocation().toString());
+                           listModel.addElement(listElement);
+                       }
+                   }
+               }
+           } else {
+               for (Car car : admin.getCars()) {
+                   if (car.getLoanType().equals(this.loanType)) {
+                       if ((car.getClassification().toString().equals(this.cboClass.getSelectedItem().toString())) &&
+                               car.getLocation().toString().equals(this.cboLocation.getSelectedItem().toString())) {
+                           String listElement = car.getRegNo().toString() + " - "
+                                + formatEnum(car.getTransmission().toString()) + " "
+                                + formatEnum(car.getClassification().toString()) + " in "
+                                + formatEnum(car.getLocation().toString());
+                           listModel.addElement(listElement);
+                       }
                    }
                }
            }
+           
         }
         
         lstAvailableCars.setModel(listModel);
@@ -99,9 +127,8 @@ public class FormAvailableCars extends javax.swing.JFrame {
 
         lblTitle = new javax.swing.JLabel();
         cboClass = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblCarClass = new javax.swing.JLabel();
+        lblLocation = new javax.swing.JLabel();
         cboLocation = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
@@ -110,6 +137,8 @@ public class FormAvailableCars extends javax.swing.JFrame {
         lstAvailableCars = new javax.swing.JList<>();
         lblCarLoanType = new javax.swing.JLabel();
         lblStaff = new javax.swing.JLabel();
+        lblInfo = new javax.swing.JLabel();
+        btnRentCar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,14 +150,14 @@ public class FormAvailableCars extends javax.swing.JFrame {
         cboClass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALL", "COMPACT", "COUPE", "ESTATE", "LORRY", "VAN" }));
         cboClass.setToolTipText("");
 
-        jLabel2.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        jLabel2.setText("Car Class:");
+        lblCarClass.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblCarClass.setText("Car Class:");
 
-        jLabel4.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        jLabel4.setText("Location:");
+        lblLocation.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblLocation.setText("Location:");
 
         cboLocation.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        cboLocation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboLocation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALL", "PLYMOUTH", "DEVONPORT", "EXETER", "DERRIFORD", "FALMOUTH" }));
 
         btnUpdate.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         btnUpdate.setText("Update");
@@ -145,6 +174,15 @@ public class FormAvailableCars extends javax.swing.JFrame {
 
         lblStaff.setText("PLACEHOLDER");
 
+        lblInfo.setText("Please select desired car from the list below:");
+
+        btnRentCar.setText("Rent Car");
+        btnRentCar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRentCarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -155,27 +193,34 @@ public class FormAvailableCars extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cboClass, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cboLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
-                                .addComponent(btnUpdate))
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCarLoanType)
                             .addComponent(lblStaff))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1)
+                            .addComponent(jSeparator2)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblInfo)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(lblCarClass)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cboClass, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lblLocation)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cboLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnUpdate)))
+                                .addGap(0, 90, Short.MAX_VALUE)))
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRentCar)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,27 +228,26 @@ public class FormAvailableCars extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(14, 14, 14))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblStaff)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(lblStaff)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblCarLoanType)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
+                    .addComponent(lblCarClass)
+                    .addComponent(lblLocation)
                     .addComponent(cboLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUpdate))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblInfo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRentCar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -213,6 +257,15 @@ public class FormAvailableCars extends javax.swing.JFrame {
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         updateAvailableCars();
     }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnRentCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentCarActionPerformed
+        String[] carString = this.lstAvailableCars.getSelectedValue().toString().split(" ");
+        Car carToRent = admin.getCarByReg(carString[0]);
+        
+        FormRentalConfirm frm = new FormRentalConfirm(admin, staff, carToRent);
+        frm.setVisible(true);
+        
+    }//GEN-LAST:event_btnRentCarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,16 +303,17 @@ public class FormAvailableCars extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRentCar;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cboClass;
     private javax.swing.JComboBox<String> cboLocation;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblCarClass;
     private javax.swing.JLabel lblCarLoanType;
+    private javax.swing.JLabel lblInfo;
+    private javax.swing.JLabel lblLocation;
     private javax.swing.JLabel lblStaff;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JList<String> lstAvailableCars;
