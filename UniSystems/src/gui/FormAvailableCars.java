@@ -63,12 +63,16 @@ public class FormAvailableCars extends javax.swing.JFrame {
         listModel.clear();
         lstAvailableCars.setModel(listModel);
         
-        if (cboClass.getSelectedItem() != null) {
-            for (Car car : admin.getCars()) {
-                if (car.getClassification().equals(this.cboClass.getSelectedItem())) {
-                    listModel.addElement(car.getRegNo());
-                }
-            }
+       if (cboClass.getSelectedItem() == "ALL"){
+           populateAvailableCars();
+       } else {
+           for (Car car : admin.getCars()) {
+               if (car.getLoanType().equals(this.loanType)) {
+                   if (car.getClassification().toString().equals(this.cboClass.getSelectedItem().toString())) {
+                       listModel.addElement(car.getRegNo());
+                   }
+               }
+           }
         }
         
         lstAvailableCars.setModel(listModel);
@@ -104,8 +108,7 @@ public class FormAvailableCars extends javax.swing.JFrame {
         lblTitle.setText("Available Cars");
 
         cboClass.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        cboClass.setModel(new DefaultComboBoxModel(Classification.values()));
-        cboClass.setSelectedItem(null);
+        cboClass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALL", "COMPACT", "COUPE", "ESTATE", "LORRY", "VAN" }));
         cboClass.setToolTipText("");
 
         jLabel2.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
