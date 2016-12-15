@@ -7,12 +7,11 @@
 package gui;
 
 import car.LoanType;
+import static data.UtilityFunctions.formatEnum;
 import java.awt.Color;
 import javax.swing.DefaultListModel;
-import javax.swing.Icon;
 import javax.swing.JOptionPane;
 import loaning.DayLoan;
-import loaning.Loan;
 import loaning.LongLoan;
 import people.Staff;
 import people.Administrator;
@@ -276,8 +275,8 @@ public class FormMain extends javax.swing.JFrame {
     private void populateStaffDetails(Staff staff) {
         txtForename.setText(staff.getForename());
         txtSurname.setText(staff.getSurname());
-        txtPosition.setText(staff.getPosition().toString());
-        txtFaculty.setText(staff.getFaculty().toString());
+        txtPosition.setText(formatEnum(staff.getPosition().toString()));
+        txtFaculty.setText(formatEnum(staff.getFaculty().toString()));
         txtOfficeRoom.setText(staff.getOfficeRoom());
         txtOfficePhone.setText(staff.getWorkNumb());
     }

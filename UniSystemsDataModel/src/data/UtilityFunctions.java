@@ -5,6 +5,7 @@
  */
 package data;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import loaning.DayLoan;
 import loaning.Loan;
@@ -58,5 +59,17 @@ public class UtilityFunctions {
                 + month + "/" 
                 + year ;
         return returns;
+    }
+    
+    public static String formatEnum(String str) {
+        char[] array = str.toCharArray();
+        String formatted;
+        for (int i = 1; i < array.length; i++) {
+            
+                array[i] = Character.toLowerCase(array[i]);
+        }
+        formatted = new String(array);
+        formatted = formatted.replaceAll("_", " ");
+        return formatted;
     }
 }

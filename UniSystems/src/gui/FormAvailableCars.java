@@ -11,6 +11,7 @@ import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 import car.Classification;
 import car.LoanType;
+import static data.UtilityFunctions.formatEnum;
 import javax.swing.DefaultListModel;
 import people.Administrator;
 import people.Staff;
@@ -44,7 +45,7 @@ public class FormAvailableCars extends javax.swing.JFrame {
         this.staff = staff;
         this.loanType = loanType;
         this.lblStaff.setText("Cars for: " + staff.getFullName());
-        this.lblCarLoanType.setText("Showing cars available for a " + loanType);
+        this.lblCarLoanType.setText("Showing cars available for a " + formatEnum(loanType.toString()));
         populateAvailableCars();
     }
     
@@ -53,7 +54,12 @@ public class FormAvailableCars extends javax.swing.JFrame {
         
         for (Car car : admin.getCars()) {
                 if (car.getLoanType().equals(this.loanType)) {
-                    listModel.addElement(car.getRegNo());
+                    String listElement = car.getRegNo().toString() + " - "
+                            + formatEnum(car.getTransmission().toString()) + " "
+                            + formatEnum(car.getClassification().toString()) + " in "
+                            + formatEnum(car.getLocation().toString());
+                    
+                    listModel.addElement(listElement);
                 }
             }
         lstAvailableCars.setModel(listModel);
@@ -69,7 +75,11 @@ public class FormAvailableCars extends javax.swing.JFrame {
            for (Car car : admin.getCars()) {
                if (car.getLoanType().equals(this.loanType)) {
                    if (car.getClassification().toString().equals(this.cboClass.getSelectedItem().toString())) {
-                       listModel.addElement(car.getRegNo());
+                       String listElement = car.getRegNo().toString() + " - "
+                            + formatEnum(car.getTransmission().toString()) + " "
+                            + formatEnum(car.getClassification().toString()) + " in "
+                            + formatEnum(car.getLocation().toString());
+                       listModel.addElement(listElement);
                    }
                }
            }
