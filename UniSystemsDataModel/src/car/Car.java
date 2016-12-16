@@ -16,6 +16,8 @@ public class Car extends data.Observed implements java.io.Serializable{
      * RegNo should be unique. it is the method of identifying the car
      */
     private String regNo;
+    private String make;
+    private String model;
     private Transmission transmission;
     private Status status;
     private ArrayList<Service> serviceRecord;
@@ -32,9 +34,12 @@ public class Car extends data.Observed implements java.io.Serializable{
         
     }
     
-    public Car(String regNo, Transmission transmission, FuelType fuelType, 
-            Location location, String parkingSpace, Classification classification, int seats, int doors, int mileage, LoanType loanType) {
+    public Car(String regNo, String make, String model, Transmission transmission, FuelType fuelType, 
+            Location location, String parkingSpace, Classification classification, int seats, int doors,
+            int mileage, LoanType loanType) {
         this.regNo = regNo.toUpperCase();
+        this.make = make;
+        this.model = model;
         this.classification = classification;
         this.transmission = transmission; 
         this.fuelType = fuelType;
@@ -47,6 +52,22 @@ public class Car extends data.Observed implements java.io.Serializable{
         this.milage = mileage;
         this.loanType = loanType;
         
+    }
+
+    public String getMake() {
+        return make;
+    }
+
+    public void setMake(String make) {
+        this.make = make;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
     
     public String getRegNo() {

@@ -47,15 +47,15 @@ public class ObjectSerialisationTest{
     }
 
     public static void addTestDataAndSave() {
-        Car car = new Car("ABCDEFG", Transmission.AUTOMATIC, FuelType.DIESEL, 
+        Car car = new Car("ABCDEFG", "Land Rover", "Defender", Transmission.AUTOMATIC, FuelType.DIESEL, 
                             Location.PLYMOUTH, "A101" ,Classification.COUPE, 5, 3, 10, LoanType.DAY_LOAN);
-        Car car2 = new Car("KP10TKN", Transmission.MANUAL, FuelType.PETROL,
+        Car car2 = new Car("KP10TKN", "Ford", "Focus", Transmission.MANUAL, FuelType.PETROL,
                             Location.PLYMOUTH, "A102", Classification.COUPE, 5, 5,23445, LoanType.DAY_LOAN);
-        Car car3 = new Car("AA16QWE", Transmission.AUTOMATIC, FuelType.ELECTRIC, 
+        Car car3 = new Car("AA16QWE", "Renault", "Twizzy", Transmission.AUTOMATIC, FuelType.ELECTRIC, 
                             Location.DEVONPORT, "A103", Classification.ESTATE, 5, 5,394, LoanType.LONG_TERM_LOAN);
-        Car car4 = new Car("AB66ABC", Transmission.MANUAL, FuelType.LPG, 
+        Car car4 = new Car("AB66ABC", "Mercedes", "Sprinter", Transmission.MANUAL, FuelType.LPG, 
                             Location.PLYMOUTH, "A104", Classification.VAN, 3, 3, 237234, LoanType.LONG_TERM_LOAN);
-        Car car5 = new Car("NA15PQD", Transmission.AUTOMATIC, FuelType.ELECTRIC, 
+        Car car5 = new Car("NA15PQD","BMW", "i8", Transmission.AUTOMATIC, FuelType.ELECTRIC, 
                             Location.PLYMOUTH, "A105", Classification.COMPACT, 4, 3, 20050, LoanType.DAY_LOAN);
         Staff staff = new Staff("10438524", Position.LECTURER, Faculty.SCIENCE_AND_ENGINEERING, "BGB106", "07474306999", new Address("1", "Tothill Avenue", "Plymouth", "Devon", "PL4 8PH"),
                 "Mr", "Najim", "Mazidi", new Date(1995,07,26), "Male", "07474306999", "nmazidi95@gmail.com");
