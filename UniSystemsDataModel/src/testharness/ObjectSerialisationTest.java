@@ -68,6 +68,8 @@ public class ObjectSerialisationTest{
                 "Dr", "Daniel", "Scott", new Date(1994,6,28), "Male", "07594875693", "daniel.r.scott@students.plymouth.ac.uk", "password");
         Administrator najim = new Administrator("10438524", Position.TRANSPORT_OFFICE_ADMIN, Faculty.SCIENCE_AND_ENGINEERING, "BGB106", "07474305999", new Address("1", "Tothill Avenue", "Plymouth", "Devon", "PL4 8PH"),
                 "Mr", "Najim", "Mazidi", new Date(1995,7,26), "Male", "07474306999", "nmazidi95@gmail.com", "password");
+        Administrator craig = new Administrator("10488708", Position.TRANSPORT_OFFICE_ADMIN, Faculty.SCIENCE_AND_ENGINEERING, "BGB106", "07474305999", new Address("15", "Tot Avenue", "Plymouth", "Devon", "PL4 8PH"),
+                "Mr", "Craig", "Banyard", new Date(1992,6,03), "Male", "07474306999", "cbanyard@bsc.com", "password");
         
         ArrayList<String> arrayRepairs = new ArrayList<String>();
         arrayRepairs.add("Brakes");
