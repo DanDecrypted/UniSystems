@@ -7,6 +7,7 @@
 package gui;
 
 import car.LoanType;
+import data.IObserver;
 import static data.UtilityFunctions.formatEnum;
 import java.awt.Color;
 import javax.swing.DefaultListModel;
@@ -20,9 +21,10 @@ import people.Administrator;
  *
  * @author Craig
  */
-public class FormMain extends javax.swing.JFrame {
+public class FormMain extends javax.swing.JFrame implements IObserver {
     private DefaultListModel listModel;
     private Administrator admin = new Administrator();
+    private Staff staffObj;
     
     public FormMain() { 
         initComponents();
@@ -235,7 +237,7 @@ public class FormMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLookupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLookupActionPerformed
-        Staff staffObj = admin.getStaffForRefNumb(txtStaffNumb.getText());
+        staffObj = admin.getStaffForRefNumb(txtStaffNumb.getText());
         if (staffObj != null) {
             populateStaffDetails(staffObj);
             populateRentalList(staffObj);
@@ -331,6 +333,13 @@ public class FormMain extends javax.swing.JFrame {
                 new FormMain().setVisible(true);
             }
         });
+    }
+    
+    @Override 
+    public void update() {
+        if (staffObj != null) { 
+            populateRentalList(staffObj);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

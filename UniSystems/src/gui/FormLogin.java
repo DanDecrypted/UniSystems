@@ -130,6 +130,7 @@ public class FormLogin extends javax.swing.JFrame {
                     admin.initialiseData();
                     FormNavigation frmNavigation = new FormNavigation(admin);
                     frmNavigation.setVisible(true);
+                    dispose();
                 }
             }
         });

@@ -6,6 +6,7 @@
  */
 package gui;
 
+import data.Loans;
 import java.awt.Color;
 import people.Administrator;
 
@@ -114,6 +115,7 @@ public class FormNavigation extends javax.swing.JFrame {
     private void btnStaffSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStaffSearchActionPerformed
         FormMain frmMain = new FormMain(admin);
         frmMain.setVisible(true);
+        Loans.getInstance().registerObserver(frmMain);
     }//GEN-LAST:event_btnStaffSearchActionPerformed
 
     private void btnRentalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentalsActionPerformed

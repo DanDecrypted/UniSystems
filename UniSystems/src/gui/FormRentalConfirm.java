@@ -7,8 +7,8 @@
 package gui;
 
 import car.Car;
+import car.LoanType;
 import java.awt.Color;
-import static javafx.scene.paint.Color.color;
 import people.Administrator;
 import people.Staff;
 
@@ -17,7 +17,8 @@ import people.Staff;
  * @author Craig
  */
 public class FormRentalConfirm extends javax.swing.JFrame {
-
+    Administrator admin;
+    LoanType loanType;
     
     /**
      * Creates new form FormRentalConfirm
@@ -29,7 +30,7 @@ public class FormRentalConfirm extends javax.swing.JFrame {
         this.jPanel2.setBackground(new Color (238, 238, 238));
     }
     
-    public FormRentalConfirm(Administrator admin, Staff staff, Car carToRent) {
+    public FormRentalConfirm(Administrator admin, Staff staff, Car carToRent, LoanType loanType) {
         initComponents();
         this.getContentPane().setBackground(new Color (238,238,238));
         this.jPanel1.setBackground(new Color (238, 238, 238));
@@ -44,6 +45,13 @@ public class FormRentalConfirm extends javax.swing.JFrame {
         this.txtNumberPlate.setText(carToRent.getRegNo());
         this.txtClass.setText(carToRent.getClassification().toString());
         this.txtLocation.setText(carToRent.getLocation().toString());
+        this.admin = admin;
+        this.loanType = loanType;
+        if (loanType == LoanType.DAY_LOAN) {
+            this.radioDay.setSelected(true);
+        } else {
+            this.radioLong.setSelected(true);
+        }
     }
 
     /**
@@ -55,6 +63,7 @@ public class FormRentalConfirm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnLoanType = new javax.swing.ButtonGroup();
         lblTitle = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lblStaffDetails = new javax.swing.JLabel();
@@ -82,6 +91,8 @@ public class FormRentalConfirm extends javax.swing.JFrame {
         txtModel = new javax.swing.JTextField();
         btnCancel = new javax.swing.JButton();
         btnConfirm = new javax.swing.JButton();
+        radioDay = new javax.swing.JRadioButton();
+        radioLong = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -267,27 +278,47 @@ public class FormRentalConfirm extends javax.swing.JFrame {
 
         btnCancel.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
         btnConfirm.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         btnConfirm.setText("Confirm");
+        btnConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmActionPerformed(evt);
+            }
+        });
+
+        btnLoanType.add(radioDay);
+        radioDay.setText("Day Loan");
+
+        btnLoanType.add(radioLong);
+        radioLong.setText("Long Loan");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnConfirm)
                 .addGap(65, 65, 65)
                 .addComponent(btnCancel)
                 .addGap(105, 105, 105))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(radioDay)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(radioLong))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,7 +329,11 @@ public class FormRentalConfirm extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioDay)
+                    .addComponent(radioLong))
+                .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancel)
                     .addComponent(btnConfirm))
@@ -307,6 +342,21 @@ public class FormRentalConfirm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
+        // TODO add your handling code here:
+        if (this.radioDay.isSelected()) {
+            admin.assignDayLoan(admin.getCarByReg(txtNumberPlate.getText()), admin.getStaffForRefNumb(txtStaffNumb.getText()));
+        } else if (this.radioLong.isSelected()) {
+            admin.assignLongLoan(admin.getCarByReg(txtNumberPlate.getText()), admin.getStaffForRefNumb(txtStaffNumb.getText()));
+        }
+        dispose();
+    }//GEN-LAST:event_btnConfirmActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -346,6 +396,7 @@ public class FormRentalConfirm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnConfirm;
+    private javax.swing.ButtonGroup btnLoanType;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblCarDetails;
@@ -361,6 +412,8 @@ public class FormRentalConfirm extends javax.swing.JFrame {
     private javax.swing.JLabel lblStaffNumber;
     private javax.swing.JLabel lblSurname;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JRadioButton radioDay;
+    private javax.swing.JRadioButton radioLong;
     private javax.swing.JTextField txtClass;
     private javax.swing.JTextField txtForename;
     private javax.swing.JTextField txtLocation;
