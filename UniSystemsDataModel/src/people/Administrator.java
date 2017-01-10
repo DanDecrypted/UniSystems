@@ -179,6 +179,7 @@ public class Administrator extends Staff implements java.io.Serializable {
         loan.registerObserver(loanObserver);
         loans.registerObserver(loanObserver);
         loans.addLoan(loan);
+        car.setStatus(Status.RENTED);
     }
     
     public void assignDayLoan(Car car, Staff staff) {
@@ -191,6 +192,23 @@ public class Administrator extends Staff implements java.io.Serializable {
         loan.registerObserver(loanObserver);
         loans.registerObserver(loanObserver);
         loans.addLoan(loan);
+        car.setStatus(Status.RENTED);
+    }
+    
+    public void returnCar(Car car) {
+        car.setStatus(Status.AWAITING_PREP);
+    }
+    
+    public void makeNotes(Car car, String note) {
+        car.addNote(note);
+    }
+    
+    public void checkCar(Car car) {
+        // TODO: Make some kind of procedure to check the status of the car
+        boolean isOk = true;
+        if (isOk) {
+            car.setStatus(Status.AVAILABLE);
+        }
     }
     
     public void sendForService(Car car){

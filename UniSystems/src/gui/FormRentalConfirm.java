@@ -18,7 +18,7 @@ import people.Staff;
  */
 public class FormRentalConfirm extends javax.swing.JFrame {
     Administrator admin;
-    LoanType loanType;
+    Car car; 
     
     /**
      * Creates new form FormRentalConfirm
@@ -30,7 +30,7 @@ public class FormRentalConfirm extends javax.swing.JFrame {
         this.jPanel2.setBackground(new Color (238, 238, 238));
     }
     
-    public FormRentalConfirm(Administrator admin, Staff staff, Car carToRent, LoanType loanType) {
+    public FormRentalConfirm(Administrator admin, Staff staff, Car carToRent) {
         initComponents();
         this.getContentPane().setBackground(new Color (238,238,238));
         this.jPanel1.setBackground(new Color (238, 238, 238));
@@ -46,12 +46,7 @@ public class FormRentalConfirm extends javax.swing.JFrame {
         this.txtClass.setText(carToRent.getClassification().toString());
         this.txtLocation.setText(carToRent.getLocation().toString());
         this.admin = admin;
-        this.loanType = loanType;
-        if (loanType == LoanType.DAY_LOAN) {
-            this.radioDay.setSelected(true);
-        } else {
-            this.radioLong.setSelected(true);
-        }
+        this.car = carToRent;
     }
 
     /**
@@ -345,9 +340,9 @@ public class FormRentalConfirm extends javax.swing.JFrame {
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
         // TODO add your handling code here:
-        if (this.radioDay.isSelected()) {
+        if (car.getLoanType() == LoanType.DAY_LOAN) {
             admin.assignDayLoan(admin.getCarByReg(txtNumberPlate.getText()), admin.getStaffForRefNumb(txtStaffNumb.getText()));
-        } else if (this.radioLong.isSelected()) {
+        } else if (car.getLoanType() == LoanType.LONG_TERM_LOAN) {
             admin.assignLongLoan(admin.getCarByReg(txtNumberPlate.getText()), admin.getStaffForRefNumb(txtStaffNumb.getText()));
         }
         dispose();

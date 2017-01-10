@@ -29,6 +29,7 @@ public class Car extends data.Observed implements java.io.Serializable{
     private int seats;
     private int doors;
     private LoanType loanType;
+    private ArrayList<String> notes;
     
     public Car(){
         
@@ -51,7 +52,7 @@ public class Car extends data.Observed implements java.io.Serializable{
         this.doors = doors;
         this.milage = mileage;
         this.loanType = loanType;
-        
+        this.notes = new ArrayList<String>();
     }
 
     public String getMake() {
@@ -141,5 +142,28 @@ public class Car extends data.Observed implements java.io.Serializable{
         if (serviceRecord == null) serviceRecord = new ArrayList<Service>();
         serviceRecord.add(service);
         this.notifyObservers();
+    }
+    
+    public void addNote(String note) {
+        if (notes == null) notes = new ArrayList<String>();
+        notes.add(note);
+        this.notifyObservers();
+    }
+    
+    public void addNotes(ArrayList<String> notes) {
+        if (notes == null) return;
+        if (this.notes == null) this.notes = new ArrayList<String>();
+        for (String note : notes) {
+            this.notes.add(note);
+        }
+        this.notifyObservers();
+    }
+    
+    public ArrayList<String> getNotes() {
+        ArrayList<String> temp = new ArrayList<String>();
+        for (String note : notes) {
+            temp.add(note);
+        }
+        return temp;
     }
 }
