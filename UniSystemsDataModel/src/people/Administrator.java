@@ -9,6 +9,7 @@ package people;
 import loaning.DayLoan;
 import loaning.LongLoan;
 import car.Car;
+import car.LoanType;
 import car.Service;
 import car.Status;
 import data.Loans;
@@ -72,7 +73,7 @@ public class Administrator extends Staff implements java.io.Serializable {
         return password;
     }
     
-    public void setPassword() {
+    public void setPassword(String password) {
         this.password = password;
         this.notifyObservers();
     }
@@ -179,6 +180,10 @@ public class Administrator extends Staff implements java.io.Serializable {
     }
     
     public void assignLongLoan(Car car, Staff staff) {
+        if (car.getLoanType() == LoanType.DAY_LOAN) {
+            System.out.println("This car is not available as a long loan");
+            return;
+        }
         if (loans == null) loans = Loans.getInstance();
         if (loanObserver == null) loanObserver = new LoansObserver(); 
         Date returnDate = new Date();
@@ -191,6 +196,10 @@ public class Administrator extends Staff implements java.io.Serializable {
     }
     
     public void assignDayLoan(Car car, Staff staff) {
+        if (car.getLoanType() == LoanType.LONG_TERM_LOAN) {
+            System.out.println("This car is not available as a day loan");
+            return;
+        }
         if (loans == null) loans = Loans.getInstance();
         if (loanObserver == null) loanObserver = new LoansObserver();
         Date returnDate = new Date();
