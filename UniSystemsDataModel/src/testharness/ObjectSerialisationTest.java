@@ -76,16 +76,7 @@ public class ObjectSerialisationTest{
         
         Service service = new Service("John", arrayRepairs, "Fixed the brakes");
         
-        danScott.assignDayLoan(car, staff);
-        danScott.assignDayLoan(car2, staff);
-        danScott.assignLongLoan(car3, staff);
-        danScott.assignLongLoan(car4, staff3);
         danScott.createCar(car);
-        danScott.createAdministrator(danScott);
-        najim.createAdministrator(najim);
-        craig.createAdministrator(craig);
-        
-        car2.addService(service);
         danScott.createCar(car2);
         danScott.createCar(car3);
         danScott.createCar(car4);
@@ -93,5 +84,14 @@ public class ObjectSerialisationTest{
         danScott.createStaffMember(staff);
         danScott.createStaffMember(staff2);
         danScott.createStaffMember(staff3);
+        danScott.assignDayLoan(car, staff);
+        danScott.assignDayLoan(car2, staff);
+        danScott.assignLongLoan(car3, staff);
+        danScott.assignLongLoan(car4, staff3);
+        danScott.createAdministrator(danScott);
+        najim.createAdministrator(najim);
+        craig.createAdministrator(craig);
+        
+        car2.addService(service);
     }
 }

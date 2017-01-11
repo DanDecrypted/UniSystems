@@ -6,6 +6,7 @@
  */
 package gui;
 
+import car.Car;
 import car.LoanType;
 import car.Status;
 import java.awt.Color;
@@ -48,31 +49,26 @@ public class FormManageRentals extends javax.swing.JFrame {
         listModel.clear();
         
         for (Loan loan : admin.getLoans()) {
-            try {
-                DayLoan dayLoan = (DayLoan)loan; //day loan boiz 
-                if (loan.getCar().getStatus().equals(Status.RENTED)){
-                    String listElement = loan.getCar().getRegNo().toString()+ " - ";
-                        listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
-                        listModel.addElement(listElement);
+            Car car = loan.getCar();
+            if (car.getStatus().equals(Status.RENTED)){
+                try {
+                    DayLoan dayLoan = (DayLoan)loan; //day loan boiz 
+                        String listElement = loan.getCar().getRegNo().toString()+ " - ";
+                            listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
+                            listModel.addElement(listElement);
                 }
+                catch (Exception e) { } 
+                try {
+                    LongLoan longLoan = (LongLoan)loan; // long loan boiz 
+                        String listElement = loan.getCar().getRegNo().toString()+ " - ";
+                            listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
+                            + data.UtilityFunctions.formatDate(longLoan.getEndDate());
+                            listModel.addElement(listElement);
+                } catch (Exception e) { } 
             }
-            catch (Exception e) { } 
-            try {
-                LongLoan longLoan = (LongLoan)loan; // long loan boiz 
-                if (loan.getCar().getStatus().equals(Status.RENTED)){
-                    String listElement = loan.getCar().getRegNo().toString()+ " - ";
-                        listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
-                        + data.UtilityFunctions.formatDate(longLoan.getEndDate());
-                        listModel.addElement(listElement);
-                }
-            } catch (Exception e) { } 
-            
-                    
-                    
-                    
-                }
+        }
         lstRentalList.setModel(listModel);
-            }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

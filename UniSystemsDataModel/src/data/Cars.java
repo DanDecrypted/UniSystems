@@ -44,6 +44,7 @@ public class Cars extends Observed implements ISerialisable {
                     CarsObserver carsObserver = new CarsObserver();
                     for (Car car : carsList) {
                         car.registerObserver(carsObserver);
+                        System.out.println("Loaded car " + car.getRegNo() + " with status: " + car.getStatus());
                     }
                 }
                 
