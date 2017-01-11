@@ -77,9 +77,9 @@ public class ObjectSerialisationTest{
         Service service = new Service("John", arrayRepairs, "Fixed the brakes");
         
         danScott.assignDayLoan(car, staff);
-        danScott.assignLongLoan(car2, staff2);
-        danScott.assignLongLoan(car4, staff);
-        danScott.assignLongLoan(car5, staff3);
+        danScott.assignDayLoan(car2, staff);
+        danScott.assignLongLoan(car3, staff);
+        danScott.assignLongLoan(car4, staff3);
         danScott.createCar(car);
         danScott.createAdministrator(danScott);
         najim.createAdministrator(najim);
