@@ -55,7 +55,7 @@ public class FormAvailableCars extends javax.swing.JFrame {
         
         for (Car car : admin.getCars()) {
                 if (car.getLoanType().equals(this.loanType)) {
-                    if (car.getStatus().equals(Status.AVAILABLE)){
+                    if (car.getStatus() == Status.AVAILABLE){
                     String listElement = car.getRegNo().toString() + " - "
                             + formatEnum(car.getTransmission().toString()) + " "
                             + formatEnum(car.getClassification().toString()) + " in "
@@ -78,6 +78,7 @@ public class FormAvailableCars extends javax.swing.JFrame {
            if (cboClass.getSelectedItem() == "ALL") {
                for (Car car : admin.getCars()) {
                    if (car.getLoanType().equals(this.loanType)) {
+                       if (car.getStatus() == Status.AVAILABLE){
                        if (car.getLocation().toString().equals(this.cboLocation.getSelectedItem().toString())) {
                            String listElement = car.getRegNo().toString() + " - "
                                 + formatEnum(car.getTransmission().toString()) + " "
@@ -85,11 +86,13 @@ public class FormAvailableCars extends javax.swing.JFrame {
                                 + formatEnum(car.getLocation().toString());
                            listModel.addElement(listElement);
                        }
+                       }
                    }
                }
            } else if (cboLocation.getSelectedItem() == "ALL") {
                for (Car car : admin.getCars()) {
                    if (car.getLoanType().equals(this.loanType)) {
+                       if (car.getStatus() == Status.AVAILABLE){
                        if (car.getClassification().toString().equals(this.cboClass.getSelectedItem().toString())) {
                            String listElement = car.getRegNo().toString() + " - "
                                 + formatEnum(car.getTransmission().toString()) + " "
@@ -97,11 +100,13 @@ public class FormAvailableCars extends javax.swing.JFrame {
                                 + formatEnum(car.getLocation().toString());
                            listModel.addElement(listElement);
                        }
+                       }
                    }
                }
            } else {
                for (Car car : admin.getCars()) {
                    if (car.getLoanType().equals(this.loanType)) {
+                       if (car.getStatus() == Status.AVAILABLE){
                        if ((car.getClassification().toString().equals(this.cboClass.getSelectedItem().toString())) &&
                                car.getLocation().toString().equals(this.cboLocation.getSelectedItem().toString())) {
                            String listElement = car.getRegNo().toString() + " - "
@@ -110,6 +115,7 @@ public class FormAvailableCars extends javax.swing.JFrame {
                                 + formatEnum(car.getLocation().toString());
                            listModel.addElement(listElement);
                        }
+                   }
                    }
                }
            }
