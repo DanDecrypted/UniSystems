@@ -134,6 +134,14 @@ public class Administrator extends Staff implements java.io.Serializable {
         return temp;
     }
     
+    public ArrayList<Loan> getLoans(){
+        ArrayList<Loan> temp = new ArrayList<Loan>();
+        for (Loan loan : loans.getLoans()){
+            temp.add(loan);
+        }
+        return temp;
+    }
+    
     
     public void createStaffMember(Staff staff) {
         if (staffObserver == null) staffObserver = new StaffObserver();

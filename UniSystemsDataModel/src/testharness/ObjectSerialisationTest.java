@@ -79,7 +79,7 @@ public class ObjectSerialisationTest{
         danScott.assignDayLoan(car, staff);
         danScott.assignLongLoan(car2, staff2);
         danScott.assignLongLoan(car4, staff);
-        danScott.assignDayLoan(car5, staff3);
+        danScott.assignLongLoan(car5, staff3);
         danScott.createCar(car);
         danScott.createAdministrator(danScott);
         najim.createAdministrator(najim);
