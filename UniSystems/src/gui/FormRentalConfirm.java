@@ -44,6 +44,8 @@ public class FormRentalConfirm extends javax.swing.JFrame {
         this.txtPhone.setText(staff.getWorkNumb());
         
         this.txtNumberPlate.setText(carToRent.getRegNo());
+        this.txtMake.setText(carToRent.getMake());
+        this.txtModel.setText(carToRent.getModel());
         this.txtClass.setText(carToRent.getClassification().toString());
         this.txtLocation.setText(carToRent.getLocation().toString());
         this.admin = admin;
