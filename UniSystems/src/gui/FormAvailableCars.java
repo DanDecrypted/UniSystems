@@ -11,6 +11,7 @@ import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 import car.Classification;
 import car.LoanType;
+import car.Status;
 import static data.UtilityFunctions.formatEnum;
 import javax.swing.DefaultListModel;
 import people.Administrator;
@@ -54,12 +55,14 @@ public class FormAvailableCars extends javax.swing.JFrame {
         
         for (Car car : admin.getCars()) {
                 if (car.getLoanType().equals(this.loanType)) {
+                    if (car.getStatus().equals(Status.AVAILABLE)){
                     String listElement = car.getRegNo().toString() + " - "
                             + formatEnum(car.getTransmission().toString()) + " "
                             + formatEnum(car.getClassification().toString()) + " in "
                             + formatEnum(car.getLocation().toString());
                     
                     listModel.addElement(listElement);
+                    }
                 }
             }
         lstAvailableCars.setModel(listModel);
