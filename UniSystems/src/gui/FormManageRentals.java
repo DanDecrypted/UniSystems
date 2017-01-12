@@ -53,14 +53,14 @@ public class FormManageRentals extends javax.swing.JFrame {
             if (car.getStatus().equals(Status.RENTED)){
                 try {
                     DayLoan dayLoan = (DayLoan)loan; //day loan boiz 
-                        String listElement = loan.getCar().getRegNo().toString()+ " - ";
+                        String listElement = loan.getCar().getRegNo()+ " - ";
                             listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
                             listModel.addElement(listElement);
                 }
                 catch (Exception e) { } 
                 try {
                     LongLoan longLoan = (LongLoan)loan; // long loan boiz 
-                        String listElement = loan.getCar().getRegNo().toString()+ " - ";
+                        String listElement = loan.getCar().getRegNo()+ " - ";
                             listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
                             + data.UtilityFunctions.formatDate(longLoan.getEndDate());
                             listModel.addElement(listElement);
@@ -68,6 +68,70 @@ public class FormManageRentals extends javax.swing.JFrame {
             }
         }
         lstRentalList.setModel(listModel);
+    }
+    
+    private void filterLoans() {
+        listModel.clear();
+        lstRentalList.setModel(listModel);
+        
+        if (txtRegNumb.getText().equals("") && txtStaffID.getText().equals("")) {
+            populateLoans();
+        } else {
+            if (txtStaffID.getText().equals("")) {
+                for (Loan loan : admin.getLoans()) {
+                    if (loan.getCar().getRegNo().toLowerCase().equals(this.txtRegNumb.getText().toLowerCase())) {
+                        String listElement = loan.getCar().getRegNo() + " rented by ";
+                            listElement += loan.getLoaner().getFullName();
+                            try {
+                                DayLoan dayLoan = (DayLoan)loan;
+                                listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
+                            } catch (Exception e) {}
+                            try {
+                                LongLoan longLoan = (LongLoan)loan;
+                                listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
+                                        + data.UtilityFunctions.formatDate(longLoan.getEndDate());
+                            } catch (Exception e) {}
+                            listModel.addElement(listElement);
+                    }
+                }
+            } else if (txtRegNumb.getText().equals("")) {
+                for (Loan loan : admin.getLoans()) {
+                    if (loan.getLoaner().getRefNumb().equals(this.txtStaffID.getText())) {
+                        String listElement = loan.getLoaner().getFullName() + " rented ";
+                        listElement += loan.getCar().getRegNo();
+                        try {
+                            DayLoan dayLoan = (DayLoan)loan;
+                            listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
+                        } catch (Exception e) {}
+                        try {
+                            LongLoan longLoan = (LongLoan)loan;
+                            listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
+                                + data.UtilityFunctions.formatDate(longLoan.getEndDate());
+                        } catch (Exception e) {}
+                        listModel.addElement(listElement);
+                    }
+                }
+            } else {
+                for (Loan loan : admin.getLoans()) {
+                    if (loan.getCar().getRegNo().toLowerCase().equals(this.txtRegNumb.getText().toLowerCase()) && 
+                            loan.getLoaner().getRefNumb().equals(this.txtStaffID.getText())) {
+                        String listElement = loan.getCar().getRegNo() + " rented by ";
+                            listElement += loan.getLoaner().getFullName();
+                            try {
+                                DayLoan dayLoan = (DayLoan)loan;
+                                listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
+                            } catch (Exception e) {}
+                            try {
+                                LongLoan longLoan = (LongLoan)loan;
+                                listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
+                                        + data.UtilityFunctions.formatDate(longLoan.getEndDate());
+                            } catch (Exception e) {}
+                            listModel.addElement(listElement);
+                    }
+                }
+            }
+            lstRentalList.setModel(listModel);
+        }    
     }
 
     /**
@@ -86,7 +150,7 @@ public class FormManageRentals extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         txtRegNumb = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        btnSearch = new javax.swing.JButton();
+        btnFilter = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtStaffID = new javax.swing.JTextField();
@@ -111,8 +175,13 @@ public class FormManageRentals extends javax.swing.JFrame {
 
         txtRegNumb.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
 
-        btnSearch.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        btnSearch.setText("Search");
+        btnFilter.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        btnFilter.setText("Filter");
+        btnFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFilterActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         jLabel4.setText("Reg Number:");
@@ -140,13 +209,13 @@ public class FormManageRentals extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(btnSearch)
+                        .addComponent(btnFilter)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCancel))
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addContainerGap()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5))
@@ -155,7 +224,6 @@ public class FormManageRentals extends javax.swing.JFrame {
                                     .addComponent(txtRegNumb, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addContainerGap()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel3)))
@@ -179,7 +247,7 @@ public class FormManageRentals extends javax.swing.JFrame {
                             .addComponent(txtStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSearch)
+                            .addComponent(btnFilter)
                             .addComponent(btnCancel)))
                     .addComponent(jLabel3))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -244,6 +312,10 @@ public class FormManageRentals extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnViewRentalActionPerformed
 
+    private void btnFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilterActionPerformed
+        filterLoans();
+    }//GEN-LAST:event_btnFilterActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -281,7 +353,7 @@ public class FormManageRentals extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
-    private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnFilter;
     private javax.swing.JButton btnViewRental;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
