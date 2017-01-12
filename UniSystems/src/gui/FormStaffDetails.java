@@ -8,6 +8,7 @@ package gui;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import loaning.DayLoan;
@@ -43,13 +44,15 @@ public class FormStaffDetails extends javax.swing.JFrame {
         this.lstLoanHistory.setVisible(false);
         this.lblLoanHistory.setVisible(false);
         this.jScrollPane2.setVisible(false);
+        this.lblPassword.setVisible(false);
+        this.txtPassword.setVisible(false);
         this.setSize(this.getSize().width,
                 jSeparator2.getLocation().y + jSeparator2.getSize().height 
                         + btnCreate.getSize().height);
         this.admin = admin;
     }
     
-    public FormStaffDetails(String staffNumb){
+    public FormStaffDetails(Administrator admin, String staffNumb){
         this.getContentPane().setBackground(new Color (238,238,238));
         
         initComponents();
@@ -143,6 +146,9 @@ public class FormStaffDetails extends javax.swing.JFrame {
         cboFaculty = new javax.swing.JComboBox<>();
         cboPosition = new javax.swing.JComboBox<>();
         jxDOB = new org.jdesktop.swingx.JXDatePicker();
+        cbAdmin = new javax.swing.JCheckBox();
+        txtPassword = new javax.swing.JTextField();
+        lblPassword = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(450, 250, 0, 0));
@@ -246,6 +252,17 @@ public class FormStaffDetails extends javax.swing.JFrame {
 
         cboPosition.setModel(new DefaultComboBoxModel(Position.values()));
 
+        cbAdmin.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        cbAdmin.setText("Admin");
+        cbAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbAdminActionPerformed(evt);
+            }
+        });
+
+        lblPassword.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblPassword.setText("Password: ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -264,14 +281,14 @@ public class FormStaffDetails extends javax.swing.JFrame {
                             .addComponent(lblGender)
                             .addComponent(lblGender1))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtForename, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                    .addComponent(txtStaffNumb, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                    .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                    .addComponent(txtSurname, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                    .addComponent(txtGender, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                    .addComponent(txtForename, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtStaffNumb, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtSurname, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtGender, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jxDOB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -299,8 +316,15 @@ public class FormStaffDetails extends javax.swing.JFrame {
                                             .addComponent(txtOffice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(cboFaculty, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(cboPosition, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 12, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbAdmin)
+                                    .addComponent(lblPassword))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 6, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -382,8 +406,15 @@ public class FormStaffDetails extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblGender1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 31, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(cbAdmin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPassword))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate)
                     .addComponent(btnCancel)
@@ -409,6 +440,15 @@ public class FormStaffDetails extends javax.swing.JFrame {
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-YYYY");
         try {
+            if (cbAdmin.isSelected()){
+            Administrator newAdmin = new Administrator(txtStaffNumb.getText(), (Position)cboPosition.getSelectedItem(),
+                    (Faculty)cboFaculty.getSelectedItem(),txtOffice.getText(), txtWorkNumb.getText(),
+                    new Address(jtxtAddress.getText(),"","","",""),
+                    txtTitle.getText(), txtForename.getText(), txtSurname.getText(), jxDOB.getDate(), txtGender.getText()
+                    , txtPhoneNumb.getText(), txtEmail.getText(), txtPassword.getText());    
+            admin.createAdministrator(newAdmin);
+            }
+            else{
             Staff newStaff = new Staff(txtStaffNumb.getText(), (Position)cboPosition.getSelectedItem(), 
                 (Faculty)cboFaculty.getSelectedItem(), txtOffice.getText(), txtWorkNumb.getText(), 
                 new Address(jtxtAddress.getText(),"","","",""), txtTitle.getText(), txtForename.getText(), 
@@ -417,9 +457,21 @@ public class FormStaffDetails extends javax.swing.JFrame {
             System.out.println("new staff member created " + newStaff.getForename());
             if (admin == null) admin = new Administrator(); 
             admin.createStaffMember(newStaff);
+            }
         } catch (Exception e) {
         }  //formatter.parse throws an uncaught exception if not properly used.
     }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void cbAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAdminActionPerformed
+        if (this.cbAdmin.isSelected()){
+            this.lblPassword.setVisible(true);
+            this.txtPassword.setVisible(true);
+        }
+        else{
+            this.lblPassword.setVisible(false);
+            this.txtPassword.setVisible(false);
+        }
+    }//GEN-LAST:event_cbAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -460,6 +512,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JCheckBox cbAdmin;
     private javax.swing.JComboBox<String> cboFaculty;
     private javax.swing.JComboBox<String> cboPosition;
     private javax.swing.JScrollPane jScrollPane1;
@@ -477,6 +530,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
     private javax.swing.JLabel lblLoanHistory;
     private javax.swing.JLabel lblMainTitle;
     private javax.swing.JLabel lblOffice;
+    private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblPhone;
     private javax.swing.JLabel lblPosition;
     private javax.swing.JLabel lblStaffNumb;
@@ -488,6 +542,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
     private javax.swing.JTextField txtForename;
     private javax.swing.JTextField txtGender;
     private javax.swing.JTextField txtOffice;
+    private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtPhoneNumb;
     private javax.swing.JTextField txtStaffNumb;
     private javax.swing.JTextField txtSurname;

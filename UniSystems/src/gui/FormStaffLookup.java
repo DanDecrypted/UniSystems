@@ -29,6 +29,12 @@ public class FormStaffLookup extends javax.swing.JFrame {
         initComponents();
         System.out.println(staff.loadFromDisk());
     }
+    
+    public FormStaffLookup(Administrator admin){
+        this.getContentPane().setBackground(new Color (238,238,238));
+        initComponents();
+        System.out.println(staff.loadFromDisk());
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -130,7 +136,7 @@ public class FormStaffLookup extends javax.swing.JFrame {
         Boolean found = false;
         for (Staff people : staff.getStaffMembers()) {
             if (people.getRefNumb().equals(this.txtStaffNumb.getText())) {
-                FormStaffDetails frm = new FormStaffDetails(people.getRefNumb());
+                FormStaffDetails frm = new FormStaffDetails(admin, people.getRefNumb());
                 frm.setVisible(true);
                 found = true;
                 break;
