@@ -11,6 +11,7 @@ import car.LoanType;
 import java.awt.Color;
 import java.util.concurrent.TimeUnit;
 import loaning.DayLoan;
+import loaning.Loan;
 import loaning.LongLoan;
 import people.Administrator;
 import people.Staff;
@@ -23,7 +24,7 @@ public class FormViewRental extends javax.swing.JFrame {
     Administrator admin;
     Staff staff;
     Car car;
-    LoanType loanType;
+    Loan loan;
     
     /**
      * Creates new form FormViewRental
@@ -34,17 +35,19 @@ public class FormViewRental extends javax.swing.JFrame {
         this.getContentPane().setBackground(new Color (238,238,238));
         this.jPanel1.setBackground(new Color (238, 238, 238));
         this.jPanel2.setBackground(new Color (238, 238, 238));
+        this.jPanel3.setBackground(new Color (238, 238, 238));
     }
     public FormViewRental(Administrator admin, DayLoan loan) {
         initComponents();
         this.getContentPane().setBackground(new Color (238,238,238));
         this.jPanel1.setBackground(new Color (238, 238, 238));
         this.jPanel2.setBackground(new Color (238, 238, 238));
+        this.jPanel3.setBackground(new Color (238, 238, 238));
         
         this.admin = admin;
         this.staff = loan.getLoaner();
         this.car = loan.getCar();
-        this.loanType = LoanType.DAY_LOAN;
+        this.loan = loan;
         
         this.txtStaffNumb.setText(staff.getRefNumb());
         this.txtForename.setText(staff.getForename());
@@ -57,10 +60,16 @@ public class FormViewRental extends javax.swing.JFrame {
         this.txtModel.setText(car.getModel());
         this.txtClass.setText(car.getClassification().toString());
         
-        this.txtLoanType.setText(data.UtilityFunctions.formatEnum(loanType.toString()));
-//        this.txtStartDate.setText(data.UtilityFunctions.formatDate(loan.getStartDate()));
-//        this.txtEndDate.setText(data.UtilityFunctions.formatDate(loan.getEndDate()));
-//        this.txtDuration.setText(Long.toString(loan.getDuration(TimeUnit.DAYS)));
+        this.txtLoanType.setText(data.UtilityFunctions.formatEnum(LoanType.DAY_LOAN.toString()));
+        this.txtLoanDate.setText(data.UtilityFunctions.formatDate(loan.getRentalDate()));
+        
+        this.lblStartDate.setVisible(false);
+        this.lblEndDate.setVisible(false);
+        this.lblDuration.setVisible(false);
+        this.txtStartDate.setVisible(false);
+        this.txtEndDate.setVisible(false);
+        this.txtDuration.setVisible(false);
+        
     }
     
     public FormViewRental(Administrator admin, LongLoan loan) {
@@ -68,11 +77,12 @@ public class FormViewRental extends javax.swing.JFrame {
         this.getContentPane().setBackground(new Color (238,238,238));
         this.jPanel1.setBackground(new Color (238, 238, 238));
         this.jPanel2.setBackground(new Color (238, 238, 238));
+        this.jPanel3.setBackground(new Color (238, 238, 238));
         
         this.admin = admin;
         this.staff = loan.getLoaner();
         this.car = loan.getCar();
-        this.loanType = LoanType.LONG_TERM_LOAN;
+        this.loan = loan;
         
         this.txtStaffNumb.setText(staff.getRefNumb());
         this.txtForename.setText(staff.getForename());
@@ -85,10 +95,13 @@ public class FormViewRental extends javax.swing.JFrame {
         this.txtModel.setText(car.getModel());
         this.txtClass.setText(car.getClassification().toString());
         
-        this.txtLoanType.setText(data.UtilityFunctions.formatEnum(loanType.toString()));
+        this.txtLoanType.setText(data.UtilityFunctions.formatEnum(LoanType.LONG_TERM_LOAN.toString()));
         this.txtStartDate.setText(data.UtilityFunctions.formatDate(loan.getStartDate()));
         this.txtEndDate.setText(data.UtilityFunctions.formatDate(loan.getEndDate()));
         this.txtDuration.setText(Long.toString(loan.getDuration(TimeUnit.DAYS)));
+        
+        this.lblLoanDate.setVisible(false);
+        this.txtLoanDate.setVisible(false);
     }
 
     /**
@@ -124,7 +137,7 @@ public class FormViewRental extends javax.swing.JFrame {
         txtClass = new javax.swing.JTextField();
         txtModel = new javax.swing.JTextField();
         btnCancel = new javax.swing.JButton();
-        btnConfirm = new javax.swing.JButton();
+        btnReturn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         lblRentalDetails = new javax.swing.JLabel();
         lblLoanType = new javax.swing.JLabel();
@@ -135,6 +148,8 @@ public class FormViewRental extends javax.swing.JFrame {
         txtStartDate = new javax.swing.JTextField();
         txtEndDate = new javax.swing.JTextField();
         txtDuration = new javax.swing.JTextField();
+        lblLoanDate = new javax.swing.JLabel();
+        txtLoanDate = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -314,11 +329,11 @@ public class FormViewRental extends javax.swing.JFrame {
             }
         });
 
-        btnConfirm.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        btnConfirm.setText("Return Car");
-        btnConfirm.addActionListener(new java.awt.event.ActionListener() {
+        btnReturn.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        btnReturn.setText("Return Car");
+        btnReturn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConfirmActionPerformed(evt);
+                btnReturnActionPerformed(evt);
             }
         });
 
@@ -347,6 +362,8 @@ public class FormViewRental extends javax.swing.JFrame {
 
         txtDuration.setEditable(false);
 
+        lblLoanDate.setText("Loan Date:");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -367,21 +384,30 @@ public class FormViewRental extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtLoanType, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(34, 34, 34)
-                .addComponent(lblDuration)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(txtDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLoanDate)
+                    .addComponent(lblDuration))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtDuration, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(txtLoanDate))
                 .addGap(45, 45, 45))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblRentalDetails)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLoanType)
-                    .addComponent(txtLoanType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(lblRentalDetails)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblLoanType)
+                            .addComponent(txtLoanType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtLoanDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblLoanDate)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblStartDate)
@@ -392,7 +418,7 @@ public class FormViewRental extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEndDate)
                     .addComponent(txtEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -400,19 +426,17 @@ public class FormViewRental extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnConfirm)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCancel))
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnReturn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCancel))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(8, 8, 8))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -425,10 +449,10 @@ public class FormViewRental extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancel)
-                    .addComponent(btnConfirm))
+                    .addComponent(btnReturn))
                 .addContainerGap())
         );
 
@@ -440,10 +464,11 @@ public class FormViewRental extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
 
-    private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
-        // TODO add your handling code here:
+    private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
+        FormReturnCar frm = new FormReturnCar(admin, loan);
+        frm.setVisible(true);
 
-    }//GEN-LAST:event_btnConfirmActionPerformed
+    }//GEN-LAST:event_btnReturnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -482,7 +507,7 @@ public class FormViewRental extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
-    private javax.swing.JButton btnConfirm;
+    private javax.swing.JButton btnReturn;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -491,6 +516,7 @@ public class FormViewRental extends javax.swing.JFrame {
     private javax.swing.JLabel lblDuration;
     private javax.swing.JLabel lblEndDate;
     private javax.swing.JLabel lblForename;
+    private javax.swing.JLabel lblLoanDate;
     private javax.swing.JLabel lblLoanType;
     private javax.swing.JLabel lblMake;
     private javax.swing.JLabel lblModel;
@@ -507,6 +533,7 @@ public class FormViewRental extends javax.swing.JFrame {
     private javax.swing.JTextField txtDuration;
     private javax.swing.JTextField txtEndDate;
     private javax.swing.JTextField txtForename;
+    private javax.swing.JTextField txtLoanDate;
     private javax.swing.JTextField txtLoanType;
     private javax.swing.JTextField txtMake;
     private javax.swing.JTextField txtModel;
