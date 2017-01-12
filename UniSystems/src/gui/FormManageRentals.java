@@ -309,7 +309,7 @@ public class FormManageRentals extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnViewRentalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRentalActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnViewRentalActionPerformed
 
     private void btnFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilterActionPerformed
