@@ -18,6 +18,13 @@ public class LongLoan extends Loan{
     private Date startDate;
     private Date endDate;
     
+    /**
+     * Constructor for a long loan object.
+     * @param loaner staff member to loan the car.
+     * @param car car to be loaned.
+     * @param startDate start date of the loan.
+     * @param endDate expected return date of the loan.
+     */
     public LongLoan(Staff loaner, Car car, Date startDate, Date endDate){
         super(loaner, car);
         this.startDate = startDate;

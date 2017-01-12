@@ -309,18 +309,55 @@ public class Administrator extends Staff implements java.io.Serializable {
     }
     
     /**
-     * Sets a cars status to awaiting prep.
-     * @param car 
+     * Sets a cars status to awaiting prep and sets the return date of the loan.
+     * @param car car object
+     * @param loan loan object
      */
     public void returnCar(Car car, Loan loan) {
         car.setStatus(Status.AWAITING_PREP);
-        
+        loan.setReturnedDate(new Date());
+    }
+
+    /**
+     * Overloaded method to accept a day loan as a parameter
+     * @param car car object.
+     * @param dayLoan day loan object.
+     **/
+    public void returnCar(Car car, DayLoan dayLoan) {
+        this.returnCar(car, (Loan)dayLoan);
     }
     
+    /**
+     * Overloaded method to accept a long loan as a parameter
+     * @param car car object.
+     * @param longLoan long loan object.
+     */
+    public void returnCar(Car car, LongLoan longLoan) {
+        this.returnCar(car, (Loan)longLoan);
+    }
+    
+    /**
+     * Makes a note about the car.
+     * @param car car object
+     * @param note note to add against the car
+     */
     public void makeNotes(Car car, String note) {
         car.addNote(note);
     }
     
+    /**
+     * Makes a note about the loan.
+     * @param loan loan object.
+     * @param note note to add.
+     */
+    public void makeNotes(Loan loan, String note) {
+        loan.setLoanNotes(note);
+    }
+    
+    /**
+     * Function to check whether the car has been returned in a suitable state.
+     * @param car car object.
+     */
     public void checkCar(Car car) {
         // TODO: Make some kind of procedure to check the status of the car
         boolean isOk = true;
@@ -329,12 +366,19 @@ public class Administrator extends Staff implements java.io.Serializable {
         }
     }
     
+    /**
+     * Sends a car in for service and changes the status of the car.
+     * @param car car object.
+     */
     public void sendForService(Car car){
         car.setStatus(Status.IN_FOR_SERVICE);
     }
     
+    /**
+     * Gets an array of all the cars known to the system.
+     * @return array of car.
+     */
     public ArrayList<Car> getCars() {
         return cars.getCars();
     }
-    
-   }
+}

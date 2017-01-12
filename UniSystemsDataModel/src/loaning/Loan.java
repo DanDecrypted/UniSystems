@@ -26,6 +26,15 @@ public class Loan extends data.Observed implements java.io.Serializable{
         this.car = car;
     }
     
+    public String getLoanNotes() {
+        return this.loanNotes;
+    }
+    
+    public void setLoanNotes(String notes) {
+        this.loanNotes = notes;
+        this.notifyObservers();
+    }
+    
     public int getFuelLevel() {
         return this.fuelLevel;
     }
@@ -37,17 +46,10 @@ public class Loan extends data.Observed implements java.io.Serializable{
     public Car getCar() {
         return car;
     }
-    
-    public String getLoanNotes() {
-        return loanNotes;
-    }
-
-    public void setLoanNotes(String loanNotes) {
-        this.loanNotes = loanNotes;
-    }
 
     public void setFuelLevel(int fuelLevel) {
         this.fuelLevel = fuelLevel;
+        this.notifyObservers();
     }
 
     public Date getReturnedDate() {
@@ -56,7 +58,6 @@ public class Loan extends data.Observed implements java.io.Serializable{
 
     public void setReturnedDate(Date returnedDate) {
         this.returnedDate = returnedDate;
+        this.notifyObservers();
     }
-    
-    
 }
