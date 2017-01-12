@@ -238,6 +238,18 @@ public class Administrator extends Staff implements java.io.Serializable {
     }
     
     /**
+     * gets a list of administrators known to the system.
+     * @return array list of administrator
+     */
+    public ArrayList<Administrator> getAdminstrators() {
+        ArrayList<Administrator> temp = new ArrayList<Administrator>();
+        for (Administrator admin : admins.getAdministrators()) {
+            temp.add(admin);
+        }
+        return temp;
+    }
+    
+    /**
      * Should you ever want to / need to, you can remove an administrator from 
      * the system.
      * @param admin administrator object.
