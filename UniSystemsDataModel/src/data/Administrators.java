@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import people.Administrator;
 
 /**
- *
+ * Singleton class for the administrators container.
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
 public class Administrators extends Observed implements ISerialisable {
@@ -18,10 +18,18 @@ public class Administrators extends Observed implements ISerialisable {
     private static final Administrators admins = new Administrators();
     private Administrators() { }
     
+    /**
+     * Gets the instance of the administrators container.
+     * @return Administrators object.
+     */
     public static Administrators getInstance() {
         return admins;
     }
     
+    /**
+     * Loads the administrators data from disk.
+     * @return String containing error messages or success.
+     */
     public String loadFromDisk() {
         File objFile = new File("dist/Administrators.dat");
         if (objFile.exists() && objFile.canRead()) {
@@ -47,6 +55,10 @@ public class Administrators extends Observed implements ISerialisable {
         }
     }
     
+    /**
+     * Saves the administrators to disk.
+     * @return 
+     */
     public String saveToDisk() {
         File objFile = new File("dist/Administrators.dat");
         try (ObjectOutputStream objOut = new ObjectOutputStream(

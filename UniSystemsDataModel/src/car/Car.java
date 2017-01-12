@@ -6,6 +6,7 @@
  */
 package car;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -25,11 +26,13 @@ public class Car extends data.Observed implements java.io.Serializable{
     private FuelType fuelType;
     private Location location;
     private String parkingSpace;
-    private int milage;
     private int seats;
     private int doors;
     private LoanType loanType;
     private ArrayList<String> notes;
+    private int milageAtLastService;
+    private int milage;
+    private Date lastService;
     
     /**
      * Default constructor for a car
@@ -72,6 +75,21 @@ public class Car extends data.Observed implements java.io.Serializable{
         this.loanType = loanType;
         this.notes = new ArrayList<String>();
         this.notifyObservers();
+    }
+    
+    /**
+     * Checks if the car needs a service based on the rules of 
+     * if it's been a year or if the car has driven more than 10k miles.
+     * @return true or false
+     */
+    public boolean needsService() {
+        Date today = new Date();
+        long diff = lastService.getTime() - today.getTime();
+        long diffDays = diff / (24 * 60 * 60 * 1000);
+        if (diffDays >= 365 || (milage - milageAtLastService >= 10000)){
+            return true;
+        }
+        return false;
     }
 
     /** 
@@ -130,6 +148,10 @@ public class Car extends data.Observed implements java.io.Serializable{
      */
     public void setStatus(Status status) {
         this.status = status;
+        if (status == Status.IN_FOR_SERVICE) {
+            this.lastService = new Date();
+            this.milageAtLastService = this.milage;
+        }
         this.notifyObservers();
     }
     
