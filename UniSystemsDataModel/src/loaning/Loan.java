@@ -7,6 +7,7 @@
 package loaning;
 
 import car.Car;
+import java.util.Date;
 import people.Staff;
 
 /**
@@ -16,8 +17,9 @@ import people.Staff;
 public class Loan extends data.Observed implements java.io.Serializable{
     private Staff loaner;
     private Car car;
-    private String carNotes;
+    private String loanNotes;
     private int fuelLevel;
+    private Date returnedDate;
     
     public Loan(Staff loaner, Car car){
         this.loaner = loaner;
@@ -35,4 +37,26 @@ public class Loan extends data.Observed implements java.io.Serializable{
     public Car getCar() {
         return car;
     }
+    
+    public String getLoanNotes() {
+        return loanNotes;
+    }
+
+    public void setLoanNotes(String loanNotes) {
+        this.loanNotes = loanNotes;
+    }
+
+    public void setFuelLevel(int fuelLevel) {
+        this.fuelLevel = fuelLevel;
+    }
+
+    public Date getReturnedDate() {
+        return returnedDate;
+    }
+
+    public void setReturnedDate(Date returnedDate) {
+        this.returnedDate = returnedDate;
+    }
+    
+    
 }
