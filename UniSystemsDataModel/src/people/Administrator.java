@@ -31,6 +31,8 @@ import loaning.Loan;
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
 public class Administrator extends Staff implements java.io.Serializable {
+    // the following private properties are transient as we don't want them to 
+    // be serialised to the disk.
     transient Loans loans = Loans.getInstance();
     transient StaffMembers staffMembers = StaffMembers.getInstance();
     transient Cars cars = Cars.getInstance();
@@ -46,18 +48,38 @@ public class Administrator extends Staff implements java.io.Serializable {
         this.position = Position.TRANSPORT_OFFICE_ADMIN;
     }
     
+    /**
+     * Constructor for the administrators object
+     * @param staffRefNumb the reference of the staff member String
+     * @param position the position of the staff member. Enum.
+     * @param faculty the faculty of the staff member. Enum.
+     * @param officeRoom the office location of the staff member. String.
+     * @param workNumb the work number of the staff member. String.
+     * @param address the address of the staff member. Address.
+     * @param title the title of the staff member. String.
+     * @param forename the staff members forename. String.
+     * @param surname the staff members surname. String.
+     * @param dateOfBirth the date of birth of the staff member. Date.
+     * @param gender the gender of the staff member. String.
+     * @param phoneNumber the private phone number of the staff member. String.
+     * @param emailAddress the email address of the staff member. String.
+     * @param password the password of the staff member. String.
+     */
     public Administrator(String staffRefNumb, Position position, Faculty faculty, 
                  String officeRoom, String workNumb, Address address, 
                  String title, String forename, String surname, 
                  Date dateOfBirth, String gender, String phoneNumber, 
                  String emailAddress, String password) {
-        super(staffRefNumb, position, faculty, officeRoom, workNumb, address, 
+        super(staffRefNumb, Position.TRANSPORT_OFFICE_ADMIN, faculty, officeRoom, workNumb, address, 
                 title, forename, surname, dateOfBirth, gender, phoneNumber, 
                 emailAddress);
-        this.position = Position.TRANSPORT_OFFICE_ADMIN;
         this.password = password;
     }
     
+    /**
+     * This method is used to load all the data from disk into the memory of 
+     * the application.
+     */
     public void initialiseData() {
         cars = Cars.getInstance();
         loans = Loans.getInstance();
@@ -69,15 +91,28 @@ public class Administrator extends Staff implements java.io.Serializable {
         System.out.println(staffMembers.loadFromDisk());
     }
     
+    /**
+     * Gets the password of the administrator
+     * @return String. Unencrypted.
+     */
     public String getPassword() {
         return password;
     }
     
+    /**
+     * Sets the password of the administrator, notifies all observers. 
+     * @param password The new password of the admin
+     */
     public void setPassword(String password) {
         this.password = password;
         this.notifyObservers();
     }
     
+    /**
+     * Adds a newly created car object to the list and assigns observers. Cars
+     * are then saved to disk.
+     * @param car 
+     */
     public void createCar(Car car) {
         if (cars == null) cars = Cars.getInstance();
         if (carsObserver == null) carsObserver = new CarsObserver();
@@ -86,6 +121,12 @@ public class Administrator extends Staff implements java.io.Serializable {
         cars.addCar(car);
     }
     
+    /**
+     * Gets all the loan details for a specific staff member which we obtain via 
+     * their staff reference number
+     * @param refNumb
+     * @return an array of loan objects relating to the staff member
+     */
     public ArrayList<Loan> getLoansForRef(String refNumb) {
         ArrayList<Loan> temp = new ArrayList<Loan>();
         for (Loan loan : loans.getLoans()) {
@@ -96,14 +137,29 @@ public class Administrator extends Staff implements java.io.Serializable {
         return temp;
     }
         
+    /**
+     * Gets the day loans relating to the staff member
+     * @param refNumb
+     * @return an array of day loans.
+     */
     public ArrayList<DayLoan> getDayLoansForRef(String refNumb) {
         return UtilityFunctions.getDayLoans(getLoansForRef(refNumb));
     }
     
+    /**
+     * Gets the long loans relating to the staff member
+     * @param refNumb
+     * @return an array of long loans.
+     */
     public ArrayList<LongLoan> getLongLoansForRef(String refNumb) {
         return UtilityFunctions.getLongLoans(getLoansForRef(refNumb));
     }
     
+    /**
+     * Gets a staff object which has a particular reference number.
+     * @param refNumb
+     * @return Staff object.
+     */
     public Staff getStaffForRefNumb(String refNumb) {
         if (staffMembers == null) staffMembers = StaffMembers.getInstance();
         for (Staff staff : staffMembers.getStaffMembers()) {
@@ -114,6 +170,11 @@ public class Administrator extends Staff implements java.io.Serializable {
         return null;
     }
     
+    /**
+     * Gets a car for a particular registration plate
+     * @param carReg
+     * @return Car object.
+     */
     public Car getCarByReg(String carReg) {
         if (cars == null) cars = Cars.getInstance();
         cars.loadFromDisk();
@@ -125,6 +186,11 @@ public class Administrator extends Staff implements java.io.Serializable {
         return null;
     }
     
+    /**
+     * Gets all loans (Previous and Current) for a car by their reg plate
+     * @param carReg
+     * @return an array of loans.
+     */
     public ArrayList<Loan> getLoansForCar(String carReg){
         ArrayList<Loan> temp = new ArrayList<Loan>();
         for (Loan loan : loans.getLoans()){
@@ -135,6 +201,10 @@ public class Administrator extends Staff implements java.io.Serializable {
         return temp;
     }
     
+    /**
+     * Gets all unfiltered loans. 
+     * @return an array of loans.
+     */
     public ArrayList<Loan> getLoans(){
         ArrayList<Loan> temp = new ArrayList<Loan>();
         for (Loan loan : loans.getLoans()){
@@ -143,7 +213,10 @@ public class Administrator extends Staff implements java.io.Serializable {
         return temp;
     }
     
-    
+    /**
+     * Adds a staff member to the list of staff members and registers observers
+     * @param staff staff object
+     */
     public void createStaffMember(Staff staff) {
         if (staffObserver == null) staffObserver = new StaffObserver();
         if (staffMembers == null) staffMembers = StaffMembers.getInstance();
@@ -152,6 +225,10 @@ public class Administrator extends Staff implements java.io.Serializable {
         staffMembers.addStaff(staff);
     }
     
+    /**
+     * Adds an administrator to the list of administrators and registers observers
+     * @param admin admin object
+     */
     public void createAdministrator(Administrator admin) {
         if (adminsObserver == null) adminsObserver = new AdministratorsObserver();
         if (admins == null) admins = Administrators.getInstance();
@@ -160,6 +237,11 @@ public class Administrator extends Staff implements java.io.Serializable {
         admins.addAdministrator(admin);
     }
     
+    /**
+     * Should you ever want to / need to, you can remove an administrator from 
+     * the system.
+     * @param admin administrator object.
+     */
     public void removeAdministrator(Administrator admin) {
         if (admins == null) return;
         if (admins.getAdministrators().contains(admin)) {
@@ -171,6 +253,10 @@ public class Administrator extends Staff implements java.io.Serializable {
         }
     }
     
+    /**
+     * Removes a staff member from the system.
+     * @param staff staff object.
+     */
     public void removeStaffMember(Staff staff) {
         if (staffMembers.getStaffMembers().contains(staff)) {
             staff.removeObserver(staffObserver);
@@ -179,6 +265,11 @@ public class Administrator extends Staff implements java.io.Serializable {
         }
     }
     
+    /**
+     * Creates a long loan object and assigns observers.
+     * @param car car object to be loaned.
+     * @param staff staff object to loan.
+     */
     public void assignLongLoan(Car car, Staff staff) {
         if (car.getLoanType() == LoanType.DAY_LOAN) {
             System.out.println("This car is not available as a long loan");
@@ -195,6 +286,11 @@ public class Administrator extends Staff implements java.io.Serializable {
         loans.addLoan(loan);
     }
     
+    /**
+     * Creates a day loan object and assigns the observers.
+     * @param car car object to be loaned.
+     * @param staff staff member to carry out the loan.
+     */
     public void assignDayLoan(Car car, Staff staff) {
         if (car.getLoanType() == LoanType.LONG_TERM_LOAN) {
             System.out.println("This car is not available as a day loan");
@@ -212,8 +308,13 @@ public class Administrator extends Staff implements java.io.Serializable {
         loans.addLoan(loan);
     }
     
-    public void returnCar(Car car) {
+    /**
+     * Sets a cars status to awaiting prep.
+     * @param car 
+     */
+    public void returnCar(Car car, Loan loan) {
         car.setStatus(Status.AWAITING_PREP);
+        
     }
     
     public void makeNotes(Car car, String note) {
