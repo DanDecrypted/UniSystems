@@ -21,6 +21,9 @@ public class Staff extends Person {
     protected String workNumb;
     protected Address address;
     
+    /**
+     * Default constructor of a staff member
+     */
     public Staff() {
         super();
         this.staffRefNumb = "UNKNOWN";
@@ -31,7 +34,22 @@ public class Staff extends Person {
         this.address = null;
     }
     
-
+    /**
+     * Constructor for a Staff Object
+     * @param staffRefNumb
+     * @param position
+     * @param faculty
+     * @param officeRoom
+     * @param workNumb
+     * @param address
+     * @param title
+     * @param forename
+     * @param surname
+     * @param dateOfBirth
+     * @param gender
+     * @param phoneNumber
+     * @param emailAddress 
+     */
     public Staff(String staffRefNumb, Position position, Faculty faculty, 
                  String officeRoom, String workNumb, Address address, 
                  String title, String forename, String surname, 
@@ -46,6 +64,10 @@ public class Staff extends Person {
         this.address = address;
     }
 
+    /**
+     * Gets the reference number of the staff object.
+     * @return String
+     */
     public String getRefNumb() {
         return staffRefNumb;
     }
@@ -55,46 +77,86 @@ public class Staff extends Person {
         this.staffRefNumb = staffRefNumb;
     }*/
 
+    /**
+     * Gets the position of the staff member
+     * @return Position enum
+     */
     public Position getPosition() {
         return position;
     }
-
+    
+    /**
+     * Sets the position of the staff member and notifies observers.
+     * @param position 
+     */
     public void setPosition(Position position) {
         this.position = position;
         this.notifyObservers();
     }
 
+    /**
+     * Gets the faculty of the staff member.
+     * @return Faculty enum.
+     */
     public Faculty getFaculty() {
         return faculty;
     }
 
+    /**
+     * Sets the faculty of the staff member.
+     * @param faculty 
+     */
     public void setFaculty(Faculty faculty) {
         this.faculty = faculty;
         this.notifyObservers();
     }
 
+    /**
+     * Gets the office room of the staff member
+     * @return String
+     */
     public String getOfficeRoom() {
         return officeRoom;
     }
 
+    /**
+     * Sets the office room of the staff member.
+     * @param officeRoom 
+     */
     public void setOfficeRoom(String officeRoom) {
         this.officeRoom = officeRoom;
         this.notifyObservers();
     }
 
+    /**
+     * Gets the work number of the staff member
+     * @return String
+     */
     public String getWorkNumb() {
         return workNumb;
     }
 
+    /**
+     * Sets the work number of the staff member.
+     * @param workNumb 
+     */
     public void setWorkNumb(String workNumb) {
         this.workNumb = workNumb;
         this.notifyObservers();
     }
 
+    /**
+     * Gets the address of the staff member
+     * @return Address object.
+     */
     public Address getAddress() {
         return address;
     }
 
+    /**
+     * Sets the address of the staff member.
+     * @param address 
+     */
     public void setAddress(Address address) {
         this.address = address;
         this.notifyObservers();

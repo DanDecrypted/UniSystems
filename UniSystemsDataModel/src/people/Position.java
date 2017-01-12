@@ -7,7 +7,7 @@
 package people;
 
 /**
- *
+ * Enumeration of positions known to the system.
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
 public enum Position {
