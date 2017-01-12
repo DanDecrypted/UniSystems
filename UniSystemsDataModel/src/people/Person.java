@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- *
+ * Super class which gives Staff and Administrator their base properties.
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
 public class Person extends data.Observed implements java.io.Serializable {
@@ -24,6 +24,9 @@ public class Person extends data.Observed implements java.io.Serializable {
     protected String phoneNumber;
     protected String emailAddress;
    
+    /**
+     * Default constructor of a person
+     */
     public Person() {
         this.title = "UKNOWN";
         this.forename = "UNKNOWN";
@@ -34,7 +37,19 @@ public class Person extends data.Observed implements java.io.Serializable {
         this.emailAddress = "UNKNOWN";
     }
     
-    public Person(String title, String forename, String surname, Date dateOfBirth, String gender, String phoneNumber, String emailAddress) {
+    /**
+     * Constructor for a person not that we will ever really need to.
+     * @param title the title of the person.
+     * @param forename the forename of the person.
+     * @param surname the surname of the person.
+     * @param dateOfBirth the date of birth of the person.
+     * @param gender
+     * @param phoneNumber
+     * @param emailAddress 
+     */
+    public Person(String title, String forename, String surname, 
+            Date dateOfBirth, String gender, String phoneNumber, 
+            String emailAddress) {
         this.title = title;
         this.forename = forename;
         this.surname = surname;

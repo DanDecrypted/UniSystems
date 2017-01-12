@@ -7,7 +7,7 @@
 package people;
 
 /**
- *
+ * The faculties that are known to the system.
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
 public enum Faculty {
