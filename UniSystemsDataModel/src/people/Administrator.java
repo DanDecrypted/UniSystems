@@ -191,10 +191,10 @@ public class Administrator extends Staff implements java.io.Serializable {
      * @param carReg
      * @return an array of loans.
      */
-    public ArrayList<Loan> getLoansForCar(String carReg){
+    public ArrayList<Loan> getLoansForCar(Car car){
         ArrayList<Loan> temp = new ArrayList<Loan>();
         for (Loan loan : loans.getLoans()){
-            if (loan.getCar().getRegNo().equals(carReg)){
+            if (loan.getCar().getRegNo().equals(car.getRegNo())){
                 temp.add(loan);
             }
         }

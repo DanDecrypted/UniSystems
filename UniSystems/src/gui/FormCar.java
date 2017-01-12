@@ -82,12 +82,10 @@ public class FormCar extends javax.swing.JFrame {
             this.txtSeats.setText(Integer.toString(car.getSeats()));
             this.cboLocation.setSelectedItem(car.getLocation());
             this.txtSpace.setText(car.getParkingSpace());
-            this.lblStatus.setText(car.getStatus().name());
+            this.lblStatus.setText(data.UtilityFunctions.formatEnum(car.getStatus().toString()));
             populateServiceHistoryList(car);
             populateLoanHistory(car);
         }
-
-
     }
     /**
      * populate car service history list
@@ -110,18 +108,29 @@ public class FormCar extends javax.swing.JFrame {
 
     private void populateLoanHistory(Car objCar){
         loanListModel.clear();
-        String listElement = "";
         
-        for (DayLoan dayLoan : admin.getDayLoansForRef(objCar.getRegNo())) {
-            listElement = dayLoan.getLoaner().getForename().toString()+" "
-                        + dayLoan.getLoaner().getSurname()+" - ";
-            listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
+        for (Loan loan : admin.getLoansForCar(objCar)) {
+            String listElement = loan.getLoaner().getFullName() + " - ";
+            try {
+                DayLoan dayLoan = (DayLoan)loan;
+                listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
+            } catch (Exception e) {}
+            try {
+                LongLoan longLoan = (LongLoan)loan;
+                listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - ";
+                if (longLoan.getReturnedDate() == null) {
+                    listElement += data.UtilityFunctions.formatDate(longLoan.getEndDate());
+                } else {
+                    listElement += data.UtilityFunctions.formatDate(longLoan.getReturnedDate());
+                }
+                
+            } catch (Exception e) {}
+            
             loanListModel.addElement(listElement);
         }
         
         for (LongLoan longLoan : admin.getLongLoansForRef(objCar.getRegNo())) {
-            listElement = longLoan.getLoaner().getForename().toString()+" "
-                        + longLoan.getLoaner().getSurname()+" - ";
+            String listElement = longLoan.getLoaner().getFullName() + " - ";
             listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate())+" - "+
                            data.UtilityFunctions.formatDate(longLoan.getEndDate());
             loanListModel.addElement(listElement);

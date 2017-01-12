@@ -92,7 +92,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
         ArrayList<LongLoan> longLoans = admin.getLongLoansForRef(ref);
         ArrayList<DayLoan> dayLoans = admin.getDayLoansForRef(ref);
         for (LongLoan longLoan : longLoans) {
-            String listElement = longLoan.getCar().getRegNo().toString() + " - ";
+            String listElement = longLoan.getCar().getRegNo() + " - ";
             // TODO: Use functions in the JDK that aren't a heaping pile of shit
                 //Deprecated but I'm too lazy to fix it right now 
             listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
@@ -101,7 +101,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
         }
         
         for (DayLoan dayLoan : dayLoans) {
-            String listElement = dayLoan.getCar().getRegNo().toString() + " - ";
+            String listElement = dayLoan.getCar().getRegNo() + " - ";
             // TODO: Use functions in the JDK that aren't a heaping pile of shit
                 //Deprecated but I'm too lazy to fix it right now 
             listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
