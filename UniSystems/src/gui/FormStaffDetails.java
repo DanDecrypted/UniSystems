@@ -532,23 +532,43 @@ public class FormStaffDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_cbAdminActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        Administrator tempAdmin = null;
+        for (Administrator administrator : admin.getAdminstrators()) {
+            if (administrator.getRefNumb().equals(this.txtStaffNumb.getText())) {
+                tempAdmin = administrator;
+            }
+        }
+
         Address address = new Address(txtAddressOne.getText(),txtAddressTwo.getText(),txtCity.getText(),
                 txtCounty.getText(),this.txtPostCode.getText());
-        admin.setAddress(address);
-        admin.setDateOfBirth(jxDOB.getDate());
-        admin.setEmailAddress(txtEmail.getText());
-        admin.setFaculty((Faculty)cboFaculty.getSelectedItem());
-        admin.setForename(txtForename.getText());
-        admin.setGender(txtGender.getText());
-        admin.setOfficeRoom(txtOffice.getText());
-        admin.setPhoneNumber(txtPhoneNumb.getText());
-        admin.setPosition((Position)cboPosition.getSelectedItem());
-        admin.setSurname(txtSurname.getText());
-        admin.setTitle(txtTitle.getText());
-        admin.setWorkNumb(txtWorkNumb.getText());
-        if(txtPassword.isVisible()){
-            admin.setPassword(txtPassword.getText());
+        if (txtPassword.isVisible()) {
+            tempAdmin.setAddress(address);
+            tempAdmin.setDateOfBirth(jxDOB.getDate());
+            tempAdmin.setEmailAddress(txtEmail.getText());
+            tempAdmin.setFaculty((Faculty)cboFaculty.getSelectedItem());
+            tempAdmin.setForename(txtForename.getText());
+            tempAdmin.setGender(txtGender.getText());
+            tempAdmin.setOfficeRoom(txtOffice.getText());
+            tempAdmin.setPhoneNumber(txtPhoneNumb.getText());
+            tempAdmin.setPosition((Position)cboPosition.getSelectedItem());
+            tempAdmin.setSurname(txtSurname.getText());
+            tempAdmin.setTitle(txtTitle.getText());
+            tempAdmin.setWorkNumb(txtWorkNumb.getText());
+            tempAdmin.setPassword(txtPassword.getText());
         }
+        Staff staff = admin.getStaffForRefNumb(this.txtStaffNumb.getText());
+        staff.setAddress(address);
+        staff.setDateOfBirth(jxDOB.getDate());
+        staff.setEmailAddress(txtEmail.getText());
+        staff.setFaculty((Faculty)cboFaculty.getSelectedItem());
+        staff.setForename(txtForename.getText());
+        staff.setGender(txtGender.getText());
+        staff.setOfficeRoom(txtOffice.getText());
+        staff.setPhoneNumber(txtPhoneNumb.getText());
+        staff.setPosition((Position)cboPosition.getSelectedItem());
+        staff.setSurname(txtSurname.getText());
+        staff.setTitle(txtTitle.getText());
+        staff.setWorkNumb(txtWorkNumb.getText());
         
     }//GEN-LAST:event_btnUpdateActionPerformed
 
