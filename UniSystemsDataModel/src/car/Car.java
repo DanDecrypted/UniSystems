@@ -268,6 +268,10 @@ public class Car extends data.Observed implements java.io.Serializable{
         this.notifyObservers();
     }
     
+    /**
+     * Gets the array list of notes.
+     * @return Array list of strings.
+     */
     public ArrayList<String> getNotes() {
         ArrayList<String> temp = new ArrayList<String>();
         for (String note : notes) {

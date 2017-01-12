@@ -7,7 +7,7 @@
 package car;
 
 /**
- *
+ * Fuel Types known to the system.
  * @author nmazidi
  */
 public enum FuelType {

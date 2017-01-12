@@ -292,7 +292,7 @@ public class Administrator extends Staff implements java.io.Serializable {
         Date returnDate = new Date();
         returnDate.setYear(returnDate.getYear() + 1);
         LongLoan loan = new LongLoan(staff, car, new Date(), returnDate);
-        car.setStatus(Status.RENTED);
+        car.setStatus(Status.OUT_ON_LOAN);
         loan.registerObserver(loanObserver);
         loans.registerObserver(loanObserver);
         loans.addLoan(loan);
@@ -314,7 +314,7 @@ public class Administrator extends Staff implements java.io.Serializable {
         returnDate.setHours(23);
         returnDate.setMinutes(59);
         DayLoan loan = new DayLoan(staff, car, returnDate);
-        car.setStatus(Status.RENTED);
+        car.setStatus(Status.OUT_ON_LOAN);
         loan.registerObserver(loanObserver);
         loans.registerObserver(loanObserver);
         loans.addLoan(loan);

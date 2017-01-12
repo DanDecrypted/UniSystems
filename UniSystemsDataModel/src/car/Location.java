@@ -6,7 +6,7 @@
 package car;
 
 /**
- *
+ * Locations known to the system.
  * @author najimmazidi
  */
 public enum Location {

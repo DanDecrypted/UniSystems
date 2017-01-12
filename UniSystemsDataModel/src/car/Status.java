@@ -7,7 +7,7 @@
 package car;
 
 /**
- *
+ * list of statuses known to the system
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
 public enum Status {
@@ -17,6 +17,6 @@ public enum Status {
     AWAITING_SALE,
     DAMAGED,
     IN_FOR_SERVICE,
-    RENTED,
+    OUT_ON_LOAN,
     SOLD
 }

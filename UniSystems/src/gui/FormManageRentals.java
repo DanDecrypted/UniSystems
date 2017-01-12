@@ -50,7 +50,7 @@ public class FormManageRentals extends javax.swing.JFrame {
         
         for (Loan loan : admin.getLoans()) {
             Car car = loan.getCar();
-            if (car.getStatus().equals(Status.RENTED)){
+            if (car.getStatus().equals(Status.OUT_ON_LOAN)){
                 try {
                     DayLoan dayLoan = (DayLoan)loan; //day loan boiz 
                         String listElement = loan.getCar().getRegNo()+ " - ";

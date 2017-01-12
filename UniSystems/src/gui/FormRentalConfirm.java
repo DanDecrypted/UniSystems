@@ -332,7 +332,7 @@ public class FormRentalConfirm extends javax.swing.JFrame {
         } else if (car.getLoanType() == LoanType.LONG_TERM_LOAN) {
             admin.assignLongLoan(admin.getCarByReg(txtNumberPlate.getText()), admin.getStaffForRefNumb(txtStaffNumb.getText()));
         }
-        car.setStatus(Status.RENTED);
+        car.setStatus(Status.OUT_ON_LOAN);
         dispose();
     }//GEN-LAST:event_btnConfirmActionPerformed
 

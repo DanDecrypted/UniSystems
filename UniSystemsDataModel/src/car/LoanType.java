@@ -6,7 +6,7 @@
 package car;
 
 /**
- *
+ * Loan types known to the system.
  * @author najimmazidi
  */
 public enum LoanType {

@@ -7,7 +7,7 @@
 package car;
 
 /**
- *
+ * Types of transmission known to the system.
  * @author Craig Banyard, Daniel Scott & Najim Mazidi
  */
 public enum Transmission {
