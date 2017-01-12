@@ -22,6 +22,14 @@ public class Address implements java.io.Serializable {
         
     }
     
+    /**
+     * Constructor for the address objects 
+     * @param lineOne first line of their address
+     * @param lineTwo second line of their address
+     * @param city city of the address to be created
+     * @param county count of the address to be created
+     * @param postCode post code of the address to be created
+     */
     public Address(String lineOne, String lineTwo, String city, String county, String postCode) {
         this.lineOne = lineOne;
         this.lineTwo = lineTwo;
@@ -30,6 +38,10 @@ public class Address implements java.io.Serializable {
         this.postCode = postCode;
     }
     
+    /**
+     * Gets the address in a string format. 
+     * @return string
+     */
     public String getAddressString() {
         
         String address = lineOne;
@@ -44,7 +56,4 @@ public class Address implements java.io.Serializable {
         
         return address;
     }
-
-
-    
 }
