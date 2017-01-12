@@ -53,6 +53,6 @@ public class LongLoan extends Loan{
      * @return TimeUnit object
      */
     public long getDuration(TimeUnit unit) {
-        return unit.convert(startDate.getTime() - endDate.getTime(), TimeUnit.MILLISECONDS);
+        return unit.convert(endDate.getTime() - startDate.getTime(), TimeUnit.MILLISECONDS);
     }
 }

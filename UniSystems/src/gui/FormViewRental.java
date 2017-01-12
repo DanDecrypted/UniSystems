@@ -41,8 +41,28 @@ public class FormViewRental extends javax.swing.JFrame {
         this.jPanel1.setBackground(new Color (238, 238, 238));
         this.jPanel2.setBackground(new Color (238, 238, 238));
         
+        this.admin = admin;
+        this.staff = loan.getLoaner();
+        this.car = loan.getCar();
+        this.loanType = LoanType.DAY_LOAN;
         
+        this.txtStaffNumb.setText(staff.getRefNumb());
+        this.txtForename.setText(staff.getForename());
+        this.txtSurname.setText(staff.getSurname());
+        this.txtRoom.setText(staff.getOfficeRoom());
+        this.txtPhone.setText(staff.getWorkNumb());
+        
+        this.txtNumberPlate.setText(car.getRegNo());
+        this.txtMake.setText(car.getMake());
+        this.txtModel.setText(car.getModel());
+        this.txtClass.setText(car.getClassification().toString());
+        
+        this.txtLoanType.setText(data.UtilityFunctions.formatEnum(loanType.toString()));
+//        this.txtStartDate.setText(data.UtilityFunctions.formatDate(loan.getStartDate()));
+//        this.txtEndDate.setText(data.UtilityFunctions.formatDate(loan.getEndDate()));
+//        this.txtDuration.setText(Long.toString(loan.getDuration(TimeUnit.DAYS)));
     }
+    
     public FormViewRental(Administrator admin, LongLoan loan) {
         initComponents();
         this.getContentPane().setBackground(new Color (238,238,238));
@@ -68,7 +88,7 @@ public class FormViewRental extends javax.swing.JFrame {
         this.txtLoanType.setText(data.UtilityFunctions.formatEnum(loanType.toString()));
         this.txtStartDate.setText(data.UtilityFunctions.formatDate(loan.getStartDate()));
         this.txtEndDate.setText(data.UtilityFunctions.formatDate(loan.getEndDate()));
-        this.txtDuration.setText(loan.getDuration(TimeUnit.DAYS));
+        this.txtDuration.setText(Long.toString(loan.getDuration(TimeUnit.DAYS)));
     }
 
     /**

@@ -53,14 +53,16 @@ public class FormManageRentals extends javax.swing.JFrame {
             if (car.getStatus().equals(Status.OUT_ON_LOAN)){
                 try {
                     DayLoan dayLoan = (DayLoan)loan; //day loan boiz 
-                        String listElement = loan.getCar().getRegNo()+ " - ";
+                        String listElement = loan.getCar().getRegNo()+ " rented by ";
+                            listElement += loan.getLoaner().getFullName();
                             listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
                             listModel.addElement(listElement);
                 }
                 catch (Exception e) { } 
                 try {
                     LongLoan longLoan = (LongLoan)loan; // long loan boiz 
-                        String listElement = loan.getCar().getRegNo()+ " - ";
+                        String listElement = loan.getCar().getRegNo()+ " rented by ";
+                            listElement += loan.getLoaner().getFullName();
                             listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
                             + data.UtilityFunctions.formatDate(longLoan.getEndDate());
                             listModel.addElement(listElement);
@@ -97,8 +99,8 @@ public class FormManageRentals extends javax.swing.JFrame {
             } else if (txtRegNumb.getText().equals("")) {
                 for (Loan loan : admin.getLoans()) {
                     if (loan.getLoaner().getRefNumb().equals(this.txtStaffID.getText())) {
-                        String listElement = loan.getLoaner().getFullName() + " rented ";
-                        listElement += loan.getCar().getRegNo();
+                        String listElement = loan.getCar().getRegNo() + " rented by ";
+                        listElement += loan.getLoaner().getFullName();
                         try {
                             DayLoan dayLoan = (DayLoan)loan;
                             listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
@@ -132,6 +134,20 @@ public class FormManageRentals extends javax.swing.JFrame {
             }
             lstRentalList.setModel(listModel);
         }    
+    }
+    private Loan getLoan(String str) {
+        String[] strArray = str.split(" ");
+        Car car = admin.getCarByReg(strArray[0]);
+        Loan temp = null;
+
+        for (Loan loan : admin.getLoans()) {
+            if (loan.getReturnedDate() == null) {
+                if (loan.getCar().getRegNo().equals(car.getRegNo())) { 
+                    temp = loan;
+                }
+            }
+        }
+        return temp;
     }
 
     /**
@@ -309,7 +325,20 @@ public class FormManageRentals extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnViewRentalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRentalActionPerformed
-        
+
+        Loan loan = getLoan(this.lstRentalList.getSelectedValue());
+        try {
+            DayLoan dayLoan = (DayLoan)loan;
+            FormViewRental frm = new FormViewRental(admin, dayLoan);
+            frm.setVisible(true);
+        } catch (Exception e) {}
+        try {
+            LongLoan longLoan = (LongLoan)loan;
+            FormViewRental frm = new FormViewRental(admin, longLoan);
+            frm.setVisible(true);
+        } catch (Exception e) {}
+             
+        dispose();
     }//GEN-LAST:event_btnViewRentalActionPerformed
 
     private void btnFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilterActionPerformed
