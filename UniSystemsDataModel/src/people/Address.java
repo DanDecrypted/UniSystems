@@ -56,4 +56,24 @@ public class Address implements java.io.Serializable {
         
         return address;
     }
+    
+    public String getAddressLineOne(){
+        return lineOne;
+    }
+    
+    public String getAddressLineTwo(){
+        return lineTwo;
+    }
+    
+    public String getAddressCity(){
+        return city;
+    }
+    
+    public String getAddressCounty(){
+        return county;
+    }
+    
+    public String getAddressPostCode(){
+        return postCode;
+    }
 }

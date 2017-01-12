@@ -8,7 +8,6 @@ package gui;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import loaning.DayLoan;
@@ -72,8 +71,19 @@ public class FormStaffDetails extends javax.swing.JFrame {
             this.txtSurname.setText(staff.getSurname());
             this.txtTitle.setText(staff.getTitle());
             this.txtWorkNumb.setText(staff.getWorkNumb());
-            this.jtxtAddress.setText(staff.getAddress().getAddressString());
+            this.txtAddressOne.setText(staff.getAddress().getAddressLineOne());
+            this.txtAddressTwo.setText(staff.getAddress().getAddressLineTwo());
+            this.txtCity.setText(staff.getAddress().getAddressCity());
+            this.txtCounty.setText(staff.getAddress().getAddressCounty());
+            this.txtPostCode.setText(staff.getAddress().getAddressPostCode());
+            for (Administrator administrator : admin.getAdminstrators()){
+                if (administrator.getRefNumb().equals(staffNumb)){
+                    txtPassword.setText(administrator.getPassword());
+                    this.cbAdmin.setSelected(true);
+                }
+            }
         }
+        this.admin = admin;
         populateLoanList(staffNumb);
     }
     
@@ -132,8 +142,6 @@ public class FormStaffDetails extends javax.swing.JFrame {
         txtPhoneNumb = new javax.swing.JTextField();
         lblEmail = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jtxtAddress = new javax.swing.JTextPane();
         lblGender1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
@@ -149,6 +157,15 @@ public class FormStaffDetails extends javax.swing.JFrame {
         cbAdmin = new javax.swing.JCheckBox();
         txtPassword = new javax.swing.JTextField();
         lblPassword = new javax.swing.JLabel();
+        txtAddressOne = new javax.swing.JTextField();
+        txtAddressTwo = new javax.swing.JTextField();
+        txtCity = new javax.swing.JTextField();
+        txtCounty = new javax.swing.JTextField();
+        txtPostCode = new javax.swing.JTextField();
+        lblGender2 = new javax.swing.JLabel();
+        lblGender3 = new javax.swing.JLabel();
+        lblGender4 = new javax.swing.JLabel();
+        lblGender5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(450, 250, 0, 0));
@@ -212,14 +229,16 @@ public class FormStaffDetails extends javax.swing.JFrame {
 
         txtEmail.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
 
-        jtxtAddress.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        jScrollPane1.setViewportView(jtxtAddress);
-
         lblGender1.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        lblGender1.setText("Address:");
+        lblGender1.setText("Address Line 1:");
 
         btnUpdate.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         btnCancel.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         btnCancel.setText("Cancel");
@@ -263,6 +282,28 @@ public class FormStaffDetails extends javax.swing.JFrame {
         lblPassword.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblPassword.setText("Password: ");
 
+        txtAddressOne.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+
+        txtAddressTwo.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+
+        txtCity.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+
+        txtCounty.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+
+        txtPostCode.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+
+        lblGender2.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblGender2.setText("Address Line 2:");
+
+        lblGender3.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblGender3.setText("City:");
+
+        lblGender4.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblGender4.setText("County:");
+
+        lblGender5.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        lblGender5.setText("Post Code:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -272,58 +313,63 @@ public class FormStaffDetails extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblStaffNumb, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblTitle)
-                            .addComponent(lblForename)
-                            .addComponent(lblSurname)
-                            .addComponent(lblDob)
-                            .addComponent(lblGender)
-                            .addComponent(lblGender1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblTitle)
+                                    .addComponent(lblForename)
+                                    .addComponent(lblSurname)
+                                    .addComponent(lblDob)
+                                    .addComponent(lblGender)
+                                    .addComponent(lblGender1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblStaffNumb))
+                                .addComponent(lblGender2)
+                                .addComponent(lblGender3, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(lblGender4)
+                            .addComponent(lblGender5))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtForename, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtStaffNumb, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtSurname, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtGender, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jxDOB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtAddressTwo)
+                            .addComponent(txtAddressOne)
+                            .addComponent(txtCity, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtCounty)
+                            .addComponent(txtPostCode, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtForename, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtStaffNumb, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtSurname, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtGender, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jxDOB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(34, 34, 34)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(34, 34, 34)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblFaculty)
-                                            .addComponent(lblPosition)
-                                            .addComponent(lblWorkNumb)
-                                            .addComponent(lblPhone)
-                                            .addComponent(lblEmail))
-                                        .addGap(13, 13, 13))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblOffice)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtEmail)
-                                            .addComponent(txtPhoneNumb, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(7, 7, 7)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtWorkNumb, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtOffice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(cboFaculty, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(cboPosition, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblFaculty)
+                                    .addComponent(lblPosition)
+                                    .addComponent(lblWorkNumb)
+                                    .addComponent(lblPhone)
+                                    .addComponent(lblEmail)
                                     .addComponent(cbAdmin)
                                     .addComponent(lblPassword))
+                                .addGap(5, 5, 5))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(lblOffice)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtWorkNumb, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtOffice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cboFaculty, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cboPosition, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtEmail)
+                                        .addComponent(txtPhoneNumb, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 6, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -404,17 +450,29 @@ public class FormStaffDetails extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAddressOne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblGender1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(cbAdmin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPassword))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                    .addComponent(cbAdmin))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAddressTwo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblGender2)
+                    .addComponent(lblPassword)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblGender3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCounty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblGender4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPostCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblGender5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate)
                     .addComponent(btnCancel)
@@ -443,7 +501,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
             if (cbAdmin.isSelected()){
             Administrator newAdmin = new Administrator(txtStaffNumb.getText(), (Position)cboPosition.getSelectedItem(),
                     (Faculty)cboFaculty.getSelectedItem(),txtOffice.getText(), txtWorkNumb.getText(),
-                    new Address(jtxtAddress.getText(),"","","",""),
+                    new Address(txtAddressOne.getText(),txtAddressTwo.getText(),txtCity.getText(),txtCounty.getText(),txtPostCode.getText()),
                     txtTitle.getText(), txtForename.getText(), txtSurname.getText(), jxDOB.getDate(), txtGender.getText()
                     , txtPhoneNumb.getText(), txtEmail.getText(), txtPassword.getText());    
             admin.createAdministrator(newAdmin);
@@ -451,8 +509,8 @@ public class FormStaffDetails extends javax.swing.JFrame {
             else{
             Staff newStaff = new Staff(txtStaffNumb.getText(), (Position)cboPosition.getSelectedItem(), 
                 (Faculty)cboFaculty.getSelectedItem(), txtOffice.getText(), txtWorkNumb.getText(), 
-                new Address(jtxtAddress.getText(),"","","",""), txtTitle.getText(), txtForename.getText(), 
-                txtSurname.getText(), jxDOB.getDate(),
+                new Address(txtAddressOne.getText(),txtAddressTwo.getText(),txtCity.getText(),txtCounty.getText(),txtPostCode.getText()), 
+                    txtTitle.getText(), txtForename.getText(), txtSurname.getText(), jxDOB.getDate(),
                 txtGender.getText(), txtPhoneNumb.getText(), txtEmail.getText() );
             System.out.println("new staff member created " + newStaff.getForename());
             if (admin == null) admin = new Administrator(); 
@@ -472,6 +530,27 @@ public class FormStaffDetails extends javax.swing.JFrame {
             this.txtPassword.setVisible(false);
         }
     }//GEN-LAST:event_cbAdminActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        Address address = new Address(txtAddressOne.getText(),txtAddressTwo.getText(),txtCity.getText(),
+                txtCounty.getText(),this.txtPostCode.getText());
+        admin.setAddress(address);
+        admin.setDateOfBirth(jxDOB.getDate());
+        admin.setEmailAddress(txtEmail.getText());
+        admin.setFaculty((Faculty)cboFaculty.getSelectedItem());
+        admin.setForename(txtForename.getText());
+        admin.setGender(txtGender.getText());
+        admin.setOfficeRoom(txtOffice.getText());
+        admin.setPhoneNumber(txtPhoneNumb.getText());
+        admin.setPosition((Position)cboPosition.getSelectedItem());
+        admin.setSurname(txtSurname.getText());
+        admin.setTitle(txtTitle.getText());
+        admin.setWorkNumb(txtWorkNumb.getText());
+        if(txtPassword.isVisible()){
+            admin.setPassword(txtPassword.getText());
+        }
+        
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -515,11 +594,9 @@ public class FormStaffDetails extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbAdmin;
     private javax.swing.JComboBox<String> cboFaculty;
     private javax.swing.JComboBox<String> cboPosition;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextPane jtxtAddress;
     private org.jdesktop.swingx.JXDatePicker jxDOB;
     private javax.swing.JLabel lblDob;
     private javax.swing.JLabel lblEmail;
@@ -527,6 +604,10 @@ public class FormStaffDetails extends javax.swing.JFrame {
     private javax.swing.JLabel lblForename;
     private javax.swing.JLabel lblGender;
     private javax.swing.JLabel lblGender1;
+    private javax.swing.JLabel lblGender2;
+    private javax.swing.JLabel lblGender3;
+    private javax.swing.JLabel lblGender4;
+    private javax.swing.JLabel lblGender5;
     private javax.swing.JLabel lblLoanHistory;
     private javax.swing.JLabel lblMainTitle;
     private javax.swing.JLabel lblOffice;
@@ -538,12 +619,17 @@ public class FormStaffDetails extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblWorkNumb;
     private javax.swing.JList<String> lstLoanHistory;
+    private javax.swing.JTextField txtAddressOne;
+    private javax.swing.JTextField txtAddressTwo;
+    private javax.swing.JTextField txtCity;
+    private javax.swing.JTextField txtCounty;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtForename;
     private javax.swing.JTextField txtGender;
     private javax.swing.JTextField txtOffice;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtPhoneNumb;
+    private javax.swing.JTextField txtPostCode;
     private javax.swing.JTextField txtStaffNumb;
     private javax.swing.JTextField txtSurname;
     private javax.swing.JTextField txtTitle;
