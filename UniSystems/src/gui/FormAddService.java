@@ -163,11 +163,9 @@ public class FormAddService extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
-<<<<<<< HEAD
+
         String[] tempArray = this.txtRepairs.getText().toString().split(",");
-=======
-        String[] tempArray = this.txtRepairs.getText().split(",");
->>>>>>> origin/master
+
         
         ArrayList<String> arrayRepairs = new ArrayList<String>();
         for (int i = 0; i < tempArray.length; i++){
