@@ -214,7 +214,7 @@ public class FormCarStatusLookup extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageActionPerformed
-        String[] carString = this.lstCars.getSelectedValue().toString().split(" ");
+        String[] carString = this.lstCars.getSelectedValue().split(" ");
         String carReg = carString[0];
         FormCar frm = new FormCar(carReg, admin);
         frm.setVisible(true);
