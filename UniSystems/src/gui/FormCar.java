@@ -64,8 +64,7 @@ public class FormCar extends javax.swing.JFrame {
         loanListModel = new DefaultListModel();
 
 
-        //cars.loadFromDisk();
-        //loans.loadFromDisk();
+
         this.getContentPane().setBackground(new Color (238,238,238));
         this.btnCreate.setVisible(false);
         Car car = admin.getCarByReg(regNo);
@@ -74,10 +73,10 @@ public class FormCar extends javax.swing.JFrame {
             this.txtRegNo.setText(regNo);
             this.txtMake.setText(car.getMake());
             this.txtModel.setText(car.getModel());
-            this.cboClassification.setSelectedItem(car.getClassification());
+            this.cboClassification.setSelectedItem(data.UtilityFunctions.formatEnum(car.getClassification().toString()));
             this.txtMileage.setText(Integer.toString(car.getMilage()));
-            this.cboFuelType.setSelectedItem(car.getFuelType());
-            this.cboTransmission.setSelectedItem(car.getTransmission());
+            this.cboFuelType.setSelectedItem(data.UtilityFunctions.formatEnum(car.getFuelType().toString()));
+            this.cboTransmission.setSelectedItem(data.UtilityFunctions.formatEnum(car.getTransmission().toString()));
             this.txtDoors.setText(Integer.toString(car.getDoors()));
             this.txtSeats.setText(Integer.toString(car.getSeats()));
             this.cboLocation.setSelectedItem(car.getLocation());

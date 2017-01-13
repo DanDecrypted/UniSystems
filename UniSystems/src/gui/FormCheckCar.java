@@ -8,7 +8,9 @@ package gui;
 
 import car.Car;
 import car.LoanType;
+import car.Status;
 import java.awt.Color;
+import javax.swing.DefaultComboBoxModel;
 import loaning.Loan;
 import people.Administrator;
 import people.Staff;
@@ -17,7 +19,7 @@ import people.Staff;
  *
  * @author najimmazidi
  */
-public class FormReturnCar extends javax.swing.JFrame {
+public class FormCheckCar extends javax.swing.JFrame {
     Administrator admin;
     Loan loan;
     Car car;
@@ -26,27 +28,31 @@ public class FormReturnCar extends javax.swing.JFrame {
      * Creates new form FormViewRental
      */
     
-    public FormReturnCar() {
+    public FormCheckCar() {
         initComponents();
         this.getContentPane().setBackground(new Color (238,238,238));
         this.jPanel3.setBackground(new Color (238, 238, 238));
     }
-    public FormReturnCar(Administrator admin, Loan loan) {
+    public FormCheckCar(Administrator admin, Loan loan) {
         initComponents();
         this.getContentPane().setBackground(new Color (238,238,238));
         this.jPanel3.setBackground(new Color (238, 238, 238));
         
         this.admin = admin;
         this.loan = loan;
-        this.car = loan.getCar();
+        this.car = admin.getCarByReg(loan.getCar().getRegNo());
         
-        this.lblReturnCar.setText("Car being returned: " + car.getRegNo() + " - " + car.getMake() + " " + car.getModel());
+        this.lblReturnCar.setText("Car being checked: " + car.getRegNo() + " - " + car.getMake() + " " + car.getModel());
+        
     }
     
-    private void returnCar() {
+    private void checkCar() {
         loan.setLoanNotes(this.txtComments.getText());
         loan.setFuelLevel(this.sldrFuelLevel.getValue());
-        admin.returnCar(car, loan);
+        loan.setMilesDriven(Integer.parseInt(this.txtMileage.getText()) - car.getMilage());
+        car.setMilage(Integer.parseInt(this.txtMileage.getText()));
+        
+        admin.checkCar(car);
     }
 
     /**
@@ -68,13 +74,15 @@ public class FormReturnCar extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtComments = new javax.swing.JTextArea();
         sldrFuelLevel = new javax.swing.JSlider();
+        lblMileage = new javax.swing.JLabel();
+        txtMileage = new javax.swing.JTextField();
         lblReturnCar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblTitle.setFont(new java.awt.Font("Lato", 1, 24)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle.setText("Return Car");
+        lblTitle.setText("Car Check");
         lblTitle.setToolTipText("");
 
         btnCancel.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
@@ -112,6 +120,8 @@ public class FormReturnCar extends javax.swing.JFrame {
         sldrFuelLevel.setSnapToTicks(true);
         sldrFuelLevel.setValue(0);
 
+        lblMileage.setText("Mileage:");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -120,13 +130,17 @@ public class FormReturnCar extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
+                    .addComponent(sldrFuelLevel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(lblMileage)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtMileage))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblRentalDetails)
                             .addComponent(lblComments)
                             .addComponent(lblFuelLevel))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(sldrFuelLevel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -142,7 +156,11 @@ public class FormReturnCar extends javax.swing.JFrame {
                 .addComponent(lblFuelLevel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sldrFuelLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMileage)
+                    .addComponent(txtMileage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         lblReturnCar.setText("PLACEHOLDER");
@@ -194,7 +212,7 @@ public class FormReturnCar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
-        returnCar();
+        checkCar();
         dispose();
 
     }//GEN-LAST:event_btnConfirmActionPerformed
@@ -216,21 +234,23 @@ public class FormReturnCar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormReturnCar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormCheckCar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormReturnCar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormCheckCar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormReturnCar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormCheckCar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormReturnCar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormCheckCar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormReturnCar().setVisible(true);
+                new FormCheckCar().setVisible(true);
             }
         });
     }
@@ -242,10 +262,12 @@ public class FormReturnCar extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblComments;
     private javax.swing.JLabel lblFuelLevel;
+    private javax.swing.JLabel lblMileage;
     private javax.swing.JLabel lblRentalDetails;
     private javax.swing.JLabel lblReturnCar;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JSlider sldrFuelLevel;
     private javax.swing.JTextArea txtComments;
+    private javax.swing.JTextField txtMileage;
     // End of variables declaration//GEN-END:variables
 }

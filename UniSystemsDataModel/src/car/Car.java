@@ -125,6 +125,14 @@ public class Car extends data.Observed implements java.io.Serializable{
         this.model = model;
         this.notifyObservers();
     }
+
+    /**
+     * Sets the mileage of the car
+     * @param milage 
+     */
+    public void setMilage(int milage) {
+        this.milage = milage;
+    }
     
     /**
      * Gets the registration number of the car 
@@ -152,6 +160,7 @@ public class Car extends data.Observed implements java.io.Serializable{
             this.lastService = new Date();
             this.milageAtLastService = this.milage;
         }
+        
         this.notifyObservers();
     }
     

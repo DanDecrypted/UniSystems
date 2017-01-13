@@ -78,7 +78,7 @@ public class FormNavigation extends javax.swing.JFrame {
         });
 
         btnManageCars.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        btnManageCars.setText("Manage Cars");
+        btnManageCars.setText("Car Status");
         btnManageCars.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageCarsActionPerformed(evt);
@@ -158,8 +158,8 @@ public class FormNavigation extends javax.swing.JFrame {
     }//GEN-LAST:event_btnManageMembersActionPerformed
 
     private void btnManageCarsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageCarsActionPerformed
-        FormCarLookup frmCarLookup = new FormCarLookup(admin);
-        frmCarLookup.setVisible(true);
+        FormCarStatusLookup frmCarStatusLookup = new FormCarStatusLookup(admin);
+        frmCarStatusLookup.setVisible(true);
     }//GEN-LAST:event_btnManageCarsActionPerformed
 
     /**

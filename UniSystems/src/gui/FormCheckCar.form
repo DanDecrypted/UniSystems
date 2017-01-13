@@ -74,7 +74,7 @@
           <Font name="Lato" size="24" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Return Car"/>
+        <Property name="text" type="java.lang.String" value="Car Check"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
@@ -116,6 +116,12 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jScrollPane1" alignment="0" pref="444" max="32767" attributes="0"/>
+                      <Component id="sldrFuelLevel" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lblMileage" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txtMileage" max="32767" attributes="0"/>
+                      </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblRentalDetails" min="-2" max="-2" attributes="0"/>
@@ -124,7 +130,6 @@
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="sldrFuelLevel" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -143,7 +148,12 @@
                   <Component id="lblFuelLevel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="sldrFuelLevel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblMileage" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtMileage" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="23" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -190,6 +200,13 @@
             <Property name="snapToTicks" type="boolean" value="true"/>
             <Property name="value" type="int" value="0"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblMileage">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Mileage:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtMileage">
         </Component>
       </SubComponents>
     </Container>

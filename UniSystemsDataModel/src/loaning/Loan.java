@@ -20,6 +20,15 @@ public class Loan extends data.Observed implements java.io.Serializable{
     private String loanNotes;
     private int fuelLevel;
     private Date returnedDate;
+    private int milesDriven;
+
+    public int getMilesDriven() {
+        return milesDriven;
+    }
+
+    public void setMilesDriven(int milesDriven) {
+        this.milesDriven = milesDriven;
+    }
     
     public Loan(Staff loaner, Car car){
         this.loaner = loaner;

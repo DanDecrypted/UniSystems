@@ -465,7 +465,7 @@ public class FormViewRental extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
-        FormReturnCar frm = new FormReturnCar(admin, loan);
+        FormConfirmReturn frm = new FormConfirmReturn(admin, loan);
         frm.setVisible(true);
 
     }//GEN-LAST:event_btnReturnActionPerformed

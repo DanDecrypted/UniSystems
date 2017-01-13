@@ -49,7 +49,7 @@ public class FormManageRentals extends javax.swing.JFrame {
         listModel.clear();
         
         for (Loan loan : admin.getLoans()) {
-            Car car = loan.getCar();
+            Car car = admin.getCarByReg(loan.getCar().getRegNo());
             if (car.getStatus().equals(Status.OUT_ON_LOAN)){
                 try {
                     DayLoan dayLoan = (DayLoan)loan; //day loan boiz 
@@ -75,65 +75,74 @@ public class FormManageRentals extends javax.swing.JFrame {
     private void filterLoans() {
         listModel.clear();
         lstRentalList.setModel(listModel);
-        
         if (txtRegNumb.getText().equals("") && txtStaffID.getText().equals("")) {
             populateLoans();
         } else {
-            if (txtStaffID.getText().equals("")) {
-                for (Loan loan : admin.getLoans()) {
-                    if (loan.getCar().getRegNo().toLowerCase().equals(this.txtRegNumb.getText().toLowerCase())) {
-                        String listElement = loan.getCar().getRegNo() + " rented by ";
-                            listElement += loan.getLoaner().getFullName();
-                            try {
-                                DayLoan dayLoan = (DayLoan)loan;
-                                listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
-                            } catch (Exception e) {}
-                            try {
-                                LongLoan longLoan = (LongLoan)loan;
-                                listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
+                if (txtStaffID.getText().equals("")) {
+                    for (Loan loan : admin.getLoans()) {
+                        Car car = admin.getCarByReg(loan.getCar().getRegNo());
+                        if (car.getStatus().equals(Status.OUT_ON_LOAN)){
+                            if (car.getRegNo().toLowerCase().equals(this.txtRegNumb.getText().toLowerCase())) {
+                                String listElement = loan.getCar().getRegNo() + " rented by ";
+                                    listElement += loan.getLoaner().getFullName();
+                                    try {
+                                        DayLoan dayLoan = (DayLoan)loan;
+                                        listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
+                                    } catch (Exception e) {}
+                                    try {
+                                        LongLoan longLoan = (LongLoan)loan;
+                                        listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
+                                                + data.UtilityFunctions.formatDate(longLoan.getEndDate());
+                                    } catch (Exception e) {}
+                                    listModel.addElement(listElement);
+                            }
+                        }
+                    }
+                } else if (txtRegNumb.getText().equals("")) {
+                    for (Loan loan : admin.getLoans()) {
+                        Car car = admin.getCarByReg(loan.getCar().getRegNo());
+                        if (car.getStatus().equals(Status.OUT_ON_LOAN)){
+                            if (loan.getLoaner().getRefNumb().equals(this.txtStaffID.getText())) {
+                                String listElement = car.getRegNo() + " rented by ";
+                                listElement += loan.getLoaner().getFullName();
+                                try {
+                                    DayLoan dayLoan = (DayLoan)loan;
+                                    listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
+                                } catch (Exception e) {}
+                                try {
+                                    LongLoan longLoan = (LongLoan)loan;
+                                    listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
                                         + data.UtilityFunctions.formatDate(longLoan.getEndDate());
-                            } catch (Exception e) {}
-                            listModel.addElement(listElement);
+                                } catch (Exception e) {}
+                                listModel.addElement(listElement);
+                            }
+                        }
+                    }
+                } else {
+                    for (Loan loan : admin.getLoans()) {
+                        Car car = admin.getCarByReg(loan.getCar().getRegNo());
+                        if (car.getStatus().equals(Status.OUT_ON_LOAN)){
+                            if (car.getRegNo().toLowerCase().equals(this.txtRegNumb.getText().toLowerCase()) && 
+                                    loan.getLoaner().getRefNumb().equals(this.txtStaffID.getText())) {
+                                String listElement = car.getRegNo() + " rented by ";
+                                    listElement += loan.getLoaner().getFullName();
+                                    try {
+                                        DayLoan dayLoan = (DayLoan)loan;
+                                        listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
+                                    } catch (Exception e) {}
+                                    try {
+                                        LongLoan longLoan = (LongLoan)loan;
+                                        listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
+                                                + data.UtilityFunctions.formatDate(longLoan.getEndDate());
+                                    } catch (Exception e) {}
+                                    listModel.addElement(listElement);
+                            }
+                        }
                     }
                 }
-            } else if (txtRegNumb.getText().equals("")) {
-                for (Loan loan : admin.getLoans()) {
-                    if (loan.getLoaner().getRefNumb().equals(this.txtStaffID.getText())) {
-                        String listElement = loan.getCar().getRegNo() + " rented by ";
-                        listElement += loan.getLoaner().getFullName();
-                        try {
-                            DayLoan dayLoan = (DayLoan)loan;
-                            listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
-                        } catch (Exception e) {}
-                        try {
-                            LongLoan longLoan = (LongLoan)loan;
-                            listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
-                                + data.UtilityFunctions.formatDate(longLoan.getEndDate());
-                        } catch (Exception e) {}
-                        listModel.addElement(listElement);
-                    }
-                }
-            } else {
-                for (Loan loan : admin.getLoans()) {
-                    if (loan.getCar().getRegNo().toLowerCase().equals(this.txtRegNumb.getText().toLowerCase()) && 
-                            loan.getLoaner().getRefNumb().equals(this.txtStaffID.getText())) {
-                        String listElement = loan.getCar().getRegNo() + " rented by ";
-                            listElement += loan.getLoaner().getFullName();
-                            try {
-                                DayLoan dayLoan = (DayLoan)loan;
-                                listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
-                            } catch (Exception e) {}
-                            try {
-                                LongLoan longLoan = (LongLoan)loan;
-                                listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
-                                        + data.UtilityFunctions.formatDate(longLoan.getEndDate());
-                            } catch (Exception e) {}
-                            listModel.addElement(listElement);
-                    }
-                }
-            }
-            lstRentalList.setModel(listModel);
-        }    
+                lstRentalList.setModel(listModel);
+            }    
+        //}
     }
     private Loan getLoan(String str) {
         String[] strArray = str.split(" ");
