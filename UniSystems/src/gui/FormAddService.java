@@ -85,6 +85,11 @@ public class FormAddService extends javax.swing.JFrame {
 
         btnCancel.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -164,7 +169,12 @@ public class FormAddService extends javax.swing.JFrame {
                 txtSummary.getText(), jxDate.getDate());
         
         car.addService(service);
+        dispose();
     }//GEN-LAST:event_btnConfirmActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
      * @param args the command line arguments
