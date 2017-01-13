@@ -74,7 +74,7 @@ public class ObjectSerialisationTest{
         ArrayList<String> arrayRepairs = new ArrayList<String>();
         arrayRepairs.add("Brakes");
         
-        Service service = new Service("John", arrayRepairs, "Fixed the brakes");
+        Service service = new Service("John", arrayRepairs, "Fixed the brakes", new Date());
         
         danScott.createCar(car);
         danScott.createCar(car2);

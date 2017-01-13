@@ -85,11 +85,6 @@ public class FormAddService extends javax.swing.JFrame {
 
         btnCancel.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         btnCancel.setText("Cancel");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
-            }
-        });
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -105,20 +100,28 @@ public class FormAddService extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMechanic)
-                    .addComponent(jxDate, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jxDate, javax.swing.GroupLayout.PREFERRED_SIZE, 135, Short.MAX_VALUE)
+                    .addComponent(txtMechanic))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1))
+<<<<<<< HEAD
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtSummary, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)))
+=======
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtSummary)))
+                .addContainerGap())
+>>>>>>> parent of 5c542af... Merge remote-tracking branch 'origin/master'
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(btnConfirm)
@@ -159,8 +162,7 @@ public class FormAddService extends javax.swing.JFrame {
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
 
         String[] tempArray = this.txtRepairs.getText().toString().split(",");
-
-
+        
         ArrayList<String> arrayRepairs = new ArrayList<String>();
         for (int i = 0; i < tempArray.length; i++){
             arrayRepairs.add(tempArray[i]);
@@ -169,10 +171,6 @@ public class FormAddService extends javax.swing.JFrame {
 
         car.addService(service);
     }//GEN-LAST:event_btnConfirmActionPerformed
-
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        dispose();
-    }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
      * @param args the command line arguments
