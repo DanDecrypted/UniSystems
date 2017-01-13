@@ -494,8 +494,7 @@ public class FormCar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        FormCarLookup frm = new FormCarLookup();
-        frm.setVisible(true);
+
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelActionPerformed
 

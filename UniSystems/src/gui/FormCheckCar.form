@@ -127,6 +127,7 @@
                               <Component id="lblRentalDetails" min="-2" max="-2" attributes="0"/>
                               <Component id="lblComments" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblFuelLevel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkDamaged" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -153,7 +154,9 @@
                       <Component id="lblMileage" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtMileage" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="23" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="chkDamaged" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="26" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -207,6 +210,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtMileage">
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="chkDamaged">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Car Damaged"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

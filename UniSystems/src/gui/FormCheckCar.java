@@ -47,12 +47,18 @@ public class FormCheckCar extends javax.swing.JFrame {
     }
     
     private void checkCar() {
+        
         loan.setLoanNotes(this.txtComments.getText());
         loan.setFuelLevel(this.sldrFuelLevel.getValue());
         loan.setMilesDriven(Integer.parseInt(this.txtMileage.getText()) - car.getMilage());
         car.setMilage(Integer.parseInt(this.txtMileage.getText()));
         
+        if (this.chkDamaged.isSelected()) {
+            car.setStatus(Status.DAMAGED);
+        } else {
         admin.checkCar(car);
+        }
+        
     }
 
     /**
@@ -76,6 +82,7 @@ public class FormCheckCar extends javax.swing.JFrame {
         sldrFuelLevel = new javax.swing.JSlider();
         lblMileage = new javax.swing.JLabel();
         txtMileage = new javax.swing.JTextField();
+        chkDamaged = new javax.swing.JCheckBox();
         lblReturnCar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -122,6 +129,8 @@ public class FormCheckCar extends javax.swing.JFrame {
 
         lblMileage.setText("Mileage:");
 
+        chkDamaged.setText("Car Damaged");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -139,7 +148,8 @@ public class FormCheckCar extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblRentalDetails)
                             .addComponent(lblComments)
-                            .addComponent(lblFuelLevel))
+                            .addComponent(lblFuelLevel)
+                            .addComponent(chkDamaged))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -160,7 +170,9 @@ public class FormCheckCar extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMileage)
                     .addComponent(txtMileage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(chkDamaged)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         lblReturnCar.setText("PLACEHOLDER");
@@ -212,6 +224,7 @@ public class FormCheckCar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
+        
         checkCar();
         dispose();
 
@@ -258,6 +271,7 @@ public class FormCheckCar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnConfirm;
+    private javax.swing.JCheckBox chkDamaged;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblComments;

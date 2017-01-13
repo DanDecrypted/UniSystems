@@ -120,6 +120,11 @@ public class FormCarStatusLookup extends javax.swing.JFrame {
         });
 
         btnManage.setText("Manage");
+        btnManage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -202,12 +207,18 @@ public class FormCarStatusLookup extends javax.swing.JFrame {
         
         FormCheckCar frm = new FormCheckCar(admin, loan);
         frm.setVisible(true);
-        dispose();
     }//GEN-LAST:event_btnCarCheckActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageActionPerformed
+        String[] carString = this.lstCars.getSelectedValue().toString().split(" ");
+        String carReg = carString[0];
+        FormCar frm = new FormCar(carReg, admin);
+        frm.setVisible(true);
+    }//GEN-LAST:event_btnManageActionPerformed
 
     /**
      * @param args the command line arguments
