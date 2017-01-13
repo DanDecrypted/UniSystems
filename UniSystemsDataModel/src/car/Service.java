@@ -24,10 +24,10 @@ public class Service extends data.Observed implements java.io.Serializable{
      * @param repairs the list of repairs of the service 
      * @param summary the summary of the service.
      */
-    public Service(String mechanic, ArrayList<String> repairs, String summary) {
+    public Service(String mechanic, ArrayList<String> repairs, String summary, Date date) {
         this.mechanic = mechanic;
         this.repairs = repairs;
-        this.dateOfService = new Date();
+        this.dateOfService = date;
         this.summary = summary;
     }
     
