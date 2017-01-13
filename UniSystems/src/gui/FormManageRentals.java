@@ -41,6 +41,7 @@ public class FormManageRentals extends javax.swing.JFrame {
         initComponents();
         
         this.getContentPane().setBackground(new Color (238,238,238));
+        this.jPanel2.setBackground(new Color (238,238,238));
         listModel = new DefaultListModel();
         populateLoans();
     }

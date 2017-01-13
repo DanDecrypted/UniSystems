@@ -7,6 +7,7 @@
 package gui;
 import data.StaffMembers;
 import data.Administrators;
+import java.awt.Color;
 import people.Staff;
 import people.Administrator;
 
@@ -24,6 +25,7 @@ public class FormLogin extends javax.swing.JFrame {
      */
     public FormLogin() {
         initComponents();
+        this.getContentPane().setBackground(new Color (238,238,238));
         this.rootPane.setDefaultButton(btnLogin);
         System.out.println(staff.loadFromDisk());
         System.out.println(admins.loadFromDisk());
