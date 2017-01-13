@@ -1,6 +1,6 @@
 /*
  *  UniSystems is a development package for SOFT 252 at Plymouth University
- *  It is a system designed to allow cars to be loaned out on a custom basis to 
+ *  It is a system designed to allow cars to be loaned out on a custom basis to
  *  a member of staff. This project was created and developed by Craig Banyard,
  *  Daniel Scott and Najim Mazidi.
  */
@@ -27,7 +27,7 @@ public class FormAddService extends javax.swing.JFrame {
     public FormAddService() {
         initComponents();
     }
-    
+
     public FormAddService(Administrator admin, Car car){
         initComponents();
         this.getContentPane().setBackground(new Color (238,238,238));
@@ -113,16 +113,12 @@ public class FormAddService extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-<<<<<<< HEAD
                         .addComponent(jScrollPane1))
-=======
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE))
->>>>>>> origin/master
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtSummary, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)))
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(btnConfirm)
@@ -131,9 +127,7 @@ public class FormAddService extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        ));
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -166,14 +160,13 @@ public class FormAddService extends javax.swing.JFrame {
 
         String[] tempArray = this.txtRepairs.getText().toString().split(",");
 
-        
+
         ArrayList<String> arrayRepairs = new ArrayList<String>();
         for (int i = 0; i < tempArray.length; i++){
             arrayRepairs.add(tempArray[i]);
         }
-        Service service = new Service(txtMechanic.getText(), arrayRepairs, 
-                txtSummary.getText(), jxDate.getDate());
-        
+        Service service = new Service(txtMechanic.getText(), arrayRepairs,txtSummary.getText(), jxDate.getDate());
+
         car.addService(service);
     }//GEN-LAST:event_btnConfirmActionPerformed
 
@@ -188,7 +181,7 @@ public class FormAddService extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

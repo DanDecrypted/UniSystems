@@ -30,6 +30,7 @@ public class Service extends data.Observed implements java.io.Serializable{
         this.dateOfService = date;
         this.summary = summary;
     }
+
     
     /**
      * Gets the summary of the service.
