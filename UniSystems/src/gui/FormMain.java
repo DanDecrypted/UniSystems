@@ -72,6 +72,7 @@ public class FormMain extends javax.swing.JFrame implements IObserver {
         lblRentalHistory = new javax.swing.JLabel();
         btnRentDay = new javax.swing.JButton();
         btnRentLong = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(450, 300));
@@ -147,6 +148,13 @@ public class FormMain extends javax.swing.JFrame implements IObserver {
             }
         });
 
+        btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -190,7 +198,8 @@ public class FormMain extends javax.swing.JFrame implements IObserver {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(181, 181, 181)
+                .addComponent(btnCancel)
+                .addGap(84, 84, 84)
                 .addComponent(btnRentLong)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnRentDay)
@@ -229,7 +238,8 @@ public class FormMain extends javax.swing.JFrame implements IObserver {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRentDay)
-                    .addComponent(btnRentLong))
+                    .addComponent(btnRentLong)
+                    .addComponent(btnCancel))
                 .addContainerGap())
         );
 
@@ -273,6 +283,10 @@ public class FormMain extends javax.swing.JFrame implements IObserver {
         FormAvailableCars frm = new FormAvailableCars(admin, objStaff, LoanType.LONG_TERM_LOAN);
         frm.setVisible(true);
     }//GEN-LAST:event_btnRentLongActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnCancelActionPerformed
     
     private void populateStaffDetails(Staff staff) {
         txtForename.setText(staff.getForename());
@@ -343,6 +357,7 @@ public class FormMain extends javax.swing.JFrame implements IObserver {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnLookup;
     private javax.swing.JButton btnRentDay;
     private javax.swing.JButton btnRentLong;

@@ -53,6 +53,7 @@ public class FormCar extends javax.swing.JFrame {
         this.lblStatus.setVisible(false);
         this.lblStatusTitle.setVisible(false);
         this.btnService.setVisible(false);
+        this.cboStatus.setVisible(false);
         this.setSize(this.getSize().width,
                 jSeparator2.getLocation().y + jSeparator2.getSize().height
                         + btnCreate.getSize().height);
