@@ -44,8 +44,8 @@ public class AddStaffCommand implements ICommandBehaviour {
     }
     public Boolean isValid(){
         Boolean blnValid = false;
-        if(null == this.staffToAdd){
-            blnValid = true;
+        if(admin.getStaffForRefNumb(staffToAdd.getRefNumb()) == null){ //staff doesn't exist
+            blnValid = true; 
         }
         return blnValid;
     }

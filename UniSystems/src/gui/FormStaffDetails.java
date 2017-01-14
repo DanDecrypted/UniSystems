@@ -75,7 +75,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
             this.txtGender.setText(staff.getGender());
             this.txtOffice.setText(staff.getOfficeRoom());
             this.txtPhoneNumb.setText(staff.getPhoneNumber());
-            this.cboPosition.setSelectedItem(staff.getPosition().toString());
+            this.cboPosition.setSelectedItem(staff.getPosition());
             this.txtSurname.setText(staff.getSurname());
             this.txtTitle.setText(staff.getTitle());
             this.txtWorkNumb.setText(staff.getWorkNumb());

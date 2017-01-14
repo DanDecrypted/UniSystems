@@ -11,7 +11,7 @@ import people.Staff;
 
 /**
  * 
- * @author Craig Banyard, Daniel Scott & Najim Mazidi
+ * @author Craig Banyard, Daniel Scott  Mazidi
  */
 public class DayLoan extends Loan {
     private Date rentalDate;
