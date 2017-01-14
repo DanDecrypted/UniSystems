@@ -10,7 +10,7 @@ import java.util.Date;
 
 /**
  *
- * @author Craig Banyard, Daniel Scott & Najim Mazidi
+ * @author Craig Banyard, Daniel Scott, Najim Mazidi
  */
 public class Car extends data.Observed implements java.io.Serializable{
     /**
@@ -102,7 +102,7 @@ public class Car extends data.Observed implements java.io.Serializable{
 
     /**
      * Sets the make of the car
-     * @param make 
+     * @param make make of the car. String.
      */
     public void setMake(String make) {
         this.make = make;
@@ -119,7 +119,7 @@ public class Car extends data.Observed implements java.io.Serializable{
 
     /**
      * Sets the model of the car 
-     * @param model 
+     * @param model model of the car. String.
      */
     public void setModel(String model) {
         this.model = model;
@@ -128,7 +128,7 @@ public class Car extends data.Observed implements java.io.Serializable{
 
     /**
      * Sets the mileage of the car
-     * @param milage 
+     * @param milage Milage of the car. Integer.
      */
     public void setMilage(int milage) {
         this.milage = milage;
@@ -152,7 +152,7 @@ public class Car extends data.Observed implements java.io.Serializable{
     
     /**
      * Sets the status of the car
-     * @param status 
+     * @param status Status enumerator.
      */
     public void setStatus(Status status) {
         this.status = status;
@@ -190,7 +190,7 @@ public class Car extends data.Observed implements java.io.Serializable{
 
     /**
      * Sets the parking space of the car
-     * @param parkingSpace 
+     * @param parkingSpace String
      */
     public void setParkingSpace(String parkingSpace) {
         this.parkingSpace = parkingSpace;
@@ -247,7 +247,7 @@ public class Car extends data.Observed implements java.io.Serializable{
 
     /**
      * Sets the loan type of the car
-     * @param loanType 
+     * @param loanType LoanType of the car.
      */
     public void setLoanType(LoanType loanType) {
         this.loanType = loanType;
@@ -268,7 +268,7 @@ public class Car extends data.Observed implements java.io.Serializable{
     
     /**
      * Adds a service to the record of the car
-     * @param service 
+     * @param service Service to be added to the car.
      */
     public void addService(Service service) {
         if (serviceRecord == null) serviceRecord = new ArrayList<Service>();
@@ -278,7 +278,7 @@ public class Car extends data.Observed implements java.io.Serializable{
     
     /**
      * Adds a note to the cars list of notes.
-     * @param note 
+     * @param note note to be added to the car
      */
     public void addNote(String note) {
         if (notes == null) notes = new ArrayList<String>();
@@ -288,7 +288,7 @@ public class Car extends data.Observed implements java.io.Serializable{
     
     /**
      * Adds an array of strings to the notes.
-     * @param notes 
+     * @param notes notes to be added to the car. ArrayList of string.
      */
     public void addNotes(ArrayList<String> notes) {
         if (notes == null) return;

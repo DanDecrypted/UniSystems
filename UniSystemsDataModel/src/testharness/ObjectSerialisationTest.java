@@ -26,7 +26,7 @@ import people.Administrator;
 
 /**
  *
- * @author Craig Banyard, Daniel Scott & Najim Mazidi
+ * @author Craig Banyard, Daniel Scott, Najim Mazidi
  */
 public class ObjectSerialisationTest{
     private static Cars cars = Cars.getInstance();

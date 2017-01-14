@@ -18,7 +18,7 @@ import car.Car;
 
 /**
  *
- * @author Craig Banyard, Daniel Scott & Najim Mazidi
+ * @author Craig Banyard, Daniel Scott, Najim Mazidi
  */
 public class Cars extends Observed implements ISerialisable {
     private ArrayList<Car> carsList;

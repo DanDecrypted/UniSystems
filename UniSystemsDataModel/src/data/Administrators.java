@@ -11,7 +11,7 @@ import people.Administrator;
 
 /**
  * Singleton class for the administrators container.
- * @author Craig Banyard, Daniel Scott & Najim Mazidi
+ * @author Craig Banyard, Daniel Scott, Najim Mazidi
  */
 public class Administrators extends Observed implements ISerialisable {
     private ArrayList<Administrator> adminList = new ArrayList<Administrator>();
@@ -58,7 +58,7 @@ public class Administrators extends Observed implements ISerialisable {
     
     /**
      * Saves the administrators to disk.
-     * @return 
+     * @return a string containing any errors / successes.
      */
     public String saveToDisk() {
         File objFile = new File("dist/Administrators.dat");

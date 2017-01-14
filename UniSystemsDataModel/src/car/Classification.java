@@ -8,7 +8,7 @@ package car;
 
 /**
  * car classifications known to the system.
- * @author Craig Banyard, Daniel Scott & Najim Mazidi
+ * @author Craig Banyard, Daniel Scott, Najim Mazidi
  */
 public enum Classification {
     COMPACT, 

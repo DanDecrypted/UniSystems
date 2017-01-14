@@ -12,7 +12,7 @@ import people.Staff;
 
 /**
  * Long Loan class which holds the Long Term Loan information.
- * @author Craig Banyard, Daniel Scott & Najim Mazidi
+ * @author Craig Banyard, Daniel Scott, Najim Mazidi
  */
 public class LongLoan extends Loan{
     private Date startDate;

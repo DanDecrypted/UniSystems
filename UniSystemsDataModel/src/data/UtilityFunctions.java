@@ -12,11 +12,9 @@ import loaning.Loan;
 import loaning.LongLoan;
 
 /**
-* Watch this space, gonna submit it to the shit people that developed
-* the JDK.
-* @param date
-* @return a string in a format that actually makes sense.
-*/
+ * Class to modify data/representations.
+ * @author dansc
+ */
 public class UtilityFunctions {
     
     public static String formatDate(Date date) {

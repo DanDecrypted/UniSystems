@@ -28,7 +28,7 @@ import loaning.Loan;
 /**
  * The administrator class should be used as a factory for the other objects
  * which are contained within the system
- * @author Craig Banyard, Daniel Scott & Najim Mazidi
+ * @author Craig Banyard, Daniel Scott, Najim Mazidi
  */
 public class Administrator extends Staff implements java.io.Serializable {
     // the following private properties are transient as we don't want them to 
@@ -111,7 +111,7 @@ public class Administrator extends Staff implements java.io.Serializable {
     /**
      * Adds a newly created car object to the list and assigns observers. Cars
      * are then saved to disk.
-     * @param car 
+     * @param car car to be created
      */
     public void createCar(Car car) {
         if (cars == null) cars = Cars.getInstance();
@@ -124,7 +124,7 @@ public class Administrator extends Staff implements java.io.Serializable {
     /**
      * Gets all the loan details for a specific staff member which we obtain via 
      * their staff reference number
-     * @param refNumb
+     * @param refNumb reference of the staff member
      * @return an array of loan objects relating to the staff member
      */
     public ArrayList<Loan> getLoansForRef(String refNumb) {
@@ -139,7 +139,7 @@ public class Administrator extends Staff implements java.io.Serializable {
         
     /**
      * Gets the day loans relating to the staff member
-     * @param refNumb
+     * @param refNumb reference of the staff member.
      * @return an array of day loans.
      */
     public ArrayList<DayLoan> getDayLoansForRef(String refNumb) {
@@ -148,7 +148,7 @@ public class Administrator extends Staff implements java.io.Serializable {
     
     /**
      * Gets the long loans relating to the staff member
-     * @param refNumb
+     * @param refNumb reference of the staff member.
      * @return an array of long loans.
      */
     public ArrayList<LongLoan> getLongLoansForRef(String refNumb) {
@@ -157,7 +157,7 @@ public class Administrator extends Staff implements java.io.Serializable {
     
     /**
      * Gets a staff object which has a particular reference number.
-     * @param refNumb
+     * @param refNumb reference of the staff member.
      * @return Staff object.
      */
     public Staff getStaffForRefNumb(String refNumb) {
@@ -172,7 +172,7 @@ public class Administrator extends Staff implements java.io.Serializable {
     
     /**
      * Gets a car for a particular registration plate
-     * @param carReg
+     * @param carReg car registration.
      * @return Car object.
      */
     public Car getCarByReg(String carReg) {
@@ -187,8 +187,8 @@ public class Administrator extends Staff implements java.io.Serializable {
     }
     
     /**
-     * Gets all loans (Previous and Current) for a car by their reg plate
-     * @param carReg
+     * Gets all loans (Previous and Current) for a car.
+     * @param car car object.
      * @return an array of loans.
      */
     public ArrayList<Loan> getLoansForCar(Car car){

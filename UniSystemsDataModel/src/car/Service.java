@@ -10,7 +10,7 @@ import java.util.Date;
 
 /**
  * Service structure.
- * @author Craig Banyard, Daniel Scott & Najim Mazidi
+ * @author Craig Banyard, Daniel Scott, Najim Mazidi
  */
 public class Service extends data.Observed implements java.io.Serializable{
     private String mechanic;
@@ -23,6 +23,7 @@ public class Service extends data.Observed implements java.io.Serializable{
      * @param mechanic the mechanic that did the service
      * @param repairs the list of repairs of the service 
      * @param summary the summary of the service.
+     * @param date date of the service.
      */
     public Service(String mechanic, ArrayList<String> repairs, String summary, Date date) {
         this.mechanic = mechanic;
@@ -58,7 +59,7 @@ public class Service extends data.Observed implements java.io.Serializable{
     
     /**
      * Adds a repair to the list of repairs.
-     * @param repair 
+     * @param repair description of the repair to be added to the car.
      */
     public void addRepair(String repair) {
         if (repairs == null) repairs = new ArrayList<String>();
@@ -68,7 +69,7 @@ public class Service extends data.Observed implements java.io.Serializable{
     
     /**
      * Gets the date of the service.
-     * @return 
+     * @return Date object of the service.
      */
     public Date getDateOfService(){
         return dateOfService;

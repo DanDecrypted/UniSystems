@@ -11,7 +11,7 @@ import car.Car;
 
 /**
  *
- * @author Craig Banyard, Daniel Scott & Najim Mazidi
+ * @author Craig Banyard, Daniel Scott, Najim Mazidi
  */
 public class Staff extends Person {
     protected String staffRefNumb;
@@ -36,19 +36,19 @@ public class Staff extends Person {
     
     /**
      * Constructor for a Staff Object
-     * @param staffRefNumb
-     * @param position
-     * @param faculty
-     * @param officeRoom
-     * @param workNumb
-     * @param address
-     * @param title
-     * @param forename
-     * @param surname
-     * @param dateOfBirth
-     * @param gender
-     * @param phoneNumber
-     * @param emailAddress 
+     * @param staffRefNumb the reference number of the staff member
+     * @param position the position of the staff member
+     * @param faculty the faculty of the staff member
+     * @param officeRoom the office room of the staff member
+     * @param workNumb the work number of the staff member
+     * @param address the address of the staff member
+     * @param title the title of the staff member
+     * @param forename the forename of the staff member
+     * @param surname the surname of the staff member
+     * @param dateOfBirth the date of birth of the staff member
+     * @param gender the gender of the staff member
+     * @param phoneNumber the phone number of the staff member
+     * @param emailAddress the email address of the staff member.
      */
     public Staff(String staffRefNumb, Position position, Faculty faculty, 
                  String officeRoom, String workNumb, Address address, 
@@ -87,7 +87,7 @@ public class Staff extends Person {
     
     /**
      * Sets the position of the staff member and notifies observers.
-     * @param position 
+     * @param position position of the staff member.
      */
     public void setPosition(Position position) {
         this.position = position;
@@ -104,7 +104,7 @@ public class Staff extends Person {
 
     /**
      * Sets the faculty of the staff member.
-     * @param faculty 
+     * @param faculty faculty of the staff member.
      */
     public void setFaculty(Faculty faculty) {
         this.faculty = faculty;
@@ -113,7 +113,7 @@ public class Staff extends Person {
 
     /**
      * Gets the office room of the staff member
-     * @return String
+     * @return String 
      */
     public String getOfficeRoom() {
         return officeRoom;
@@ -121,7 +121,7 @@ public class Staff extends Person {
 
     /**
      * Sets the office room of the staff member.
-     * @param officeRoom 
+     * @param officeRoom office room of the staff member.
      */
     public void setOfficeRoom(String officeRoom) {
         this.officeRoom = officeRoom;
@@ -138,7 +138,7 @@ public class Staff extends Person {
 
     /**
      * Sets the work number of the staff member.
-     * @param workNumb 
+     * @param workNumb work number of the staff member.
      */
     public void setWorkNumb(String workNumb) {
         this.workNumb = workNumb;
@@ -155,7 +155,7 @@ public class Staff extends Person {
 
     /**
      * Sets the address of the staff member.
-     * @param address 
+     * @param address the address of the staff member.
      */
     public void setAddress(Address address) {
         this.address = address;

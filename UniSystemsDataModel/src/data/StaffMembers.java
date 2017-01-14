@@ -19,7 +19,7 @@ import people.Staff;
 
 /**
  *
- * @author Craig Banyard, Daniel Scott & Najim Mazidi
+ * @author Craig Banyard, Daniel Scott, Najim Mazidi
  */
 public class StaffMembers extends Observed implements ISerialisable {
     private ArrayList<Staff> staffList;

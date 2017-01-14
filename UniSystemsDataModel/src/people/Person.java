@@ -13,7 +13,7 @@ import java.util.Date;
 
 /**
  * Super class which gives Staff and Administrator their base properties.
- * @author Craig Banyard, Daniel Scott & Najim Mazidi
+ * @author Craig Banyard, Daniel Scott, Najim Mazidi
  */
 public class Person extends data.Observed implements java.io.Serializable {
     protected String title;
@@ -94,7 +94,7 @@ public class Person extends data.Observed implements java.io.Serializable {
     
     /**
      * Sets the forename of the person.
-     * @param forename 
+     * @param forename forename of the person
      */
     public void setForename(String forename) {
         this.forename = forename;
@@ -111,7 +111,7 @@ public class Person extends data.Observed implements java.io.Serializable {
 
     /**
      * Sets the surname of the person
-     * @param surname 
+     * @param surname surname of the person.
      */
     public void setSurname(String surname) {
         this.surname = surname;
@@ -128,7 +128,7 @@ public class Person extends data.Observed implements java.io.Serializable {
 
     /**
      * Sets the date of birth of the person.
-     * @param dateOfBirth 
+     * @param dateOfBirth date of birth of the person.
      */
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
@@ -145,7 +145,7 @@ public class Person extends data.Observed implements java.io.Serializable {
 
     /**
      * Sets the gender of the person.
-     * @param gender 
+     * @param gender gener of the person.
      */
     public void setGender(String gender) {
         this.gender = gender;
@@ -154,7 +154,7 @@ public class Person extends data.Observed implements java.io.Serializable {
 
     /**
      * Gets the phone number of the person.
-     * @return 
+     * @return the phone number of the person
      */
     public String getPhoneNumber() {
         return phoneNumber;
@@ -162,7 +162,7 @@ public class Person extends data.Observed implements java.io.Serializable {
 
     /**
      * Sets the phone number of the person.
-     * @param phoneNumber 
+     * @param phoneNumber the phone number of the person
      */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
@@ -179,7 +179,7 @@ public class Person extends data.Observed implements java.io.Serializable {
     
     /**
      * Sets the email address of the person.
-     * @param emailAddress 
+     * @param emailAddress email address of the person
      */
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;

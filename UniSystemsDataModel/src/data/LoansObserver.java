@@ -7,7 +7,7 @@ package data;
 import data.Loans;
 /**
  *
- * @author Craig Banyard, Daniel Scott & Najim Mazidi
+ * @author Craig Banyard, Daniel Scott, Najim Mazidi
  */
 public class LoansObserver implements IObserver {
     private Loans loans = Loans.getInstance();

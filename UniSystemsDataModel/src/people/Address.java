@@ -8,7 +8,7 @@ package people;
 
 /**
  *
- * @author Craig Banyard, Daniel Scott & Najim Mazidi
+ * @author Craig Banyard, Daniel Scott, Najim Mazidi
  */
 public class Address implements java.io.Serializable {
     

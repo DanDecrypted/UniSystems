@@ -8,7 +8,7 @@ import data.Cars;
 
 /**
  *
- * @author Craig Banyard, Daniel Scott & Najim Mazidi
+ * @author Craig Banyard, Daniel Scott, Najim Mazidi
  */
 public class CarsObserver implements IObserver{
     private Cars cars = Cars.getInstance();

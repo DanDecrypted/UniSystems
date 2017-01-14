@@ -8,19 +8,19 @@ package data;
 
 /**
  *
- * @author Craig Banyard, Daniel Scott & Najim Mazidi
+ * @author Craig Banyard, Daniel Scott, Najim Mazidi
  */
 public interface ISerialisable {
 
     /**
      * Loads the ArrayList data 
-     * @return
+     * @return a string containing any error messages/successes.
      */
     public abstract String loadFromDisk();
 
     /**
-     *
-     * @return
+     * Saves the ArrayList data
+     * @return a string containing any error messages/successes.
      */
     public abstract String saveToDisk();
 }
