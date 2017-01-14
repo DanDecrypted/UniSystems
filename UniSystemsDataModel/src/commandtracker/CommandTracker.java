@@ -47,7 +47,7 @@ public class CommandTracker implements ICommandTracker {
         Boolean blnDone = false;
         if (this.isRedoable()) {
             ICommand lastCommand = this.stkUndone.pop();
-            if (lastCommand.undoCommand()){
+            if (lastCommand.doCommand()){
                 this.stkDone.push(lastCommand);
                 blnDone = false;
             }

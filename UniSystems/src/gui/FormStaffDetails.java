@@ -55,7 +55,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
         this.txtPassword.setVisible(false);
         this.setSize(this.getSize().width,
                 jSeparator2.getLocation().y + jSeparator2.getSize().height 
-                        + btnCreate.getSize().height);
+                        + btnCreate.getSize().height + 100);
         this.admin = admin;
     }
     
