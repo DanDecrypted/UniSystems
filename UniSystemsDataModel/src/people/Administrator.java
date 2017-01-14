@@ -279,11 +279,12 @@ public class Administrator extends Staff implements java.io.Serializable {
      * Creates a long loan object and assigns observers.
      * @param car car object to be loaned.
      * @param staff staff object to loan.
+     * @return assigned loan
      */
-    public void assignLongLoan(Car car, Staff staff) {
+    public LongLoan assignLongLoan(Car car, Staff staff) {
         if (car.getLoanType() == LoanType.DAY_LOAN) {
             System.out.println("This car is not available as a long loan");
-            return;
+            return null;
         }
         if (loans == null) loans = Loans.getInstance();
         if (loanObserver == null) loanObserver = new LoansObserver(); 
@@ -294,17 +295,19 @@ public class Administrator extends Staff implements java.io.Serializable {
         loan.registerObserver(loanObserver);
         loans.registerObserver(loanObserver);
         loans.addLoan(loan);
+        return loan;
     }
     
     /**
      * Creates a day loan object and assigns the observers.
      * @param car car object to be loaned.
      * @param staff staff member to carry out the loan.
+     * @return assigned loan
      */
-    public void assignDayLoan(Car car, Staff staff) {
+    public DayLoan assignDayLoan(Car car, Staff staff) {
         if (car.getLoanType() == LoanType.LONG_TERM_LOAN) {
             System.out.println("This car is not available as a day loan");
-            return;
+            return null;
         }
         if (loans == null) loans = Loans.getInstance();
         if (loanObserver == null) loanObserver = new LoansObserver();
@@ -316,6 +319,7 @@ public class Administrator extends Staff implements java.io.Serializable {
         loan.registerObserver(loanObserver);
         loans.registerObserver(loanObserver);
         loans.addLoan(loan);
+        return loan;
     }
     
     /**
@@ -344,6 +348,16 @@ public class Administrator extends Staff implements java.io.Serializable {
      */
     public void returnCar(Car car, LongLoan longLoan) {
         this.returnCar(car, (Loan)longLoan);
+    }
+    /**
+     * Used by undoing an erroneous loan assignment. Sets car status to available
+     * @param car car object
+     * @param loan loan object
+     */
+    public void cancelLoan(Car car, Loan loan) {
+        car.setStatus(Status.AVAILABLE);
+        loan.setReturnedDate(new Date());
+        loan.setLoanNotes("Loan cancelled, ignore.");        
     }
     
     /**
@@ -390,5 +404,16 @@ public class Administrator extends Staff implements java.io.Serializable {
      */
     public ArrayList<Car> getCars() {
         return cars.getCars();
+    }
+    /**
+     * Removes car from list if car created in error. Can be accessed through undo/redo function
+     * @param car 
+     */
+    public void removeCar(Car car) {
+    if (cars == null) return;
+        if (cars.getCars().contains(car)) {
+            car.removeObservers();
+            cars.removeCar(car);
+        }
     }
 }

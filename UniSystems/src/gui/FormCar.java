@@ -8,6 +8,11 @@ package gui;
 import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 import car.*;
+import command.interfaces.ICommand;
+import command.interfaces.ICommandBehaviour;
+import commands.car.AddCarCommand;
+import commandtracker.Command;
+import commandtracker.CommandTracker;
 import loaning.*;
 import javax.swing.DefaultListModel;
 import people.Administrator;
@@ -22,6 +27,7 @@ public class FormCar extends javax.swing.JFrame {
     private Car car;
     private DefaultListModel serviceListModel;
     private DefaultListModel loanListModel;
+    private CommandTracker commandTracker = new CommandTracker();
 
     /**
      * Creates new form FormCar
@@ -192,6 +198,11 @@ public class FormCar extends javax.swing.JFrame {
         cboStatus = new javax.swing.JComboBox<>();
         btnViewService = new javax.swing.JButton();
         btnService = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        mnuUndo = new javax.swing.JMenuItem();
+        mnuRedo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(450, 300));
@@ -326,6 +337,31 @@ public class FormCar extends javax.swing.JFrame {
                 btnServiceActionPerformed(evt);
             }
         });
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+
+        mnuUndo.setText("Undo");
+        mnuUndo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuUndoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnuUndo);
+
+        mnuRedo.setText("Redo");
+        mnuRedo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuRedoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnuRedo);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -491,7 +527,7 @@ public class FormCar extends javax.swing.JFrame {
                     .addComponent(btnCreate)
                     .addComponent(btnUpdate)
                     .addComponent(btnService))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -517,7 +553,10 @@ public class FormCar extends javax.swing.JFrame {
             (Classification)cboClassification.getSelectedItem(),
             Integer.parseInt(txtSeats.getText()),Integer.parseInt(txtDoors.getText()),
             Integer.parseInt(txtMileage.getText()), (LoanType)cboLoanType.getSelectedItem() );
-        admin.createCar(newCar);
+        
+        ICommandBehaviour objCreate = new AddCarCommand(this.admin, newCar);
+        ICommand command = new Command(objCreate);
+        this.commandTracker.executeCommand(command);
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -550,6 +589,14 @@ public class FormCar extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnViewServiceActionPerformed
+
+    private void mnuRedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRedoActionPerformed
+        commandTracker.redoLastCommand();
+    }//GEN-LAST:event_mnuRedoActionPerformed
+
+    private void mnuUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuUndoActionPerformed
+        commandTracker.undoLastCommand();
+    }//GEN-LAST:event_mnuUndoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -601,6 +648,9 @@ public class FormCar extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboLocation;
     private javax.swing.JComboBox<String> cboStatus;
     private javax.swing.JComboBox<String> cboTransmission;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblClassTitle;
@@ -622,6 +672,8 @@ public class FormCar extends javax.swing.JFrame {
     private javax.swing.JLabel lblTransmissionTitle;
     private javax.swing.JList<String> lstLoanHistory;
     private javax.swing.JList<String> lstServiceHistory;
+    private javax.swing.JMenuItem mnuRedo;
+    private javax.swing.JMenuItem mnuUndo;
     private javax.swing.JScrollPane scrlLoanHistory;
     private javax.swing.JScrollPane scrlServiceHistory;
     private javax.swing.JTextField txtDoors;

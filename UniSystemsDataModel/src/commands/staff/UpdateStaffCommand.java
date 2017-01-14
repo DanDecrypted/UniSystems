@@ -1,5 +1,5 @@
 
-package commands;
+package commands.staff;
 
 import command.interfaces.ICommandBehaviour;
 import data.StaffMembers;

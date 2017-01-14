@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package commands;
+package commands.staff;
 
 import command.interfaces.ICommandBehaviour;
 import people.Administrator;
@@ -13,21 +13,20 @@ import people.Staff;
  *
  * @author najimmazidi
  */
-public class AddStaffCommand implements ICommandBehaviour {
+public class DeleteStaffCommand implements ICommandBehaviour {
+        private Administrator admin = null;
+    private Staff staffToRemove = null;
     
-    private Administrator admin = null;
-    private Staff staffToAdd = null;
-    
-    public AddStaffCommand(Administrator admin, Staff staff) {
+    public DeleteStaffCommand(Administrator admin, Staff staff) {
         this.admin = admin;
-        this.staffToAdd = staff;
+        this.staffToRemove = staff;
     }
 
     @Override
     public Boolean doCommand() {
         Boolean blnCompleted = false;
         if(this.isValid()){
-            this.admin.createStaffMember(this.staffToAdd);
+            this.admin.removeStaffMember(staffToRemove);
             blnCompleted = true;
         }
         return blnCompleted;
@@ -37,18 +36,16 @@ public class AddStaffCommand implements ICommandBehaviour {
     public Boolean undoCommand() {
         Boolean blnCompleted = false;
         if(this.isValid()){
-            this.admin.removeStaffMember(staffToAdd);
+            this.admin.createStaffMember(staffToRemove);
             blnCompleted = true;
         }
         return blnCompleted;
     }
     public Boolean isValid(){
         Boolean blnValid = false;
-        if(admin.getStaffForRefNumb(staffToAdd.getRefNumb()) == null){ //staff doesn't exist
-            blnValid = true; 
+        if(null != this.staffToRemove){
+            blnValid = true;
         }
         return blnValid;
     }
-    
-    
 }

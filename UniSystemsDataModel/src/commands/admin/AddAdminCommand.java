@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package commands;
+package commands.admin;
 
 import command.interfaces.ICommandBehaviour;
 import people.Administrator;
@@ -13,20 +13,21 @@ import people.Staff;
  *
  * @author najimmazidi
  */
-public class DeleteStaffCommand implements ICommandBehaviour {
-        private Administrator admin = null;
-    private Staff staffToRemove = null;
+public class AddAdminCommand implements ICommandBehaviour {
     
-    public DeleteStaffCommand(Administrator admin, Staff staff) {
+    private Administrator admin = null;
+    private Staff adminToAdd = null;
+    
+    public AddAdminCommand(Administrator admin, Staff staff) {
         this.admin = admin;
-        this.staffToRemove = staff;
+        this.adminToAdd = staff;
     }
 
     @Override
     public Boolean doCommand() {
         Boolean blnCompleted = false;
         if(this.isValid()){
-            this.admin.removeStaffMember(staffToRemove);
+            this.admin.createAdministrator(admin);
             blnCompleted = true;
         }
         return blnCompleted;
@@ -36,16 +37,18 @@ public class DeleteStaffCommand implements ICommandBehaviour {
     public Boolean undoCommand() {
         Boolean blnCompleted = false;
         if(this.isValid()){
-            this.admin.createStaffMember(staffToRemove);
+            this.admin.removeAdministrator(admin);
             blnCompleted = true;
         }
         return blnCompleted;
     }
     public Boolean isValid(){
         Boolean blnValid = false;
-        if(null != this.staffToRemove){
+        if(null != this.adminToAdd){
             blnValid = true;
         }
         return blnValid;
     }
+    
+    
 }

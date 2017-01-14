@@ -7,6 +7,12 @@
 package gui;
 
 import car.Car;
+import command.interfaces.ICommand;
+import command.interfaces.ICommandBehaviour;
+import commands.loan.AddDayLoanCommand;
+import commands.loan.ReturnCarCommand;
+import commandtracker.Command;
+import commandtracker.CommandTracker;
 import java.awt.Color;
 import loaning.Loan;
 import people.Administrator;
@@ -20,13 +26,14 @@ public class FormConfirmReturn extends javax.swing.JFrame {
     Administrator admin;
     Loan loan;
     Car car;
+    CommandTracker commandTracker;
 
     public FormConfirmReturn() {
         initComponents();
         this.getContentPane().setBackground(new Color (238,238,238));
     }
     
-    public FormConfirmReturn(Administrator admin, Loan loan) {
+    public FormConfirmReturn(Administrator admin, Loan loan, CommandTracker cmdTracker) {
         initComponents();
         this.getContentPane().setBackground(new Color (238,238,238));
         this.lblReturnCar.setText("Car being returned: " + loan.getCar().getRegNo() + " - " + loan.getCar().getMake() + " " + loan.getCar().getModel());
@@ -34,6 +41,7 @@ public class FormConfirmReturn extends javax.swing.JFrame {
         this.admin = admin;
         this.loan = loan;
         this.car = admin.getCarByReg(loan.getCar().getRegNo());
+        this.commandTracker = cmdTracker;
     }
     
 
@@ -111,7 +119,9 @@ public class FormConfirmReturn extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
-        admin.returnCar(car, loan);
+        ICommandBehaviour objReturn = new ReturnCarCommand(admin, car, loan);
+        ICommand command = new Command(objReturn);
+        this.commandTracker.executeCommand(command);
         dispose();
         
     }//GEN-LAST:event_btnConfirmActionPerformed

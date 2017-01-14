@@ -9,6 +9,12 @@ package gui;
 import car.Car;
 import car.LoanType;
 import car.Status;
+import command.interfaces.ICommand;
+import command.interfaces.ICommandBehaviour;
+import commands.loan.AddDayLoanCommand;
+import commands.loan.AddLongLoanCommand;
+import commandtracker.Command;
+import commandtracker.CommandTracker;
 import java.awt.Color;
 import people.Administrator;
 import people.Staff;
@@ -20,6 +26,7 @@ import people.Staff;
 public class FormRentalConfirm extends javax.swing.JFrame {
     Administrator admin;
     Car car; 
+    CommandTracker commandTracker = new CommandTracker();
     
     /**
      * Creates new form FormRentalConfirm
@@ -89,6 +96,11 @@ public class FormRentalConfirm extends javax.swing.JFrame {
         txtModel = new javax.swing.JTextField();
         btnCancel = new javax.swing.JButton();
         btnConfirm = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        mnuUndo = new javax.swing.JMenuItem();
+        mnuRedo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -288,6 +300,31 @@ public class FormRentalConfirm extends javax.swing.JFrame {
             }
         });
 
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+
+        mnuUndo.setText("Undo");
+        mnuUndo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuUndoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnuUndo);
+
+        mnuRedo.setText("Redo");
+        mnuRedo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuRedoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnuRedo);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -319,7 +356,7 @@ public class FormRentalConfirm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancel)
                     .addComponent(btnConfirm))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -328,9 +365,14 @@ public class FormRentalConfirm extends javax.swing.JFrame {
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
         // TODO add your handling code here:
         if (car.getLoanType() == LoanType.DAY_LOAN) {
-            admin.assignDayLoan(admin.getCarByReg(txtNumberPlate.getText()), admin.getStaffForRefNumb(txtStaffNumb.getText()));
+            ICommandBehaviour objCreate = new AddDayLoanCommand(admin, admin.getCarByReg(txtNumberPlate.getText()), admin.getStaffForRefNumb(txtStaffNumb.getText()));
+            ICommand command = new Command(objCreate);
+            this.commandTracker.executeCommand(command);
+            
         } else if (car.getLoanType() == LoanType.LONG_TERM_LOAN) {
-            admin.assignLongLoan(admin.getCarByReg(txtNumberPlate.getText()), admin.getStaffForRefNumb(txtStaffNumb.getText()));
+            ICommandBehaviour objCreate = new AddLongLoanCommand(admin, admin.getCarByReg(txtNumberPlate.getText()), admin.getStaffForRefNumb(txtStaffNumb.getText()));
+            ICommand command = new Command(objCreate);
+            this.commandTracker.executeCommand(command);
         }
         car.setStatus(Status.OUT_ON_LOAN);
         dispose();
@@ -340,6 +382,14 @@ public class FormRentalConfirm extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void mnuUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuUndoActionPerformed
+        commandTracker.undoLastCommand();
+    }//GEN-LAST:event_mnuUndoActionPerformed
+
+    private void mnuRedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRedoActionPerformed
+        commandTracker.redoLastCommand();
+    }//GEN-LAST:event_mnuRedoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -380,6 +430,9 @@ public class FormRentalConfirm extends javax.swing.JFrame {
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnConfirm;
     private javax.swing.ButtonGroup btnLoanType;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblCarDetails;
@@ -395,6 +448,8 @@ public class FormRentalConfirm extends javax.swing.JFrame {
     private javax.swing.JLabel lblStaffNumber;
     private javax.swing.JLabel lblSurname;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JMenuItem mnuRedo;
+    private javax.swing.JMenuItem mnuUndo;
     private javax.swing.JTextField txtClass;
     private javax.swing.JTextField txtForename;
     private javax.swing.JTextField txtLocation;

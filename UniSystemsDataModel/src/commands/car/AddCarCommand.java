@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package commands;
+package commands.car;
 
+import car.Car;
 import command.interfaces.ICommandBehaviour;
 import people.Administrator;
 import people.Staff;
@@ -13,23 +14,23 @@ import people.Staff;
  *
  * @author najimmazidi
  */
-public class AddAdminCommand implements ICommandBehaviour {
+public class AddCarCommand implements ICommandBehaviour {
     
     private Administrator admin = null;
-    private Staff adminToAdd = null;
+    private Car carToAdd = null;
     
-    public AddAdminCommand(Administrator admin, Staff staff) {
+    public AddCarCommand(Administrator admin, Car car) {
         this.admin = admin;
-        this.adminToAdd = staff;
+        this.carToAdd = car;
     }
 
     @Override
     public Boolean doCommand() {
         Boolean blnCompleted = false;
-        if(this.isValid()){
-            this.admin.createAdministrator(admin);
+        //if(this.isValid()){
+            this.admin.createCar(carToAdd);
             blnCompleted = true;
-        }
+        //}
         return blnCompleted;
     }
 
@@ -37,14 +38,14 @@ public class AddAdminCommand implements ICommandBehaviour {
     public Boolean undoCommand() {
         Boolean blnCompleted = false;
         if(this.isValid()){
-            this.admin.removeAdministrator(admin);
+            this.admin.removeCar(carToAdd);
             blnCompleted = true;
         }
         return blnCompleted;
     }
     public Boolean isValid(){
         Boolean blnValid = false;
-        if(null == this.adminToAdd){
+        if(null != this.carToAdd){ 
             blnValid = true;
         }
         return blnValid;
