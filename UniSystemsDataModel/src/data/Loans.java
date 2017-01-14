@@ -55,6 +55,7 @@ public class Loans extends Observed implements ISerialisable{
         }
     }
     
+    @Override
     public String saveToDisk() {
         File objFile = new File("dist/Loans.dat");
         try (ObjectOutputStream objOut = new ObjectOutputStream(

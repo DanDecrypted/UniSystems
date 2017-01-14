@@ -63,6 +63,8 @@ public class ObjectSerialisationTest{
                 "Mr", "Craig", "Banyard", new Date(1992,06,03), "Male", "0732345641", "craig.banyard@students.plymouth.ac.uk");
         Staff staff3 = new Staff("10501358", Position.TRANSPORT_OFFICE_ADMIN, Faculty.SCIENCE_AND_ENGINEERING, "PSQA301", "07594875693", new Address("45", "Lipson Road", "Plymouth", "Devon", "PL4 8EA"),
                 "Dr", "Daniel", "Scott", new Date(1994,6,28), "Male", "07594875693", "daniel.r.scott@students.plymouth.ac.uk");
+        Staff staff4 = new Staff("12345678", Position.TRANSPORT_OFFICE_ADMIN, Faculty.SCIENCE_AND_ENGINEERING, "PSQA301", "07474306999", new Address("1", "Tothill Avenue", "Plymouth", "Devon", "PL4 8PH"),
+                "Mr", "John", "Smith", new Date(1995,7,26), "Male", "07474306999", "john.smith@students.plymouth.ac.uk");
         
         Administrator danScott = new Administrator("10501358", Position.TRANSPORT_OFFICE_ADMIN, Faculty.SCIENCE_AND_ENGINEERING, "PSQA301", "07594875693", new Address("45", "Lipson Road", "Plymouth", "Devon", "PL4 8EA"),
                 "Dr", "Daniel", "Scott", new Date(1994,6,28), "Male", "07594875693", "daniel.r.scott@students.plymouth.ac.uk", "password");
@@ -91,6 +93,7 @@ public class ObjectSerialisationTest{
         danScott.createAdministrator(danScott);
         najim.createAdministrator(najim);
         craig.createAdministrator(craig);
+        najim.createStaffMember(staff4);
         
         car2.addService(service);
     }
