@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import loaning.Loan;
 
 /**
- *
+ * Loans list wrapper class
  * @author Craig
  */
 public class Loans extends Observed implements ISerialisable{
@@ -27,10 +27,18 @@ public class Loans extends Observed implements ISerialisable{
     
     private Loans() { }
     
+    /**
+     * Gets the singleton instance of the loans wrapper.
+     * @return the loans object.
+     */
     public static Loans getInstance(){
         return loans;
     }   
     
+    /**
+     * Loads loans from disk
+     * @return string displaying whether there was an error or if it succeeded.
+     */
     public String loadFromDisk() {
         File objFile = new File("dist/Loans.dat");
         if (objFile.exists() && objFile.canRead()) {
@@ -56,6 +64,10 @@ public class Loans extends Observed implements ISerialisable{
         }
     }
     
+    /**
+     * Saves the Loans to disk
+     * @return a string to say whether it succeeded or not.
+     */
     @Override
     public String saveToDisk() {
         File objFile = new File("dist/Loans.dat");
@@ -71,6 +83,10 @@ public class Loans extends Observed implements ISerialisable{
         }
     }
     
+    /**
+     * Gets the array of loans.
+     * @return Array list of loans.
+     */
     public ArrayList<Loan> getLoans() {
         if (loanList == null) return new ArrayList<Loan>();
         ArrayList<Loan> temp = new ArrayList<Loan>();
@@ -81,6 +97,10 @@ public class Loans extends Observed implements ISerialisable{
         return temp;
     }
     
+    /**
+     * Adds a loan to list and then saves to disk.
+     * @param loan loan to add.
+     */
     public void addLoan(Loan loan) {
         if (loanList == null) {
             loanList = new ArrayList<Loan>();
@@ -89,6 +109,10 @@ public class Loans extends Observed implements ISerialisable{
         notifyObservers();
     }
     
+    /**
+     * Removes a loan from the list.
+     * @param loan loan to remove.
+     */
     public void removeLoan(Loan loan) {
         if (loanList == null) return;
         loanList.remove(loan);

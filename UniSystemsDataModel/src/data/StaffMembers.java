@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import people.Staff;
 
 /**
- *
+ * Staff members data wrapper class
  * @author Craig Banyard, Daniel Scott, Najim Mazidi
  */
 public class StaffMembers extends Observed implements ISerialisable {
@@ -27,10 +27,18 @@ public class StaffMembers extends Observed implements ISerialisable {
     
     private StaffMembers() {}
     
+    /**
+     * Gets the staff members that are stored in the singleton object
+     * @return a StaffMembers object
+     */
     public static StaffMembers getInstance() {
         return staffMembers;
     }
     
+    /**
+     * Loads staff members from disk
+     * @return a string with information on whether the operation passed or failed
+     */
     @Override
     public String loadFromDisk() {
         File objFile = new File("dist/StaffMembers.dat");
@@ -57,6 +65,10 @@ public class StaffMembers extends Observed implements ISerialisable {
         }
     }
     
+    /**
+     * Saves staff members to the disk
+     * @return a string to say whether it's passed or failed
+     */
     @Override
     public String saveToDisk() {
         File objFile = new File("dist/StaffMembers.dat");
@@ -70,6 +82,10 @@ public class StaffMembers extends Observed implements ISerialisable {
         }
     }
     
+    /**
+     * adds a staff member to the list
+     * @param staff staff to add
+     */
     public void addStaff(Staff staff) {
         if (staffList == null) {
             staffList = new ArrayList<Staff>();
@@ -78,6 +94,10 @@ public class StaffMembers extends Observed implements ISerialisable {
         notifyObservers();
     }
     
+    /**
+     * Removes a staff member from the list
+     * @param staff staff to remove
+     */
     public void removeStaff(Staff staff) {
         if (staffList == null) return;
         if (staffList.contains(staff)) {
@@ -86,6 +106,10 @@ public class StaffMembers extends Observed implements ISerialisable {
         }
     }
     
+    /**
+     * Gets the staff members list
+     * @return Array of all the staff members of the system.
+     */
     public ArrayList<Staff> getStaffMembers() {
         if (staffList == null) {
             staffList = new ArrayList<Staff>();

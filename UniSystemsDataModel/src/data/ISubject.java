@@ -7,11 +7,31 @@
 package data;
 
 /**
- *
+ * Subject interface
  * @author dansc
  */
 public interface ISubject {
+    /**
+     * Registers an observer to the subject
+     * @param o the observer to add
+     * @return true or false depending on whether it succeeded or not
+     */
     public Boolean registerObserver(IObserver o);
+    
+    /**
+     * Removes an observer from the subject.
+     * @param o the observer to remove
+     * @return true or false depending on whether it succeeded or not.
+     */
     public Boolean removeObserver(IObserver o);
+    
+    /**
+     * removes all observers from the list
+     */
+    public void removeObservers();    
+    
+    /**
+     * Notifies all the observers that there has been a change.
+     */
     public void notifyObservers();
 }

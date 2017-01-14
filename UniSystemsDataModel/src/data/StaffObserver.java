@@ -7,7 +7,7 @@ package data;
 import data.StaffMembers;
 
 /**
- *
+ * Staff observer class
  * @author Craig Banyard, Daniel Scott, Najim Mazidi
  */
 public class StaffObserver implements IObserver {
@@ -16,6 +16,9 @@ public class StaffObserver implements IObserver {
         
     }
     
+    /**
+     * Saves the staff members to disk.
+     */
     @Override
     public void update() {
         System.out.println(staffMembers.saveToDisk());

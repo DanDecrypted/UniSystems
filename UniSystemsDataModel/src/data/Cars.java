@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import car.Car;
 
 /**
- *
+ * Cars list wrapper class
  * @author Craig Banyard, Daniel Scott, Najim Mazidi
  */
 public class Cars extends Observed implements ISerialisable {
@@ -26,10 +26,18 @@ public class Cars extends Observed implements ISerialisable {
     
     private Cars() { }
     
+    /**
+     * Gets the singleton instance of the cars wrapper
+     * @return cars wrapper object
+     */
     public static Cars getInstance() {
         return cars;
     }
     
+    /**
+     * Loads all cars from disk.
+     * @return string to say whether the operation passed or failed.
+     */
     @Override
     public String loadFromDisk() {
         File objFile = new File("dist/Cars.dat");
@@ -58,6 +66,10 @@ public class Cars extends Observed implements ISerialisable {
         }
     }
     
+    /**
+     * Saves all cars to disk.
+     * @return a string to say whether the operation passed or failed.
+     */
     @Override
     public String saveToDisk() {
         File objFile = new File("dist/Cars.dat");
@@ -71,6 +83,11 @@ public class Cars extends Observed implements ISerialisable {
         }
     }
     
+    /**
+     * adds a car to the list of cars
+     * @param car car to add to the list
+     * @return a string to say whether the operation passed or failed
+     */
     public String addCar(Car car) {
         if (carsList == null) {
             carsList = new ArrayList<Car>();
@@ -85,6 +102,10 @@ public class Cars extends Observed implements ISerialisable {
         return "Car with reg no " + car.getRegNo() + " added to the collection";
     }
     
+    /**
+     * Removes a car from the list of cars
+     * @param car the car to be removed from the list
+     */
     public void removeCar(Car car) {
         if (carsList == null) return;
         carsList.remove(car);

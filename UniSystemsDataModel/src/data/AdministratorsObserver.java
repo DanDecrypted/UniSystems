@@ -7,7 +7,7 @@ package data;
 import data.Administrators;
 
 /**
- *
+ * Administrators observer
  * @author Craig Banyard, Daniel Scott, Najim Mazidi
  */
 public class AdministratorsObserver implements IObserver {
@@ -15,6 +15,9 @@ public class AdministratorsObserver implements IObserver {
     
     public AdministratorsObserver() { }
     
+    /**
+     * Saves the administrators to disk
+     */
     @Override
     public void update() {
         System.out.println(admins.saveToDisk());

@@ -15,6 +15,11 @@ import java.util.ArrayList;
 public class Observed implements ISubject {
     protected transient ArrayList<IObserver> observers;
     
+    /**
+     * See super class
+     * @param o observer
+     * @return true or false
+     */
     @Override 
     public Boolean registerObserver(IObserver o) {
         Boolean observerAdded = false;
@@ -30,6 +35,11 @@ public class Observed implements ISubject {
         return observerAdded;
     }
     
+    /**
+     * see super class
+     * @param o observer
+     * @return true or false
+     */
     @Override
     public Boolean removeObserver(IObserver o) {
         Boolean observerRemoved = false;
@@ -42,12 +52,18 @@ public class Observed implements ISubject {
         return observerRemoved;
     }
     
+    /**
+     * Removes all observers
+     */
     public void removeObservers() {
         if (observers != null && observers.size() > 0){
             observers.clear();
         }
     }
     
+    /**
+     * notifies all observers
+     */
     @Override 
     public void notifyObservers() {
         if (observers != null && observers.size() > 0) {

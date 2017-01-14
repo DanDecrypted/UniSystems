@@ -7,7 +7,7 @@
 package data;
 
 /**
- *
+ * serialisable interface.
  * @author Craig Banyard, Daniel Scott, Najim Mazidi
  */
 public interface ISerialisable {

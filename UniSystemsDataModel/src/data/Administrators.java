@@ -75,6 +75,10 @@ public class Administrators extends Observed implements ISerialisable {
         }
     }
     
+    /**
+     * Gets the list of administrators
+     * @return an array of administrators
+     */
     public ArrayList<Administrator> getAdministrators() {
         if (adminList == null) return new ArrayList<Administrator>();
         ArrayList<Administrator> temp = new ArrayList<Administrator>();
@@ -85,6 +89,10 @@ public class Administrators extends Observed implements ISerialisable {
         return temp;
     }
     
+    /**
+     * adds administrator to the list
+     * @param admin the administrator to add
+     */
     public void addAdministrator(Administrator admin) {
         if (adminList == null) {
             adminList = new ArrayList<Administrator>();
@@ -93,6 +101,10 @@ public class Administrators extends Observed implements ISerialisable {
         notifyObservers();
     }
     
+    /**
+     * removes the administrator from the list
+     * @param admin the administrator to remove
+     */
     public void removeAdministrator(Administrator admin) {
         if (adminList == null) return;
         adminList.remove(admin);

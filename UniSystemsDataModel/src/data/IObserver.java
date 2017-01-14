@@ -7,7 +7,7 @@
 package data;
 
 /**
- *
+ * Observer interface to guarantee the update behaviour
  * @author dansc
  */
 public interface IObserver {

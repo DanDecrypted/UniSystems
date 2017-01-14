@@ -17,6 +17,12 @@ import loaning.LongLoan;
  */
 public class UtilityFunctions {
     
+    /**
+     * Modifies the display of a date to be coherent. 
+     * As far as I know the JDK does not offer such functionality.
+     * @param date date to format
+     * @return a string in a nice format
+     */
     public static String formatDate(Date date) {
         String returns = "";
         int month = date.getMonth() + 1;
@@ -29,6 +35,11 @@ public class UtilityFunctions {
         return returns;
     }
     
+    /**
+     * From a list of loans, we get a list of day loans
+     * @param loans loans to filter
+     * @return a list of day loans
+     */
     public static ArrayList<DayLoan> getDayLoans(ArrayList<Loan> loans) {
         ArrayList<DayLoan> temp = new ArrayList<DayLoan>();
         for (Loan loan : loans) {
@@ -39,6 +50,11 @@ public class UtilityFunctions {
         return temp;
     }
     
+    /**
+     * From a list of loans, we get a list of long loans
+     * @param loans loans to filter
+     * @return a list of long loans
+     */
     public static ArrayList<LongLoan> getLongLoans(ArrayList<Loan> loans) {
         ArrayList<LongLoan> temp = new ArrayList<LongLoan>();
         for (Loan loan : loans) {
@@ -49,6 +65,12 @@ public class UtilityFunctions {
         return temp;
     }
     
+    /**
+     * Modifies the display of a DOB to be coherent. 
+     * As far as I know the JDK does not offer such functionality.
+     * @param date date to format
+     * @return a string in a nice format
+     */
     public static String formatDateOfBirth(Date date) {
         String returns = "";
         int month = date.getMonth();
@@ -59,6 +81,11 @@ public class UtilityFunctions {
         return returns;
     }
     
+    /**
+     * Formats an enumerator
+     * @param str string to format
+     * @return a string without all the underscores.
+     */
     public static String formatEnum(String str) {
         char[] array = str.toCharArray();
         String formatted;

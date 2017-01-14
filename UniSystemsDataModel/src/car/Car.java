@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- *
+ * Car container
  * @author Craig Banyard, Daniel Scott, Najim Mazidi
  */
 public class Car extends data.Observed implements java.io.Serializable{

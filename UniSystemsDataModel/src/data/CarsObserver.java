@@ -7,7 +7,7 @@ package data;
 import data.Cars;
 
 /**
- *
+ * Cars observer
  * @author Craig Banyard, Daniel Scott, Najim Mazidi
  */
 public class CarsObserver implements IObserver{
@@ -16,6 +16,9 @@ public class CarsObserver implements IObserver{
         
     }
     
+    /**
+     * saves all cars to disk
+     */
     @Override
     public void update() {
         System.out.println(cars.saveToDisk());

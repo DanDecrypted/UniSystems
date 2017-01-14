@@ -6,13 +6,16 @@
 package data;
 import data.Loans;
 /**
- *
+ * Loans wrapper class
  * @author Craig Banyard, Daniel Scott, Najim Mazidi
  */
 public class LoansObserver implements IObserver {
     private Loans loans = Loans.getInstance();
     public LoansObserver() { }
     
+    /**
+     * Saves the loans to disk.
+     */
     @Override 
     public void update() {
         System.out.println(loans.saveToDisk());
