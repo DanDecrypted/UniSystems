@@ -97,6 +97,7 @@ public class AdministratorTest {
     @Test
     public void testCreateCar() {
         admin.createCar(testDayCar);
+        admin.createCar(testLongCar);
     }
 
     @Test
