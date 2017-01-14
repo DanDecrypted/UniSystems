@@ -28,7 +28,7 @@ public class Person extends data.Observed implements java.io.Serializable {
      * Default constructor of a person
      */
     public Person() {
-        this.title = "UKNOWN";
+        this.title = "UNKNOWN";
         this.forename = "UNKNOWN";
         this.surname = "UNKNOWN";
         this.dateOfBirth = null;

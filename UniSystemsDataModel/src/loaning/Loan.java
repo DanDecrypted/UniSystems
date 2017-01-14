@@ -12,7 +12,7 @@ import people.Staff;
 
 /**
  *
- * @author Craig Banyard, Daniel Scott & Najim Mazidi
+ * @author Craig Banyard, Daniel Scott Najim Mazidi
  */
 public class Loan extends data.Observed implements java.io.Serializable{
     private Staff loaner;
