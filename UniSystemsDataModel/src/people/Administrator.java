@@ -116,6 +116,11 @@ public class Administrator extends Staff implements java.io.Serializable {
     public void createCar(Car car) {
         if (cars == null) cars = Cars.getInstance();
         if (carsObserver == null) carsObserver = new CarsObserver();
+        for (Car localCar : cars.getCars()) {
+            if (localCar.getRegNo().equals(car.getRegNo())) {
+                return;
+            }
+        }
         car.registerObserver(carsObserver);
         cars.registerObserver(carsObserver);
         cars.addCar(car);
@@ -220,6 +225,11 @@ public class Administrator extends Staff implements java.io.Serializable {
     public void createStaffMember(Staff staff) {
         if (staffObserver == null) staffObserver = new StaffObserver();
         if (staffMembers == null) staffMembers = StaffMembers.getInstance();
+        for (Staff localStaff : staffMembers.getStaffMembers()) {
+            if (staff.getRefNumb().equals(localStaff.getRefNumb())) {
+                return;
+            }
+        }
         staff.registerObserver(staffObserver);
         staffMembers.registerObserver(staffObserver);
         staffMembers.addStaff(staff);
@@ -232,6 +242,11 @@ public class Administrator extends Staff implements java.io.Serializable {
     public void createAdministrator(Administrator admin) {
         if (adminsObserver == null) adminsObserver = new AdministratorsObserver();
         if (admins == null) admins = Administrators.getInstance();
+        for (Administrator localAdmin : admins.getAdministrators()) {
+            if (admin.getRefNumb().equals(localAdmin.getRefNumb())) {
+                return;
+            }
+        }
         admin.registerObserver(adminsObserver);
         admins.registerObserver(adminsObserver);
         admins.addAdministrator(admin);
@@ -246,6 +261,18 @@ public class Administrator extends Staff implements java.io.Serializable {
         ArrayList<Administrator> temp = new ArrayList<Administrator>();
         for (Administrator admin : admins.getAdministrators()) {
             temp.add(admin);
+        }
+        return temp;
+    }
+    
+    /**
+     * gets a list of staff members known to the system.
+     * @return array list of staff
+     */
+    public ArrayList<Staff> getStaffMembers() {
+        ArrayList<Staff> temp = new ArrayList<Staff>();
+        for (Staff staff : staffMembers.getStaffMembers()) {
+            temp.add(staff);
         }
         return temp;
     }

@@ -10,8 +10,12 @@ import car.Classification;
 import car.FuelType;
 import car.LoanType;
 import car.Location;
+import car.Status;
 import car.Transmission;
 import java.util.Date;
+import data.Administrators;
+import data.StaffMembers;
+import data.Cars;
 import loaning.DayLoan;
 import loaning.LongLoan;
 import org.junit.After;
@@ -27,10 +31,12 @@ import static org.junit.Assert.*;
  */
 public class AdministratorTest {
     Administrator admin;
+    Administrator testAdmin;
     Car testDayCar;
     Car testLongCar;
     LongLoan testLongLoan;
     DayLoan testDayLoan;
+    Staff testStaff;
     
     public AdministratorTest() {
     }
@@ -52,6 +58,15 @@ public class AdministratorTest {
         "11 Whitefield Terrace", "Flat 4", "Plymouth", "Devon", "PL48NH"), "DR", 
         "Daniel", "Scott", dob, "Male", "07594875693", "daniel.r.scott@students.plymouth.ac.uk", 
         "password");
+        testAdmin = new Administrator("101010", Position.ASSOCIATE_HEAD_OF_SCHOOL, 
+        Faculty.SCIENCE_AND_ENGINEERING, "PSQ101", "07594875693", new Address(
+        "11 Whitefield Terrace", "Flat 4", "Plymouth", "Devon", "PL48NH"), "DR", 
+        "Daniel", "Scott", dob, "Male", "07594875693", "daniel.r.scott@students.plymouth.ac.uk", 
+        "password");
+        testStaff = new Staff("10501358", Position.ASSOCIATE_HEAD_OF_SCHOOL, 
+        Faculty.SCIENCE_AND_ENGINEERING, "PSQ101", "07594875693", new Address(
+        "11 Whitefield Terrace", "Flat 4", "Plymouth", "Devon", "PL48NH"), "DR", 
+        "Daniel", "Scott", dob, "Male", "07594875693", "daniel.r.scott@students.plymouth.ac.uk");
         testDayCar = new Car("ABCDEFG", "Land Rover", "Defender", Transmission.AUTOMATIC, FuelType.DIESEL, 
                             Location.PLYMOUTH, "A101" ,Classification.COUPE, 5, 3, 10, LoanType.DAY_LOAN);
         testLongCar = new Car("AA16QWE", "Renault", "Twizzy", Transmission.AUTOMATIC, FuelType.ELECTRIC, 
@@ -65,11 +80,12 @@ public class AdministratorTest {
 
     @Test
     public void testInitialiseData() {
+        admin.initialiseData();
     }
 
     @Test
     public void testGetPassword() {
-        assertEquals("password", admin.getPassword());
+        assertNotNull(admin.getPassword());
     }
 
     @Test
@@ -85,18 +101,22 @@ public class AdministratorTest {
 
     @Test
     public void testGetLoansForRef() {
+        assertNotNull(admin.getLoansForRef("10501358"));
     }
 
     @Test
     public void testGetDayLoansForRef() {
+        assertNotNull(admin.getDayLoansForRef("10501358"));
     }
 
     @Test
     public void testGetLongLoansForRef() {
+        assertNotNull(admin.getLongLoansForRef("10501358"));
     }
 
     @Test
     public void testGetStaffForRefNumb() {
+        assertNotNull(admin.getStaffForRefNumb("10501358"));
     }
 
     @Test
@@ -106,38 +126,53 @@ public class AdministratorTest {
 
     @Test
     public void testGetLoansForCar() {
+        assertNotNull(admin.getLoansForCar(testLongCar));
     }
 
     @Test
     public void testGetLoans() {
+        assertNotNull(admin.getLoans());
     }
 
     @Test
     public void testCreateStaffMember() {
+        admin.createStaffMember(testStaff);
+        assertEquals(StaffMembers.getInstance().getStaffMembers().size(), admin.getStaffMembers().size());
     }
 
     @Test
     public void testCreateAdministrator() {
+        admin.createAdministrator(admin);
+        admin.createAdministrator(testAdmin);
+        assertEquals(admin.getAdminstrators().size(), Administrators.getInstance().getAdministrators().size());
     }
 
     @Test
     public void testGetAdminstrators() {
+        assertNotNull(admin.getAdminstrators());
     }
 
     @Test
     public void testRemoveAdministrator() {
+        admin.removeAdministrator(testAdmin);
+        assertEquals(Administrators.getInstance().getAdministrators().size(), admin.getAdminstrators().size());
     }
 
     @Test
     public void testRemoveStaffMember() {
+        admin.removeStaffMember(testStaff);
+        assertEquals(admin.getStaffMembers().size(), StaffMembers.getInstance().getStaffMembers().size());
+        admin.createStaffMember(testStaff);
     }
 
     @Test
     public void testAssignLongLoan() {
+        admin.assignLongLoan(testLongCar, testStaff);
     }
 
     @Test
     public void testAssignDayLoan() {
+        admin.assignDayLoan(testDayCar, testStaff);
     }
 
     @Test
@@ -162,14 +197,19 @@ public class AdministratorTest {
 
     @Test
     public void testCheckCar() {
+        admin.checkCar(testDayCar);
+        assertEquals(testDayCar.getStatus(), Status.AVAILABLE);
     }
 
     @Test
     public void testSendForService() {
+        admin.sendForService(testDayCar);
+        assertTrue(Status.IN_FOR_SERVICE == testDayCar.getStatus());
     }
 
     @Test
     public void testGetCars() {
+        assertEquals(admin.getCars().size(), Cars.getInstance().getCars().size());
     }
     
 }
