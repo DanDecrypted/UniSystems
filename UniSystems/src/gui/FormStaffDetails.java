@@ -5,6 +5,14 @@
  *  Daniel Scott and Najim Mazidi.
  */
 package gui;
+import command.interfaces.ICommand;
+import command.interfaces.ICommandBehaviour;
+import command.interfaces.ICommandTracker;
+import commands.AddAdminCommand;
+import commands.AddStaffCommand;
+import commands.DeleteStaffCommand;
+import commandtracker.Command;
+import commandtracker.CommandTracker;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,7 +35,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
     //private Loans loans = Loans.getInstance();
     private Administrator admin;
     private DefaultListModel listModel;
-    
+    private ICommandTracker commandTracker = new CommandTracker();
     /**
      * Creates new form FormStaffDetails
      */
@@ -167,6 +175,11 @@ public class FormStaffDetails extends javax.swing.JFrame {
         lblGender4 = new javax.swing.JLabel();
         lblGender5 = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        mnuUndo = new javax.swing.JMenuItem();
+        mnuRedo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(450, 250, 0, 0));
@@ -312,6 +325,31 @@ public class FormStaffDetails extends javax.swing.JFrame {
                 btnDeleteActionPerformed(evt);
             }
         });
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+
+        mnuUndo.setText("Undo");
+        mnuUndo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuUndoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnuUndo);
+
+        mnuRedo.setText("Redo");
+        mnuRedo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuRedoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnuRedo);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -483,13 +521,18 @@ public class FormStaffDetails extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPostCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblGender5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnUpdate)
-                    .addComponent(btnCancel)
-                    .addComponent(btnCreate)
-                    .addComponent(btnDelete))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnUpdate)
+                            .addComponent(btnCancel)
+                            .addComponent(btnDelete))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCreate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblLoanHistory)
@@ -515,8 +558,10 @@ public class FormStaffDetails extends javax.swing.JFrame {
                     (Faculty)cboFaculty.getSelectedItem(),txtOffice.getText(), txtWorkNumb.getText(),
                     new Address(txtAddressOne.getText(),txtAddressTwo.getText(),txtCity.getText(),txtCounty.getText(),txtPostCode.getText()),
                     txtTitle.getText(), txtForename.getText(), txtSurname.getText(), jxDOB.getDate(), txtGender.getText()
-                    , txtPhoneNumb.getText(), txtEmail.getText(), txtPassword.getText());    
-            admin.createAdministrator(newAdmin);
+                    , txtPhoneNumb.getText(), txtEmail.getText(), txtPassword.getText()); 
+            ICommandBehaviour objAdd = new AddAdminCommand(admin, newAdmin);
+            ICommand objCommand = new Command(objAdd);
+            this.commandTracker.executeCommand(objCommand);
             }
             else{
             Staff newStaff = new Staff(txtStaffNumb.getText(), (Position)cboPosition.getSelectedItem(), 
@@ -526,7 +571,9 @@ public class FormStaffDetails extends javax.swing.JFrame {
                 txtGender.getText(), txtPhoneNumb.getText(), txtEmail.getText() );
             System.out.println("new staff member created " + newStaff.getForename());
             if (admin == null) admin = new Administrator(); 
-            admin.createStaffMember(newStaff);
+            ICommandBehaviour objAdd = new AddStaffCommand(admin, newStaff);
+            ICommand objCommand = new Command(objAdd);
+            this.commandTracker.executeCommand(objCommand);
             }
         } catch (Exception e) {
         }  //formatter.parse throws an uncaught exception if not properly used.
@@ -585,9 +632,20 @@ public class FormStaffDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        Staff staff = admin.getStaffForRefNumb(this.txtStaffNumb.getText());
-        admin.removeStaffMember(staff);
+
+            Staff staff = admin.getStaffForRefNumb(this.txtStaffNumb.getText());
+            ICommandBehaviour objDelete = new DeleteStaffCommand(admin, staff);
+            ICommand objCommand = new Command(objDelete);
+            this.commandTracker.executeCommand(objCommand);
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void mnuUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuUndoActionPerformed
+        this.commandTracker.undoLastCommand();
+    }//GEN-LAST:event_mnuUndoActionPerformed
+
+    private void mnuRedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRedoActionPerformed
+        this.commandTracker.redoLastCommand();
+    }//GEN-LAST:event_mnuRedoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -632,6 +690,9 @@ public class FormStaffDetails extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbAdmin;
     private javax.swing.JComboBox<String> cboFaculty;
     private javax.swing.JComboBox<String> cboPosition;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -657,6 +718,8 @@ public class FormStaffDetails extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblWorkNumb;
     private javax.swing.JList<String> lstLoanHistory;
+    private javax.swing.JMenuItem mnuRedo;
+    private javax.swing.JMenuItem mnuUndo;
     private javax.swing.JTextField txtAddressOne;
     private javax.swing.JTextField txtAddressTwo;
     private javax.swing.JTextField txtCity;

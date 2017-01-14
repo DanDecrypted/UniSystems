@@ -237,6 +237,7 @@ public class Administrator extends Staff implements java.io.Serializable {
         admins.addAdministrator(admin);
     }
     
+    
     /**
      * gets a list of administrators known to the system.
      * @return array list of administrator
