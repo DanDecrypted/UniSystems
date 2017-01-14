@@ -257,10 +257,7 @@ public class Administrator extends Staff implements java.io.Serializable {
     public void removeAdministrator(Administrator admin) {
         if (admins == null) return;
         if (admins.getAdministrators().contains(admin)) {
-            if (adminsObserver != null) {
-                admin.removeObserver(adminsObserver);
-                admins.removeObserver(adminsObserver);
-            }
+            admin.removeObservers();
             admins.removeAdministrator(admin);
         }
     }
@@ -270,9 +267,9 @@ public class Administrator extends Staff implements java.io.Serializable {
      * @param staff staff object.
      */
     public void removeStaffMember(Staff staff) {
+        if (staffMembers == null) return;
         if (staffMembers.getStaffMembers().contains(staff)) {
-            staff.removeObserver(staffObserver);
-            staffMembers.removeObserver(staffObserver);
+            staff.removeObservers();
             staffMembers.removeStaff(staff);
         }
     }

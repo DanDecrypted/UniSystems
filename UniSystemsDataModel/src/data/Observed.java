@@ -42,6 +42,12 @@ public class Observed implements ISubject {
         return observerRemoved;
     }
     
+    public void removeObservers() {
+        if (observers != null && observers.size() > 0){
+            observers.clear();
+        }
+    }
+    
     @Override 
     public void notifyObservers() {
         if (observers != null && observers.size() > 0) {

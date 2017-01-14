@@ -45,6 +45,7 @@ public class Loans extends Observed implements ISerialisable{
                     for (Loan loan : loanList) {
                         loan.registerObserver(loansObserver);
                     }
+                    this.registerObserver(loansObserver);
                 }    
                 return ("Successfully loaded " + getLoans().size() + " loans");
             } catch (Exception ex) {

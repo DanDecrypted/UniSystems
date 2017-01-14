@@ -44,6 +44,7 @@ public class Administrators extends Observed implements ISerialisable {
                     for (Administrator admin : adminList) {
                         admin.registerObserver(adminObserver);
                     }
+                    this.registerObserver(adminObserver);
                 }
                 return ("Successfully loaded " + getAdministrators().size() + " Administrators");
                 

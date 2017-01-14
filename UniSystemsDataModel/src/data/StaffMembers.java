@@ -46,6 +46,7 @@ public class StaffMembers extends Observed implements ISerialisable {
                     for (Staff staff : staffList) {
                         staff.registerObserver(staffObserver);
                     }
+                    this.registerObserver(staffObserver);
                 }
                 return ("Successfully loaded " + getStaffMembers().size() + " staff members");
             } catch (Exception ex) {
