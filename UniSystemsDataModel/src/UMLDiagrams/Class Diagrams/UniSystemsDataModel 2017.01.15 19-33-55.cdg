@@ -127,7 +127,7 @@
         <Method name="isValid" returnType="Boolean" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="UpdateAdminCommand" package="commands.admin" visibility="public" xPosition="1220.0" yPosition="420.0">
+    <Class name="UpdateAdminCommand" package="commands.admin" visibility="public" xPosition="1306.0" yPosition="429.0">
       <Fields>
         <Field name="admin" type="Administrator" visibility="private"/>
         <Field name="adminToUpdate" type="Administrator" visibility="private"/>
@@ -146,7 +146,7 @@
         <Method name="isValid" returnType="Boolean" visibility="private"/>
       </Methods>
     </Class>
-    <Class name="AddCarCommand" package="commands.car" visibility="public" xPosition="1520.0" yPosition="420.0">
+    <Class name="AddCarCommand" package="commands.car" visibility="public" xPosition="2087.0" yPosition="429.0">
       <Fields>
         <Field name="admin" type="Administrator" visibility="private"/>
         <Field name="carToAdd" type="Car" visibility="private"/>
@@ -163,7 +163,7 @@
         <Method name="isValid" returnType="Boolean" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="DeleteCarCommand" package="commands.car" visibility="public" xPosition="1820.0" yPosition="420.0">
+    <Class name="DeleteCarCommand" package="commands.car" visibility="public" xPosition="2452.0" yPosition="239.0">
       <Fields>
         <Field name="admin" type="Administrator" visibility="private"/>
         <Field name="carToRemove" type="Car" visibility="private"/>
@@ -180,7 +180,7 @@
         <Method name="isValid" returnType="Boolean" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="AddDayLoanCommand" package="commands.loan" visibility="public" xPosition="2120.0" yPosition="420.0">
+    <Class name="AddDayLoanCommand" package="commands.loan" visibility="public" xPosition="2374.0" yPosition="9.0">
       <Fields>
         <Field name="admin" type="Administrator" visibility="private"/>
         <Field name="carToLoan" type="Car" visibility="private"/>
@@ -220,7 +220,7 @@
         <Method name="isValid" returnType="Boolean" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="ReturnCarCommand" package="commands.loan" visibility="public" xPosition="320.0" yPosition="820.0">
+    <Class name="ReturnCarCommand" package="commands.loan" visibility="public" xPosition="1730.0" yPosition="627.0">
       <Fields>
         <Field name="admin" type="Administrator" visibility="private"/>
         <Field name="carToReturn" type="Car" visibility="private"/>
@@ -239,7 +239,7 @@
         <Method name="isValid" returnType="Boolean" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="AddStaffCommand" package="commands.staff" visibility="public" xPosition="620.0" yPosition="820.0">
+    <Class name="AddStaffCommand" package="commands.staff" visibility="public" xPosition="764.0" yPosition="837.0">
       <Fields>
         <Field name="admin" type="Administrator" visibility="private"/>
         <Field name="staffToAdd" type="Staff" visibility="private"/>
@@ -256,7 +256,7 @@
         <Method name="isValid" returnType="Boolean" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="DeleteStaffCommand" package="commands.staff" visibility="public" xPosition="920.0" yPosition="820.0">
+    <Class name="DeleteStaffCommand" package="commands.staff" visibility="public" xPosition="1106.0" yPosition="837.0">
       <Fields>
         <Field name="admin" type="Administrator" visibility="private"/>
         <Field name="staffToRemove" type="Staff" visibility="private"/>
@@ -273,7 +273,7 @@
         <Method name="isValid" returnType="Boolean" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="UpdateStaffCommand" package="commands.staff" visibility="public" xPosition="1220.0" yPosition="820.0">
+    <Class name="UpdateStaffCommand" package="commands.staff" visibility="public" xPosition="1474.0" yPosition="820.0">
       <Fields>
         <Field name="admin" type="Administrator" visibility="private"/>
         <Field name="staffToUpdate" type="Staff" visibility="private"/>
@@ -292,7 +292,7 @@
         <Method name="isValid" returnType="Boolean" visibility="private"/>
       </Methods>
     </Class>
-    <Class name="Command" package="commandtracker" visibility="public" xPosition="1520.0" yPosition="820.0">
+    <Class name="Command" package="commandtracker" visibility="public" xPosition="2438.0" yPosition="572.0">
       <Fields>
         <Field name="delegate" type="ICommandBehaviour" visibility="private"/>
         <Field name="blnExecuted" type="Boolean" visibility="private"/>
@@ -312,7 +312,7 @@
         <Method name="undoCommand" returnType="Boolean" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="CommandTracker" package="commandtracker" visibility="public" xPosition="1820.0" yPosition="820.0">
+    <Class name="CommandTracker" package="commandtracker" visibility="public" xPosition="1926.0" yPosition="828.0">
       <Fields>
         <Field name="stkDone" type="Stack&lt;ICommand&gt;" visibility="private"/>
         <Field name="stkUndone" type="Stack&lt;ICommand&gt;" visibility="private"/>
@@ -328,7 +328,7 @@
         <Method name="isRedoable" returnType="Boolean" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Administrators" package="data" visibility="public" xPosition="2120.0" yPosition="820.0">
+    <Class name="Administrators" package="data" visibility="public" xPosition="2306.0" yPosition="820.0">
       <Fields>
         <Field name="adminList" type="ArrayList&lt;Administrator&gt;" visibility="private"/>
         <Field name="admins" type="Administrators" visibility="private" isStatic="true" isFinal="true"/>
@@ -440,7 +440,7 @@
         <Method name="notifyObservers" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="StaffMembers" package="data" visibility="public" xPosition="320.0" yPosition="1620.0">
+    <Class name="StaffMembers" package="data" visibility="public" xPosition="320.0" yPosition="1635.0">
       <Fields>
         <Field name="staffList" type="ArrayList&lt;Staff&gt;" visibility="private"/>
         <Field name="staffMembers" type="StaffMembers" visibility="private" isStatic="true" isFinal="true"/>
@@ -712,7 +712,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Person" package="people" visibility="public" xPosition="620.0" yPosition="2020.0">
+    <Class name="Person" package="people" visibility="public" xPosition="2027.0" yPosition="1815.0">
       <Fields>
         <Field name="title" type="String" visibility="protected"/>
         <Field name="forename" type="String" visibility="protected"/>
@@ -766,7 +766,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Staff" package="people" visibility="public" xPosition="1220.0" yPosition="2020.0">
+    <Class name="Staff" package="people" visibility="public" xPosition="1638.0" yPosition="2344.0">
       <Fields>
         <Field name="staffRefNumb" type="String" visibility="protected"/>
         <Field name="position" type="Position" visibility="protected"/>
@@ -817,7 +817,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="ObjectSerialisationTest" package="testharness" visibility="public" xPosition="1520.0" yPosition="2020.0">
+    <Class name="ObjectSerialisationTest" package="testharness" visibility="public" xPosition="1649.0" yPosition="2039.0">
       <Fields>
         <Field name="cars" type="Cars" visibility="private" isStatic="true"/>
         <Field name="staffMembers" type="StaffMembers" visibility="private" isStatic="true"/>
@@ -832,7 +832,7 @@
         <Method name="addTestDataAndSave" returnType="void" visibility="public" isStatic="true"/>
       </Methods>
     </Class>
-    <Interface name="ICommand" package="command.interfaces" visibility="public" xPosition="20.0" yPosition="420.0">
+    <Interface name="ICommand" package="command.interfaces" visibility="public" xPosition="1289.0" yPosition="288.0">
       <Methods>
         <Method name="isExecuted" returnType="Boolean" visibility="package"/>
         <Method name="setExecuted" returnType="Boolean" visibility="package">
@@ -913,7 +913,7 @@
         <Literal name="FALMOUTH"/>
       </Literals>
     </Enum>
-    <Enum name="Status" package="car" visibility="public" xPosition="1820.0" yPosition="20.0">
+    <Enum name="Status" package="car" visibility="public" xPosition="2136.0" yPosition="155.0">
       <Literals>
         <Literal name="AVAILABLE"/>
         <Literal name="AWAITING_PREP"/>
@@ -925,13 +925,13 @@
         <Literal name="SOLD"/>
       </Literals>
     </Enum>
-    <Enum name="Transmission" package="car" visibility="public" xPosition="2120.0" yPosition="20.0">
+    <Enum name="Transmission" package="car" visibility="public" xPosition="2120.0" yPosition="9.0">
       <Literals>
         <Literal name="AUTOMATIC"/>
         <Literal name="MANUAL"/>
       </Literals>
     </Enum>
-    <Enum name="Faculty" package="people" visibility="public" xPosition="320.0" yPosition="2020.0">
+    <Enum name="Faculty" package="people" visibility="public" xPosition="950.0" yPosition="1412.0">
       <Literals>
         <Literal name="ARTS_AND_HUMANITIES"/>
         <Literal name="BUSINESS"/>
@@ -941,7 +941,7 @@
         <Literal name="ACADEMIC_PARTNERSHIP"/>
       </Literals>
     </Enum>
-    <Enum name="Position" package="people" visibility="public" xPosition="920.0" yPosition="2020.0">
+    <Enum name="Position" package="people" visibility="public" xPosition="2475.0" yPosition="1101.0">
       <Literals>
         <Literal name="LECTURER"/>
         <Literal name="PROFESSOR"/>
@@ -959,134 +959,134 @@
     </Enum>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <IsRelation name="is" source="car.Car" target="data.Observed"/>
-    <HasRelation name="staffToRestore" source="commands.staff.UpdateStaffCommand" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="admins" source="testharness.ObjectSerialisationTest" target="data.Administrators" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="position" source="people.Staff" target="people.Position" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="delegate" source="commandtracker.Command" target="command.interfaces.ICommandBehaviour" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.loan.ReturnCarCommand" target="command.interfaces.ICommandBehaviour"/>
-    <HasRelation name="admins" source="people.Administrator" target="data.Administrators" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="admin" source="commands.staff.AddStaffCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="people.Staff" target="people.Person"/>
-    <HasRelation name="loans" source="data.LoansObserver" target="data.Loans" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="fuelType" source="car.Car" target="car.FuelType" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="data.StaffMembers" target="people.Staff" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="loan" source="commands.loan.ReturnCarCommand" target="loaning.Loan" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="longLoan" source="commands.loan.AddLongLoanCommand" target="loaning.LongLoan" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="staffObserver" source="people.Administrator" target="data.StaffObserver" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="loans" source="testharness.ObjectSerialisationTest" target="data.Loans" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="carsObserver" source="people.Administrator" target="data.CarsObserver" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.staff.AddStaffCommand" target="command.interfaces.ICommandBehaviour"/>
-    <HasRelation name="car" source="loaning.Loan" target="car.Car" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="adminToAdd" source="commands.admin.AddAdminCommand" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="loaning.Loan" target="car.Car" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="car.Car" target="car.Classification" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="loaning.LongLoan" target="loaning.Loan"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.Cars" target="data.ISerialisable"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.admin.AddAdminCommand" target="command.interfaces.ICommandBehaviour"/>
-    <HasRelation name="adminToUpdate" source="commands.admin.UpdateAdminCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="data.Observed" target="data.IObserver" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.StaffObserver" target="data.IObserver"/>
-    <IsRelation name="is" source="car.Service" target="data.Observed"/>
-    <IsRelation name="is" source="data.StaffMembers" target="data.Observed"/>
-    <IsRelation name="is" source="loaning.DayLoan" target="loaning.Loan"/>
-    <HasRelation name="dayLoan" source="commands.loan.AddDayLoanCommand" target="loaning.DayLoan" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="serviceRecord" source="car.Car" target="car.Service" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Service&gt;"/>
-    <HasRelation name="cars" source="data.CarsObserver" target="data.Cars" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.Administrators" target="data.ISerialisable"/>
-    <UseRelation source="data.Administrators" target="people.Administrator" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="car.Car" target="car.FuelType" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="car.Car" target="car.Service" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="admin" source="commands.car.AddCarCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="observers" source="data.Observed" target="data.IObserver" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;IObserver&gt;"/>
-    <HasRelation name="classification" source="car.Car" target="car.Classification" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="staffMembers" source="people.Administrator" target="data.StaffMembers" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="admins" source="data.AdministratorsObserver" target="data.Administrators" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="people.Administrator" target="people.Staff"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.Loans" target="data.ISerialisable"/>
-    <HasRelation name="admins" source="data.Administrators" target="data.Administrators" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="commandtracker.CommandTracker" target="commandtracker.Command" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="loanObserver" source="people.Administrator" target="data.LoansObserver" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="people.Staff" target="people.Faculty" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="admin" source="commands.loan.AddLongLoanCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="staff" source="commands.loan.AddDayLoanCommand" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="people.Administrator" target="people.Staff" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="data.UtilityFunctions" target="loaning.Loan" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="data.Loans" target="data.Observed"/>
-    <HasRelation name="carToAdd" source="commands.car.AddCarCommand" target="car.Car" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commandtracker.CommandTracker" target="command.interfaces.ICommandTracker"/>
-    <HasRelation name="staffList" source="data.StaffMembers" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Staff&gt;"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.LoansObserver" target="data.IObserver"/>
-    <HasRelation name="adminList" source="data.Administrators" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Administrator&gt;"/>
-    <UseRelation source="people.Administrator" target="people.Administrator" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="people.Administrator" target="loaning.Loan" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="loaning.Loan" target="people.Staff" sourceCardinality="1..1" targetCardinality="1..1"/>
     <IsRelation name="is" source="loaning.Loan" target="data.Observed"/>
     <UseRelation source="data.Loans" target="loaning.Loan" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="carToReturn" source="commands.loan.ReturnCarCommand" target="car.Car" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="adminsObserver" source="people.Administrator" target="data.AdministratorsObserver" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="car.Car" target="car.Transmission" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.loan.AddDayLoanCommand" target="command.interfaces.ICommandBehaviour"/>
-    <HasRelation name="admin" source="commands.admin.AddAdminCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="people.Administrator" target="car.Car" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="carToLoan" source="commands.loan.AddLongLoanCommand" target="car.Car" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="loans" source="people.Administrator" target="data.Loans" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.staff.DeleteStaffCommand" target="command.interfaces.ICommandBehaviour"/>
-    <IsRelation name="is" source="people.Person" target="data.Observed"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.car.DeleteCarCommand" target="command.interfaces.ICommandBehaviour"/>
-    <HasRelation name="cars" source="testharness.ObjectSerialisationTest" target="data.Cars" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="loaner" source="loaning.Loan" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="location" source="car.Car" target="car.Location" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="adminToRestore" source="commands.admin.UpdateAdminCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.car.AddCarCommand" target="command.interfaces.ICommandBehaviour"/>
-    <HasRelation name="staff" source="commands.loan.AddLongLoanCommand" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="command.interfaces.ICommand" target="command.interfaces.ICommandBehaviour"/>
-    <UseRelation source="car.Car" target="loaning.Loan" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="stkUndone" source="commandtracker.CommandTracker" target="command.interfaces.ICommand" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="cars" source="data.Cars" target="data.Cars" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="staffMembers" source="data.StaffObserver" target="data.StaffMembers" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.Observed" target="data.ISubject"/>
+    <HasRelation name="staffToUpdate" source="commands.staff.UpdateStaffCommand" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="data.UtilityFunctions" target="loaning.Loan" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="loans" source="data.LoansObserver" target="data.Loans" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="admin" source="commands.staff.AddStaffCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="people.Staff" target="people.Position" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commandtracker.Command" target="command.interfaces.ICommand"/>
+    <HasRelation name="adminToAdd" source="commands.admin.AddAdminCommand" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="adminToUpdate" source="commands.admin.UpdateAdminCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="classification" source="car.Car" target="car.Classification" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.AdministratorsObserver" target="data.IObserver"/>
+    <HasRelation name="admins" source="testharness.ObjectSerialisationTest" target="data.Administrators" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="car.Car" target="car.Location" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.StaffObserver" target="data.IObserver"/>
+    <UseRelation source="car.Car" target="car.Status" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.car.DeleteCarCommand" target="command.interfaces.ICommandBehaviour"/>
+    <HasRelation name="loanObserver" source="people.Administrator" target="data.LoansObserver" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="location" source="car.Car" target="car.Location" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="cars" source="testharness.ObjectSerialisationTest" target="data.Cars" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="people.Administrator" target="loaning.LongLoan" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.staff.UpdateStaffCommand" target="command.interfaces.ICommandBehaviour"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.loan.AddDayLoanCommand" target="command.interfaces.ICommandBehaviour"/>
+    <HasRelation name="loans" source="testharness.ObjectSerialisationTest" target="data.Loans" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="data.Cars" target="data.Observed"/>
+    <HasRelation name="loans" source="people.Administrator" target="data.Loans" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.Observed" target="data.ISubject"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.StaffMembers" target="data.ISerialisable"/>
     <HasRelation name="cars" source="people.Administrator" target="data.Cars" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="loanType" source="car.Car" target="car.LoanType" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="people.Staff" target="people.Faculty" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="data.ISubject" target="data.IObserver" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="staffMembers" source="data.StaffMembers" target="data.StaffMembers" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="data.Administrators" target="data.Observed"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.staff.UpdateStaffCommand" target="command.interfaces.ICommandBehaviour"/>
-    <HasRelation name="staffToAdd" source="commands.staff.AddStaffCommand" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="car.Car" target="car.Location" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="admin" source="commands.loan.ReturnCarCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="staffMembers" source="testharness.ObjectSerialisationTest" target="data.StaffMembers" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="admin" source="commands.car.DeleteCarCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="transmission" source="car.Car" target="car.Transmission" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="admin" source="commands.staff.DeleteStaffCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="command.interfaces.ICommandTracker" target="commandtracker.Command" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="people.Administrator" target="loaning.LongLoan" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="stkDone" source="commandtracker.CommandTracker" target="command.interfaces.ICommand" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.CarsObserver" target="data.IObserver"/>
     <HasRelation name="faculty" source="people.Staff" target="people.Faculty" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="car.Car" target="car.Status" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="carsList" source="data.Cars" target="car.Car" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Car&gt;"/>
-    <UseRelation source="data.Cars" target="data.Cars" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="staffToUpdate" source="commands.staff.UpdateStaffCommand" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.admin.UpdateAdminCommand" target="command.interfaces.ICommandBehaviour"/>
-    <UseRelation source="loaning.Loan" target="people.Staff" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="staffToRemove" source="commands.staff.DeleteStaffCommand" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="admins" source="people.Administrator" target="data.Administrators" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="admin" source="commands.staff.UpdateStaffCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="admin" source="commands.loan.AddDayLoanCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="address" source="people.Staff" target="people.Address" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.StaffMembers" target="data.ISerialisable"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commandtracker.Command" target="command.interfaces.ICommand"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.loan.AddLongLoanCommand" target="command.interfaces.ICommandBehaviour"/>
+    <UseRelation source="people.Administrator" target="people.Staff" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="cars" source="data.Cars" target="data.Cars" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="position" source="people.Staff" target="people.Position" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="fuelType" source="car.Car" target="car.FuelType" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.staff.DeleteStaffCommand" target="command.interfaces.ICommandBehaviour"/>
+    <IsRelation name="is" source="people.Person" target="data.Observed"/>
+    <HasRelation name="admin" source="commands.admin.AddAdminCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.staff.AddStaffCommand" target="command.interfaces.ICommandBehaviour"/>
+    <HasRelation name="admin" source="commands.car.AddCarCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="staffToAdd" source="commands.staff.AddStaffCommand" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="admin" source="commands.staff.DeleteStaffCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="stkUndone" source="commandtracker.CommandTracker" target="command.interfaces.ICommand" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="people.Administrator" target="people.Staff"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.loan.ReturnCarCommand" target="command.interfaces.ICommandBehaviour"/>
+    <HasRelation name="staffToRestore" source="commands.staff.UpdateStaffCommand" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="staffMembers" source="people.Administrator" target="data.StaffMembers" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="people.Administrator" target="people.Administrator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="transmission" source="car.Car" target="car.Transmission" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="data.Loans" target="data.Observed"/>
+    <HasRelation name="admins" source="data.Administrators" target="data.Administrators" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="car.Service" target="data.Observed"/>
+    <HasRelation name="delegate" source="commandtracker.Command" target="command.interfaces.ICommandBehaviour" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="car" source="loaning.Loan" target="car.Car" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="car.Car" target="car.FuelType" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.Loans" target="data.ISerialisable"/>
+    <HasRelation name="observers" source="data.Observed" target="data.IObserver" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;IObserver&gt;"/>
+    <UseRelation source="car.Car" target="car.Classification" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="carToLoan" source="commands.loan.AddDayLoanCommand" target="car.Car" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commandtracker.CommandTracker" target="command.interfaces.ICommandTracker"/>
+    <UseRelation source="data.Administrators" target="people.Administrator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.loan.AddLongLoanCommand" target="command.interfaces.ICommandBehaviour"/>
+    <UseRelation source="command.interfaces.ICommandTracker" target="commandtracker.Command" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="admin" source="commands.car.DeleteCarCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="data.UtilityFunctions" target="loaning.LongLoan" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="loanList" source="data.Loans" target="loaning.Loan" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Loan&gt;"/>
-    <UseRelation source="data.Cars" target="car.Car" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="car.Car" target="loaning.Loan" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="admins" source="data.AdministratorsObserver" target="data.Administrators" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="data.Cars" target="data.Cars" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="stkDone" source="commandtracker.CommandTracker" target="command.interfaces.ICommand" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="car.Car" target="car.Service" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="carsList" source="data.Cars" target="car.Car" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Car&gt;"/>
+    <HasRelation name="staffObserver" source="people.Administrator" target="data.StaffObserver" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="carToAdd" source="commands.car.AddCarCommand" target="car.Car" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="serviceRecord" source="car.Car" target="car.Service" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Service&gt;"/>
+    <HasRelation name="staffList" source="data.StaffMembers" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Staff&gt;"/>
+    <IsRelation name="is" source="car.Car" target="data.Observed"/>
+    <HasRelation name="carToLoan" source="commands.loan.AddLongLoanCommand" target="car.Car" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="people.Staff" target="people.Address" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="data.Cars" target="data.Observed"/>
-    <HasRelation name="loans" source="data.Loans" target="data.Loans" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="loaning.Loan" target="car.Car" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="commandtracker.CommandTracker" target="commandtracker.Command" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="data.StaffMembers" target="data.Observed"/>
+    <HasRelation name="adminList" source="data.Administrators" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Administrator&gt;"/>
+    <HasRelation name="adminToRestore" source="commands.admin.UpdateAdminCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="longLoan" source="commands.loan.AddLongLoanCommand" target="loaning.LongLoan" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="carToRemove" source="commands.car.DeleteCarCommand" target="car.Car" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="admin" source="commands.admin.UpdateAdminCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.AdministratorsObserver" target="data.IObserver"/>
+    <UseRelation source="data.StaffMembers" target="people.Staff" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="people.Administrator" target="car.Car" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="people.Administrator" target="loaning.Loan" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.Cars" target="data.ISerialisable"/>
+    <HasRelation name="dayLoan" source="commands.loan.AddDayLoanCommand" target="loaning.DayLoan" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="people.Staff" target="people.Person"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.car.AddCarCommand" target="command.interfaces.ICommandBehaviour"/>
+    <IsRelation name="is" source="command.interfaces.ICommand" target="command.interfaces.ICommandBehaviour"/>
+    <HasRelation name="carsObserver" source="people.Administrator" target="data.CarsObserver" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="loaning.LongLoan" target="loaning.Loan"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.admin.UpdateAdminCommand" target="command.interfaces.ICommandBehaviour"/>
+    <HasRelation name="admin" source="commands.loan.AddLongLoanCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="loan" source="commands.loan.ReturnCarCommand" target="loaning.Loan" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="carToReturn" source="commands.loan.ReturnCarCommand" target="car.Car" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="status" source="car.Car" target="car.Status" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="car.Car" target="car.Transmission" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="loanList" source="data.Loans" target="loaning.Loan" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Loan&gt;"/>
+    <HasRelation name="address" source="people.Staff" target="people.Address" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="data.Cars" target="car.Car" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.LoansObserver" target="data.IObserver"/>
+    <HasRelation name="staff" source="commands.loan.AddDayLoanCommand" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="adminsObserver" source="people.Administrator" target="data.AdministratorsObserver" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="data.Administrators" target="data.Observed"/>
+    <HasRelation name="staffMembers" source="data.StaffMembers" target="data.StaffMembers" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="loaner" source="loaning.Loan" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.admin.AddAdminCommand" target="command.interfaces.ICommandBehaviour"/>
+    <HasRelation name="staffToRemove" source="commands.staff.DeleteStaffCommand" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="cars" source="data.CarsObserver" target="data.Cars" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="admin" source="commands.loan.AddDayLoanCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.Administrators" target="data.ISerialisable"/>
+    <HasRelation name="admin" source="commands.admin.UpdateAdminCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="loans" source="data.Loans" target="data.Loans" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="loaning.DayLoan" target="loaning.Loan"/>
+    <HasRelation name="staff" source="commands.loan.AddLongLoanCommand" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="staffMembers" source="testharness.ObjectSerialisationTest" target="data.StaffMembers" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="admin" source="commands.loan.ReturnCarCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="staffMembers" source="data.StaffObserver" target="data.StaffMembers" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.CarsObserver" target="data.IObserver"/>
   </ClassDiagramRelations>
 </ClassDiagram>
