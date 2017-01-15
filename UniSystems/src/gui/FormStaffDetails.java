@@ -377,6 +377,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
 
         lblUpdate.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         lblUpdate.setForeground(new java.awt.Color(255, 0, 0));
+        lblUpdate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
