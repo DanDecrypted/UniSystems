@@ -23,7 +23,7 @@ import people.Staff;
  *
  * @author Craig
  */
-public class FormRentalConfirm extends javax.swing.JFrame {
+public class FormLoansConfirm extends javax.swing.JFrame {
     Administrator admin;
     Car car; 
     CommandTracker commandTracker = new CommandTracker();
@@ -31,14 +31,14 @@ public class FormRentalConfirm extends javax.swing.JFrame {
     /**
      * Creates new form FormRentalConfirm
      */
-    public FormRentalConfirm() {
+    public FormLoansConfirm() {
         initComponents();
         this.getContentPane().setBackground(new Color (238,238,238));
         this.jPanel1.setBackground(new Color (238, 238, 238));
         this.jPanel2.setBackground(new Color (238, 238, 238));
     }
     
-    public FormRentalConfirm(Administrator admin, Staff staff, Car carToRent) {
+    public FormLoansConfirm(Administrator admin, Staff staff, Car carToRent) {
         initComponents();
         this.getContentPane().setBackground(new Color (238,238,238));
         this.jPanel1.setBackground(new Color (238, 238, 238));
@@ -408,20 +408,21 @@ public class FormRentalConfirm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormRentalConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLoansConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormRentalConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLoansConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormRentalConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLoansConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormRentalConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLoansConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormRentalConfirm().setVisible(true);
+                new FormLoansConfirm().setVisible(true);
             }
         });
     }

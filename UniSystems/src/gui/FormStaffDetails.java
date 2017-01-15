@@ -11,6 +11,7 @@ import command.interfaces.ICommandTracker;
 import commands.admin.AddAdminCommand;
 import commands.staff.AddStaffCommand;
 import commands.staff.DeleteStaffCommand;
+import commands.staff.UpdateStaffCommand;
 import commandtracker.Command;
 import commandtracker.CommandTracker;
 import java.awt.Color;
@@ -629,6 +630,8 @@ public class FormStaffDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_cbAdminActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        Staff staffBeforeUpdate = admin.getStaffForRefNumb(this.txtStaffNumb.getText());
+
         Administrator tempAdmin = null;
         for (Administrator administrator : admin.getAdminstrators()) {
             if (administrator.getRefNumb().equals(this.txtStaffNumb.getText())) {
@@ -671,10 +674,13 @@ public class FormStaffDetails extends javax.swing.JFrame {
         }
         this.lblUpdate.setText("Staff details have been updated");
         
+        ICommandBehaviour objUpdate = new UpdateStaffCommand(admin, staff, staffBeforeUpdate);
+        ICommand command = new Command(objUpdate);
+        this.commandTracker.executeCommand(command);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-            
+
             Staff staff = admin.getStaffForRefNumb(this.txtStaffNumb.getText());
             ICommandBehaviour objDelete = new DeleteStaffCommand(admin, staff);
             ICommand objCommand = new Command(objDelete);

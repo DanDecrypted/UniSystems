@@ -21,7 +21,7 @@ import people.Staff;
  *
  * @author Craig
  */
-public class FormManageRentals extends javax.swing.JFrame {
+public class FormManageLoans extends javax.swing.JFrame {
 
     private DefaultListModel listModel;
      private Administrator admin = new Administrator();
@@ -30,13 +30,13 @@ public class FormManageRentals extends javax.swing.JFrame {
     /**
      * Creates new form FormDayLoan
      */
-    public FormManageRentals() {
+    public FormManageLoans() {
         initComponents();
         
         this.getContentPane().setBackground(new Color (238,238,238));
         
     }
-    public FormManageRentals(Administrator admin) {
+    public FormManageLoans(Administrator admin) {
         initComponents();
         
         this.getContentPane().setBackground(new Color (238,238,238));
@@ -332,24 +332,32 @@ public class FormManageRentals extends javax.swing.JFrame {
 
         buttonGroup.add(rbtnPast);
         rbtnPast.setText("Past Loans");
+        rbtnPast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnPastActionPerformed(evt);
+            }
+        });
 
         buttonGroup.add(rbtnCurrent);
         rbtnCurrent.setSelected(true);
         rbtnCurrent.setText("Active Loans");
+        rbtnCurrent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnCurrentActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(btnFilter)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCancel))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,13 +366,15 @@ public class FormManageRentals extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(txtStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(rbtnPast))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(txtRegNumb, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(rbtnCurrent))))
+                                        .addComponent(rbtnCurrent))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(btnFilter)
+                                            .addComponent(txtStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(rbtnPast))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -407,6 +417,11 @@ public class FormManageRentals extends javax.swing.JFrame {
         jMenu1.setText("File");
 
         jMenuItem1.setText("Exit");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
@@ -425,12 +440,11 @@ public class FormManageRentals extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnViewRental)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnViewRental)
-                .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -440,7 +454,7 @@ public class FormManageRentals extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnViewRental)
                 .addContainerGap())
         );
@@ -457,12 +471,12 @@ public class FormManageRentals extends javax.swing.JFrame {
         Loan loan = getLoan(this.lstRentalList.getSelectedValue());
         try {
             DayLoan dayLoan = (DayLoan)loan;
-            FormViewRental frm = new FormViewRental(admin, dayLoan);
+            FormViewLoan frm = new FormViewLoan(admin, dayLoan);
             frm.setVisible(true);
         } catch (Exception e) {}
         try {
             LongLoan longLoan = (LongLoan)loan;
-            FormViewRental frm = new FormViewRental(admin, longLoan);
+            FormViewLoan frm = new FormViewLoan(admin, longLoan);
             frm.setVisible(true);
         } catch (Exception e) {}
              
@@ -476,6 +490,18 @@ public class FormManageRentals extends javax.swing.JFrame {
             filterPastLoans();
         }
     }//GEN-LAST:event_btnFilterActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void rbtnCurrentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnCurrentActionPerformed
+        populateActiveLoans();
+    }//GEN-LAST:event_rbtnCurrentActionPerformed
+
+    private void rbtnPastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnPastActionPerformed
+        populatePastLoans();
+    }//GEN-LAST:event_rbtnPastActionPerformed
 
     /**
      * @param args the command line arguments
@@ -494,20 +520,20 @@ public class FormManageRentals extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormManageRentals.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormManageLoans.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormManageRentals.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormManageLoans.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormManageRentals.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormManageLoans.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormManageRentals.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormManageLoans.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormManageRentals().setVisible(true);
+                new FormManageLoans().setVisible(true);
             }
         });
     }

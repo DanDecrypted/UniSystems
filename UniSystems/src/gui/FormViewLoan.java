@@ -25,7 +25,7 @@ import people.Staff;
  *
  * @author najimmazidi
  */
-public class FormViewRental extends javax.swing.JFrame {
+public class FormViewLoan extends javax.swing.JFrame {
     Administrator admin;
     Staff staff;
     Car car;
@@ -36,14 +36,14 @@ public class FormViewRental extends javax.swing.JFrame {
      * Creates new form FormViewRental
      */
     
-    public FormViewRental() {
+    public FormViewLoan() {
         initComponents();
         this.getContentPane().setBackground(new Color (238,238,238));
         this.jPanel1.setBackground(new Color (238, 238, 238));
         this.jPanel2.setBackground(new Color (238, 238, 238));
         this.jPanel3.setBackground(new Color (238, 238, 238));
     }
-    public FormViewRental(Administrator admin, DayLoan loan) {
+    public FormViewLoan(Administrator admin, DayLoan loan) {
         initComponents();
         this.getContentPane().setBackground(new Color (238,238,238));
         this.jPanel1.setBackground(new Color (238, 238, 238));
@@ -76,9 +76,12 @@ public class FormViewRental extends javax.swing.JFrame {
         this.txtEndDate.setVisible(false);
         this.txtDuration.setVisible(false);
         
+        if(null != loan.getReturnedDate()){
+            this.btnReturn.setVisible(false);
+        }
     }
     
-    public FormViewRental(Administrator admin, LongLoan loan) {
+    public FormViewLoan(Administrator admin, LongLoan loan) {
         initComponents();
         this.getContentPane().setBackground(new Color (238,238,238));
         this.jPanel1.setBackground(new Color (238, 238, 238));
@@ -108,6 +111,10 @@ public class FormViewRental extends javax.swing.JFrame {
         
         this.lblLoanDate.setVisible(false);
         this.txtLoanDate.setVisible(false);
+        
+        if(null != loan.getReturnedDate()){
+            this.btnReturn.setVisible(false);
+        }
     }
 
     /**
@@ -455,7 +462,7 @@ public class FormViewRental extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancel)
                     .addComponent(btnReturn))
@@ -494,20 +501,21 @@ public class FormViewRental extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormViewRental.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormViewLoan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormViewRental.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormViewLoan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormViewRental.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormViewLoan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormViewRental.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormViewLoan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormViewRental().setVisible(true);
+                new FormViewLoan().setVisible(true);
             }
         });
     }

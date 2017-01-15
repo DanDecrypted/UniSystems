@@ -284,7 +284,7 @@ public class FormAvailableCars extends javax.swing.JFrame {
         String[] carString = this.lstAvailableCars.getSelectedValue().toString().split(" ");
         Car carToRent = admin.getCarByReg(carString[0]);
         
-        FormRentalConfirm frm = new FormRentalConfirm(admin, staff, carToRent);
+        FormLoansConfirm frm = new FormLoansConfirm(admin, staff, carToRent);
         frm.setVisible(true);
         dispose();
         

@@ -13,16 +13,21 @@ import people.Staff;
 public class UpdateStaffCommand implements ICommandBehaviour {
     private Administrator admin = null;
     private Staff staffToUpdate = null;
+    private Staff staffToRestore = null;
+    private String staffID = null;
     
-    public UpdateStaffCommand(Administrator admin, Staff staff){
+    public UpdateStaffCommand(Administrator admin, Staff staff, Staff oldStaff){
         this.admin = admin;
         this.staffToUpdate = staff;
+        this.staffID = staff.getRefNumb();
+        this.staffToRestore = oldStaff;
     }
 
     @Override
     public Boolean doCommand() {
         Boolean blnCompleted = false;
         if (this.isValid()){
+            //this.staffToRestore = admin.getStaffForRefNumb(this.staffID);
             this.admin.removeStaffMember(admin.getStaffForRefNumb(this.staffToUpdate.getRefNumb()));
             this.admin.createStaffMember(staffToUpdate);
             blnCompleted = true;
@@ -33,10 +38,9 @@ public class UpdateStaffCommand implements ICommandBehaviour {
     @Override
     public Boolean undoCommand() {
         Boolean blnCompleted = false;
-        Staff tempStaff;
         if (this.isValid()){
-            this.admin.removeStaffMember(this.staffToUpdate);
-            this.admin.createStaffMember(staffToUpdate);
+            this.admin.removeStaffMember(admin.getStaffForRefNumb(this.staffToUpdate.getRefNumb()));
+            this.admin.createStaffMember(this.staffToRestore);
             blnCompleted = true;
         }
         return blnCompleted;

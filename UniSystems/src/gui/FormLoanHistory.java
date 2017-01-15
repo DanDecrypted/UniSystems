@@ -341,12 +341,12 @@ public class FormLoanHistory extends javax.swing.JFrame {
         Loan loan = getLoan(this.lstRentalList.getSelectedValue());
         try {
             DayLoan dayLoan = (DayLoan)loan;
-            FormViewRental frm = new FormViewRental(admin, dayLoan);
+            FormViewLoan frm = new FormViewLoan(admin, dayLoan);
             frm.setVisible(true);
         } catch (Exception e) {}
         try {
             LongLoan longLoan = (LongLoan)loan;
-            FormViewRental frm = new FormViewRental(admin, longLoan);
+            FormViewLoan frm = new FormViewLoan(admin, longLoan);
             frm.setVisible(true);
         } catch (Exception e) {}
              
