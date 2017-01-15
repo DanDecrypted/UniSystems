@@ -31,7 +31,7 @@ public class Administrators extends Observed implements ISerialisable {
      * @return String containing error messages or success.
      */
     public String loadFromDisk() {
-        File objFile = new File("dist/Administrators.dat");
+        File objFile = new File("data//Administrators.dat");
         if (objFile.exists() && objFile.canRead()) {
             try (ObjectInputStream objIn = new ObjectInputStream(
                 new BufferedInputStream( 
@@ -61,7 +61,13 @@ public class Administrators extends Observed implements ISerialisable {
      * @return a string containing any errors / successes.
      */
     public String saveToDisk() {
-        File objFile = new File("dist/Administrators.dat");
+        File objFile = new File("data//Administrators.dat");
+        try {
+            objFile.createNewFile();
+        } catch (IOException ex) {
+            return ("error: " + ex.getMessage().toString());
+        }
+        
         try (ObjectOutputStream objOut = new ObjectOutputStream(
                 new BufferedOutputStream(
                 new FileOutputStream(objFile)))) {

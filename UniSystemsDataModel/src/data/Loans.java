@@ -40,7 +40,12 @@ public class Loans extends Observed implements ISerialisable{
      * @return string displaying whether there was an error or if it succeeded.
      */
     public String loadFromDisk() {
-        File objFile = new File("dist/Loans.dat");
+        File objFile = new File("data//Loans.dat");
+        try {
+            objFile.createNewFile();
+        } catch (IOException ex) {
+            return ("error: " + ex.getMessage().toString());
+        }
         if (objFile.exists() && objFile.canRead()) {
             try (ObjectInputStream objIn = new ObjectInputStream(
                   new BufferedInputStream(
@@ -70,7 +75,7 @@ public class Loans extends Observed implements ISerialisable{
      */
     @Override
     public String saveToDisk() {
-        File objFile = new File("dist/Loans.dat");
+        File objFile = new File("data//Loans.dat");
         try (ObjectOutputStream objOut = new ObjectOutputStream(
                 new BufferedOutputStream(
                 new FileOutputStream(objFile)))) {

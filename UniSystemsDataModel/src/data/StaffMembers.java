@@ -41,7 +41,7 @@ public class StaffMembers extends Observed implements ISerialisable {
      */
     @Override
     public String loadFromDisk() {
-        File objFile = new File("dist/StaffMembers.dat");
+        File objFile = new File("data//StaffMembers.dat");
         if (objFile.exists() && objFile.canRead()) {
             try (ObjectInputStream objIn = new ObjectInputStream(
                     new BufferedInputStream(
@@ -71,7 +71,13 @@ public class StaffMembers extends Observed implements ISerialisable {
      */
     @Override
     public String saveToDisk() {
-        File objFile = new File("dist/StaffMembers.dat");
+        File objFile = new File("data//StaffMembers.dat");
+        try {
+            objFile.createNewFile();
+        } catch (IOException ex) {
+            return ("error: " + ex.getMessage().toString());
+        }
+        
         try (ObjectOutputStream objOut = new ObjectOutputStream(
                 new BufferedOutputStream(
                 new FileOutputStream(objFile)))) {

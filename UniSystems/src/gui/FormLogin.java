@@ -8,8 +8,8 @@ package gui;
 import data.StaffMembers;
 import data.Administrators;
 import java.awt.Color;
-import people.Staff;
-import people.Administrator;
+import java.io.File;
+import testharness.ObjectSerialisationTest;
 
 /**
  *
@@ -29,6 +29,13 @@ public class FormLogin extends javax.swing.JFrame {
         this.rootPane.setDefaultButton(btnLogin);
         System.out.println(staff.loadFromDisk());
         System.out.println(admins.loadFromDisk());
+        File dir = new File("data");
+        if (!dir.exists()) {
+            if (dir.mkdir()) {
+                System.out.println("data directory created");
+                ObjectSerialisationTest.addTestDataAndSave();
+            }
+        } 
     }
 
     /**
