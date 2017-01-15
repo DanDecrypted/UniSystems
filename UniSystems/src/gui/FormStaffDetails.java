@@ -194,6 +194,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
         lblPositionHold = new javax.swing.JLabel();
         btnEdit = new javax.swing.JButton();
         lblFacultyHold = new javax.swing.JLabel();
+        lblUpdate = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -374,6 +375,9 @@ public class FormStaffDetails extends javax.swing.JFrame {
 
         lblFacultyHold.setText("A");
 
+        lblUpdate.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        lblUpdate.setForeground(new java.awt.Color(255, 0, 0));
+
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
 
@@ -480,7 +484,10 @@ public class FormStaffDetails extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(cboFaculty, 0, 235, Short.MAX_VALUE)
                                     .addComponent(cboPosition, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -528,7 +535,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
                     .addComponent(lblGender)
                     .addComponent(lblEmail)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAddressOne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblGender1)
@@ -551,7 +558,9 @@ public class FormStaffDetails extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPostCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblGender5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
+                .addComponent(lblUpdate)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate)
                     .addComponent(btnCancel)
@@ -585,6 +594,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
                     new Address(txtAddressOne.getText(),txtAddressTwo.getText(),txtCity.getText(),txtCounty.getText(),txtPostCode.getText()),
                     txtTitle.getText(), txtForename.getText(), txtSurname.getText(), jxDOB.getDate(), txtGender.getText()
                     , txtPhoneNumb.getText(), txtEmail.getText(), txtPassword.getText()); 
+            this.lblUpdate.setText("Admin Created");
             ICommandBehaviour objAdd = new AddAdminCommand(admin, newAdmin);
             ICommand objCommand = new Command(objAdd);
             this.commandTracker.executeCommand(objCommand);
@@ -596,6 +606,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
                     txtTitle.getText(), txtForename.getText(), txtSurname.getText(), jxDOB.getDate(),
                 txtGender.getText(), txtPhoneNumb.getText(), txtEmail.getText() );
             System.out.println("new staff member created " + newStaff.getForename());
+            this.lblUpdate.setText("Staff member Created");
             if (admin == null) admin = new Administrator(); 
             ICommandBehaviour objAdd = new AddStaffCommand(admin, newStaff);
             ICommand objCommand = new Command(objAdd);
@@ -654,15 +665,21 @@ public class FormStaffDetails extends javax.swing.JFrame {
         staff.setSurname(txtSurname.getText());
         staff.setTitle(txtTitle.getText());
         staff.setWorkNumb(txtWorkNumb.getText());
+        if(cbAdmin.isSelected()){
+        this.lblUpdate.setText("Admin details have been updated");
+        }
+        this.lblUpdate.setText("Staff details have been updated");
         
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-
+            
             Staff staff = admin.getStaffForRefNumb(this.txtStaffNumb.getText());
             ICommandBehaviour objDelete = new DeleteStaffCommand(admin, staff);
             ICommand objCommand = new Command(objDelete);
             this.commandTracker.executeCommand(objCommand);
+            
+            this.lblUpdate.setText("Staff Deleted");
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void mnuUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuUndoActionPerformed
@@ -778,6 +795,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
     private javax.swing.JLabel lblStaffNumb;
     private javax.swing.JLabel lblSurname;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblUpdate;
     private javax.swing.JLabel lblWorkNumb;
     private javax.swing.JList<String> lstLoanHistory;
     private javax.swing.JMenuItem mnuRedo;
