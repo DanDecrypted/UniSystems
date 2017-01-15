@@ -11,6 +11,7 @@ import car.*;
 import command.interfaces.ICommand;
 import command.interfaces.ICommandBehaviour;
 import commands.car.AddCarCommand;
+import commands.car.DeleteCarCommand;
 import commandtracker.Command;
 import commandtracker.CommandTracker;
 import loaning.*;
@@ -684,7 +685,11 @@ public class FormCar extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         Car car = admin.getCarByReg(this.txtRegNo.getText());
-        admin.removeCar(car);
+        
+        ICommandBehaviour objRemove = new DeleteCarCommand(admin, car);
+        ICommand command = new Command(objRemove);
+        commandTracker.executeCommand(command);
+        
         this.lblUpdate.setText("Car has been deleted");
     }//GEN-LAST:event_btnDeleteActionPerformed
 
