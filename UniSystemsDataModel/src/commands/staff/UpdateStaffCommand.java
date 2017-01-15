@@ -2,7 +2,6 @@
 package commands.staff;
 
 import command.interfaces.ICommandBehaviour;
-import data.StaffMembers;
 import people.Administrator;
 import people.Staff;
 

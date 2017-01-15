@@ -627,6 +627,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         Staff staffBeforeUpdate = admin.getStaffForRefNumb(this.txtStaffNumb.getText());
+        
 
         Administrator tempAdmin = null;
         for (Administrator administrator : admin.getAdminstrators()) {
@@ -652,25 +653,31 @@ public class FormStaffDetails extends javax.swing.JFrame {
             tempAdmin.setWorkNumb(txtWorkNumb.getText());
             tempAdmin.setPassword(txtPassword.getText());
         }
+        
         Staff staff = admin.getStaffForRefNumb(this.txtStaffNumb.getText());
-        staff.setAddress(address);
-        staff.setDateOfBirth(jxDOB.getDate());
-        staff.setEmailAddress(txtEmail.getText());
-        staff.setFaculty((Faculty)cboFaculty.getSelectedItem());
-        staff.setForename(txtForename.getText());
-        staff.setGender(txtGender.getText());
-        staff.setOfficeRoom(txtOffice.getText());
-        staff.setPhoneNumber(txtPhoneNumb.getText());
-        staff.setPosition((Position)cboPosition.getSelectedItem());
-        staff.setSurname(txtSurname.getText());
-        staff.setTitle(txtTitle.getText());
-        staff.setWorkNumb(txtWorkNumb.getText());
+        Staff newStaff = new Staff(txtStaffNumb.getText(), staff.getPosition(), 
+        staff.getFaculty(), staff.getOfficeRoom(), staff.getWorkNumb(), staff.getAddress(), 
+        staff.getTitle(), staff.getForename(), staff.getSurname(), staff.getDateOfBirth(), 
+        staff.getGender(), staff.getPhoneNumber(), staff.getEmailAddress());
+        
+        newStaff.setAddress(address);
+        newStaff.setDateOfBirth(jxDOB.getDate());
+        newStaff.setEmailAddress(txtEmail.getText());
+        newStaff.setFaculty((Faculty)cboFaculty.getSelectedItem());
+        newStaff.setForename(txtForename.getText());
+        newStaff.setGender(txtGender.getText());
+        newStaff.setOfficeRoom(txtOffice.getText());
+        newStaff.setPhoneNumber(txtPhoneNumb.getText());
+        newStaff.setPosition((Position)cboPosition.getSelectedItem());
+        newStaff.setSurname(txtSurname.getText());
+        newStaff.setTitle(txtTitle.getText());
+        newStaff.setWorkNumb(txtWorkNumb.getText());
         if(cbAdmin.isSelected()){
         this.lblUpdate.setText("Admin details have been updated");
         }
         this.lblUpdate.setText("Staff details have been updated");
         
-        ICommandBehaviour objUpdate = new UpdateStaffCommand(admin, staff, staffBeforeUpdate);
+        ICommandBehaviour objUpdate = new UpdateStaffCommand(admin, newStaff, staffBeforeUpdate);
         ICommand command = new Command(objUpdate);
         this.commandTracker.executeCommand(command);
     }//GEN-LAST:event_btnUpdateActionPerformed
