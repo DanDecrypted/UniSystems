@@ -22,7 +22,10 @@ public class UpdateStaffCommand implements ICommandBehaviour {
         this.staffID = staff.getRefNumb();
         this.staffToRestore = oldStaff;
     }
-
+    /**
+     * Do command called when action is done or redone
+     * @return boolean to check if action was carried out
+     */
     @Override
     public Boolean doCommand() {
         Boolean blnCompleted = false;
@@ -34,7 +37,10 @@ public class UpdateStaffCommand implements ICommandBehaviour {
         }
         return blnCompleted;
     }
-
+    /**
+     * Undo command called when action is being undone
+     * @return boolean to check if action was carried out
+     */
     @Override
     public Boolean undoCommand() {
         Boolean blnCompleted = false;
@@ -45,7 +51,10 @@ public class UpdateStaffCommand implements ICommandBehaviour {
         }
         return blnCompleted;
     }
-    
+    /**
+     * Checks if operation is allowed to be done 
+     * @return Boolean to check if is valid 
+     */
     private Boolean isValid(){
         Boolean blnValid = false;
         if (null != this.staffToUpdate) {

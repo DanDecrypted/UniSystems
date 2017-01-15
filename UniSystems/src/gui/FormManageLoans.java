@@ -77,9 +77,9 @@ public class FormManageLoans extends javax.swing.JFrame {
         }
         lstRentalList.setModel(listModel);
     }
+    
     private void populatePastLoans() {
         listModel.clear();
-        
         for (Loan loan : admin.getLoans()) {
             if (null != loan.getReturnedDate()){
                 try {
@@ -354,9 +354,7 @@ public class FormManageLoans extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCancel))
+                    .addComponent(btnCancel)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()

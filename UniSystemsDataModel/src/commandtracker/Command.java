@@ -24,12 +24,19 @@ public class Command implements ICommand {
     public Command(ICommandBehaviour objCommand) {
         this.delegate = objCommand;
     }
-    
+    /**
+     * Boolean class to check if a command has been executed
+     * @return boolean returns true if command executed
+     */
     @Override
     public Boolean isExecuted() {
         return this.blnExecuted;
     }
-    
+    /**
+     * Sets boolean to true if command is executed
+     * @param flag passes true when a command executes
+     * @return boolean true if command is executed 
+     */
     @Override
     public Boolean setExecuted(Boolean flag) {
         Boolean blnResult = false;
@@ -39,11 +46,18 @@ public class Command implements ICommand {
         }
         return blnResult;
     } 
+    /**
+     * Class to check if command has been undone
+     * @return boolean true if undo command is completed 
+     */
     @Override
     public Boolean isUndone() {
         return !this.blnExecuted;
     }
-    
+    /**
+     * Class to carry out a do command
+     * @return returns true of command executed successfully 
+     */
     @Override
     public Boolean doCommand() {
         Boolean done = false;
@@ -51,7 +65,10 @@ public class Command implements ICommand {
         this.blnExecuted = done;
         return done;
     }
-    
+    /**
+     * Class to carry out an undo command
+     * @return returns true if command undone successfully 
+     */
     @Override 
     public Boolean undoCommand() {
         Boolean undone = false;

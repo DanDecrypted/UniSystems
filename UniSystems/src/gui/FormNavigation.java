@@ -70,7 +70,7 @@ public class FormNavigation extends javax.swing.JFrame {
         });
 
         btnRentals.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        btnRentals.setText("Manage Rentals");
+        btnRentals.setText("Manage Loans");
         btnRentals.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRentalsActionPerformed(evt);
