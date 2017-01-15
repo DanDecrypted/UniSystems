@@ -56,6 +56,8 @@ public class FormStaffDetails extends javax.swing.JFrame {
         this.txtPassword.setVisible(false);
         this.btnEdit.setVisible(false);
         this.txtStaffNumb.setEnabled(true);
+        this.lblFacultyHold.setVisible(false);
+        this.lblPositionHold.setVisible(false);
         enableTextBoxes();
         this.setSize(this.getSize().width,
                 jSeparator2.getLocation().y + jSeparator2.getSize().height 
