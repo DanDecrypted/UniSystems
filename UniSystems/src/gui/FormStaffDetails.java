@@ -206,8 +206,8 @@ public class FormStaffDetails extends javax.swing.JFrame {
         setBounds(new java.awt.Rectangle(450, 250, 0, 0));
         setLocation(new java.awt.Point(450, 300));
 
+        txtStaffNumb.setEditable(false);
         txtStaffNumb.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        txtStaffNumb.setEnabled(false);
 
         lblStaffNumb.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblStaffNumb.setText("Staff Numb:");
@@ -225,32 +225,32 @@ public class FormStaffDetails extends javax.swing.JFrame {
         lblOffice.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblOffice.setText("Office Room:");
 
+        txtOffice.setEditable(false);
         txtOffice.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        txtOffice.setEnabled(false);
 
         lblWorkNumb.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblWorkNumb.setText("Work No:");
 
+        txtWorkNumb.setEditable(false);
         txtWorkNumb.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        txtWorkNumb.setEnabled(false);
 
         lblTitle.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblTitle.setText("Title:");
 
+        txtTitle.setEditable(false);
         txtTitle.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        txtTitle.setEnabled(false);
 
         lblForename.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblForename.setText("Forename:");
 
+        txtForename.setEditable(false);
         txtForename.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        txtForename.setEnabled(false);
 
         lblSurname.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblSurname.setText("Surname:");
 
+        txtSurname.setEditable(false);
         txtSurname.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        txtSurname.setEnabled(false);
 
         lblDob.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblDob.setText("DOB:");
@@ -258,20 +258,20 @@ public class FormStaffDetails extends javax.swing.JFrame {
         lblGender.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblGender.setText("Gender:");
 
+        txtGender.setEditable(false);
         txtGender.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        txtGender.setEnabled(false);
 
         lblPhone.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblPhone.setText("Phone No:");
 
+        txtPhoneNumb.setEditable(false);
         txtPhoneNumb.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        txtPhoneNumb.setEnabled(false);
 
         lblEmail.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblEmail.setText("Email:");
 
+        txtEmail.setEditable(false);
         txtEmail.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        txtEmail.setEnabled(false);
 
         lblGender1.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblGender1.setText("Address Line 1:");
@@ -325,25 +325,25 @@ public class FormStaffDetails extends javax.swing.JFrame {
             }
         });
 
-        txtPassword.setEnabled(false);
+        txtPassword.setEditable(false);
 
         lblPassword.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblPassword.setText("Password: ");
 
+        txtAddressOne.setEditable(false);
         txtAddressOne.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        txtAddressOne.setEnabled(false);
 
+        txtAddressTwo.setEditable(false);
         txtAddressTwo.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        txtAddressTwo.setEnabled(false);
 
+        txtCity.setEditable(false);
         txtCity.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        txtCity.setEnabled(false);
 
+        txtCounty.setEditable(false);
         txtCounty.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        txtCounty.setEnabled(false);
 
+        txtPostCode.setEditable(false);
         txtPostCode.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        txtPostCode.setEnabled(false);
 
         lblGender2.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblGender2.setText("Address Line 2:");
@@ -726,25 +726,25 @@ public class FormStaffDetails extends javax.swing.JFrame {
 
     public void enableTextBoxes() {
 
-        this.txtAddressOne.setEnabled(true);
-        this.txtAddressTwo.setEnabled(true);
-        this.txtCity.setEnabled(true);
-        this.txtCounty.setEnabled(true);
-        this.txtEmail.setEnabled(true);
-        this.txtForename.setEnabled(true);
-        this.txtGender.setEnabled(true);
-        this.txtOffice.setEnabled(true);
-        this.txtPhoneNumb.setEnabled(true);
-        this.txtPostCode.setEnabled(true);
-        this.txtSurname.setEnabled(true);
-        this.txtTitle.setEnabled(true);
-        this.txtWorkNumb.setEnabled(true);
-        this.btnUpdate.setEnabled(true);
+        this.txtAddressOne.setEditable(true);
+        this.txtAddressTwo.setEditable(true);
+        this.txtCity.setEditable(true);
+        this.txtCounty.setEditable(true);
+        this.txtEmail.setEditable(true);
+        this.txtForename.setEditable(true);
+        this.txtGender.setEditable(true);
+        this.txtOffice.setEditable(true);
+        this.txtPhoneNumb.setEditable(true);
+        this.txtPostCode.setEditable(true);
+        this.txtSurname.setEditable(true);
+        this.txtTitle.setEditable(true);
+        this.txtWorkNumb.setEditable(true);
+        this.btnUpdate.setVisible(true);
         this.jxDOB.setEditable(true);
         if (this.cbAdmin.isSelected()) {
             this.lblPassword.setVisible(true);
             this.txtPassword.setVisible(true);
-            this.txtPassword.setEnabled(true);
+            this.txtPassword.setEditable(true);
         }
     }
 

@@ -271,17 +271,17 @@ public class FormCar extends javax.swing.JFrame {
         lblServiceHistory.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
         lblServiceHistory.setText("Service History");
 
+        txtRegNo.setEditable(false);
         txtRegNo.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        txtRegNo.setEnabled(false);
 
+        txtMileage.setEditable(false);
         txtMileage.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        txtMileage.setEnabled(false);
 
+        txtDoors.setEditable(false);
         txtDoors.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        txtDoors.setEnabled(false);
 
+        txtSeats.setEditable(false);
         txtSeats.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        txtSeats.setEnabled(false);
 
         lblStatus.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         lblStatus.setText("A");
@@ -337,17 +337,17 @@ public class FormCar extends javax.swing.JFrame {
         lblSpace.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblSpace.setText("Space:");
 
+        txtSpace.setEditable(false);
         txtSpace.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        txtSpace.setEnabled(false);
 
         lblMake.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblMake.setText("Make:");
 
+        txtMake.setEditable(false);
         txtMake.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        txtMake.setEnabled(false);
 
+        txtModel.setEditable(false);
         txtModel.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        txtModel.setEnabled(false);
 
         lblModel.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblModel.setText("Model:");
@@ -694,13 +694,13 @@ public class FormCar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void enableTextBoxes(){
-        this.txtDoors.setEnabled(true);
-        this.txtMake.setEnabled(true);
-        this.txtMileage.setEnabled(true);
-        this.txtModel.setEnabled(true);
-        this.txtRegNo.setEnabled(true);
-        this.txtSeats.setEnabled(true);
-        this.txtSpace.setEnabled(true);
+        this.txtDoors.setEditable(true);
+        this.txtMake.setEditable(true);
+        this.txtMileage.setEditable(true);
+        this.txtModel.setEditable(true);
+        this.txtRegNo.setEditable(true);
+        this.txtSeats.setEditable(true);
+        this.txtSpace.setEditable(true);
     }
     
     private void hideHoldLabels(){

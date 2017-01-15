@@ -1,0 +1,1092 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="UniSystemsDataModel">
+  <ClassDiagramComponents>
+    <Class name="Car" package="car" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="regNo" type="String" visibility="private"/>
+        <Field name="make" type="String" visibility="private"/>
+        <Field name="model" type="String" visibility="private"/>
+        <Field name="transmission" type="Transmission" visibility="private"/>
+        <Field name="status" type="Status" visibility="private"/>
+        <Field name="serviceRecord" type="ArrayList&lt;Service&gt;" visibility="private"/>
+        <Field name="classification" type="Classification" visibility="private"/>
+        <Field name="fuelType" type="FuelType" visibility="private"/>
+        <Field name="location" type="Location" visibility="private"/>
+        <Field name="parkingSpace" type="String" visibility="private"/>
+        <Field name="seats" type="int" visibility="private"/>
+        <Field name="doors" type="int" visibility="private"/>
+        <Field name="loanType" type="LoanType" visibility="private"/>
+        <Field name="notes" type="ArrayList&lt;String&gt;" visibility="private"/>
+        <Field name="milageAtLastService" type="int" visibility="private"/>
+        <Field name="milage" type="int" visibility="private"/>
+        <Field name="lastService" type="Date" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="regNo"/>
+          <Argument type="String" name="make"/>
+          <Argument type="String" name="model"/>
+          <Argument type="Transmission" name="transmission"/>
+          <Argument type="FuelType" name="fuelType"/>
+          <Argument type="Location" name="location"/>
+          <Argument type="String" name="parkingSpace"/>
+          <Argument type="Classification" name="classification"/>
+          <Argument type="int" name="seats"/>
+          <Argument type="int" name="doors"/>
+          <Argument type="int" name="mileage"/>
+          <Argument type="LoanType" name="loanType"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="needsService" returnType="boolean" visibility="public"/>
+        <Method name="getMake" returnType="String" visibility="public"/>
+        <Method name="setMake" returnType="void" visibility="public">
+          <Argument type="String" name="make"/>
+        </Method>
+        <Method name="getModel" returnType="String" visibility="public"/>
+        <Method name="setModel" returnType="void" visibility="public">
+          <Argument type="String" name="model"/>
+        </Method>
+        <Method name="setMilage" returnType="void" visibility="public">
+          <Argument type="int" name="milage"/>
+        </Method>
+        <Method name="getRegNo" returnType="String" visibility="public"/>
+        <Method name="getStatus" returnType="Status" visibility="public"/>
+        <Method name="setStatus" returnType="void" visibility="public">
+          <Argument type="Status" name="status"/>
+        </Method>
+        <Method name="getClassification" returnType="Classification" visibility="public"/>
+        <Method name="getLocation" returnType="Location" visibility="public"/>
+        <Method name="getParkingSpace" returnType="String" visibility="public"/>
+        <Method name="setParkingSpace" returnType="void" visibility="public">
+          <Argument type="String" name="parkingSpace"/>
+        </Method>
+        <Method name="getMilage" returnType="int" visibility="public"/>
+        <Method name="getTransmission" returnType="Transmission" visibility="public"/>
+        <Method name="getFuelType" returnType="FuelType" visibility="public"/>
+        <Method name="getSeats" returnType="int" visibility="public"/>
+        <Method name="getDoors" returnType="int" visibility="public"/>
+        <Method name="getLoanType" returnType="LoanType" visibility="public"/>
+        <Method name="setLoanType" returnType="void" visibility="public">
+          <Argument type="LoanType" name="loanType"/>
+        </Method>
+        <Method name="getServiceRecord" returnType="ArrayList&lt;Service&gt;" visibility="public"/>
+        <Method name="addService" returnType="void" visibility="public">
+          <Argument type="Service" name="service"/>
+        </Method>
+        <Method name="addNote" returnType="void" visibility="public">
+          <Argument type="String" name="note"/>
+        </Method>
+        <Method name="addNotes" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;String&gt;" name="notes"/>
+        </Method>
+        <Method name="getNotes" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Service" package="car" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="mechanic" type="String" visibility="private"/>
+        <Field name="repairs" type="ArrayList&lt;String&gt;" visibility="private"/>
+        <Field name="summary" type="String" visibility="private"/>
+        <Field name="dateOfService" type="Date" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="mechanic"/>
+          <Argument type="ArrayList&lt;String&gt;" name="repairs"/>
+          <Argument type="String" name="summary"/>
+          <Argument type="Date" name="date"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getSummary" returnType="String" visibility="public"/>
+        <Method name="getMechanic" returnType="String" visibility="public"/>
+        <Method name="getRepairs" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="addRepair" returnType="void" visibility="public">
+          <Argument type="String" name="repair"/>
+        </Method>
+        <Method name="getDateOfService" returnType="Date" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="AddAdminCommand" package="commands.admin" visibility="public" xPosition="920.0" yPosition="420.0">
+      <Fields>
+        <Field name="admin" type="Administrator" visibility="private"/>
+        <Field name="adminToAdd" type="Staff" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Administrator" name="admin"/>
+          <Argument type="Staff" name="staff"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="doCommand" returnType="Boolean" visibility="public"/>
+        <Method name="undoCommand" returnType="Boolean" visibility="public"/>
+        <Method name="isValid" returnType="Boolean" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="UpdateAdminCommand" package="commands.admin" visibility="public" xPosition="1220.0" yPosition="420.0">
+      <Fields>
+        <Field name="admin" type="Administrator" visibility="private"/>
+        <Field name="adminToUpdate" type="Administrator" visibility="private"/>
+        <Field name="adminToRestore" type="Administrator" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Administrator" name="admin"/>
+          <Argument type="Administrator" name="adminToUpdate"/>
+          <Argument type="Administrator" name="oldAdminToUpdate"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="doCommand" returnType="Boolean" visibility="public"/>
+        <Method name="undoCommand" returnType="Boolean" visibility="public"/>
+        <Method name="isValid" returnType="Boolean" visibility="private"/>
+      </Methods>
+    </Class>
+    <Class name="AddCarCommand" package="commands.car" visibility="public" xPosition="1520.0" yPosition="420.0">
+      <Fields>
+        <Field name="admin" type="Administrator" visibility="private"/>
+        <Field name="carToAdd" type="Car" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Administrator" name="admin"/>
+          <Argument type="Car" name="car"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="doCommand" returnType="Boolean" visibility="public"/>
+        <Method name="undoCommand" returnType="Boolean" visibility="public"/>
+        <Method name="isValid" returnType="Boolean" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="DeleteCarCommand" package="commands.car" visibility="public" xPosition="1820.0" yPosition="420.0">
+      <Fields>
+        <Field name="admin" type="Administrator" visibility="private"/>
+        <Field name="carToRemove" type="Car" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Administrator" name="admin"/>
+          <Argument type="Car" name="car"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="doCommand" returnType="Boolean" visibility="public"/>
+        <Method name="undoCommand" returnType="Boolean" visibility="public"/>
+        <Method name="isValid" returnType="Boolean" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="AddDayLoanCommand" package="commands.loan" visibility="public" xPosition="2120.0" yPosition="420.0">
+      <Fields>
+        <Field name="admin" type="Administrator" visibility="private"/>
+        <Field name="carToLoan" type="Car" visibility="private"/>
+        <Field name="staff" type="Staff" visibility="private"/>
+        <Field name="dayLoan" type="DayLoan" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Administrator" name="admin"/>
+          <Argument type="Car" name="car"/>
+          <Argument type="Staff" name="staff"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="doCommand" returnType="Boolean" visibility="public"/>
+        <Method name="undoCommand" returnType="Boolean" visibility="public"/>
+        <Method name="isValid" returnType="Boolean" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="AddLongLoanCommand" package="commands.loan" visibility="public" xPosition="20.0" yPosition="820.0">
+      <Fields>
+        <Field name="admin" type="Administrator" visibility="private"/>
+        <Field name="carToLoan" type="Car" visibility="private"/>
+        <Field name="staff" type="Staff" visibility="private"/>
+        <Field name="longLoan" type="LongLoan" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Administrator" name="admin"/>
+          <Argument type="Car" name="car"/>
+          <Argument type="Staff" name="staff"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="doCommand" returnType="Boolean" visibility="public"/>
+        <Method name="undoCommand" returnType="Boolean" visibility="public"/>
+        <Method name="isValid" returnType="Boolean" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ReturnCarCommand" package="commands.loan" visibility="public" xPosition="320.0" yPosition="820.0">
+      <Fields>
+        <Field name="admin" type="Administrator" visibility="private"/>
+        <Field name="carToReturn" type="Car" visibility="private"/>
+        <Field name="loan" type="Loan" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Administrator" name="admin"/>
+          <Argument type="Car" name="car"/>
+          <Argument type="Loan" name="loan"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="doCommand" returnType="Boolean" visibility="public"/>
+        <Method name="undoCommand" returnType="Boolean" visibility="public"/>
+        <Method name="isValid" returnType="Boolean" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="AddStaffCommand" package="commands.staff" visibility="public" xPosition="620.0" yPosition="820.0">
+      <Fields>
+        <Field name="admin" type="Administrator" visibility="private"/>
+        <Field name="staffToAdd" type="Staff" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Administrator" name="admin"/>
+          <Argument type="Staff" name="staff"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="doCommand" returnType="Boolean" visibility="public"/>
+        <Method name="undoCommand" returnType="Boolean" visibility="public"/>
+        <Method name="isValid" returnType="Boolean" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="DeleteStaffCommand" package="commands.staff" visibility="public" xPosition="920.0" yPosition="820.0">
+      <Fields>
+        <Field name="admin" type="Administrator" visibility="private"/>
+        <Field name="staffToRemove" type="Staff" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Administrator" name="admin"/>
+          <Argument type="Staff" name="staff"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="doCommand" returnType="Boolean" visibility="public"/>
+        <Method name="undoCommand" returnType="Boolean" visibility="public"/>
+        <Method name="isValid" returnType="Boolean" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="UpdateStaffCommand" package="commands.staff" visibility="public" xPosition="1220.0" yPosition="820.0">
+      <Fields>
+        <Field name="admin" type="Administrator" visibility="private"/>
+        <Field name="staffToUpdate" type="Staff" visibility="private"/>
+        <Field name="staffToRestore" type="Staff" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Administrator" name="admin"/>
+          <Argument type="Staff" name="staff"/>
+          <Argument type="Staff" name="oldStaff"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="doCommand" returnType="Boolean" visibility="public"/>
+        <Method name="undoCommand" returnType="Boolean" visibility="public"/>
+        <Method name="isValid" returnType="Boolean" visibility="private"/>
+      </Methods>
+    </Class>
+    <Class name="Command" package="commandtracker" visibility="public" xPosition="1520.0" yPosition="820.0">
+      <Fields>
+        <Field name="delegate" type="ICommandBehaviour" visibility="private"/>
+        <Field name="blnExecuted" type="Boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="ICommandBehaviour" name="objCommand"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="isExecuted" returnType="Boolean" visibility="public"/>
+        <Method name="setExecuted" returnType="Boolean" visibility="public">
+          <Argument type="Boolean" name="flag"/>
+        </Method>
+        <Method name="isUndone" returnType="Boolean" visibility="public"/>
+        <Method name="doCommand" returnType="Boolean" visibility="public"/>
+        <Method name="undoCommand" returnType="Boolean" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="CommandTracker" package="commandtracker" visibility="public" xPosition="1820.0" yPosition="820.0">
+      <Fields>
+        <Field name="stkDone" type="Stack&lt;ICommand&gt;" visibility="private"/>
+        <Field name="stkUndone" type="Stack&lt;ICommand&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="executeCommand" returnType="Boolean" visibility="public">
+          <Argument type="ICommand" name="objCommand"/>
+        </Method>
+        <Method name="undoLastCommand" returnType="Boolean" visibility="public"/>
+        <Method name="redoLastCommand" returnType="Boolean" visibility="public"/>
+        <Method name="isUndoable" returnType="Boolean" visibility="public"/>
+        <Method name="isRedoable" returnType="Boolean" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Administrators" package="data" visibility="public" xPosition="2120.0" yPosition="820.0">
+      <Fields>
+        <Field name="adminList" type="ArrayList&lt;Administrator&gt;" visibility="private"/>
+        <Field name="admins" type="Administrators" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private"/>
+      </Constructors>
+      <Methods>
+        <Method name="getInstance" returnType="Administrators" visibility="public" isStatic="true"/>
+        <Method name="loadFromDisk" returnType="String" visibility="public"/>
+        <Method name="saveToDisk" returnType="String" visibility="public"/>
+        <Method name="getAdministrators" returnType="ArrayList&lt;Administrator&gt;" visibility="public"/>
+        <Method name="addAdministrator" returnType="void" visibility="public">
+          <Argument type="Administrator" name="admin"/>
+        </Method>
+        <Method name="removeAdministrator" returnType="void" visibility="public">
+          <Argument type="Administrator" name="admin"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="AdministratorsObserver" package="data" visibility="public" xPosition="20.0" yPosition="1220.0">
+      <Fields>
+        <Field name="admins" type="Administrators" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="update" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Cars" package="data" visibility="public" xPosition="320.0" yPosition="1220.0">
+      <Fields>
+        <Field name="carsList" type="ArrayList&lt;Car&gt;" visibility="private"/>
+        <Field name="cars" type="Cars" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private"/>
+      </Constructors>
+      <Methods>
+        <Method name="getInstance" returnType="Cars" visibility="public" isStatic="true"/>
+        <Method name="loadFromDisk" returnType="String" visibility="public"/>
+        <Method name="saveToDisk" returnType="String" visibility="public"/>
+        <Method name="addCar" returnType="String" visibility="public">
+          <Argument type="Car" name="car"/>
+        </Method>
+        <Method name="removeCar" returnType="void" visibility="public">
+          <Argument type="Car" name="car"/>
+        </Method>
+        <Method name="getCars" returnType="ArrayList&lt;Car&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="CarsObserver" package="data" visibility="public" xPosition="620.0" yPosition="1220.0">
+      <Fields>
+        <Field name="cars" type="Cars" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="update" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Loans" package="data" visibility="public" xPosition="1820.0" yPosition="1220.0">
+      <Fields>
+        <Field name="loanList" type="ArrayList&lt;Loan&gt;" visibility="private"/>
+        <Field name="loans" type="Loans" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private"/>
+      </Constructors>
+      <Methods>
+        <Method name="getInstance" returnType="Loans" visibility="public" isStatic="true"/>
+        <Method name="loadFromDisk" returnType="String" visibility="public"/>
+        <Method name="saveToDisk" returnType="String" visibility="public"/>
+        <Method name="getLoans" returnType="ArrayList&lt;Loan&gt;" visibility="public"/>
+        <Method name="addLoan" returnType="void" visibility="public">
+          <Argument type="Loan" name="loan"/>
+        </Method>
+        <Method name="removeLoan" returnType="void" visibility="public">
+          <Argument type="Loan" name="loan"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="LoansObserver" package="data" visibility="public" xPosition="2120.0" yPosition="1220.0">
+      <Fields>
+        <Field name="loans" type="Loans" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="update" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Observed" package="data" visibility="public" xPosition="20.0" yPosition="1620.0">
+      <Fields>
+        <Field name="observers" type="ArrayList&lt;IObserver&gt;" visibility="protected" isTransient="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="registerObserver" returnType="Boolean" visibility="public">
+          <Argument type="IObserver" name="o"/>
+        </Method>
+        <Method name="removeObserver" returnType="Boolean" visibility="public">
+          <Argument type="IObserver" name="o"/>
+        </Method>
+        <Method name="removeObservers" returnType="void" visibility="public"/>
+        <Method name="notifyObservers" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="StaffMembers" package="data" visibility="public" xPosition="320.0" yPosition="1620.0">
+      <Fields>
+        <Field name="staffList" type="ArrayList&lt;Staff&gt;" visibility="private"/>
+        <Field name="staffMembers" type="StaffMembers" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private"/>
+      </Constructors>
+      <Methods>
+        <Method name="getInstance" returnType="StaffMembers" visibility="public" isStatic="true"/>
+        <Method name="loadFromDisk" returnType="String" visibility="public"/>
+        <Method name="saveToDisk" returnType="String" visibility="public"/>
+        <Method name="addStaff" returnType="void" visibility="public">
+          <Argument type="Staff" name="staff"/>
+        </Method>
+        <Method name="removeStaff" returnType="void" visibility="public">
+          <Argument type="Staff" name="staff"/>
+        </Method>
+        <Method name="getStaffMembers" returnType="ArrayList&lt;Staff&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="StaffObserver" package="data" visibility="public" xPosition="620.0" yPosition="1620.0">
+      <Fields>
+        <Field name="staffMembers" type="StaffMembers" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="update" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="UtilityFunctions" package="data" visibility="public" xPosition="920.0" yPosition="1620.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="formatDate" returnType="String" visibility="public" isStatic="true">
+          <Argument type="Date" name="date"/>
+        </Method>
+        <Method name="getDayLoans" returnType="ArrayList&lt;DayLoan&gt;" visibility="public" isStatic="true">
+          <Argument type="ArrayList&lt;Loan&gt;" name="loans"/>
+        </Method>
+        <Method name="getLongLoans" returnType="ArrayList&lt;LongLoan&gt;" visibility="public" isStatic="true">
+          <Argument type="ArrayList&lt;Loan&gt;" name="loans"/>
+        </Method>
+        <Method name="formatDateOfBirth" returnType="String" visibility="public" isStatic="true">
+          <Argument type="Date" name="date"/>
+        </Method>
+        <Method name="formatEnum" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="str"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="DayLoan" package="loaning" visibility="public" xPosition="1220.0" yPosition="1620.0">
+      <Fields>
+        <Field name="rentalDate" type="Date" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Staff" name="loaner"/>
+          <Argument type="Car" name="car"/>
+          <Argument type="Date" name="rentalDate"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getRentalDate" returnType="Date" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Loan" package="loaning" visibility="public" xPosition="1520.0" yPosition="1620.0">
+      <Fields>
+        <Field name="loaner" type="Staff" visibility="private"/>
+        <Field name="car" type="Car" visibility="private"/>
+        <Field name="loanNotes" type="String" visibility="private"/>
+        <Field name="fuelLevel" type="int" visibility="private"/>
+        <Field name="returnedDate" type="Date" visibility="private"/>
+        <Field name="milesDriven" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Staff" name="loaner"/>
+          <Argument type="Car" name="car"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getMilesDriven" returnType="int" visibility="public"/>
+        <Method name="setMilesDriven" returnType="void" visibility="public">
+          <Argument type="int" name="milesDriven"/>
+        </Method>
+        <Method name="getLoanNotes" returnType="String" visibility="public"/>
+        <Method name="setLoanNotes" returnType="void" visibility="public">
+          <Argument type="String" name="notes"/>
+        </Method>
+        <Method name="getFuelLevel" returnType="int" visibility="public"/>
+        <Method name="getLoaner" returnType="Staff" visibility="public"/>
+        <Method name="getCar" returnType="Car" visibility="public"/>
+        <Method name="setFuelLevel" returnType="void" visibility="public">
+          <Argument type="int" name="fuelLevel"/>
+        </Method>
+        <Method name="getReturnedDate" returnType="Date" visibility="public"/>
+        <Method name="setReturnedDate" returnType="void" visibility="public">
+          <Argument type="Date" name="returnedDate"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="LongLoan" package="loaning" visibility="public" xPosition="1820.0" yPosition="1620.0">
+      <Fields>
+        <Field name="startDate" type="Date" visibility="private"/>
+        <Field name="endDate" type="Date" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Staff" name="loaner"/>
+          <Argument type="Car" name="car"/>
+          <Argument type="Date" name="startDate"/>
+          <Argument type="Date" name="endDate"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getStartDate" returnType="Date" visibility="public"/>
+        <Method name="getEndDate" returnType="Date" visibility="public"/>
+        <Method name="getDuration" returnType="long" visibility="public">
+          <Argument type="TimeUnit" name="unit"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Address" package="people" visibility="public" xPosition="2278.0" yPosition="1501.0">
+      <Fields>
+        <Field name="lineOne" type="String" visibility="private"/>
+        <Field name="lineTwo" type="String" visibility="private"/>
+        <Field name="city" type="String" visibility="private"/>
+        <Field name="county" type="String" visibility="private"/>
+        <Field name="postCode" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="lineOne"/>
+          <Argument type="String" name="lineTwo"/>
+          <Argument type="String" name="city"/>
+          <Argument type="String" name="county"/>
+          <Argument type="String" name="postCode"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getAddressString" returnType="String" visibility="public"/>
+        <Method name="getAddressLineOne" returnType="String" visibility="public"/>
+        <Method name="getAddressLineTwo" returnType="String" visibility="public"/>
+        <Method name="getAddressCity" returnType="String" visibility="public"/>
+        <Method name="getAddressCounty" returnType="String" visibility="public"/>
+        <Method name="getAddressPostCode" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Administrator" package="people" visibility="public" xPosition="20.0" yPosition="2020.0">
+      <Fields>
+        <Field name="loans" type="Loans" visibility="package" isTransient="true"/>
+        <Field name="staffMembers" type="StaffMembers" visibility="package" isTransient="true"/>
+        <Field name="cars" type="Cars" visibility="package" isTransient="true"/>
+        <Field name="admins" type="Administrators" visibility="package" isTransient="true"/>
+        <Field name="loanObserver" type="LoansObserver" visibility="package" isTransient="true"/>
+        <Field name="staffObserver" type="StaffObserver" visibility="package" isTransient="true"/>
+        <Field name="carsObserver" type="CarsObserver" visibility="package" isTransient="true"/>
+        <Field name="adminsObserver" type="AdministratorsObserver" visibility="package" isTransient="true"/>
+        <Field name="password" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="staffRefNumb"/>
+          <Argument type="Position" name="position"/>
+          <Argument type="Faculty" name="faculty"/>
+          <Argument type="String" name="officeRoom"/>
+          <Argument type="String" name="workNumb"/>
+          <Argument type="Address" name="address"/>
+          <Argument type="String" name="title"/>
+          <Argument type="String" name="forename"/>
+          <Argument type="String" name="surname"/>
+          <Argument type="Date" name="dateOfBirth"/>
+          <Argument type="String" name="gender"/>
+          <Argument type="String" name="phoneNumber"/>
+          <Argument type="String" name="emailAddress"/>
+          <Argument type="String" name="password"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="initialiseData" returnType="void" visibility="public"/>
+        <Method name="getPassword" returnType="String" visibility="public"/>
+        <Method name="setPassword" returnType="void" visibility="public">
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="createCar" returnType="void" visibility="public">
+          <Argument type="Car" name="car"/>
+        </Method>
+        <Method name="getLoansForRef" returnType="ArrayList&lt;Loan&gt;" visibility="public">
+          <Argument type="String" name="refNumb"/>
+        </Method>
+        <Method name="getDayLoansForRef" returnType="ArrayList&lt;DayLoan&gt;" visibility="public">
+          <Argument type="String" name="refNumb"/>
+        </Method>
+        <Method name="getLongLoansForRef" returnType="ArrayList&lt;LongLoan&gt;" visibility="public">
+          <Argument type="String" name="refNumb"/>
+        </Method>
+        <Method name="getStaffForRefNumb" returnType="Staff" visibility="public">
+          <Argument type="String" name="refNumb"/>
+        </Method>
+        <Method name="getAdminForRefNumb" returnType="Administrator" visibility="public">
+          <Argument type="String" name="refNumb"/>
+        </Method>
+        <Method name="getCarByReg" returnType="Car" visibility="public">
+          <Argument type="String" name="carReg"/>
+        </Method>
+        <Method name="getLoansForCar" returnType="ArrayList&lt;Loan&gt;" visibility="public">
+          <Argument type="Car" name="car"/>
+        </Method>
+        <Method name="getLoans" returnType="ArrayList&lt;Loan&gt;" visibility="public"/>
+        <Method name="createStaffMember" returnType="void" visibility="public">
+          <Argument type="Staff" name="staff"/>
+        </Method>
+        <Method name="createAdministrator" returnType="void" visibility="public">
+          <Argument type="Administrator" name="admin"/>
+        </Method>
+        <Method name="getAdminstrators" returnType="ArrayList&lt;Administrator&gt;" visibility="public"/>
+        <Method name="getStaffMembers" returnType="ArrayList&lt;Staff&gt;" visibility="public"/>
+        <Method name="removeAdministrator" returnType="void" visibility="public">
+          <Argument type="Administrator" name="admin"/>
+        </Method>
+        <Method name="removeStaffMember" returnType="void" visibility="public">
+          <Argument type="Staff" name="staff"/>
+        </Method>
+        <Method name="assignLongLoan" returnType="LongLoan" visibility="public">
+          <Argument type="Car" name="car"/>
+          <Argument type="Staff" name="staff"/>
+        </Method>
+        <Method name="assignDayLoan" returnType="DayLoan" visibility="public">
+          <Argument type="Car" name="car"/>
+          <Argument type="Staff" name="staff"/>
+        </Method>
+        <Method name="returnCar" returnType="void" visibility="public">
+          <Argument type="Car" name="car"/>
+          <Argument type="Loan" name="loan"/>
+        </Method>
+        <Method name="returnCar" returnType="void" visibility="public">
+          <Argument type="Car" name="car"/>
+          <Argument type="DayLoan" name="dayLoan"/>
+        </Method>
+        <Method name="returnCar" returnType="void" visibility="public">
+          <Argument type="Car" name="car"/>
+          <Argument type="LongLoan" name="longLoan"/>
+        </Method>
+        <Method name="cancelLoan" returnType="void" visibility="public">
+          <Argument type="Car" name="car"/>
+          <Argument type="Loan" name="loan"/>
+        </Method>
+        <Method name="makeNotes" returnType="void" visibility="public">
+          <Argument type="Car" name="car"/>
+          <Argument type="String" name="note"/>
+        </Method>
+        <Method name="makeNotes" returnType="void" visibility="public">
+          <Argument type="Loan" name="loan"/>
+          <Argument type="String" name="note"/>
+        </Method>
+        <Method name="checkCar" returnType="void" visibility="public">
+          <Argument type="Car" name="car"/>
+        </Method>
+        <Method name="sendForService" returnType="void" visibility="public">
+          <Argument type="Car" name="car"/>
+        </Method>
+        <Method name="getCars" returnType="ArrayList&lt;Car&gt;" visibility="public"/>
+        <Method name="removeCar" returnType="void" visibility="public">
+          <Argument type="Car" name="car"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Person" package="people" visibility="public" xPosition="620.0" yPosition="2020.0">
+      <Fields>
+        <Field name="title" type="String" visibility="protected"/>
+        <Field name="forename" type="String" visibility="protected"/>
+        <Field name="surname" type="String" visibility="protected"/>
+        <Field name="dateOfBirth" type="Date" visibility="protected"/>
+        <Field name="gender" type="String" visibility="protected"/>
+        <Field name="phoneNumber" type="String" visibility="protected"/>
+        <Field name="emailAddress" type="String" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="title"/>
+          <Argument type="String" name="forename"/>
+          <Argument type="String" name="surname"/>
+          <Argument type="Date" name="dateOfBirth"/>
+          <Argument type="String" name="gender"/>
+          <Argument type="String" name="phoneNumber"/>
+          <Argument type="String" name="emailAddress"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getTitle" returnType="String" visibility="public"/>
+        <Method name="setTitle" returnType="void" visibility="public">
+          <Argument type="String" name="title"/>
+        </Method>
+        <Method name="getFullName" returnType="String" visibility="public"/>
+        <Method name="getForename" returnType="String" visibility="public"/>
+        <Method name="setForename" returnType="void" visibility="public">
+          <Argument type="String" name="forename"/>
+        </Method>
+        <Method name="getSurname" returnType="String" visibility="public"/>
+        <Method name="setSurname" returnType="void" visibility="public">
+          <Argument type="String" name="surname"/>
+        </Method>
+        <Method name="getDateOfBirth" returnType="Date" visibility="public"/>
+        <Method name="setDateOfBirth" returnType="void" visibility="public">
+          <Argument type="Date" name="dateOfBirth"/>
+        </Method>
+        <Method name="getGender" returnType="String" visibility="public"/>
+        <Method name="setGender" returnType="void" visibility="public">
+          <Argument type="String" name="gender"/>
+        </Method>
+        <Method name="getPhoneNumber" returnType="String" visibility="public"/>
+        <Method name="setPhoneNumber" returnType="void" visibility="public">
+          <Argument type="String" name="phoneNumber"/>
+        </Method>
+        <Method name="getEmailAddress" returnType="String" visibility="public"/>
+        <Method name="setEmailAddress" returnType="void" visibility="public">
+          <Argument type="String" name="emailAddress"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Staff" package="people" visibility="public" xPosition="1220.0" yPosition="2020.0">
+      <Fields>
+        <Field name="staffRefNumb" type="String" visibility="protected"/>
+        <Field name="position" type="Position" visibility="protected"/>
+        <Field name="faculty" type="Faculty" visibility="protected"/>
+        <Field name="officeRoom" type="String" visibility="protected"/>
+        <Field name="workNumb" type="String" visibility="protected"/>
+        <Field name="address" type="Address" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="staffRefNumb"/>
+          <Argument type="Position" name="position"/>
+          <Argument type="Faculty" name="faculty"/>
+          <Argument type="String" name="officeRoom"/>
+          <Argument type="String" name="workNumb"/>
+          <Argument type="Address" name="address"/>
+          <Argument type="String" name="title"/>
+          <Argument type="String" name="forename"/>
+          <Argument type="String" name="surname"/>
+          <Argument type="Date" name="dateOfBirth"/>
+          <Argument type="String" name="gender"/>
+          <Argument type="String" name="phoneNumber"/>
+          <Argument type="String" name="emailAddress"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getRefNumb" returnType="String" visibility="public"/>
+        <Method name="getPosition" returnType="Position" visibility="public"/>
+        <Method name="setPosition" returnType="void" visibility="public">
+          <Argument type="Position" name="position"/>
+        </Method>
+        <Method name="getFaculty" returnType="Faculty" visibility="public"/>
+        <Method name="setFaculty" returnType="void" visibility="public">
+          <Argument type="Faculty" name="faculty"/>
+        </Method>
+        <Method name="getOfficeRoom" returnType="String" visibility="public"/>
+        <Method name="setOfficeRoom" returnType="void" visibility="public">
+          <Argument type="String" name="officeRoom"/>
+        </Method>
+        <Method name="getWorkNumb" returnType="String" visibility="public"/>
+        <Method name="setWorkNumb" returnType="void" visibility="public">
+          <Argument type="String" name="workNumb"/>
+        </Method>
+        <Method name="getAddress" returnType="Address" visibility="public"/>
+        <Method name="setAddress" returnType="void" visibility="public">
+          <Argument type="Address" name="address"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ObjectSerialisationTest" package="testharness" visibility="public" xPosition="1520.0" yPosition="2020.0">
+      <Fields>
+        <Field name="cars" type="Cars" visibility="private" isStatic="true"/>
+        <Field name="staffMembers" type="StaffMembers" visibility="private" isStatic="true"/>
+        <Field name="loans" type="Loans" visibility="private" isStatic="true"/>
+        <Field name="admins" type="Administrators" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+        <Method name="addTestDataAndSave" returnType="void" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Interface name="ICommand" package="command.interfaces" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Methods>
+        <Method name="isExecuted" returnType="Boolean" visibility="package"/>
+        <Method name="setExecuted" returnType="Boolean" visibility="package">
+          <Argument type="Boolean" name="flag"/>
+        </Method>
+        <Method name="isUndone" returnType="Boolean" visibility="package"/>
+      </Methods>
+    </Interface>
+    <Interface name="ICommandBehaviour" package="command.interfaces" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Methods>
+        <Method name="doCommand" returnType="Boolean" visibility="package"/>
+        <Method name="undoCommand" returnType="Boolean" visibility="package"/>
+      </Methods>
+    </Interface>
+    <Interface name="ICommandTracker" package="command.interfaces" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Methods>
+        <Method name="executeCommand" returnType="Boolean" visibility="package">
+          <Argument type="ICommand" name="objACommand"/>
+        </Method>
+        <Method name="undoLastCommand" returnType="Boolean" visibility="package"/>
+        <Method name="redoLastCommand" returnType="Boolean" visibility="package"/>
+        <Method name="isUndoable" returnType="Boolean" visibility="package"/>
+        <Method name="isRedoable" returnType="Boolean" visibility="package"/>
+      </Methods>
+    </Interface>
+    <Interface name="IObserver" package="data" visibility="public" xPosition="920.0" yPosition="1220.0">
+      <Methods>
+        <Method name="update" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="ISerialisable" package="data" visibility="public" xPosition="1220.0" yPosition="1220.0">
+      <Methods>
+        <Method name="loadFromDisk" returnType="String" visibility="public" isAbstract="true"/>
+        <Method name="saveToDisk" returnType="String" visibility="public" isAbstract="true"/>
+      </Methods>
+    </Interface>
+    <Interface name="ISubject" package="data" visibility="public" xPosition="1520.0" yPosition="1220.0">
+      <Methods>
+        <Method name="registerObserver" returnType="Boolean" visibility="public">
+          <Argument type="IObserver" name="o"/>
+        </Method>
+        <Method name="removeObserver" returnType="Boolean" visibility="public">
+          <Argument type="IObserver" name="o"/>
+        </Method>
+        <Method name="removeObservers" returnType="void" visibility="public"/>
+        <Method name="notifyObservers" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Enum name="Classification" package="car" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Literals>
+        <Literal name="COMPACT"/>
+        <Literal name="COUPE"/>
+        <Literal name="ESTATE"/>
+        <Literal name="LORRY"/>
+        <Literal name="VAN"/>
+      </Literals>
+    </Enum>
+    <Enum name="FuelType" package="car" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Literals>
+        <Literal name="PETROL"/>
+        <Literal name="DIESEL"/>
+        <Literal name="LPG"/>
+        <Literal name="ELECTRIC"/>
+      </Literals>
+    </Enum>
+    <Enum name="LoanType" package="car" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Literals>
+        <Literal name="DAY_LOAN"/>
+        <Literal name="LONG_TERM_LOAN"/>
+      </Literals>
+    </Enum>
+    <Enum name="Location" package="car" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Literals>
+        <Literal name="PLYMOUTH"/>
+        <Literal name="DEVONPORT"/>
+        <Literal name="EXETER"/>
+        <Literal name="DERRIFORD"/>
+        <Literal name="FALMOUTH"/>
+      </Literals>
+    </Enum>
+    <Enum name="Status" package="car" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Literals>
+        <Literal name="AVAILABLE"/>
+        <Literal name="AWAITING_PREP"/>
+        <Literal name="AWAITING_REPAIR"/>
+        <Literal name="AWAITING_SALE"/>
+        <Literal name="DAMAGED"/>
+        <Literal name="IN_FOR_SERVICE"/>
+        <Literal name="OUT_ON_LOAN"/>
+        <Literal name="SOLD"/>
+      </Literals>
+    </Enum>
+    <Enum name="Transmission" package="car" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Literals>
+        <Literal name="AUTOMATIC"/>
+        <Literal name="MANUAL"/>
+      </Literals>
+    </Enum>
+    <Enum name="Faculty" package="people" visibility="public" xPosition="320.0" yPosition="2020.0">
+      <Literals>
+        <Literal name="ARTS_AND_HUMANITIES"/>
+        <Literal name="BUSINESS"/>
+        <Literal name="HEALTH_AND_HUMANS_CIENCES"/>
+        <Literal name="SCIENCE_AND_ENGINEERING"/>
+        <Literal name="MEDICINE_AND_DENTISTRY"/>
+        <Literal name="ACADEMIC_PARTNERSHIP"/>
+      </Literals>
+    </Enum>
+    <Enum name="Position" package="people" visibility="public" xPosition="920.0" yPosition="2020.0">
+      <Literals>
+        <Literal name="LECTURER"/>
+        <Literal name="PROFESSOR"/>
+        <Literal name="TECHNICIAN"/>
+        <Literal name="TECHNICAL_ASSISTANT"/>
+        <Literal name="CATERING_TEAM"/>
+        <Literal name="HEAD_OF_SCHOOL"/>
+        <Literal name="ESTATES_TEAM"/>
+        <Literal name="SECURITY"/>
+        <Literal name="ASSOCIATE_HEAD_OF_SCHOOL"/>
+        <Literal name="ASSOCIATE_PROFESSOR"/>
+        <Literal name="RESEARCH_PROFESSOR"/>
+        <Literal name="TRANSPORT_OFFICE_ADMIN"/>
+      </Literals>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="car.Car" target="data.Observed"/>
+    <HasRelation name="staffToRestore" source="commands.staff.UpdateStaffCommand" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="admins" source="testharness.ObjectSerialisationTest" target="data.Administrators" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="position" source="people.Staff" target="people.Position" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="delegate" source="commandtracker.Command" target="command.interfaces.ICommandBehaviour" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.loan.ReturnCarCommand" target="command.interfaces.ICommandBehaviour"/>
+    <HasRelation name="admins" source="people.Administrator" target="data.Administrators" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="admin" source="commands.staff.AddStaffCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="people.Staff" target="people.Person"/>
+    <HasRelation name="loans" source="data.LoansObserver" target="data.Loans" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="fuelType" source="car.Car" target="car.FuelType" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="data.StaffMembers" target="people.Staff" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="loan" source="commands.loan.ReturnCarCommand" target="loaning.Loan" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="longLoan" source="commands.loan.AddLongLoanCommand" target="loaning.LongLoan" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="staffObserver" source="people.Administrator" target="data.StaffObserver" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="loans" source="testharness.ObjectSerialisationTest" target="data.Loans" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="carsObserver" source="people.Administrator" target="data.CarsObserver" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.staff.AddStaffCommand" target="command.interfaces.ICommandBehaviour"/>
+    <HasRelation name="car" source="loaning.Loan" target="car.Car" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="adminToAdd" source="commands.admin.AddAdminCommand" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="loaning.Loan" target="car.Car" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="car.Car" target="car.Classification" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="loaning.LongLoan" target="loaning.Loan"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.Cars" target="data.ISerialisable"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.admin.AddAdminCommand" target="command.interfaces.ICommandBehaviour"/>
+    <HasRelation name="adminToUpdate" source="commands.admin.UpdateAdminCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="data.Observed" target="data.IObserver" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.StaffObserver" target="data.IObserver"/>
+    <IsRelation name="is" source="car.Service" target="data.Observed"/>
+    <IsRelation name="is" source="data.StaffMembers" target="data.Observed"/>
+    <IsRelation name="is" source="loaning.DayLoan" target="loaning.Loan"/>
+    <HasRelation name="dayLoan" source="commands.loan.AddDayLoanCommand" target="loaning.DayLoan" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="serviceRecord" source="car.Car" target="car.Service" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Service&gt;"/>
+    <HasRelation name="cars" source="data.CarsObserver" target="data.Cars" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.Administrators" target="data.ISerialisable"/>
+    <UseRelation source="data.Administrators" target="people.Administrator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="car.Car" target="car.FuelType" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="car.Car" target="car.Service" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="admin" source="commands.car.AddCarCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="observers" source="data.Observed" target="data.IObserver" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;IObserver&gt;"/>
+    <HasRelation name="classification" source="car.Car" target="car.Classification" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="staffMembers" source="people.Administrator" target="data.StaffMembers" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="admins" source="data.AdministratorsObserver" target="data.Administrators" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="people.Administrator" target="people.Staff"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.Loans" target="data.ISerialisable"/>
+    <HasRelation name="admins" source="data.Administrators" target="data.Administrators" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="commandtracker.CommandTracker" target="commandtracker.Command" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="loanObserver" source="people.Administrator" target="data.LoansObserver" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="people.Staff" target="people.Faculty" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="admin" source="commands.loan.AddLongLoanCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="staff" source="commands.loan.AddDayLoanCommand" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="people.Administrator" target="people.Staff" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="data.UtilityFunctions" target="loaning.Loan" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="data.Loans" target="data.Observed"/>
+    <HasRelation name="carToAdd" source="commands.car.AddCarCommand" target="car.Car" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commandtracker.CommandTracker" target="command.interfaces.ICommandTracker"/>
+    <HasRelation name="staffList" source="data.StaffMembers" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Staff&gt;"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.LoansObserver" target="data.IObserver"/>
+    <HasRelation name="adminList" source="data.Administrators" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Administrator&gt;"/>
+    <UseRelation source="people.Administrator" target="people.Administrator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="people.Administrator" target="loaning.Loan" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="loaning.Loan" target="data.Observed"/>
+    <UseRelation source="data.Loans" target="loaning.Loan" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="carToReturn" source="commands.loan.ReturnCarCommand" target="car.Car" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="adminsObserver" source="people.Administrator" target="data.AdministratorsObserver" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="car.Car" target="car.Transmission" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.loan.AddDayLoanCommand" target="command.interfaces.ICommandBehaviour"/>
+    <HasRelation name="admin" source="commands.admin.AddAdminCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="people.Administrator" target="car.Car" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="carToLoan" source="commands.loan.AddLongLoanCommand" target="car.Car" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="loans" source="people.Administrator" target="data.Loans" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.staff.DeleteStaffCommand" target="command.interfaces.ICommandBehaviour"/>
+    <IsRelation name="is" source="people.Person" target="data.Observed"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.car.DeleteCarCommand" target="command.interfaces.ICommandBehaviour"/>
+    <HasRelation name="cars" source="testharness.ObjectSerialisationTest" target="data.Cars" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="loaner" source="loaning.Loan" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="location" source="car.Car" target="car.Location" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="adminToRestore" source="commands.admin.UpdateAdminCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.car.AddCarCommand" target="command.interfaces.ICommandBehaviour"/>
+    <HasRelation name="staff" source="commands.loan.AddLongLoanCommand" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="command.interfaces.ICommand" target="command.interfaces.ICommandBehaviour"/>
+    <UseRelation source="car.Car" target="loaning.Loan" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="stkUndone" source="commandtracker.CommandTracker" target="command.interfaces.ICommand" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="cars" source="data.Cars" target="data.Cars" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="staffMembers" source="data.StaffObserver" target="data.StaffMembers" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.Observed" target="data.ISubject"/>
+    <UseRelation source="people.Staff" target="people.Position" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="cars" source="people.Administrator" target="data.Cars" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="loanType" source="car.Car" target="car.LoanType" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="data.ISubject" target="data.IObserver" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="staffMembers" source="data.StaffMembers" target="data.StaffMembers" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="data.Administrators" target="data.Observed"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.staff.UpdateStaffCommand" target="command.interfaces.ICommandBehaviour"/>
+    <HasRelation name="staffToAdd" source="commands.staff.AddStaffCommand" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="car.Car" target="car.Location" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="admin" source="commands.loan.ReturnCarCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="staffMembers" source="testharness.ObjectSerialisationTest" target="data.StaffMembers" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="admin" source="commands.car.DeleteCarCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="transmission" source="car.Car" target="car.Transmission" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="admin" source="commands.staff.DeleteStaffCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="command.interfaces.ICommandTracker" target="commandtracker.Command" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="people.Administrator" target="loaning.LongLoan" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="stkDone" source="commandtracker.CommandTracker" target="command.interfaces.ICommand" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.CarsObserver" target="data.IObserver"/>
+    <HasRelation name="faculty" source="people.Staff" target="people.Faculty" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="car.Car" target="car.Status" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="carsList" source="data.Cars" target="car.Car" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Car&gt;"/>
+    <UseRelation source="data.Cars" target="data.Cars" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="staffToUpdate" source="commands.staff.UpdateStaffCommand" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.admin.UpdateAdminCommand" target="command.interfaces.ICommandBehaviour"/>
+    <UseRelation source="loaning.Loan" target="people.Staff" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="staffToRemove" source="commands.staff.DeleteStaffCommand" target="people.Staff" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="admin" source="commands.staff.UpdateStaffCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="admin" source="commands.loan.AddDayLoanCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="address" source="people.Staff" target="people.Address" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.StaffMembers" target="data.ISerialisable"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commandtracker.Command" target="command.interfaces.ICommand"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="commands.loan.AddLongLoanCommand" target="command.interfaces.ICommandBehaviour"/>
+    <HasRelation name="carToLoan" source="commands.loan.AddDayLoanCommand" target="car.Car" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="data.UtilityFunctions" target="loaning.LongLoan" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="loanList" source="data.Loans" target="loaning.Loan" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Loan&gt;"/>
+    <UseRelation source="data.Cars" target="car.Car" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="people.Staff" target="people.Address" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="data.Cars" target="data.Observed"/>
+    <HasRelation name="loans" source="data.Loans" target="data.Loans" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="carToRemove" source="commands.car.DeleteCarCommand" target="car.Car" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="admin" source="commands.admin.UpdateAdminCommand" target="people.Administrator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="data.AdministratorsObserver" target="data.IObserver"/>
+    <HasRelation name="status" source="car.Car" target="car.Status" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
