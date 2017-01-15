@@ -56,6 +56,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
         this.txtPassword.setVisible(false);
         this.btnEdit.setVisible(false);
         this.txtStaffNumb.setEnabled(true);
+        enableTextBoxes();
         this.setSize(this.getSize().width,
                 jSeparator2.getLocation().y + jSeparator2.getSize().height 
                         + btnCreate.getSize().height + 100);
@@ -688,7 +689,6 @@ public class FormStaffDetails extends javax.swing.JFrame {
         this.txtSurname.setEnabled(true);
         this.txtTitle.setEnabled(true);
         this.txtWorkNumb.setEnabled(true);
-        this.txtPassword.setEnabled(true);
         this.btnUpdate.setEnabled(true);
     }
     

@@ -56,6 +56,7 @@ public class FormCar extends javax.swing.JFrame {
         this.cboStatus.setVisible(false);
         this.btnEdit.setVisible(false);
         this.cboStatus.setVisible(false);
+        this.btnViewService.setVisible(false);
         enableTextBoxes();
         hideHoldLabels();
         this.setSize(this.getSize().width,
