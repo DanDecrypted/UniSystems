@@ -685,13 +685,17 @@ public class FormStaffDetails extends javax.swing.JFrame {
         this.txtForename.setEnabled(true);
         this.txtGender.setEnabled(true);
         this.txtOffice.setEnabled(true);
-        this.txtPassword.setEnabled(true);
         this.txtPhoneNumb.setEnabled(true);
         this.txtPostCode.setEnabled(true);
         this.txtSurname.setEnabled(true);
         this.txtTitle.setEnabled(true);
         this.txtWorkNumb.setEnabled(true);
         this.btnUpdate.setEnabled(true);
+        if (this.cbAdmin.isSelected()){
+            this.lblPassword.setVisible(true);
+            this.txtPassword.setVisible(true);
+            this.txtPassword.setEnabled(true);
+        }
     }
     
     /**
