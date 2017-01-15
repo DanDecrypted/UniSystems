@@ -21,19 +21,19 @@ import people.Administrator;
  *
  * @author Craig
  */
-public class FormMain extends javax.swing.JFrame implements IObserver {
+public class FormLoan extends javax.swing.JFrame implements IObserver {
     private DefaultListModel listModel;
     private Administrator admin = new Administrator();
     private Staff staffObj;
     
-    public FormMain() { 
+    public FormLoan() { 
         initComponents();
         this.getContentPane().setBackground(new Color (238,238,238));
         
         listModel = new DefaultListModel();
     }
     
-    public FormMain(Administrator admin) {
+    public FormLoan(Administrator admin) {
         this.admin = admin;
         //admin.initialiseData();
         listModel = new DefaultListModel();
@@ -129,7 +129,7 @@ public class FormMain extends javax.swing.JFrame implements IObserver {
         jScrollPane1.setViewportView(jlstRentalHistory);
 
         lblRentalHistory.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
-        lblRentalHistory.setText("Rental History");
+        lblRentalHistory.setText("Loan History");
 
         btnRentDay.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         btnRentDay.setText("Day Loan");
@@ -339,20 +339,21 @@ public class FormMain extends javax.swing.JFrame implements IObserver {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLoan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLoan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLoan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLoan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormMain().setVisible(true);
+                new FormLoan().setVisible(true);
             }
         });
     }

@@ -264,7 +264,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Lato" size="18" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Rental History"/>
+        <Property name="text" type="java.lang.String" value="Loan History"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnRentDay">

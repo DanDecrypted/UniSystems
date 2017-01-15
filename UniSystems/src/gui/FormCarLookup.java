@@ -72,7 +72,7 @@ public class FormCarLookup extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Car Search");
+        jLabel1.setText("Car Lookup");
 
         btnCancel.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         btnCancel.setText("Cancel");
@@ -121,7 +121,7 @@ public class FormCarLookup extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddCar)
                     .addComponent(btnCancel))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

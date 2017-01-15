@@ -83,7 +83,7 @@ public class FormCarStatusLookup extends javax.swing.JFrame {
 
         lblTitle.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle.setText("Car Lookup");
+        lblTitle.setText("Manage Cars");
 
         cboStatus.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         cboStatus.setModel(new DefaultComboBoxModel(Status.values()));
@@ -174,7 +174,6 @@ public class FormCarStatusLookup extends javax.swing.JFrame {
                 .addComponent(lblInfo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
