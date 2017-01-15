@@ -88,6 +88,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
             this.txtCity.setText(staff.getAddress().getAddressCity());
             this.txtCounty.setText(staff.getAddress().getAddressCounty());
             this.txtPostCode.setText(staff.getAddress().getAddressPostCode());
+            this.btnUpdate.setVisible(false);
             for (Administrator administrator : admin.getAdminstrators()){
                 if (administrator.getRefNumb().equals(staffNumb)){
                     txtPassword.setText(administrator.getPassword());
@@ -686,6 +687,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
         this.txtTitle.setEnabled(true);
         this.txtWorkNumb.setEnabled(true);
         this.txtPassword.setEnabled(true);
+        this.btnUpdate.setEnabled(true);
     }//GEN-LAST:event_btnEditActionPerformed
 
     /**

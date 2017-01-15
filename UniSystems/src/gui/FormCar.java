@@ -54,6 +54,11 @@ public class FormCar extends javax.swing.JFrame {
         this.lblStatusTitle.setVisible(false);
         this.btnService.setVisible(false);
         this.cboStatus.setVisible(false);
+        this.lblLoanTypeHold.setVisible(false);
+        this.lblLocationHold.setVisible(false);
+        this.lblClassHold.setVisible(false);
+        this.lblTransmissionHold.setVisible(false);
+        this.lblFuelHold.setVisible(false);
         this.setSize(this.getSize().width,
                 jSeparator2.getLocation().y + jSeparator2.getSize().height
                         + btnCreate.getSize().height);
@@ -83,15 +88,23 @@ public class FormCar extends javax.swing.JFrame {
             this.txtRegNo.setText(regNo);
             this.txtMake.setText(car.getMake());
             this.txtModel.setText(car.getModel());
-            this.cboClassification.setSelectedItem(data.UtilityFunctions.formatEnum(car.getClassification().toString()));
+            this.cboClassification.setVisible(false);
             this.txtMileage.setText(Integer.toString(car.getMilage()));
-            this.cboFuelType.setSelectedItem(data.UtilityFunctions.formatEnum(car.getFuelType().toString()));
-            this.cboTransmission.setSelectedItem(data.UtilityFunctions.formatEnum(car.getTransmission().toString()));
+            this.cboFuelType.setVisible(false);
+            this.cboTransmission.setVisible(false);
             this.txtDoors.setText(Integer.toString(car.getDoors()));
             this.txtSeats.setText(Integer.toString(car.getSeats()));
-            this.cboLocation.setSelectedItem(car.getLocation());
+            this.cboLocation.setVisible(false);
             this.txtSpace.setText(car.getParkingSpace());
             this.lblStatus.setText(data.UtilityFunctions.formatEnum(car.getStatus().toString()));
+            this.lblClassHold.setText(data.UtilityFunctions.formatEnum(car.getClassification().toString()));
+            this.lblFuelHold.setText(data.UtilityFunctions.formatEnum(car.getFuelType().toString()));
+            this.lblTransmissionHold.setText(data.UtilityFunctions.formatEnum(car.getTransmission().toString()));
+            this.lblLocationHold.setText(data.UtilityFunctions.formatEnum(car.getLocation().toString()));
+            this.lblLoanTypeHold.setText(data.UtilityFunctions.formatEnum(car.getLoanType().toString()));
+            this.cboLoanType.setVisible(false);
+            this.cboStatus.setVisible(false);
+            this.btnUpdate.setVisible(false);
             populateServiceHistoryList(car);
             populateLoanHistory(car);
         }
@@ -200,9 +213,11 @@ public class FormCar extends javax.swing.JFrame {
         btnViewService = new javax.swing.JButton();
         btnService = new javax.swing.JButton();
         lblLoanTypeHold = new javax.swing.JLabel();
-        lblLoanTypeHold1 = new javax.swing.JLabel();
-        lblLoanTypeHold2 = new javax.swing.JLabel();
-        lblLoanTypeHold3 = new javax.swing.JLabel();
+        lblLocationHold = new javax.swing.JLabel();
+        lblClassHold = new javax.swing.JLabel();
+        lblTransmissionHold = new javax.swing.JLabel();
+        lblFuelHold = new javax.swing.JLabel();
+        btnEdit = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -254,15 +269,19 @@ public class FormCar extends javax.swing.JFrame {
         lblServiceHistory.setText("Service History");
 
         txtRegNo.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        txtRegNo.setEnabled(false);
 
         txtMileage.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        txtMileage.setEnabled(false);
 
         txtDoors.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        txtDoors.setEnabled(false);
 
         txtSeats.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        txtSeats.setEnabled(false);
 
         lblStatus.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
-        lblStatus.setText("PLACEHOLDER");
+        lblStatus.setText("A");
 
         cboTransmission.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         cboTransmission.setModel(new DefaultComboBoxModel(Transmission.values()));
@@ -316,13 +335,16 @@ public class FormCar extends javax.swing.JFrame {
         lblSpace.setText("Space:");
 
         txtSpace.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        txtSpace.setEnabled(false);
 
         lblMake.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblMake.setText("Make:");
 
         txtMake.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        txtMake.setEnabled(false);
 
         txtModel.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
+        txtModel.setEnabled(false);
 
         lblModel.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
         lblModel.setText("Model:");
@@ -345,11 +367,20 @@ public class FormCar extends javax.swing.JFrame {
 
         lblLoanTypeHold.setText("A");
 
-        lblLoanTypeHold1.setText("A");
+        lblLocationHold.setText("A");
 
-        lblLoanTypeHold2.setText("A");
+        lblClassHold.setText("A");
 
-        lblLoanTypeHold3.setText("A");
+        lblTransmissionHold.setText("A");
+
+        lblFuelHold.setText("A");
+
+        btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -399,33 +430,13 @@ public class FormCar extends javax.swing.JFrame {
                             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(148, 148, 148)
-                .addComponent(btnUpdate)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCreate)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnService)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                .addComponent(btnCancel)
-                .addGap(63, 63, 63))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblRegTitle)
-                                .addGap(222, 222, 222))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblStatusTitle)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblStatus)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addComponent(cboStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblRegTitle)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -452,32 +463,56 @@ public class FormCar extends javax.swing.JFrame {
                                 .addComponent(txtModel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblLoanType)
-                                .addGap(62, 62, 62)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cboFuelType, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtMileage, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cboTransmission, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cboClassification, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cboLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(lblMileageTitle)
-                            .addComponent(lblFuelTitle)
+                            .addComponent(lblLoanType)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblTransmissionTitle)
                                     .addComponent(lblClassTitle)
-                                    .addComponent(lblLocationTitle))
+                                    .addComponent(lblLocationTitle)
+                                    .addComponent(lblFuelTitle)
+                                    .addComponent(lblMileageTitle))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblLoanTypeHold2)
-                                    .addComponent(lblLoanTypeHold3)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(lblLoanTypeHold, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lblLoanTypeHold1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGap(19, 19, 19)
-                                .addComponent(cboLoanType, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(txtMileage, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblFuelHold)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cboFuelType, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblClassHold)
+                                            .addComponent(lblTransmissionHold)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(lblLoanTypeHold, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(lblLocationHold, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cboLoanType, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cboLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cboClassification, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cboTransmission, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                .addGap(0, 65, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(btnEdit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnUpdate)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblStatusTitle)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblStatus)
+                        .addGap(6, 6, 6)
+                        .addComponent(cboStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnCreate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnService)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                        .addComponent(btnCancel)
+                        .addGap(63, 63, 63))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -487,12 +522,11 @@ public class FormCar extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblRegTitle)
-                        .addComponent(txtRegNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblMileageTitle))
-                    .addComponent(txtMileage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblRegTitle)
+                    .addComponent(txtRegNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMileageTitle)
+                    .addComponent(txtMileage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLoanType)
@@ -506,27 +540,28 @@ public class FormCar extends javax.swing.JFrame {
                     .addComponent(lblModel)
                     .addComponent(lblLocationTitle)
                     .addComponent(cboLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblLoanTypeHold1))
+                    .addComponent(lblLocationHold))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSpace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSpace)
                     .addComponent(lblClassTitle)
                     .addComponent(cboClassification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblLoanTypeHold2))
+                    .addComponent(lblClassHold))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDoors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDoorsTitle)
                     .addComponent(lblTransmissionTitle)
                     .addComponent(cboTransmission, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblLoanTypeHold3))
+                    .addComponent(lblTransmissionHold))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSeats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSeatsTitle)
                     .addComponent(lblFuelTitle)
-                    .addComponent(cboFuelType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboFuelType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFuelHold))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblStatus)
@@ -537,8 +572,9 @@ public class FormCar extends javax.swing.JFrame {
                     .addComponent(btnCancel)
                     .addComponent(btnCreate)
                     .addComponent(btnUpdate)
-                    .addComponent(btnService))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 250, Short.MAX_VALUE)
+                    .addComponent(btnService)
+                    .addComponent(btnEdit))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -609,6 +645,30 @@ public class FormCar extends javax.swing.JFrame {
         commandTracker.undoLastCommand();
     }//GEN-LAST:event_mnuUndoActionPerformed
 
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        this.lblLoanTypeHold.setVisible(false);
+        this.lblLocationHold.setVisible(false);
+        this.lblClassHold.setVisible(false);
+        this.lblTransmissionHold.setVisible(false);
+        this.lblFuelHold.setVisible(false);
+        this.lblStatus.setVisible(false);
+        this.cboClassification.setVisible(true);
+        this.cboFuelType.setVisible(true);
+        this.cboLoanType.setVisible(true);
+        this.cboLocation.setVisible(true);
+        this.cboTransmission.setVisible(true);
+        this.cboStatus.setVisible(true);
+        this.btnUpdate.setVisible(true);
+        this.btnEdit.setVisible(false);
+        this.txtDoors.setEnabled(true);
+        this.txtMake.setEnabled(true);
+        this.txtMileage.setEnabled(true);
+        this.txtModel.setEnabled(true);
+        this.txtRegNo.setEnabled(true);
+        this.txtSeats.setEnabled(true);
+        this.txtSpace.setEnabled(true);
+    }//GEN-LAST:event_btnEditActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -649,6 +709,7 @@ public class FormCar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnCreate;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnService;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnViewService;
@@ -664,15 +725,15 @@ public class FormCar extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblClassHold;
     private javax.swing.JLabel lblClassTitle;
     private javax.swing.JLabel lblDoorsTitle;
+    private javax.swing.JLabel lblFuelHold;
     private javax.swing.JLabel lblFuelTitle;
     private javax.swing.JLabel lblLoanHistory;
     private javax.swing.JLabel lblLoanType;
     private javax.swing.JLabel lblLoanTypeHold;
-    private javax.swing.JLabel lblLoanTypeHold1;
-    private javax.swing.JLabel lblLoanTypeHold2;
-    private javax.swing.JLabel lblLoanTypeHold3;
+    private javax.swing.JLabel lblLocationHold;
     private javax.swing.JLabel lblLocationTitle;
     private javax.swing.JLabel lblMake;
     private javax.swing.JLabel lblMileageTitle;
@@ -684,6 +745,7 @@ public class FormCar extends javax.swing.JFrame {
     private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblStatusTitle;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblTransmissionHold;
     private javax.swing.JLabel lblTransmissionTitle;
     private javax.swing.JList<String> lstLoanHistory;
     private javax.swing.JList<String> lstServiceHistory;
