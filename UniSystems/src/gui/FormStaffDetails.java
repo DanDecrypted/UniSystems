@@ -597,7 +597,6 @@ public class FormStaffDetails extends javax.swing.JFrame {
             ICommand objCommand = new Command(objAdd);
             this.commandTracker.executeCommand(objCommand);
             }
-            else{
             Staff newStaff = new Staff(txtStaffNumb.getText(), (Position)cboPosition.getSelectedItem(), 
                 (Faculty)cboFaculty.getSelectedItem(), txtOffice.getText(), txtWorkNumb.getText(), 
                 new Address(txtAddressOne.getText(),txtAddressTwo.getText(),txtCity.getText(),txtCounty.getText(),txtPostCode.getText()), 
@@ -609,7 +608,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
             ICommandBehaviour objAdd = new AddStaffCommand(admin, newStaff);
             ICommand objCommand = new Command(objAdd);
             this.commandTracker.executeCommand(objCommand);
-            }
+            
         } catch (Exception e) {
         }  //formatter.parse throws an uncaught exception if not properly used.
     }//GEN-LAST:event_btnCreateActionPerformed
@@ -618,6 +617,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
         if (this.cbAdmin.isSelected()){
             this.lblPassword.setVisible(true);
             this.txtPassword.setVisible(true);
+            this.txtPassword.setEnabled(true);
         }
         else{
             this.lblPassword.setVisible(false);
@@ -707,6 +707,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
         this.cboFaculty.setVisible(true);
         this.btnEdit.setVisible(false);
         this.btnUpdate.setVisible(true);
+        this.cbAdmin.setVisible(true);
         enableTextBoxes();
     }//GEN-LAST:event_btnEditActionPerformed
     
@@ -726,6 +727,7 @@ public class FormStaffDetails extends javax.swing.JFrame {
         this.txtTitle.setEnabled(true);
         this.txtWorkNumb.setEnabled(true);
         this.btnUpdate.setEnabled(true);
+        this.jxDOB.setEditable(true);
         if (this.cbAdmin.isSelected()){
             this.lblPassword.setVisible(true);
             this.txtPassword.setVisible(true);
