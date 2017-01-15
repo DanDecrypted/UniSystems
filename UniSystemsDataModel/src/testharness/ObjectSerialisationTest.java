@@ -71,6 +71,11 @@ public class ObjectSerialisationTest{
         Administrator craig = new Administrator("10488708", Position.TRANSPORT_OFFICE_ADMIN, Faculty.SCIENCE_AND_ENGINEERING, "BGB106", "07474305999", new Address("15", "Tot Avenue", "Plymouth", "Devon", "PL4 8PH"),
                 "Mr", "Craig", "Banyard", new Date(92,6,3), "Male", "07474306999", "cbanyard@bsc.com", "password");
         
+        Administrator superUser = new Administrator("admin", Position.TRANSPORT_OFFICE_ADMIN, Faculty.SCIENCE_AND_ENGINEERING, "PSQ101", "1010101010", new Address("15", "Tot Avenue", "Plymouth", "Devon", "PL4 8PH"),
+                "Dr", "Super", "User", new Date(94,1,1), "Male", "1010101010", "super@user.com", "password");
+        Staff superStaff = new Staff("admin", Position.TRANSPORT_OFFICE_ADMIN, Faculty.SCIENCE_AND_ENGINEERING, "PSQ101", "1010101010", new Address("15", "Tot Avenue", "Plymouth", "Devon", "PL4 8PH"),
+                "Dr", "Super", "User", new Date(94,1,1), "Male", "1010101010", "super@user.com");
+        
         ArrayList<String> arrayRepairs = new ArrayList<String>();
         arrayRepairs.add("Brakes");
         
@@ -81,6 +86,8 @@ public class ObjectSerialisationTest{
         danScott.createCar(car3);
         danScott.createCar(car4);
         danScott.createCar(car5);
+        danScott.createStaffMember(superStaff);
+        danScott.createAdministrator(superUser);
         danScott.createStaffMember(staff);
         danScott.createStaffMember(staff2);
         danScott.createStaffMember(staff3);
@@ -92,7 +99,6 @@ public class ObjectSerialisationTest{
         najim.createAdministrator(najim);
         craig.createAdministrator(craig);
         najim.createStaffMember(staff4);
-        
         car2.addService(service);
     }
 }
