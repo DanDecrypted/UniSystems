@@ -94,10 +94,16 @@ public class FormStaffDetails extends javax.swing.JFrame {
             this.txtCounty.setText(staff.getAddress().getAddressCounty());
             this.txtPostCode.setText(staff.getAddress().getAddressPostCode());
             this.btnUpdate.setVisible(false);
+            this.lblPassword.setVisible(false);
+            this.txtPassword.setVisible(false);
+            this.cbAdmin.setVisible(false);
             for (Administrator administrator : admin.getAdminstrators()){
                 if (administrator.getRefNumb().equals(staffNumb)){
                     txtPassword.setText(administrator.getPassword());
+                    this.cbAdmin.setVisible(true);
                     this.cbAdmin.setSelected(true);
+                    this.lblPassword.setVisible(true);
+                    this.txtPassword.setVisible(true);
                 }
             }
         }
@@ -672,6 +678,8 @@ public class FormStaffDetails extends javax.swing.JFrame {
         this.cboPosition.setVisible(true);
         this.lblFacultyHold.setVisible(false);
         this.cboFaculty.setVisible(true);
+        this.btnEdit.setVisible(false);
+        this.btnUpdate.setVisible(true);
         enableTextBoxes();
     }//GEN-LAST:event_btnEditActionPerformed
     
