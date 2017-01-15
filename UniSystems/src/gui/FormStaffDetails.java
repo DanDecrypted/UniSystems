@@ -5,6 +5,7 @@
  *  Daniel Scott and Najim Mazidi.
  */
 package gui;
+
 import command.interfaces.ICommand;
 import command.interfaces.ICommandBehaviour;
 import command.interfaces.ICommandTracker;
@@ -33,21 +34,23 @@ import people.Staff;
  * @author Craig
  */
 public class FormStaffDetails extends javax.swing.JFrame {
+
     //private StaffMembers staff = StaffMembers.getInstance();
     //private Loans loans = Loans.getInstance();
-    private Administrator adminToUpdate;
+    private Administrator admin;
     private DefaultListModel listModel;
     private ICommandTracker commandTracker = new CommandTracker();
+
     /**
      * Creates new form FormStaffDetails
      */
     public FormStaffDetails() {
-        this.getContentPane().setBackground(new Color (238,238,238));
+        this.getContentPane().setBackground(new Color(238, 238, 238));
         initComponents();
     }
-    
-    public FormStaffDetails(Administrator admin){
-        this.getContentPane().setBackground(new Color (238,238,238));
+
+    public FormStaffDetails(Administrator admin) {
+        this.getContentPane().setBackground(new Color(238, 238, 238));
         initComponents();
         this.btnUpdate.setVisible(false);
         this.btnDelete.setVisible(false);
@@ -62,16 +65,16 @@ public class FormStaffDetails extends javax.swing.JFrame {
         this.lblPositionHold.setVisible(false);
         enableTextBoxes();
         this.setSize(this.getSize().width,
-                jSeparator2.getLocation().y + jSeparator2.getSize().height 
-                        + btnCreate.getSize().height + 100);
-        this.adminToUpdate = admin;
+                jSeparator2.getLocation().y + jSeparator2.getSize().height
+                + btnCreate.getSize().height + 100);
+        this.admin = admin;
     }
-    
-    public FormStaffDetails(Administrator admin, String staffNumb){
-        this.getContentPane().setBackground(new Color (238,238,238));
-        
+
+    public FormStaffDetails(Administrator admin, String staffNumb) {
+        this.getContentPane().setBackground(new Color(238, 238, 238));
+
         initComponents();
-        
+
         listModel = new DefaultListModel();
         Staff staff = admin.getStaffForRefNumb(staffNumb);
         if (staff != null) {
@@ -99,8 +102,8 @@ public class FormStaffDetails extends javax.swing.JFrame {
             this.lblPassword.setVisible(false);
             this.txtPassword.setVisible(false);
             this.cbAdmin.setVisible(false);
-            for (Administrator administrator : admin.getAdminstrators()){
-                if (administrator.getRefNumb().equals(staffNumb)){
+            for (Administrator administrator : admin.getAdminstrators()) {
+                if (administrator.getRefNumb().equals(staffNumb)) {
                     txtPassword.setText(administrator.getPassword());
                     this.cbAdmin.setVisible(true);
                     this.cbAdmin.setSelected(true);
@@ -109,21 +112,21 @@ public class FormStaffDetails extends javax.swing.JFrame {
                 }
             }
         }
-        this.adminToUpdate = admin;
+        this.admin = admin;
         populateLoanList(staffNumb);
     }
-    
+
     private void populateLoanList(String ref) {
         listModel.clear();
-        ArrayList<LongLoan> longLoans = adminToUpdate.getLongLoansForRef(ref);
-        ArrayList<DayLoan> dayLoans = adminToUpdate.getDayLoansForRef(ref);
+        ArrayList<LongLoan> longLoans = admin.getLongLoansForRef(ref);
+        ArrayList<DayLoan> dayLoans = admin.getDayLoansForRef(ref);
         for (LongLoan longLoan : longLoans) {
             String listElement = longLoan.getCar().getRegNo() + " - ";
             listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
-                        + data.UtilityFunctions.formatDate(longLoan.getEndDate());
+                    + data.UtilityFunctions.formatDate(longLoan.getEndDate());
             listModel.addElement(listElement);
         }
-        
+
         for (DayLoan dayLoan : dayLoans) {
             String listElement = dayLoan.getCar().getRegNo() + " - ";
             listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
@@ -587,121 +590,120 @@ public class FormStaffDetails extends javax.swing.JFrame {
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-YYYY");
         try {
-            if (cbAdmin.isSelected()){
-            Administrator newAdmin = new Administrator(txtStaffNumb.getText(), (Position)cboPosition.getSelectedItem(),
-                    (Faculty)cboFaculty.getSelectedItem(),txtOffice.getText(), txtWorkNumb.getText(),
-                    new Address(txtAddressOne.getText(),txtAddressTwo.getText(),txtCity.getText(),txtCounty.getText(),txtPostCode.getText()),
-                    txtTitle.getText(), txtForename.getText(), txtSurname.getText(), jxDOB.getDate(), txtGender.getText()
-                    , txtPhoneNumb.getText(), txtEmail.getText(), txtPassword.getText()); 
-            this.lblUpdate.setText("Admin Created");
-            ICommandBehaviour objAdd = new AddAdminCommand(adminToUpdate, newAdmin);
-            ICommand objCommand = new Command(objAdd);
-            this.commandTracker.executeCommand(objCommand);
+            if (cbAdmin.isSelected()) {
+                Administrator newAdmin = new Administrator(txtStaffNumb.getText(), (Position) cboPosition.getSelectedItem(),
+                        (Faculty) cboFaculty.getSelectedItem(), txtOffice.getText(), txtWorkNumb.getText(),
+                        new Address(txtAddressOne.getText(), txtAddressTwo.getText(), txtCity.getText(), txtCounty.getText(), txtPostCode.getText()),
+                        txtTitle.getText(), txtForename.getText(), txtSurname.getText(), jxDOB.getDate(), txtGender.getText(), txtPhoneNumb.getText(), txtEmail.getText(), txtPassword.getText());
+                this.lblUpdate.setText("Admin Created");
+                ICommandBehaviour objAdd = new AddAdminCommand(admin, newAdmin);
+                ICommand objCommand = new Command(objAdd);
+                this.commandTracker.executeCommand(objCommand);
             }
-            Staff newStaff = new Staff(txtStaffNumb.getText(), (Position)cboPosition.getSelectedItem(), 
-                (Faculty)cboFaculty.getSelectedItem(), txtOffice.getText(), txtWorkNumb.getText(), 
-                new Address(txtAddressOne.getText(),txtAddressTwo.getText(),txtCity.getText(),txtCounty.getText(),txtPostCode.getText()), 
+            Staff newStaff = new Staff(txtStaffNumb.getText(), (Position) cboPosition.getSelectedItem(),
+                    (Faculty) cboFaculty.getSelectedItem(), txtOffice.getText(), txtWorkNumb.getText(),
+                    new Address(txtAddressOne.getText(), txtAddressTwo.getText(), txtCity.getText(), txtCounty.getText(), txtPostCode.getText()),
                     txtTitle.getText(), txtForename.getText(), txtSurname.getText(), jxDOB.getDate(),
-                txtGender.getText(), txtPhoneNumb.getText(), txtEmail.getText() );
+                    txtGender.getText(), txtPhoneNumb.getText(), txtEmail.getText());
             System.out.println("new staff member created " + newStaff.getForename());
             this.lblUpdate.setText("Staff member Created");
-            if (adminToUpdate == null) adminToUpdate = new Administrator(); 
-            ICommandBehaviour objAdd = new AddStaffCommand(adminToUpdate, newStaff);
+            if (admin == null) {
+                admin = new Administrator();
+            }
+            ICommandBehaviour objAdd = new AddStaffCommand(admin, newStaff);
             ICommand objCommand = new Command(objAdd);
             this.commandTracker.executeCommand(objCommand);
-            
+
         } catch (Exception e) {
         }  //formatter.parse throws an uncaught exception if not properly used.
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void cbAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAdminActionPerformed
-        if (this.cbAdmin.isSelected()){
+        if (this.cbAdmin.isSelected()) {
             this.lblPassword.setVisible(true);
             this.txtPassword.setVisible(true);
             this.txtPassword.setEnabled(true);
-        }
-        else{
+        } else {
             this.lblPassword.setVisible(false);
             this.txtPassword.setVisible(false);
         }
     }//GEN-LAST:event_cbAdminActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        Staff staffBeforeUpdate = adminToUpdate.getStaffForRefNumb(this.txtStaffNumb.getText());
-        
+        Staff staffBeforeUpdate = admin.getStaffForRefNumb(this.txtStaffNumb.getText());
 
         Administrator adminToUpdate = null;
         Administrator tempAdmin = null;
-        for (Administrator administrator : this.adminToUpdate.getAdminstrators()) {
+        for (Administrator administrator : this.admin.getAdminstrators()) {
             if (administrator.getRefNumb().equals(this.txtStaffNumb.getText())) {
                 adminToUpdate = administrator;
-                tempAdmin = new Administrator(txtStaffNumb.getText(), this.adminToUpdate.getPosition(), 
-        this.adminToUpdate.getFaculty(), this.adminToUpdate.getOfficeRoom(), this.adminToUpdate.getWorkNumb(), this.adminToUpdate.getAddress(), 
-        this.adminToUpdate.getTitle(), this.adminToUpdate.getForename(), this.adminToUpdate.getSurname(), this.adminToUpdate.getDateOfBirth(), 
-        this.adminToUpdate.getGender(), this.adminToUpdate.getPhoneNumber(), this.adminToUpdate.getEmailAddress(), this.adminToUpdate.getPassword());
+                tempAdmin = new Administrator(txtStaffNumb.getText(), adminToUpdate.getPosition(),
+                        adminToUpdate.getFaculty(), adminToUpdate.getOfficeRoom(), adminToUpdate.getWorkNumb(), adminToUpdate.getAddress(),
+                        adminToUpdate.getTitle(), adminToUpdate.getForename(), adminToUpdate.getSurname(), adminToUpdate.getDateOfBirth(),
+                        adminToUpdate.getGender(), adminToUpdate.getPhoneNumber(), adminToUpdate.getEmailAddress(), adminToUpdate.getPassword());
             }
         }
 
-        Address address = new Address(txtAddressOne.getText(),txtAddressTwo.getText(),txtCity.getText(),
-                txtCounty.getText(),this.txtPostCode.getText());
+        Address address = new Address(txtAddressOne.getText(), txtAddressTwo.getText(), txtCity.getText(),
+                txtCounty.getText(), this.txtPostCode.getText());
         if (txtPassword.isVisible()) {
-            
+
             adminToUpdate.setAddress(address);
             adminToUpdate.setDateOfBirth(jxDOB.getDate());
             adminToUpdate.setEmailAddress(txtEmail.getText());
-            adminToUpdate.setFaculty((Faculty)cboFaculty.getSelectedItem());
+            adminToUpdate.setFaculty((Faculty) cboFaculty.getSelectedItem());
             adminToUpdate.setForename(txtForename.getText());
             adminToUpdate.setGender(txtGender.getText());
             adminToUpdate.setOfficeRoom(txtOffice.getText());
             adminToUpdate.setPhoneNumber(txtPhoneNumb.getText());
-            adminToUpdate.setPosition((Position)cboPosition.getSelectedItem());
+            adminToUpdate.setPosition((Position) cboPosition.getSelectedItem());
             adminToUpdate.setSurname(txtSurname.getText());
             adminToUpdate.setTitle(txtTitle.getText());
             adminToUpdate.setWorkNumb(txtWorkNumb.getText());
             adminToUpdate.setPassword(txtPassword.getText());
-            
-            ICommandBehaviour objUpdateAdmin = new UpdateAdminCommand(this.adminToUpdate, adminToUpdate, tempAdmin);
+
+            ICommandBehaviour objUpdateAdmin = new UpdateAdminCommand(this.admin, adminToUpdate, tempAdmin);
             ICommand adminCommand = new Command(objUpdateAdmin);
             this.commandTracker.executeCommand(adminCommand);
-            
+
         }
-        
-        Staff staff = this.adminToUpdate.getStaffForRefNumb(this.txtStaffNumb.getText());
-        Staff newStaff = new Staff(txtStaffNumb.getText(), staff.getPosition(), 
-        staff.getFaculty(), staff.getOfficeRoom(), staff.getWorkNumb(), staff.getAddress(), 
-        staff.getTitle(), staff.getForename(), staff.getSurname(), staff.getDateOfBirth(), 
-        staff.getGender(), staff.getPhoneNumber(), staff.getEmailAddress());
-        
+
+        Staff staff = this.admin.getStaffForRefNumb(this.txtStaffNumb.getText());
+        Staff newStaff = new Staff(txtStaffNumb.getText(), staff.getPosition(),
+                staff.getFaculty(), staff.getOfficeRoom(), staff.getWorkNumb(), staff.getAddress(),
+                staff.getTitle(), staff.getForename(), staff.getSurname(), staff.getDateOfBirth(),
+                staff.getGender(), staff.getPhoneNumber(), staff.getEmailAddress());
+
         newStaff.setAddress(address);
         newStaff.setDateOfBirth(jxDOB.getDate());
         newStaff.setEmailAddress(txtEmail.getText());
-        newStaff.setFaculty((Faculty)cboFaculty.getSelectedItem());
+        newStaff.setFaculty((Faculty) cboFaculty.getSelectedItem());
         newStaff.setForename(txtForename.getText());
         newStaff.setGender(txtGender.getText());
         newStaff.setOfficeRoom(txtOffice.getText());
         newStaff.setPhoneNumber(txtPhoneNumb.getText());
-        newStaff.setPosition((Position)cboPosition.getSelectedItem());
+        newStaff.setPosition((Position) cboPosition.getSelectedItem());
         newStaff.setSurname(txtSurname.getText());
         newStaff.setTitle(txtTitle.getText());
         newStaff.setWorkNumb(txtWorkNumb.getText());
-        if(cbAdmin.isSelected()){
-        this.lblUpdate.setText("Admin details have been updated");
+        if (cbAdmin.isSelected()) {
+            this.lblUpdate.setText("Admin details have been updated");
         }
         this.lblUpdate.setText("Staff details have been updated");
-        
-        ICommandBehaviour objUpdate = new UpdateStaffCommand(this.adminToUpdate, newStaff, staffBeforeUpdate);
+
+        ICommandBehaviour objUpdate = new UpdateStaffCommand(this.admin, newStaff, staffBeforeUpdate);
         ICommand command = new Command(objUpdate);
         this.commandTracker.executeCommand(command);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
 
-            Staff staff = adminToUpdate.getStaffForRefNumb(this.txtStaffNumb.getText());
-            ICommandBehaviour objDelete = new DeleteStaffCommand(adminToUpdate, staff);
-            ICommand objCommand = new Command(objDelete);
-            this.commandTracker.executeCommand(objCommand);
-            
-            this.lblUpdate.setText("Staff Deleted");
+        Staff staff = admin.getStaffForRefNumb(this.txtStaffNumb.getText());
+        ICommandBehaviour objDelete = new DeleteStaffCommand(admin, staff);
+        ICommand objCommand = new Command(objDelete);
+        this.commandTracker.executeCommand(objCommand);
+
+        this.lblUpdate.setText("Staff Deleted");
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void mnuUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuUndoActionPerformed
@@ -719,12 +721,11 @@ public class FormStaffDetails extends javax.swing.JFrame {
         this.cboFaculty.setVisible(true);
         this.btnEdit.setVisible(false);
         this.btnUpdate.setVisible(true);
-        this.cbAdmin.setVisible(true);
         enableTextBoxes();
     }//GEN-LAST:event_btnEditActionPerformed
-    
-    public void enableTextBoxes(){
-        
+
+    public void enableTextBoxes() {
+
         this.txtAddressOne.setEnabled(true);
         this.txtAddressTwo.setEnabled(true);
         this.txtCity.setEnabled(true);
@@ -740,13 +741,13 @@ public class FormStaffDetails extends javax.swing.JFrame {
         this.txtWorkNumb.setEnabled(true);
         this.btnUpdate.setEnabled(true);
         this.jxDOB.setEditable(true);
-        if (this.cbAdmin.isSelected()){
+        if (this.cbAdmin.isSelected()) {
             this.lblPassword.setVisible(true);
             this.txtPassword.setVisible(true);
             this.txtPassword.setEnabled(true);
         }
     }
-    
+
     /**
      * @param args the command line arguments
      */
