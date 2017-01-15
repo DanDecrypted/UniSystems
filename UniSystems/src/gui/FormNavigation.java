@@ -54,7 +54,7 @@ public class FormNavigation extends javax.swing.JFrame {
         jLabel1.setText("Management Navigation");
 
         btnCarSearch.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        btnCarSearch.setText("Car Search");
+        btnCarSearch.setText("Manage Cars");
         btnCarSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCarSearchActionPerformed(evt);
@@ -62,7 +62,7 @@ public class FormNavigation extends javax.swing.JFrame {
         });
 
         btnStaffSearch.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        btnStaffSearch.setText("Staff Search");
+        btnStaffSearch.setText("Rental");
         btnStaffSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStaffSearchActionPerformed(evt);
@@ -70,7 +70,7 @@ public class FormNavigation extends javax.swing.JFrame {
         });
 
         btnRentals.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        btnRentals.setText("Manage Loans");
+        btnRentals.setText("Loan Lookup");
         btnRentals.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRentalsActionPerformed(evt);
@@ -78,7 +78,7 @@ public class FormNavigation extends javax.swing.JFrame {
         });
 
         btnManageCars.setFont(new java.awt.Font("Lato", 0, 13)); // NOI18N
-        btnManageCars.setText("Car Status");
+        btnManageCars.setText("Car Lookup");
         btnManageCars.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageCarsActionPerformed(evt);
@@ -102,33 +102,39 @@ public class FormNavigation extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnManageMembers)
-                    .addComponent(btnCarSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnRentals)
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnManageCars, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnStaffSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(82, 82, 82))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnManageMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnRentals, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCarSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                        .addComponent(btnManageCars, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(136, 136, 136)
+                .addComponent(btnStaffSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(56, 56, 56)
+                .addGap(21, 21, 21)
+                .addComponent(btnStaffSearch)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCarSearch)
-                    .addComponent(btnStaffSearch)
-                    .addComponent(btnRentals))
+                    .addComponent(btnManageMembers))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnManageCars)
-                    .addComponent(btnManageMembers))
-                .addContainerGap(323, Short.MAX_VALUE))
+                    .addComponent(btnRentals))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
