@@ -54,6 +54,8 @@ public class ObjectSerialisationTest{
                             Location.PLYMOUTH, "A104", Classification.VAN, 3, 3, 237234, LoanType.LONG_TERM_LOAN);
         Car car5 = new Car("NA15PQD","BMW", "i8", Transmission.AUTOMATIC, FuelType.ELECTRIC, 
                             Location.PLYMOUTH, "A105", Classification.COMPACT, 4, 3, 20050, LoanType.DAY_LOAN);
+        Car car6 = new Car("VE55HGG","Vauxhall", "Astra", Transmission.AUTOMATIC, FuelType.PETROL, 
+                            Location.PLYMOUTH, "A107", Classification.COMPACT, 4, 3, 20050, LoanType.LONG_TERM_LOAN);
                             
         Staff staff = new Staff("10438524", Position.LECTURER, Faculty.SCIENCE_AND_ENGINEERING, "BGB106", "07474306999", new Address("1", "Tothill Avenue", "Plymouth", "Devon", "PL4 8PH"),
                 "Mr", "Najim", "Mazidi", new Date(95,7,26), "Male", "07474306999", "nmazidi95@gmail.com");
@@ -81,20 +83,20 @@ public class ObjectSerialisationTest{
         
         Service service = new Service("John", arrayRepairs, "Fixed the brakes", new Date());
         
-        danScott.createCar(car);
-        danScott.createCar(car2);
-        danScott.createCar(car3);
-        danScott.createCar(car4);
-        danScott.createCar(car5);
-        danScott.createStaffMember(superStaff);
-        danScott.createAdministrator(superUser);
-        danScott.createStaffMember(staff);
-        danScott.createStaffMember(staff2);
-        danScott.createStaffMember(staff3);
-        danScott.assignDayLoan(car, staff);
-        danScott.assignDayLoan(car2, staff);
-        danScott.assignLongLoan(car3, staff);
-        danScott.assignLongLoan(car4, staff3);
+        superUser.createCar(car);
+        superUser.createCar(car2);
+        superUser.createCar(car3);
+        superUser.createCar(car4);
+        superUser.createCar(car5);
+        superUser.createCar(car6);
+        superUser.createStaffMember(superStaff);
+        superUser.createAdministrator(superUser);
+        superUser.createStaffMember(staff);
+        superUser.createStaffMember(staff2);
+        superUser.createStaffMember(staff3);
+        superUser.assignDayLoan(car, staff);
+        superUser.assignDayLoan(car2, staff2);
+        superUser.assignLongLoan(car3, staff4);
         danScott.createAdministrator(danScott);
         najim.createAdministrator(najim);
         craig.createAdministrator(craig);
