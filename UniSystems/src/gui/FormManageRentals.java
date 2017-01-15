@@ -25,7 +25,6 @@ public class FormManageRentals extends javax.swing.JFrame {
 
     private DefaultListModel listModel;
      private Administrator admin = new Administrator();
-    private LoanType loanType;
     private Staff staff = new Staff();
     
     /**
@@ -43,10 +42,16 @@ public class FormManageRentals extends javax.swing.JFrame {
         this.getContentPane().setBackground(new Color (238,238,238));
         this.jPanel2.setBackground(new Color (238,238,238));
         listModel = new DefaultListModel();
-        populateLoans();
+        
+        if (this.rbtnCurrent.isSelected()) {
+            populateActiveLoans();
+        } else {
+            populatePastLoans();
+        }
+        
     }
     
-    private void populateLoans() {
+    private void populateActiveLoans() {
         listModel.clear();
         
         for (Loan loan : admin.getLoans()) {
@@ -72,12 +77,38 @@ public class FormManageRentals extends javax.swing.JFrame {
         }
         lstRentalList.setModel(listModel);
     }
+    private void populatePastLoans() {
+        listModel.clear();
+        
+        for (Loan loan : admin.getLoans()) {
+            if (null != loan.getReturnedDate()){
+                try {
+                    DayLoan dayLoan = (DayLoan)loan; //day loan boiz 
+                        String listElement = loan.getCar().getRegNo()+ " rented by ";
+                            listElement += loan.getLoaner().getFullName();
+                            listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate()) + " returned on ";
+                            listElement += data.UtilityFunctions.formatDate(dayLoan.getReturnedDate());
+                            listModel.addElement(listElement);
+                }
+                catch (Exception e) { } 
+                try {
+                    LongLoan longLoan = (LongLoan)loan; // long loan boiz 
+                        String listElement = loan.getCar().getRegNo()+ " rented by ";
+                            listElement += loan.getLoaner().getFullName();
+                            listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " returned on  "
+                            + data.UtilityFunctions.formatDate(longLoan.getReturnedDate());
+                            listModel.addElement(listElement);
+                } catch (Exception e) { } 
+            }
+        }
+        lstRentalList.setModel(listModel);
+    }
     
-    private void filterLoans() {
+    private void filterActiveLoans() {
         listModel.clear();
         lstRentalList.setModel(listModel);
         if (txtRegNumb.getText().equals("") && txtStaffID.getText().equals("")) {
-            populateLoans();
+            populateActiveLoans();
         } else {
                 if (txtStaffID.getText().equals("")) {
                     for (Loan loan : admin.getLoans()) {
@@ -142,8 +173,80 @@ public class FormManageRentals extends javax.swing.JFrame {
                     }
                 }
                 lstRentalList.setModel(listModel);
-            }    
-        //}
+            }
+    }
+        private void filterPastLoans() {
+        listModel.clear();
+        lstRentalList.setModel(listModel);
+        if (txtRegNumb.getText().equals("") && txtStaffID.getText().equals("")) {
+            populatePastLoans();
+        } else {
+                if (txtStaffID.getText().equals("")) {
+                    for (Loan loan : admin.getLoans()) {
+                        Car car = admin.getCarByReg(loan.getCar().getRegNo());
+                        if (null != loan.getReturnedDate()){
+                            if (car.getRegNo().toLowerCase().equals(this.txtRegNumb.getText().toLowerCase())) {
+                                String listElement = loan.getCar().getRegNo() + " rented by ";
+                                    listElement += loan.getLoaner().getFullName();
+                                    try {
+                                        DayLoan dayLoan = (DayLoan)loan;
+                                        listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
+                                    } catch (Exception e) {}
+                                    try {
+                                        LongLoan longLoan = (LongLoan)loan;
+                                        listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate());
+                                    } catch (Exception e) {}
+                                    listElement += " returned on " + loan.getReturnedDate();
+                                    listModel.addElement(listElement);
+                            }
+                        }
+                    }
+                } else if (txtRegNumb.getText().equals("")) {
+                    for (Loan loan : admin.getLoans()) {
+                        Car car = admin.getCarByReg(loan.getCar().getRegNo());
+                        if (null != loan.getReturnedDate()){
+                            if (loan.getLoaner().getRefNumb().equals(this.txtStaffID.getText())) {
+                                String listElement = car.getRegNo() + " rented by ";
+                                listElement += loan.getLoaner().getFullName();
+                                try {
+                                    DayLoan dayLoan = (DayLoan)loan;
+                                    listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
+                                } catch (Exception e) {}
+                                try {
+                                    LongLoan longLoan = (LongLoan)loan;
+                                    listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
+                                        + data.UtilityFunctions.formatDate(longLoan.getEndDate());
+                                } catch (Exception e) {}
+                                listElement += " returned on " + loan.getReturnedDate();
+                                listModel.addElement(listElement);
+                            }
+                        }
+                    }
+                } else {
+                    for (Loan loan : admin.getLoans()) {
+                        Car car = admin.getCarByReg(loan.getCar().getRegNo());
+                        if (null != loan.getReturnedDate()){
+                            if (car.getRegNo().toLowerCase().equals(this.txtRegNumb.getText().toLowerCase()) && 
+                                    loan.getLoaner().getRefNumb().equals(this.txtStaffID.getText())) {
+                                String listElement = car.getRegNo() + " rented by ";
+                                    listElement += loan.getLoaner().getFullName();
+                                    try {
+                                        DayLoan dayLoan = (DayLoan)loan;
+                                        listElement += data.UtilityFunctions.formatDate(dayLoan.getRentalDate());
+                                    } catch (Exception e) {}
+                                    try {
+                                        LongLoan longLoan = (LongLoan)loan;
+                                        listElement += data.UtilityFunctions.formatDate(longLoan.getStartDate()) + " - "
+                                                + data.UtilityFunctions.formatDate(longLoan.getEndDate());
+                                    } catch (Exception e) {}
+                                    listElement += " returned on " + loan.getReturnedDate();
+                                    listModel.addElement(listElement);
+                            }
+                        }
+                    }
+                }
+                lstRentalList.setModel(listModel);
+            }
     }
     private Loan getLoan(String str) {
         String[] strArray = str.split(" ");
@@ -151,10 +254,8 @@ public class FormManageRentals extends javax.swing.JFrame {
         Loan temp = null;
 
         for (Loan loan : admin.getLoans()) {
-            if (loan.getReturnedDate() == null) {
-                if (loan.getCar().getRegNo().equals(car.getRegNo())) { 
-                    temp = loan;
-                }
+            if (loan.getCar().getRegNo().equals(car.getRegNo())) { 
+                temp = loan;
             }
         }
         return temp;
@@ -169,7 +270,7 @@ public class FormManageRentals extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstRentalList = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
@@ -182,6 +283,8 @@ public class FormManageRentals extends javax.swing.JFrame {
         txtStaffID = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnCancel = new javax.swing.JButton();
+        rbtnPast = new javax.swing.JRadioButton();
+        rbtnCurrent = new javax.swing.JRadioButton();
         btnViewRental = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -195,7 +298,7 @@ public class FormManageRentals extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Manage Active Loans");
+        jLabel1.setText("Manage Loans");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -227,6 +330,13 @@ public class FormManageRentals extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup.add(rbtnPast);
+        rbtnPast.setText("Past Loans");
+
+        buttonGroup.add(rbtnCurrent);
+        rbtnCurrent.setSelected(true);
+        rbtnCurrent.setText("Active Loans");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -247,8 +357,14 @@ public class FormManageRentals extends javax.swing.JFrame {
                                     .addComponent(jLabel5))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtRegNumb, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(txtStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(rbtnPast))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(txtRegNumb, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(rbtnCurrent))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -266,11 +382,13 @@ public class FormManageRentals extends javax.swing.JFrame {
                         .addGap(9, 9, 9)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtRegNumb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
+                            .addComponent(jLabel4)
+                            .addComponent(rbtnCurrent))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(txtStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rbtnPast))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnFilter)
@@ -352,7 +470,11 @@ public class FormManageRentals extends javax.swing.JFrame {
     }//GEN-LAST:event_btnViewRentalActionPerformed
 
     private void btnFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilterActionPerformed
-        filterLoans();
+        if (this.rbtnCurrent.isSelected()){
+            filterActiveLoans();
+        } else {
+            filterPastLoans();
+        }
     }//GEN-LAST:event_btnFilterActionPerformed
 
     /**
@@ -394,7 +516,7 @@ public class FormManageRentals extends javax.swing.JFrame {
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnFilter;
     private javax.swing.JButton btnViewRental;
-    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -407,6 +529,8 @@ public class FormManageRentals extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> lstRentalList;
+    private javax.swing.JRadioButton rbtnCurrent;
+    private javax.swing.JRadioButton rbtnPast;
     private javax.swing.JTextField txtRegNumb;
     private javax.swing.JTextField txtStaffID;
     // End of variables declaration//GEN-END:variables
