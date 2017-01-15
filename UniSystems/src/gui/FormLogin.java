@@ -27,8 +27,6 @@ public class FormLogin extends javax.swing.JFrame {
         initComponents();
         this.getContentPane().setBackground(new Color (238,238,238));
         this.rootPane.setDefaultButton(btnLogin);
-        System.out.println(staff.loadFromDisk());
-        System.out.println(admins.loadFromDisk());
         File dir = new File("data");
         if (!dir.exists()) {
             if (dir.mkdir()) {
@@ -36,6 +34,8 @@ public class FormLogin extends javax.swing.JFrame {
                 ObjectSerialisationTest.addTestDataAndSave();
             }
         } 
+        System.out.println(staff.loadFromDisk());
+        System.out.println(admins.loadFromDisk());
     }
 
     /**
