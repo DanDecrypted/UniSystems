@@ -174,6 +174,20 @@ public class Administrator extends Staff implements java.io.Serializable {
         }
         return null;
     }
+    /**
+     * Gets an administrator object which as a particular reference number.
+     * @param refNumb reference number of the staff member.
+     * @return Staff object.
+     */
+    public Administrator getAdminForRefNumb(String refNumb) {
+        if (admins == null) admins = Administrators.getInstance();
+        for (Administrator admin : admins.getAdministrators()){
+            if (admin.getRefNumb().equals(refNumb)){
+                return admin;
+            }
+        }
+        return null;
+    }
     
     /**
      * Gets a car for a particular registration plate

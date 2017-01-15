@@ -1,6 +1,7 @@
 
-package commands.staff;
+package commands.admin;
 
+import commands.staff.*;
 import command.interfaces.ICommandBehaviour;
 import people.Administrator;
 import people.Staff;
@@ -9,15 +10,15 @@ import people.Staff;
  *
  * @author najimmazidi
  */
-public class UpdateStaffCommand implements ICommandBehaviour {
+public class UpdateAdminCommand implements ICommandBehaviour {
     private Administrator admin = null;
-    private Staff staffToUpdate = null;
-    private Staff staffToRestore = null;
+    private Administrator adminToUpdate = null;
+    private Administrator adminToRestore = null;
     
-    public UpdateStaffCommand(Administrator admin, Staff staff, Staff oldStaff){
+    public UpdateAdminCommand(Administrator admin, Administrator adminToUpdate, Administrator oldAdminToUpdate){
         this.admin = admin;
-        this.staffToUpdate = staff;
-        this.staffToRestore = oldStaff;
+        this.adminToUpdate = adminToUpdate;
+        this.adminToRestore = oldAdminToUpdate;
     }
     /**
      * Do command called when action is done or redone
@@ -27,8 +28,8 @@ public class UpdateStaffCommand implements ICommandBehaviour {
     public Boolean doCommand() {
         Boolean blnCompleted = false;
         if (this.isValid()){
-            this.admin.removeStaffMember(admin.getStaffForRefNumb(this.staffToUpdate.getRefNumb()));
-            this.admin.createStaffMember(staffToUpdate);
+            this.admin.removeAdministrator(admin.getAdminForRefNumb(this.adminToUpdate.getRefNumb()));
+            this.admin.createAdministrator(this.adminToUpdate);
             blnCompleted = true;
         }
         return blnCompleted;
@@ -41,8 +42,8 @@ public class UpdateStaffCommand implements ICommandBehaviour {
     public Boolean undoCommand() {
         Boolean blnCompleted = false;
         if (this.isValid()){
-            this.admin.removeStaffMember(admin.getStaffForRefNumb(this.staffToUpdate.getRefNumb()));
-            this.admin.createStaffMember(this.staffToRestore);
+            this.admin.removeAdministrator(admin.getAdminForRefNumb(this.adminToUpdate.getRefNumb()));
+            this.admin.createAdministrator(this.adminToRestore);
             blnCompleted = true;
         }
         return blnCompleted;
@@ -53,7 +54,7 @@ public class UpdateStaffCommand implements ICommandBehaviour {
      */
     private Boolean isValid(){
         Boolean blnValid = false;
-        if (null != this.staffToUpdate) {
+        if (null != this.adminToUpdate) {
             blnValid = true;
         }
         return blnValid;
