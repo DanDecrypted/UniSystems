@@ -54,11 +54,10 @@ public class FormCar extends javax.swing.JFrame {
         this.lblStatusTitle.setVisible(false);
         this.btnService.setVisible(false);
         this.cboStatus.setVisible(false);
-        this.lblLoanTypeHold.setVisible(false);
-        this.lblLocationHold.setVisible(false);
-        this.lblClassHold.setVisible(false);
-        this.lblTransmissionHold.setVisible(false);
-        this.lblFuelHold.setVisible(false);
+        this.btnEdit.setVisible(false);
+        this.cboStatus.setVisible(false);
+        enableTextBoxes();
+        hideHoldLabels();
         this.setSize(this.getSize().width,
                 jSeparator2.getLocation().y + jSeparator2.getSize().height
                         + btnCreate.getSize().height);
@@ -646,11 +645,6 @@ public class FormCar extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuUndoActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        this.lblLoanTypeHold.setVisible(false);
-        this.lblLocationHold.setVisible(false);
-        this.lblClassHold.setVisible(false);
-        this.lblTransmissionHold.setVisible(false);
-        this.lblFuelHold.setVisible(false);
         this.lblStatus.setVisible(false);
         this.cboClassification.setVisible(true);
         this.cboFuelType.setVisible(true);
@@ -660,6 +654,11 @@ public class FormCar extends javax.swing.JFrame {
         this.cboStatus.setVisible(true);
         this.btnUpdate.setVisible(true);
         this.btnEdit.setVisible(false);
+        enableTextBoxes();
+        hideHoldLabels();
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void enableTextBoxes(){
         this.txtDoors.setEnabled(true);
         this.txtMake.setEnabled(true);
         this.txtMileage.setEnabled(true);
@@ -667,8 +666,16 @@ public class FormCar extends javax.swing.JFrame {
         this.txtRegNo.setEnabled(true);
         this.txtSeats.setEnabled(true);
         this.txtSpace.setEnabled(true);
-    }//GEN-LAST:event_btnEditActionPerformed
-
+    }
+    
+    private void hideHoldLabels(){
+        this.lblLoanTypeHold.setVisible(false);
+        this.lblLocationHold.setVisible(false);
+        this.lblClassHold.setVisible(false);
+        this.lblTransmissionHold.setVisible(false);
+        this.lblFuelHold.setVisible(false);
+    }
+    
     /**
      * @param args the command line arguments
      */

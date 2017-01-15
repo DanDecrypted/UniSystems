@@ -54,6 +54,8 @@ public class FormStaffDetails extends javax.swing.JFrame {
         this.jScrollPane2.setVisible(false);
         this.lblPassword.setVisible(false);
         this.txtPassword.setVisible(false);
+        this.btnEdit.setVisible(false);
+        this.txtStaffNumb.setEnabled(true);
         this.setSize(this.getSize().width,
                 jSeparator2.getLocation().y + jSeparator2.getSize().height 
                         + btnCreate.getSize().height + 100);
@@ -406,9 +408,9 @@ public class FormStaffDetails extends javax.swing.JFrame {
                                 .addComponent(btnUpdate)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnCreate)
-                                .addGap(42, 42, 42)
+                                .addGap(50, 50, 50)
                                 .addComponent(btnDelete)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                                 .addComponent(btnCancel)
                                 .addGap(100, 100, 100))
                             .addComponent(jScrollPane2)
@@ -540,19 +542,14 @@ public class FormStaffDetails extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPostCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblGender5))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnUpdate)
-                            .addComponent(btnCancel)
-                            .addComponent(btnDelete)
-                            .addComponent(btnEdit))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCreate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnUpdate)
+                    .addComponent(btnCancel)
+                    .addComponent(btnDelete)
+                    .addComponent(btnEdit)
+                    .addComponent(btnCreate))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblLoanHistory)
@@ -672,6 +669,11 @@ public class FormStaffDetails extends javax.swing.JFrame {
         this.cboPosition.setVisible(true);
         this.lblFacultyHold.setVisible(false);
         this.cboFaculty.setVisible(true);
+        enableTextBoxes();
+    }//GEN-LAST:event_btnEditActionPerformed
+    
+    public void enableTextBoxes(){
+        
         this.txtAddressOne.setEnabled(true);
         this.txtAddressTwo.setEnabled(true);
         this.txtCity.setEnabled(true);
@@ -688,8 +690,8 @@ public class FormStaffDetails extends javax.swing.JFrame {
         this.txtWorkNumb.setEnabled(true);
         this.txtPassword.setEnabled(true);
         this.btnUpdate.setEnabled(true);
-    }//GEN-LAST:event_btnEditActionPerformed
-
+    }
+    
     /**
      * @param args the command line arguments
      */
