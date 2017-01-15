@@ -3,11 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/Users/Craig/NetBeansProjects/UniSystems/UniSystemsDataModel/src/commands/staff/UpdateStaffCommand.java</file>
-            <file>file:/Users/Craig/NetBeansProjects/UniSystems/UniSystemsDataModel/src/data/Administrators.java</file>
-=======
-<<<<<<< Updated upstream
             <file>file:/C:/Users/dansc/OneDrive/Documents/GitHub/UniSystems/UniSystemsDataModel/src/commands/admin/AddAdminCommand.java</file>
             <file>file:/C:/Users/dansc/OneDrive/Documents/GitHub/UniSystems/UniSystemsDataModel/src/testharness/ObjectSerialisationTest.java</file>
             <file>file:/C:/Users/dansc/OneDrive/Documents/GitHub/UniSystems/UniSystemsDataModel/src/command/interfaces/ICommandBehaviour.java</file>
@@ -15,30 +10,6 @@
             <file>file:/C:/Users/dansc/OneDrive/Documents/GitHub/UniSystems/UniSystemsDataModel/src/command/interfaces/ICommandTracker.java</file>
             <file>file:/C:/Users/dansc/OneDrive/Documents/GitHub/UniSystems/UniSystemsDataModel/src/commands/car/AddCarCommand.java</file>
             <file>file:/C:/Users/dansc/OneDrive/Documents/GitHub/UniSystems/UniSystemsDataModel/test/people/AdministratorTest.java</file>
-=======
-<<<<<<< Updated upstream
-            <file>file:/Users/Craig/NetBeansProjects/UniSystems/UniSystemsDataModel/test/people/AdministratorTest.java</file>
-            <file>file:/Users/Craig/NetBeansProjects/UniSystems/UniSystemsDataModel/src/commands/staff/UpdateStaffCommand.java</file>
-            <file>file:/Users/Craig/NetBeansProjects/UniSystems/UniSystemsDataModel/src/data/Administrators.java</file>
-=======
-            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/src/commandtracker/Command.java</file>
-            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/src/command/interfaces/ICommandTracker.java</file>
-            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/src/commands/staff/DeleteStaffCommand.java</file>
-            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/src/car/Car.java</file>
-            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/src/command/interfaces/ICommand.java</file>
-            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/test/people/AdministratorTest.java</file>
-            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/src/commands/staff/UpdateStaffCommand.java</file>
-            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/src/commands/loan/AddLongLoanCommand.java</file>
-            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/src/commands/staff/AddStaffCommand.java</file>
-            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/src/commands/loan/AddDayLoanCommand.java</file>
-            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/src/commands/loan/ReturnCarCommand.java</file>
-            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/src/commands/car/AddCarCommand.java</file>
-            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/src/commands/car/DeleteCarCommand.java</file>
-            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/src/data/UtilityFunctions.java</file>
-            <file>file:/Users/najimmazidi/Documents/University/Year%202/SOFT252/UniSystems/UniSystemsDataModel/src/command/interfaces/ICommandBehaviour.java</file>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> origin/master
         </group>
     </open-files>
 </project-private>
